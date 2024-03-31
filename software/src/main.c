@@ -10,9 +10,9 @@
 #include <stdio.h>
 #include "system.h"
 #include "altera_avalon_pio_regs.h"
-#include "FreeRTOS/FreeRTOS.h"
-#include "FreeRTOS/task.h"
-#include "FreeRTOS/timers.h"
+#include "../software/FreeRTOS/FreeRTOS.h"
+#include "../software/FreeRTOS/task.h"
+#include "../software/FreeRTOS/timers.h"
 
 
 #define Timer_Reset_Task_P      (tskIDLE_PRIORITY+1)

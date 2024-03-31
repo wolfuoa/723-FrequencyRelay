@@ -144,8 +144,16 @@ ELF := 723_FrequencyRelay.elf
 # Paths to C, C++, and assembly source files.
 C_SRCS += src/main.c
 C_SRCS += src/timer.c
+C_SRCS += FreeRTOS/croutine.c
+C_SRCS += FreeRTOS/event_groups.c
+C_SRCS += FreeRTOS/heap.c
+C_SRCS += FreeRTOS/list.c
+C_SRCS += FreeRTOS/port.c
+C_SRCS += FreeRTOS/queue.c
+C_SRCS += FreeRTOS/tasks.c
+C_SRCS += FreeRTOS/timers.c
 CXX_SRCS :=
-ASM_SRCS :=
+ASM_SRCS := FreeRTOS/port_asm.S
 
 
 # Path to root of object file tree.
@@ -181,7 +189,7 @@ SYS_LIB :=
 BSP_ROOT_DIR := H:/Documents/GitHub/723-FrequencyRelay/723_FrequencyRelay_bsp/
 
 # List of application specific include directories, library directories and library names
-APP_INCLUDE_DIRS :=
+APP_INCLUDE_DIRS := \\unifiles.uoa.auckland.ac.nz\myhome\Documents\GitHub\723-FrequencyRelay\software
 APP_LIBRARY_DIRS :=
 APP_LIBRARY_NAMES :=
 
