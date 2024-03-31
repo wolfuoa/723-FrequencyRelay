@@ -142,7 +142,8 @@ ACDS_VERSION := 13.0
 ELF := 723_FrequencyRelay.elf
 
 # Paths to C, C++, and assembly source files.
-C_SRCS := main.c
+C_SRCS += src/main.c
+C_SRCS += src/timer.c
 CXX_SRCS :=
 ASM_SRCS :=
 
