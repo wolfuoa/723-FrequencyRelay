@@ -2,5 +2,6 @@
  * timer.c
  * 		Author: Nicholas Wolf
  *
- * Includes the required resources for timers
+ * Includes the required resources for timers and alarms
  */
+
