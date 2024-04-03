@@ -1,24 +1,51 @@
-/*
- * "Hello World" example.
- *
- * This example prints 'Hello from Nios II' to the STDOUT stream. It runs on
- * the Nios II 'standard', 'full_featured', 'fast', and 'low_cost' example
- * designs. It runs with or without the MicroC/OS-II RTOS and requires a STDOUT
- * device in your system's hardware.
- * The memory footprint of this hosted application is ~69 kbytes by default
- * using the standard reference design.
- *
- * For a reduced footprint version of this template, and an explanation of how
- * to reduce the memory footprint for a given application, see the
- * "small_hello_world" template.
- *
- */
-
+/* Standard includes. */
+#include <stddef.h>
 #include <stdio.h>
+#include <string.h>
 
-int main()
+/* Scheduler includes. */
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "freertos/queue.h"
+
+/* The parameters passed to the reg test tasks.  This is just done to check
+ the parameter passing mechanism is working correctly. */
+#define mainREG_TEST_1_PARAMETER    ( ( void * ) 0x12345678 )
+#define mainREG_TEST_2_PARAMETER    ( ( void * ) 0x87654321 )
+#define mainREG_TEST_PRIORITY       ( tskIDLE_PRIORITY + 1)
+static void prvFirstRegTestTask(void *pvParameters);
+static void prvSecondRegTestTask(void *pvParameters);
+
+/*
+ * Create the demo tasks then start the scheduler.
+ */
+int main(void)
 {
-  printf("Hello from Nios II!\n");
+	/* The RegTest tasks as described at the top of this file. */
+	xTaskCreate( prvFirstRegTestTask, "Rreg1", configMINIMAL_STACK_SIZE, mainREG_TEST_1_PARAMETER, mainREG_TEST_PRIORITY, NULL);
+	xTaskCreate( prvSecondRegTestTask, "Rreg2", configMINIMAL_STACK_SIZE, mainREG_TEST_2_PARAMETER, mainREG_TEST_PRIORITY, NULL);
 
-  return 0;
+	/* Finally start the scheduler. */
+	vTaskStartScheduler();
+
+	/* Will only reach here if there is insufficient heap available to start
+	 the scheduler. */
+	for (;;);
+}
+static void prvFirstRegTestTask(void *pvParameters)
+{
+	while (1)
+	{
+		printf("Task 1\n");
+		vTaskDelay(1000);
+	}
+
+}
+static void prvSecondRegTestTask(void *pvParameters)
+{
+	while (1)
+	{
+		printf("Task 2\n");
+		vTaskDelay(1000);
+	}
 }

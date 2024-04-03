@@ -142,9 +142,17 @@ ACDS_VERSION := 13.0
 ELF := 723_FrequencyRelay.elf
 
 # Paths to C, C++, and assembly source files.
-C_SRCS := main.c
+C_SRCS += FreeRTOS/croutine.c
+C_SRCS += FreeRTOS/event_groups.c
+C_SRCS += FreeRTOS/heap.c
+C_SRCS += FreeRTOS/list.c
+C_SRCS += FreeRTOS/port.c
+C_SRCS += FreeRTOS/queue.c
+C_SRCS += FreeRTOS/tasks.c
+C_SRCS += FreeRTOS/timers.c
+C_SRCS += main.c
 CXX_SRCS :=
-ASM_SRCS :=
+ASM_SRCS := FreeRTOS/port_asm.S
 
 
 # Path to root of object file tree.
@@ -177,8 +185,7 @@ CRT0 :=
 SYS_LIB :=
 
 # Define path to the root of the BSP.
-BSP_ROOT_DIR := H:/Documents/GitHub/723-FrequencyRelay/723_FrequencyRelay_bsp/
-
+BSP_ROOT_DIR := D:\Documents\UOA\2024\no_space\CS723\asn\repos\723-FrequencyRelay\723_FrequencyRelay_bsp
 # List of application specific include directories, library directories and library names
 APP_INCLUDE_DIRS :=
 APP_LIBRARY_DIRS :=
