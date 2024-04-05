@@ -3,9 +3,9 @@
 # This script creates the hello_world application in this directory.
 
 
-BSP_DIR=H:/Documents/GitHub/723-FrequencyRelay/723_FrequencyRelay_bsp/
-QUARTUS_PROJECT_DIR=H:/Documents/723_LAB_1/SOPC_files/SOPC_files/
-NIOS2_APP_GEN_ARGS="--elf-name 723_FrequencyRelay.elf --set OBJDUMP_INCLUDE_SOURCE 1 --src-files hello_world.c"
+BSP_DIR=H:/Documents/GitHub/723-FrequencyRelay/niosProject/software/723_Frequency_Relay_bsp/
+QUARTUS_PROJECT_DIR=H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/
+NIOS2_APP_GEN_ARGS="--elf-name 723_Frequency_Relay.elf --set OBJDUMP_INCLUDE_SOURCE 1 --src-files hello_world.c"
 
 
 # First, check to see if $SOPC_KIT_NIOS2 environmental variable is set.

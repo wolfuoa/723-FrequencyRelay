@@ -2,9 +2,9 @@
  * linker.x - Linker script
  *
  * Machine generated for CPU 'nios2' in SOPC Builder design 'nios2'
- * SOPC Builder design path: D:/Documents/UOA/2024/no_space/CS723/asn/nios2.sopcinfo
+ * SOPC Builder design path: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
  *
- * Generated: Wed Apr 03 14:09:09 NZDT 2024
+ * Generated: Fri Apr 05 15:56:05 NZDT 2024
  */
 
 /*
