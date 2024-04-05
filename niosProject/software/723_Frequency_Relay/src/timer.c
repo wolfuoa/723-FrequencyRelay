@@ -5,7 +5,7 @@
  * Includes the required resources for timers and alarms
  */
 
-#include "../inc/timer.h"
+#include "inc/timer.h"
 
 // The function to call when timer times out. Implement as many as needed
 //void vTimerCallback(xTimerHandle t_timer){
