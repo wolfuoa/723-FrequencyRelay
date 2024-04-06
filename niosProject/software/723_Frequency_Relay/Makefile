@@ -152,6 +152,7 @@ C_SRCS += FreeRTOS/tasks.c
 C_SRCS += FreeRTOS/timers.c
 C_SRCS += src/main.c
 C_SRCS += src/timer.c
+C_SRCS += src/frequency_analyser.c
 CXX_SRCS :=
 ASM_SRCS := FreeRTOS/port_asm.S
 
