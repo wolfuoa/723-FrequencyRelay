@@ -1,4 +1,4 @@
-// freqency_analyser.c
+// freqency_analyser.h
 
 #ifndef FREQUENCY_ANALYSER_H
 #define FREQUENCY_ANALYSER_H

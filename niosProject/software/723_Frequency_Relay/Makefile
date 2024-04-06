@@ -153,6 +153,7 @@ C_SRCS += FreeRTOS/timers.c
 C_SRCS += src/main.c
 C_SRCS += src/timer.c
 C_SRCS += src/frequency_analyser.c
+C_SRCS += src/peak_detector.c
 CXX_SRCS :=
 ASM_SRCS := FreeRTOS/port_asm.S
 

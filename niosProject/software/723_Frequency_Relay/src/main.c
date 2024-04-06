@@ -19,6 +19,7 @@
 #include <altera_avalon_pio_regs.h>
 
 #include "inc/frequency_analyser.h"
+#include "inc/peak_detector.h"
 
 /* The parameters passed to the reg test tasks.  This is just done to check
  the parameter passing mechanism is working correctly. */
@@ -46,6 +47,12 @@ int main(void)
 	/* The RegTest tasks as described at the top of this file. */
 	xTaskCreate(prvFirstRegTestTask, "Rreg1", configMINIMAL_STACK_SIZE, mainREG_TEST_1_PARAMETER, mainREG_TEST_PRIORITY, NULL);
 	xTaskCreate(prvSecondRegTestTask, "Rreg2", configMINIMAL_STACK_SIZE, mainREG_TEST_2_PARAMETER, mainREG_TEST_PRIORITY, NULL);
+
+	if (Peak_Detector_init())
+	{
+		printf("Coult not start the Peak Detector Task");
+	}
+
 	/* Finally start the scheduler. */
 	vTaskStartScheduler();
 	/* Will only reach here if there is insufficient heap available to start
