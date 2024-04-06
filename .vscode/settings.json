@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "peak_detector.h": "c",
+        "frequency_analyser.h": "c"
     }
 }
