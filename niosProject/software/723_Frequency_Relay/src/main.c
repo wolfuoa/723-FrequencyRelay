@@ -34,6 +34,7 @@ static void prvSecondRegTestTask(void *pvParameters);
 int main(void)
 {
 
+	// Context is not required, but this is an example of how to do it
 	int ctx;
 	if (Frequency_Analyser_initIRQ(&ctx))
 	{
