@@ -20,14 +20,15 @@
 
 #include "inc/frequency_analyser.h"
 #include "inc/peak_detector.h"
+#include "inc/load_control.h"
 
 /* The parameters passed to the reg test tasks.  This is just done to check
  the parameter passing mechanism is working correctly. */
-#define mainREG_TEST_1_PARAMETER ((void *)0x12345678)
-#define mainREG_TEST_2_PARAMETER ((void *)0x87654321)
-#define mainREG_TEST_PRIORITY (tskIDLE_PRIORITY + 1)
-static void prvFirstRegTestTask(void *pvParameters);
-static void prvSecondRegTestTask(void *pvParameters);
+// #define mainREG_TEST_1_PARAMETER ((void *)0x12345678)
+// #define mainREG_TEST_2_PARAMETER ((void *)0x87654321)
+// #define mainREG_TEST_PRIORITY (tskIDLE_PRIORITY + 1)
+// static void prvFirstRegTestTask(void *pvParameters);
+// static void prvSecondRegTestTask(void *pvParameters);
 
 /*
  * Create the demo tasks then start the scheduler.
@@ -42,16 +43,21 @@ int main(void)
 		printf("Could not register Frequency Analyser ISR\n");
 	}
 
-	freq_semaphore = xSemaphoreCreateBinary();
-
 	if (Peak_Detector_init())
 	{
 		printf("Could not start Peak Detector Task");
 	}
 
+	if (Load_Control_Init())
+	{
+		printf("Could not start Load Control Task");
+	}
+
+	//	freq_semaphore = xSemaphoreCreateBinary();
+
 	/* The RegTest tasks as described at the top of this file. */
-	xTaskCreate(prvFirstRegTestTask, "Rreg1", configMINIMAL_STACK_SIZE, mainREG_TEST_1_PARAMETER, mainREG_TEST_PRIORITY, NULL);
-	xTaskCreate(prvSecondRegTestTask, "Rreg2", configMINIMAL_STACK_SIZE, mainREG_TEST_2_PARAMETER, mainREG_TEST_PRIORITY, NULL);
+	// xTaskCreate(prvFirstRegTestTask, "Rreg1", configMINIMAL_STACK_SIZE, mainREG_TEST_1_PARAMETER, mainREG_TEST_PRIORITY, NULL);
+	// xTaskCreate(prvSecondRegTestTask, "Rreg2", configMINIMAL_STACK_SIZE, mainREG_TEST_2_PARAMETER, mainREG_TEST_PRIORITY, NULL);
 
 	/* Finally start the scheduler. */
 	vTaskStartScheduler();
@@ -60,23 +66,23 @@ int main(void)
 	for (;;)
 		;
 }
-static void prvFirstRegTestTask(void *pvParameters)
-{
-	while (1)
-	{
-		printf("Task 1\n");
-		vTaskDelay(1000);
-		if (xSemaphoreTake(freq_semaphore, portMAX_DELAY) == pdTRUE)
-		{
-			printf("found\n");
-		}
-	}
-}
-static void prvSecondRegTestTask(void *pvParameters)
-{
-	while (1)
-	{
-		printf("Task 2\n");
-		vTaskDelay(1000);
-	}
-}
+// static void prvFirstRegTestTask(void *pvParameters)
+// {
+// 	while (1)
+// 	{
+// 		printf("Task 1\n");
+// 		vTaskDelay(1000);
+// 		if (xSemaphoreTake(freq_semaphore, portMAX_DELAY) == pdTRUE)
+// 		{
+// 			printf("found\n");
+// 		}
+// 	}
+// }
+// static void prvSecondRegTestTask(void *pvParameters)
+// {
+// 	while (1)
+// 	{
+// 		printf("Task 2\n");
+// 		vTaskDelay(1000);
+// 	}
+// }

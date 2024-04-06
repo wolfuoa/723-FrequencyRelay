@@ -2,6 +2,9 @@
     "files.associations": {
         "stdio.h": "c",
         "peak_detector.h": "c",
-        "frequency_analyser.h": "c"
+        "frequency_analyser.h": "c",
+        "altera_avalon_pio_regs.h": "c",
+        "timers.h": "c",
+        "load_control.h": "c"
     }
 }

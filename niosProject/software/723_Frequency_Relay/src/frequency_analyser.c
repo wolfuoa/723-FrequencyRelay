@@ -1,4 +1,5 @@
 // freqency_analyser.c
+//      author: Nicholas Wolf
 
 // MUST GO BEFORE OTHERS
 #include "FreeRTOS/FreeRTOS.h"
@@ -20,8 +21,8 @@ void Frequency_Analyser_ISR(void *ctx, alt_u32 id)
     // Please use extended macros like IORD_ALTERA_AVALON_PIO_DATA for clarity
     unsigned int temp = IORD_ALTERA_AVALON_PIO_DATA(FREQUENCY_ANALYSER_BASE);
     xQueueSendToBackFromISR(Peak_Detector_Q, &temp, pdFALSE);
-    BaseType_t handle = pdFALSE;
-    xSemaphoreGiveFromISR(freq_semaphore, &handle);
+    // BaseType_t handle = pdFALSE;
+    // xSemaphoreGiveFromISR(freq_semaphore, &handle);
     return;
 }
 
