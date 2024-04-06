@@ -1,53 +1,75 @@
-/* This example shows how to use the software timer in FreeRTOS
- * 1 Hz timer time up causes the call back function to execute,
- * which in turn flashes the green LED. If any of the push button is pressed,
- * the timer resets and has to wait for a new second for the LED to flash.
+/*
+ * 723 ASSIGNMENT 1 - FREQUENCY RELAY
+ * 		authors: Nicholas Wolf, Janith Hetteriachchi, Robert Sefaj
  */
 
+/* Standard includes. */
+#include <stddef.h>
 #include <stdio.h>
-#include "system.h"
-#include "altera_avalon_pio_regs.h"
+#include <string.h>
+
+/* Scheduler includes. */
 #include "FreeRTOS/FreeRTOS.h"
 #include "FreeRTOS/task.h"
-#include "FreeRTOS/timers.h"
+#include "FreeRTOS/queue.h"
+#include "FreeRTOS/semphr.h"
 
-#define Timer_Reset_Task_P (tskIDLE_PRIORITY + 1)
-TimerHandle_t timer;
-TaskHandle_t Timer_Reset;
+#include <sys/alt_irq.h>
+#include <io.h>
+#include <altera_avalon_pio_regs.h>
 
-void Timer_Reset_Task(void *pvParameters)
-{ // reset timer if any of the push button is pressed
-  while (1)
-  {
-    if (IORD_ALTERA_AVALON_PIO_DATA(PUSH_BUTTON_BASE) != 0x7)
-    {
-      xTimerReset(timer, 10);
-    }
-  }
-}
+#include "inc/frequency_analyser.h"
 
-void vTimerCallback(xTimerHandle t_timer)
-{ // Timer flashes green LEDs
-  IOWR_ALTERA_AVALON_PIO_DATA(GREEN_LEDS_BASE, 0xFF ^ IORD_ALTERA_AVALON_PIO_DATA(GREEN_LEDS_BASE));
-}
+/* The parameters passed to the reg test tasks.  This is just done to check
+ the parameter passing mechanism is working correctly. */
+#define mainREG_TEST_1_PARAMETER ((void *)0x12345678)
+#define mainREG_TEST_2_PARAMETER ((void *)0x87654321)
+#define mainREG_TEST_PRIORITY (tskIDLE_PRIORITY + 1)
+static void prvFirstRegTestTask(void *pvParameters);
+static void prvSecondRegTestTask(void *pvParameters);
 
-int main()
+/*
+ * Create the demo tasks then start the scheduler.
+ */
+int main(void)
 {
 
-  IOWR_ALTERA_AVALON_PIO_DATA(GREEN_LEDS_BASE, 0x55);
+	// Context is not required, but this is an example of how to do it
+	int ctx;
+	if (Frequency_Analyser_initIRQ(&ctx))
+	{
+		printf("Could not register Frequency Analyser ISR\n");
+	}
 
-  timer = xTimerCreate("Timer Name", 1000, pdTRUE, NULL, vTimerCallback);
+	freq_semaphore = xSemaphoreCreateBinary();
 
-  if (xTimerStart(timer, 0) != pdPASS)
-  {
-    printf("Cannot start timer");
-  }
-  xTaskCreate(Timer_Reset_Task, "0", configMINIMAL_STACK_SIZE, NULL, Timer_Reset_Task_P, &Timer_Reset);
-
-  vTaskStartScheduler();
-  while (1)
-  {
-  }
-
-  return 0;
+	/* The RegTest tasks as described at the top of this file. */
+	xTaskCreate(prvFirstRegTestTask, "Rreg1", configMINIMAL_STACK_SIZE, mainREG_TEST_1_PARAMETER, mainREG_TEST_PRIORITY, NULL);
+	xTaskCreate(prvSecondRegTestTask, "Rreg2", configMINIMAL_STACK_SIZE, mainREG_TEST_2_PARAMETER, mainREG_TEST_PRIORITY, NULL);
+	/* Finally start the scheduler. */
+	vTaskStartScheduler();
+	/* Will only reach here if there is insufficient heap available to start
+	 the scheduler. */
+	for (;;)
+		;
+}
+static void prvFirstRegTestTask(void *pvParameters)
+{
+	while (1)
+	{
+		printf("Task 1\n");
+		vTaskDelay(1000);
+		if (xSemaphoreTake(freq_semaphore, portMAX_DELAY) == pdTRUE)
+		{
+			printf("found\n");
+		}
+	}
+}
+static void prvSecondRegTestTask(void *pvParameters)
+{
+	while (1)
+	{
+		printf("Task 2\n");
+		vTaskDelay(1000);
+	}
 }
