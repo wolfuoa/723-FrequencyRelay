@@ -24,7 +24,7 @@ typedef enum System_Frequency_State_T
 // Global Variables
 float g_peakDetectorLowerFrequencyThreshold = 49;  // Hz
 float g_peakDetectorHigherFrequencyThreshold = 52; // Hz
-float g_peakDetectorLowerROCThreshold = 1;         // Hz
+float g_peakDetectorLowerROCThreshold = -2;        // Hz
 float g_peakDetectorHigherROCThreshold = 2;        // Hz
 
 // Global Data Structs
@@ -66,7 +66,7 @@ static void Peak_Detector_handlerTask(void *pvParameters)
         {
             // Calculate the instantaneous frequency
             frequencyReading = 16000 / (double)temp;
-            printf("Reading: %f Hz\n", frequencyReading);
+            // printf("Reading: %f Hz\n", frequencyReading);
 
             // Calculate the rate of change of frequency
             rateOfChangeReading = frequencyReading - previousFrequency;
@@ -77,7 +77,8 @@ static void Peak_Detector_handlerTask(void *pvParameters)
             if (xSemaphoreTake(Peak_Detector_thresholdMutex_X, (TickType_t)10) == pdTRUE)
             {
                 // Determine stability of system
-                thresholdEval = ((frequencyReading > g_peakDetectorLowerFrequencyThreshold) && (frequencyReading < g_peakDetectorHigherFrequencyThreshold) && (rateOfChangeReading > g_peakDetectorLowerROCThreshold) && (rateOfChangeReading < g_peakDetectorHigherROCThreshold));
+                thresholdEval = ((frequencyReading > g_peakDetectorLowerFrequencyThreshold) && (frequencyReading < g_peakDetectorHigherFrequencyThreshold) && (rateOfChangeReading >= g_peakDetectorLowerROCThreshold) && (rateOfChangeReading < g_peakDetectorHigherROCThreshold));
+                // printf("stable? %d\n", thresholdEval);
                 xSemaphoreGive(Peak_Detector_thresholdMutex_X);
             }
 
@@ -91,7 +92,7 @@ static void Peak_Detector_handlerTask(void *pvParameters)
                     repeatActionTimeout = false;
                     if (xTimerStart(repeatActionTimer, 0) != pdPASS)
                     {
-                        printf("Cannot reset timer");
+                        printf("Cannot reset timer\n");
                     }
                 }
 
@@ -103,7 +104,7 @@ static void Peak_Detector_handlerTask(void *pvParameters)
                     repeatActionTimeout = false;
                     if (xTimerStart(repeatActionTimer, 0) != pdPASS)
                     {
-                        printf("Cannot reset timer");
+                        printf("Cannot reset timer\n");
                     }
                 }
 
@@ -126,5 +127,9 @@ static void Peak_Detector_initDataStructs()
 
 static void repeatActionTimerCallback(TimerHandle_t t_timer)
 {
-    repeatActionTimeout = true;
+    if (xSemaphoreTake(repeatActionMutex_X, (TickType_t)10) == pdTRUE)
+    {
+        repeatActionTimeout = true;
+        xSemaphoreGive(repeatActionMutex_X);
+    }
 }
