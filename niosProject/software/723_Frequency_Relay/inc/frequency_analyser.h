@@ -1,4 +1,5 @@
-// freqency_analyser.c
+// freqency_analyser.h
+//      author: Nicholas Wolf
 
 #ifndef FREQUENCY_ANALYSER_H
 #define FREQUENCY_ANALYSER_H
