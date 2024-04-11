@@ -74,7 +74,7 @@ static void Peak_Detector_handlerTask(void *pvParameters)
             // Replace previousFrequency
             previousFrequency = frequencyReading;
 
-            // Dont change the thresholds whie we are checking the thresholds
+            // Dont change the thresholds while we are checking the thresholds
             if (xSemaphoreTake(Peak_Detector_thresholdMutex_X, (TickType_t)10) == pdTRUE)
             {
                 // Determine stability of system
@@ -114,7 +114,7 @@ static void Peak_Detector_handlerTask(void *pvParameters)
 
                 //Changing the systems status
                 systemStability = thresholdEval;
-                // can alter the repeat action timeout
+
                 xSemaphoreGive(repeatActionMutex_X);
             }
         }

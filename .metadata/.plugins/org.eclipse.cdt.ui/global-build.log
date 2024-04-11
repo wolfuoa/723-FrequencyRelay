@@ -37,3 +37,1048 @@ Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\72
 C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
 [BSP build complete]
 [723_Frequency_Relay build complete]
+19:45:12 **** Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+Info: Compiling src/load_control.c to obj/default/src/load_control.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/load_control.o src/load_control.c
+src/load_control.c: In function 'Load_Control_handlerTask':
+src/load_control.c:44:5: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+     printf("Action: %d\n", action);
+     ^
+src/load_control.c:44:5: warning: incompatible implicit declaration of built-in function 'printf'
+src/load_control.c:44:5: note: include '<stdio.h>' or provide a declaration of 'printf'
+Info: Compiling src/main.c to obj/default/src/main.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/main.o src/main.c
+src/main.c: In function 'main':
+src/main.c:48:6: warning: implicit declaration of function 'switch_polling_init' [-Wimplicit-function-declaration]
+  if (switch_polling_init()){
+      ^
+Info: Compiling src/peak_detector.c to obj/default/src/peak_detector.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/peak_detector.o src/peak_detector.c
+src/peak_detector.c: In function 'Peak_Detector_handlerTask':
+src/peak_detector.c:99:25: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+                         printf("Cannot reset timer\n");
+                         ^
+src/peak_detector.c:99:25: warning: incompatible implicit declaration of built-in function 'printf'
+src/peak_detector.c:99:25: note: include '<stdio.h>' or provide a declaration of 'printf'
+src/peak_detector.c:111:25: warning: incompatible implicit declaration of built-in function 'printf'
+                         printf("Cannot reset timer\n");
+                         ^
+src/peak_detector.c:111:25: note: include '<stdio.h>' or provide a declaration of 'printf'
+Info: Compiling src/switch_polling.c to obj/default/src/switch_polling.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/switch_polling.o src/switch_polling.c
+src/switch_polling.c: In function 'Switch_Polling_handlerTask':
+src/switch_polling.c:46:85: error: expected ')' before ';' token
+    printf("The switches are: %d\n\r", IORD_ALTERA_AVALON_PIO_DATA(SLIDE_SWITCH_BASE);
+                                                                                     ^
+src/switch_polling.c:55:3: error: expected ';' before '}' token
+   }
+   ^
+make: *** [obj/default/src/switch_polling.o] Error 1
+19:45:15 **** Incremental Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+Info: Compiling src/switch_polling.c to obj/default/src/switch_polling.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/switch_polling.o src/switch_polling.c
+src/switch_polling.c: In function 'Switch_Polling_handlerTask':
+src/switch_polling.c:46:85: error: expected ')' before ';' token
+    printf("The switches are: %d\n\r", IORD_ALTERA_AVALON_PIO_DATA(SLIDE_SWITCH_BASE);
+                                                                                     ^
+src/switch_polling.c:55:3: error: expected ';' before '}' token
+   }
+   ^
+make: *** [obj/default/src/switch_polling.o] Error 1
+19:45:43 **** Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+Info: Compiling src/switch_polling.c to obj/default/src/switch_polling.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/switch_polling.o src/switch_polling.c
+Info: Linking 723_Frequency_Relay.elf
+nios2-elf-g++  -T'C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/linker.x' -msys-crt0='C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp   -Wl,-Map=723_Frequency_Relay.map   -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o 723_Frequency_Relay.elf obj/default/FreeRTOS/croutine.o obj/default/FreeRTOS/event_groups.o obj/default/FreeRTOS/heap.o obj/default/FreeRTOS/list.o obj/default/FreeRTOS/port.o obj/default/FreeRTOS/queue.o obj/default/FreeRTOS/tasks.o obj/default/FreeRTOS/timers.o obj/default/src/frequency_analyser.o obj/default/src/load_control.o obj/default/src/main.o obj/default/src/peak_detector.o obj/default/src/switch_polling.o obj/default/src/timer.o obj/default/FreeRTOS/port_asm.o -lm -msys-lib=m
+nios2-elf-insert 723_Frequency_Relay.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "C:/COMPSYS723_Projects/723-FrequencyRelay/niosProject/software/723_Frequency_Relay" --sopcinfo C:/COMPSYS723_Projects/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
+Info: (723_Frequency_Relay.elf) 613 KBytes program size (code + initialized data).
+Info:                           130561 KBytes free for stack + heap.
+Info: Creating 723_Frequency_Relay.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source 723_Frequency_Relay.elf >723_Frequency_Relay.objdump
+[723_Frequency_Relay build complete]
+19:45:48 **** Incremental Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+[723_Frequency_Relay build complete]
+19:47:06 **** Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+Info: Compiling src/switch_polling.c to obj/default/src/switch_polling.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/switch_polling.o src/switch_polling.c
+Info: Linking 723_Frequency_Relay.elf
+nios2-elf-g++  -T'C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/linker.x' -msys-crt0='C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp   -Wl,-Map=723_Frequency_Relay.map   -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o 723_Frequency_Relay.elf obj/default/FreeRTOS/croutine.o obj/default/FreeRTOS/event_groups.o obj/default/FreeRTOS/heap.o obj/default/FreeRTOS/list.o obj/default/FreeRTOS/port.o obj/default/FreeRTOS/queue.o obj/default/FreeRTOS/tasks.o obj/default/FreeRTOS/timers.o obj/default/src/frequency_analyser.o obj/default/src/load_control.o obj/default/src/main.o obj/default/src/peak_detector.o obj/default/src/switch_polling.o obj/default/src/timer.o obj/default/FreeRTOS/port_asm.o -lm -msys-lib=m
+nios2-elf-insert 723_Frequency_Relay.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "C:/COMPSYS723_Projects/723-FrequencyRelay/niosProject/software/723_Frequency_Relay" --sopcinfo C:/COMPSYS723_Projects/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
+Info: (723_Frequency_Relay.elf) 613 KBytes program size (code + initialized data).
+Info:                           130561 KBytes free for stack + heap.
+Info: Creating 723_Frequency_Relay.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source 723_Frequency_Relay.elf >723_Frequency_Relay.objdump
+[723_Frequency_Relay build complete]
+19:47:11 **** Incremental Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+[723_Frequency_Relay build complete]
+19:49:27 **** Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+Info: Compiling src/load_control.c to obj/default/src/load_control.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/load_control.o src/load_control.c
+src/load_control.c: In function 'Load_Control_handlerTask':
+src/load_control.c:44:5: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+     printf("Action: %d\n", action);
+     ^
+src/load_control.c:44:5: warning: incompatible implicit declaration of built-in function 'printf'
+src/load_control.c:44:5: note: include '<stdio.h>' or provide a declaration of 'printf'
+Info: Linking 723_Frequency_Relay.elf
+nios2-elf-g++  -T'C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/linker.x' -msys-crt0='C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp   -Wl,-Map=723_Frequency_Relay.map   -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o 723_Frequency_Relay.elf obj/default/FreeRTOS/croutine.o obj/default/FreeRTOS/event_groups.o obj/default/FreeRTOS/heap.o obj/default/FreeRTOS/list.o obj/default/FreeRTOS/port.o obj/default/FreeRTOS/queue.o obj/default/FreeRTOS/tasks.o obj/default/FreeRTOS/timers.o obj/default/src/frequency_analyser.o obj/default/src/load_control.o obj/default/src/main.o obj/default/src/peak_detector.o obj/default/src/switch_polling.o obj/default/src/timer.o obj/default/FreeRTOS/port_asm.o -lm -msys-lib=m
+nios2-elf-insert 723_Frequency_Relay.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "C:/COMPSYS723_Projects/723-FrequencyRelay/niosProject/software/723_Frequency_Relay" --sopcinfo C:/COMPSYS723_Projects/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
+Info: (723_Frequency_Relay.elf) 613 KBytes program size (code + initialized data).
+Info:                           130561 KBytes free for stack + heap.
+Info: Creating 723_Frequency_Relay.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source 723_Frequency_Relay.elf >723_Frequency_Relay.objdump
+[723_Frequency_Relay build complete]
+19:49:31 **** Incremental Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+[723_Frequency_Relay build complete]
+19:57:43 **** Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+Info: Compiling src/load_control.c to obj/default/src/load_control.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/load_control.o src/load_control.c
+src/load_control.c: In function 'Load_Control_handlerTask':
+src/load_control.c:47:5: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+     printf("Action: %d\n", action);
+     ^
+src/load_control.c:47:5: warning: incompatible implicit declaration of built-in function 'printf'
+src/load_control.c:47:5: note: include '<stdio.h>' or provide a declaration of 'printf'
+In file included from c:\compsys723_projects\723-frequencyrelay\niosproject\software\723_frequency_relay\inc\load_control.h:24:0,
+                 from src/load_control.c:7:
+src/load_control.c: At top level:
+c:\compsys723_projects\723-frequencyrelay\niosproject\software\723_frequency_relay\inc\switch_polling.h:1:13: warning: 'Switch_Polling_handlerTask' declared 'static' but never defined [-Wunused-function]
+ static void Switch_Polling_handlerTask(void *pvParameters);
+             ^
+Info: Compiling src/main.c to obj/default/src/main.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/main.o src/main.c
+src/main.c: In function 'main':
+src/main.c:48:6: warning: implicit declaration of function 'switch_polling_init' [-Wimplicit-function-declaration]
+  if (switch_polling_init()){
+      ^
+In file included from c:\compsys723_projects\723-frequencyrelay\niosproject\software\723_frequency_relay\inc\load_control.h:24:0,
+                 from src/main.c:23:
+src/main.c: At top level:
+c:\compsys723_projects\723-frequencyrelay\niosproject\software\723_frequency_relay\inc\switch_polling.h:1:13: warning: 'Switch_Polling_handlerTask' declared 'static' but never defined [-Wunused-function]
+ static void Switch_Polling_handlerTask(void *pvParameters);
+             ^
+Info: Compiling src/peak_detector.c to obj/default/src/peak_detector.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/peak_detector.o src/peak_detector.c
+src/peak_detector.c: In function 'Peak_Detector_handlerTask':
+src/peak_detector.c:99:25: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+                         printf("Cannot reset timer\n");
+                         ^
+src/peak_detector.c:99:25: warning: incompatible implicit declaration of built-in function 'printf'
+src/peak_detector.c:99:25: note: include '<stdio.h>' or provide a declaration of 'printf'
+src/peak_detector.c:111:25: warning: incompatible implicit declaration of built-in function 'printf'
+                         printf("Cannot reset timer\n");
+                         ^
+src/peak_detector.c:111:25: note: include '<stdio.h>' or provide a declaration of 'printf'
+In file included from c:\compsys723_projects\723-frequencyrelay\niosproject\software\723_frequency_relay\inc\load_control.h:24:0,
+                 from src/peak_detector.c:11:
+src/peak_detector.c: At top level:
+c:\compsys723_projects\723-frequencyrelay\niosproject\software\723_frequency_relay\inc\switch_polling.h:1:13: warning: 'Switch_Polling_handlerTask' declared 'static' but never defined [-Wunused-function]
+ static void Switch_Polling_handlerTask(void *pvParameters);
+             ^
+Info: Compiling src/switch_polling.c to obj/default/src/switch_polling.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/switch_polling.o src/switch_polling.c
+Info: Linking 723_Frequency_Relay.elf
+nios2-elf-g++  -T'C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/linker.x' -msys-crt0='C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp   -Wl,-Map=723_Frequency_Relay.map   -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o 723_Frequency_Relay.elf obj/default/FreeRTOS/croutine.o obj/default/FreeRTOS/event_groups.o obj/default/FreeRTOS/heap.o obj/default/FreeRTOS/list.o obj/default/FreeRTOS/port.o obj/default/FreeRTOS/queue.o obj/default/FreeRTOS/tasks.o obj/default/FreeRTOS/timers.o obj/default/src/frequency_analyser.o obj/default/src/load_control.o obj/default/src/main.o obj/default/src/peak_detector.o obj/default/src/switch_polling.o obj/default/src/timer.o obj/default/FreeRTOS/port_asm.o -lm -msys-lib=m
+nios2-elf-insert 723_Frequency_Relay.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "C:/COMPSYS723_Projects/723-FrequencyRelay/niosProject/software/723_Frequency_Relay" --sopcinfo C:/COMPSYS723_Projects/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
+Info: (723_Frequency_Relay.elf) 613 KBytes program size (code + initialized data).
+Info:                           130561 KBytes free for stack + heap.
+Info: Creating 723_Frequency_Relay.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source 723_Frequency_Relay.elf >723_Frequency_Relay.objdump
+[723_Frequency_Relay build complete]
+19:57:48 **** Incremental Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+[723_Frequency_Relay build complete]
+19:59:03 **** Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+Info: Compiling src/load_control.c to obj/default/src/load_control.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/load_control.o src/load_control.c
+src/load_control.c: In function 'Load_Control_handlerTask':
+src/load_control.c:48:5: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+     printf("Action: %d\n", action);
+     ^
+src/load_control.c:48:5: warning: incompatible implicit declaration of built-in function 'printf'
+src/load_control.c:48:5: note: include '<stdio.h>' or provide a declaration of 'printf'
+In file included from c:\compsys723_projects\723-frequencyrelay\niosproject\software\723_frequency_relay\inc\load_control.h:24:0,
+                 from src/load_control.c:7:
+src/load_control.c: At top level:
+c:\compsys723_projects\723-frequencyrelay\niosproject\software\723_frequency_relay\inc\switch_polling.h:1:13: warning: 'Switch_Polling_handlerTask' declared 'static' but never defined [-Wunused-function]
+ static void Switch_Polling_handlerTask(void *pvParameters);
+             ^
+Info: Linking 723_Frequency_Relay.elf
+nios2-elf-g++  -T'C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/linker.x' -msys-crt0='C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp   -Wl,-Map=723_Frequency_Relay.map   -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o 723_Frequency_Relay.elf obj/default/FreeRTOS/croutine.o obj/default/FreeRTOS/event_groups.o obj/default/FreeRTOS/heap.o obj/default/FreeRTOS/list.o obj/default/FreeRTOS/port.o obj/default/FreeRTOS/queue.o obj/default/FreeRTOS/tasks.o obj/default/FreeRTOS/timers.o obj/default/src/frequency_analyser.o obj/default/src/load_control.o obj/default/src/main.o obj/default/src/peak_detector.o obj/default/src/switch_polling.o obj/default/src/timer.o obj/default/FreeRTOS/port_asm.o -lm -msys-lib=m
+nios2-elf-insert 723_Frequency_Relay.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "C:/COMPSYS723_Projects/723-FrequencyRelay/niosProject/software/723_Frequency_Relay" --sopcinfo C:/COMPSYS723_Projects/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
+Info: (723_Frequency_Relay.elf) 613 KBytes program size (code + initialized data).
+Info:                           130561 KBytes free for stack + heap.
+Info: Creating 723_Frequency_Relay.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source 723_Frequency_Relay.elf >723_Frequency_Relay.objdump
+[723_Frequency_Relay build complete]
+19:59:08 **** Incremental Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+[723_Frequency_Relay build complete]
+20:02:09 **** Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+Info: Compiling src/switch_polling.c to obj/default/src/switch_polling.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/switch_polling.o src/switch_polling.c
+Info: Linking 723_Frequency_Relay.elf
+nios2-elf-g++  -T'C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/linker.x' -msys-crt0='C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp   -Wl,-Map=723_Frequency_Relay.map   -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o 723_Frequency_Relay.elf obj/default/FreeRTOS/croutine.o obj/default/FreeRTOS/event_groups.o obj/default/FreeRTOS/heap.o obj/default/FreeRTOS/list.o obj/default/FreeRTOS/port.o obj/default/FreeRTOS/queue.o obj/default/FreeRTOS/tasks.o obj/default/FreeRTOS/timers.o obj/default/src/frequency_analyser.o obj/default/src/load_control.o obj/default/src/main.o obj/default/src/peak_detector.o obj/default/src/switch_polling.o obj/default/src/timer.o obj/default/FreeRTOS/port_asm.o -lm -msys-lib=m
+nios2-elf-insert 723_Frequency_Relay.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "C:/COMPSYS723_Projects/723-FrequencyRelay/niosProject/software/723_Frequency_Relay" --sopcinfo C:/COMPSYS723_Projects/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
+Info: (723_Frequency_Relay.elf) 613 KBytes program size (code + initialized data).
+Info:                           130561 KBytes free for stack + heap.
+Info: Creating 723_Frequency_Relay.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source 723_Frequency_Relay.elf >723_Frequency_Relay.objdump
+[723_Frequency_Relay build complete]
+20:02:13 **** Incremental Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+[723_Frequency_Relay build complete]
+20:03:27 **** Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+Info: Compiling src/switch_polling.c to obj/default/src/switch_polling.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/switch_polling.o src/switch_polling.c
+Info: Linking 723_Frequency_Relay.elf
+nios2-elf-g++  -T'C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/linker.x' -msys-crt0='C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp   -Wl,-Map=723_Frequency_Relay.map   -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o 723_Frequency_Relay.elf obj/default/FreeRTOS/croutine.o obj/default/FreeRTOS/event_groups.o obj/default/FreeRTOS/heap.o obj/default/FreeRTOS/list.o obj/default/FreeRTOS/port.o obj/default/FreeRTOS/queue.o obj/default/FreeRTOS/tasks.o obj/default/FreeRTOS/timers.o obj/default/src/frequency_analyser.o obj/default/src/load_control.o obj/default/src/main.o obj/default/src/peak_detector.o obj/default/src/switch_polling.o obj/default/src/timer.o obj/default/FreeRTOS/port_asm.o -lm -msys-lib=m
+nios2-elf-insert 723_Frequency_Relay.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "C:/COMPSYS723_Projects/723-FrequencyRelay/niosProject/software/723_Frequency_Relay" --sopcinfo C:/COMPSYS723_Projects/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
+Info: (723_Frequency_Relay.elf) 613 KBytes program size (code + initialized data).
+Info:                           130561 KBytes free for stack + heap.
+Info: Creating 723_Frequency_Relay.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source 723_Frequency_Relay.elf >723_Frequency_Relay.objdump
+[723_Frequency_Relay build complete]
+20:03:31 **** Incremental Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+[723_Frequency_Relay build complete]
+20:04:35 **** Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+Info: Compiling src/switch_polling.c to obj/default/src/switch_polling.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/switch_polling.o src/switch_polling.c
+Info: Linking 723_Frequency_Relay.elf
+nios2-elf-g++  -T'C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/linker.x' -msys-crt0='C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp   -Wl,-Map=723_Frequency_Relay.map   -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o 723_Frequency_Relay.elf obj/default/FreeRTOS/croutine.o obj/default/FreeRTOS/event_groups.o obj/default/FreeRTOS/heap.o obj/default/FreeRTOS/list.o obj/default/FreeRTOS/port.o obj/default/FreeRTOS/queue.o obj/default/FreeRTOS/tasks.o obj/default/FreeRTOS/timers.o obj/default/src/frequency_analyser.o obj/default/src/load_control.o obj/default/src/main.o obj/default/src/peak_detector.o obj/default/src/switch_polling.o obj/default/src/timer.o obj/default/FreeRTOS/port_asm.o -lm -msys-lib=m
+nios2-elf-insert 723_Frequency_Relay.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "C:/COMPSYS723_Projects/723-FrequencyRelay/niosProject/software/723_Frequency_Relay" --sopcinfo C:/COMPSYS723_Projects/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
+Info: (723_Frequency_Relay.elf) 613 KBytes program size (code + initialized data).
+Info:                           130561 KBytes free for stack + heap.
+Info: Creating 723_Frequency_Relay.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source 723_Frequency_Relay.elf >723_Frequency_Relay.objdump
+[723_Frequency_Relay build complete]
+20:04:39 **** Incremental Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+[723_Frequency_Relay build complete]
+20:05:40 **** Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+Info: Compiling src/load_control.c to obj/default/src/load_control.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/load_control.o src/load_control.c
+src/load_control.c: In function 'Load_Control_handlerTask':
+src/load_control.c:48:5: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+     printf("Action: %d\n", action);
+     ^
+src/load_control.c:48:5: warning: incompatible implicit declaration of built-in function 'printf'
+src/load_control.c:48:5: note: include '<stdio.h>' or provide a declaration of 'printf'
+In file included from c:\compsys723_projects\723-frequencyrelay\niosproject\software\723_frequency_relay\inc\load_control.h:24:0,
+                 from src/load_control.c:7:
+src/load_control.c: At top level:
+c:\compsys723_projects\723-frequencyrelay\niosproject\software\723_frequency_relay\inc\switch_polling.h:1:13: warning: 'Switch_Polling_handlerTask' declared 'static' but never defined [-Wunused-function]
+ static void Switch_Polling_handlerTask(void *pvParameters);
+             ^
+Info: Compiling src/switch_polling.c to obj/default/src/switch_polling.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/switch_polling.o src/switch_polling.c
+Info: Linking 723_Frequency_Relay.elf
+nios2-elf-g++  -T'C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/linker.x' -msys-crt0='C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp   -Wl,-Map=723_Frequency_Relay.map   -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o 723_Frequency_Relay.elf obj/default/FreeRTOS/croutine.o obj/default/FreeRTOS/event_groups.o obj/default/FreeRTOS/heap.o obj/default/FreeRTOS/list.o obj/default/FreeRTOS/port.o obj/default/FreeRTOS/queue.o obj/default/FreeRTOS/tasks.o obj/default/FreeRTOS/timers.o obj/default/src/frequency_analyser.o obj/default/src/load_control.o obj/default/src/main.o obj/default/src/peak_detector.o obj/default/src/switch_polling.o obj/default/src/timer.o obj/default/FreeRTOS/port_asm.o -lm -msys-lib=m
+nios2-elf-insert 723_Frequency_Relay.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "C:/COMPSYS723_Projects/723-FrequencyRelay/niosProject/software/723_Frequency_Relay" --sopcinfo C:/COMPSYS723_Projects/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
+Info: (723_Frequency_Relay.elf) 613 KBytes program size (code + initialized data).
+Info:                           130561 KBytes free for stack + heap.
+Info: Creating 723_Frequency_Relay.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source 723_Frequency_Relay.elf >723_Frequency_Relay.objdump
+[723_Frequency_Relay build complete]
+20:05:45 **** Incremental Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+[723_Frequency_Relay build complete]
+20:06:27 **** Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+Info: Compiling src/switch_polling.c to obj/default/src/switch_polling.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/switch_polling.o src/switch_polling.c
+Info: Linking 723_Frequency_Relay.elf
+nios2-elf-g++  -T'C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/linker.x' -msys-crt0='C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp   -Wl,-Map=723_Frequency_Relay.map   -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o 723_Frequency_Relay.elf obj/default/FreeRTOS/croutine.o obj/default/FreeRTOS/event_groups.o obj/default/FreeRTOS/heap.o obj/default/FreeRTOS/list.o obj/default/FreeRTOS/port.o obj/default/FreeRTOS/queue.o obj/default/FreeRTOS/tasks.o obj/default/FreeRTOS/timers.o obj/default/src/frequency_analyser.o obj/default/src/load_control.o obj/default/src/main.o obj/default/src/peak_detector.o obj/default/src/switch_polling.o obj/default/src/timer.o obj/default/FreeRTOS/port_asm.o -lm -msys-lib=m
+nios2-elf-insert 723_Frequency_Relay.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "C:/COMPSYS723_Projects/723-FrequencyRelay/niosProject/software/723_Frequency_Relay" --sopcinfo C:/COMPSYS723_Projects/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
+Info: (723_Frequency_Relay.elf) 613 KBytes program size (code + initialized data).
+Info:                           130561 KBytes free for stack + heap.
+Info: Creating 723_Frequency_Relay.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source 723_Frequency_Relay.elf >723_Frequency_Relay.objdump
+[723_Frequency_Relay build complete]
+20:06:31 **** Incremental Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+[723_Frequency_Relay build complete]
+20:09:20 **** Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+Info: Compiling src/switch_polling.c to obj/default/src/switch_polling.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/switch_polling.o src/switch_polling.c
+Info: Linking 723_Frequency_Relay.elf
+nios2-elf-g++  -T'C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/linker.x' -msys-crt0='C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp   -Wl,-Map=723_Frequency_Relay.map   -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o 723_Frequency_Relay.elf obj/default/FreeRTOS/croutine.o obj/default/FreeRTOS/event_groups.o obj/default/FreeRTOS/heap.o obj/default/FreeRTOS/list.o obj/default/FreeRTOS/port.o obj/default/FreeRTOS/queue.o obj/default/FreeRTOS/tasks.o obj/default/FreeRTOS/timers.o obj/default/src/frequency_analyser.o obj/default/src/load_control.o obj/default/src/main.o obj/default/src/peak_detector.o obj/default/src/switch_polling.o obj/default/src/timer.o obj/default/FreeRTOS/port_asm.o -lm -msys-lib=m
+nios2-elf-insert 723_Frequency_Relay.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "C:/COMPSYS723_Projects/723-FrequencyRelay/niosProject/software/723_Frequency_Relay" --sopcinfo C:/COMPSYS723_Projects/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
+Info: (723_Frequency_Relay.elf) 613 KBytes program size (code + initialized data).
+Info:                           130561 KBytes free for stack + heap.
+Info: Creating 723_Frequency_Relay.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source 723_Frequency_Relay.elf >723_Frequency_Relay.objdump
+[723_Frequency_Relay build complete]
+20:09:24 **** Incremental Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+[723_Frequency_Relay build complete]
+20:12:24 **** Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+Info: Compiling src/load_control.c to obj/default/src/load_control.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/load_control.o src/load_control.c
+src/load_control.c: In function 'Load_Control_handlerTask':
+src/load_control.c:49:5: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+     printf("Action: %d\n", action);
+     ^
+src/load_control.c:49:5: warning: incompatible implicit declaration of built-in function 'printf'
+src/load_control.c:49:5: note: include '<stdio.h>' or provide a declaration of 'printf'
+In file included from c:\compsys723_projects\723-frequencyrelay\niosproject\software\723_frequency_relay\inc\load_control.h:24:0,
+                 from src/load_control.c:7:
+src/load_control.c: At top level:
+c:\compsys723_projects\723-frequencyrelay\niosproject\software\723_frequency_relay\inc\switch_polling.h:1:13: warning: 'Switch_Polling_handlerTask' declared 'static' but never defined [-Wunused-function]
+ static void Switch_Polling_handlerTask(void *pvParameters);
+             ^
+Info: Linking 723_Frequency_Relay.elf
+nios2-elf-g++  -T'C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/linker.x' -msys-crt0='C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp   -Wl,-Map=723_Frequency_Relay.map   -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o 723_Frequency_Relay.elf obj/default/FreeRTOS/croutine.o obj/default/FreeRTOS/event_groups.o obj/default/FreeRTOS/heap.o obj/default/FreeRTOS/list.o obj/default/FreeRTOS/port.o obj/default/FreeRTOS/queue.o obj/default/FreeRTOS/tasks.o obj/default/FreeRTOS/timers.o obj/default/src/frequency_analyser.o obj/default/src/load_control.o obj/default/src/main.o obj/default/src/peak_detector.o obj/default/src/switch_polling.o obj/default/src/timer.o obj/default/FreeRTOS/port_asm.o -lm -msys-lib=m
+nios2-elf-insert 723_Frequency_Relay.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "C:/COMPSYS723_Projects/723-FrequencyRelay/niosProject/software/723_Frequency_Relay" --sopcinfo C:/COMPSYS723_Projects/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
+Info: (723_Frequency_Relay.elf) 613 KBytes program size (code + initialized data).
+Info:                           130561 KBytes free for stack + heap.
+Info: Creating 723_Frequency_Relay.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source 723_Frequency_Relay.elf >723_Frequency_Relay.objdump
+[723_Frequency_Relay build complete]
+20:12:28 **** Incremental Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+[723_Frequency_Relay build complete]
+20:13:22 **** Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+Info: Compiling src/switch_polling.c to obj/default/src/switch_polling.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/switch_polling.o src/switch_polling.c
+Info: Linking 723_Frequency_Relay.elf
+nios2-elf-g++  -T'C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/linker.x' -msys-crt0='C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp   -Wl,-Map=723_Frequency_Relay.map   -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o 723_Frequency_Relay.elf obj/default/FreeRTOS/croutine.o obj/default/FreeRTOS/event_groups.o obj/default/FreeRTOS/heap.o obj/default/FreeRTOS/list.o obj/default/FreeRTOS/port.o obj/default/FreeRTOS/queue.o obj/default/FreeRTOS/tasks.o obj/default/FreeRTOS/timers.o obj/default/src/frequency_analyser.o obj/default/src/load_control.o obj/default/src/main.o obj/default/src/peak_detector.o obj/default/src/switch_polling.o obj/default/src/timer.o obj/default/FreeRTOS/port_asm.o -lm -msys-lib=m
+nios2-elf-insert 723_Frequency_Relay.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "C:/COMPSYS723_Projects/723-FrequencyRelay/niosProject/software/723_Frequency_Relay" --sopcinfo C:/COMPSYS723_Projects/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
+Info: (723_Frequency_Relay.elf) 613 KBytes program size (code + initialized data).
+Info:                           130561 KBytes free for stack + heap.
+Info: Creating 723_Frequency_Relay.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source 723_Frequency_Relay.elf >723_Frequency_Relay.objdump
+[723_Frequency_Relay build complete]
+20:13:27 **** Incremental Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+[723_Frequency_Relay build complete]
+20:14:37 **** Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+Info: Compiling src/switch_polling.c to obj/default/src/switch_polling.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/switch_polling.o src/switch_polling.c
+Info: Linking 723_Frequency_Relay.elf
+nios2-elf-g++  -T'C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/linker.x' -msys-crt0='C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp   -Wl,-Map=723_Frequency_Relay.map   -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o 723_Frequency_Relay.elf obj/default/FreeRTOS/croutine.o obj/default/FreeRTOS/event_groups.o obj/default/FreeRTOS/heap.o obj/default/FreeRTOS/list.o obj/default/FreeRTOS/port.o obj/default/FreeRTOS/queue.o obj/default/FreeRTOS/tasks.o obj/default/FreeRTOS/timers.o obj/default/src/frequency_analyser.o obj/default/src/load_control.o obj/default/src/main.o obj/default/src/peak_detector.o obj/default/src/switch_polling.o obj/default/src/timer.o obj/default/FreeRTOS/port_asm.o -lm -msys-lib=m
+nios2-elf-insert 723_Frequency_Relay.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "C:/COMPSYS723_Projects/723-FrequencyRelay/niosProject/software/723_Frequency_Relay" --sopcinfo C:/COMPSYS723_Projects/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
+Info: (723_Frequency_Relay.elf) 613 KBytes program size (code + initialized data).
+Info:                           130561 KBytes free for stack + heap.
+Info: Creating 723_Frequency_Relay.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source 723_Frequency_Relay.elf >723_Frequency_Relay.objdump
+[723_Frequency_Relay build complete]
+20:14:42 **** Incremental Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+[723_Frequency_Relay build complete]
+20:16:12 **** Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+Info: Compiling src/switch_polling.c to obj/default/src/switch_polling.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/switch_polling.o src/switch_polling.c
+Info: Linking 723_Frequency_Relay.elf
+nios2-elf-g++  -T'C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/linker.x' -msys-crt0='C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp   -Wl,-Map=723_Frequency_Relay.map   -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o 723_Frequency_Relay.elf obj/default/FreeRTOS/croutine.o obj/default/FreeRTOS/event_groups.o obj/default/FreeRTOS/heap.o obj/default/FreeRTOS/list.o obj/default/FreeRTOS/port.o obj/default/FreeRTOS/queue.o obj/default/FreeRTOS/tasks.o obj/default/FreeRTOS/timers.o obj/default/src/frequency_analyser.o obj/default/src/load_control.o obj/default/src/main.o obj/default/src/peak_detector.o obj/default/src/switch_polling.o obj/default/src/timer.o obj/default/FreeRTOS/port_asm.o -lm -msys-lib=m
+nios2-elf-insert 723_Frequency_Relay.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "C:/COMPSYS723_Projects/723-FrequencyRelay/niosProject/software/723_Frequency_Relay" --sopcinfo C:/COMPSYS723_Projects/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
+Info: (723_Frequency_Relay.elf) 613 KBytes program size (code + initialized data).
+Info:                           130561 KBytes free for stack + heap.
+Info: Creating 723_Frequency_Relay.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source 723_Frequency_Relay.elf >723_Frequency_Relay.objdump
+[723_Frequency_Relay build complete]
+20:16:17 **** Incremental Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+[723_Frequency_Relay build complete]
+20:18:42 **** Incremental Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+Info: Compiling src/load_control.c to obj/default/src/load_control.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/load_control.o src/load_control.c
+src/load_control.c: In function 'Load_Control_handlerTask':
+src/load_control.c:41:6: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+      printf("load");
+      ^
+src/load_control.c:41:6: warning: incompatible implicit declaration of built-in function 'printf'
+src/load_control.c:41:6: note: include '<stdio.h>' or provide a declaration of 'printf'
+In file included from c:\compsys723_projects\723-frequencyrelay\niosproject\software\723_frequency_relay\inc\load_control.h:24:0,
+                 from src/load_control.c:7:
+src/load_control.c: At top level:
+c:\compsys723_projects\723-frequencyrelay\niosproject\software\723_frequency_relay\inc\switch_polling.h:1:13: warning: 'Switch_Polling_handlerTask' declared 'static' but never defined [-Wunused-function]
+ static void Switch_Polling_handlerTask(void *pvParameters);
+             ^
+Info: Compiling src/switch_polling.c to obj/default/src/switch_polling.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/switch_polling.o src/switch_polling.c
+Info: Linking 723_Frequency_Relay.elf
+nios2-elf-g++  -T'C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/linker.x' -msys-crt0='C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp   -Wl,-Map=723_Frequency_Relay.map   -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o 723_Frequency_Relay.elf obj/default/FreeRTOS/croutine.o obj/default/FreeRTOS/event_groups.o obj/default/FreeRTOS/heap.o obj/default/FreeRTOS/list.o obj/default/FreeRTOS/port.o obj/default/FreeRTOS/queue.o obj/default/FreeRTOS/tasks.o obj/default/FreeRTOS/timers.o obj/default/src/frequency_analyser.o obj/default/src/load_control.o obj/default/src/main.o obj/default/src/peak_detector.o obj/default/src/switch_polling.o obj/default/src/timer.o obj/default/FreeRTOS/port_asm.o -lm -msys-lib=m
+nios2-elf-insert 723_Frequency_Relay.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "C:/COMPSYS723_Projects/723-FrequencyRelay/niosProject/software/723_Frequency_Relay" --sopcinfo C:/COMPSYS723_Projects/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
+Info: (723_Frequency_Relay.elf) 613 KBytes program size (code + initialized data).
+Info:                           130561 KBytes free for stack + heap.
+Info: Creating 723_Frequency_Relay.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source 723_Frequency_Relay.elf >723_Frequency_Relay.objdump
+[723_Frequency_Relay build complete]
+20:22:16 **** Incremental Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/cygdrive/c/intelFPGA_lite/18.1/quartus/bin64/cygwin/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+Info: Compiling src/load_control.c to obj/default/src/load_control.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/load_control.o src/load_control.c
+src/load_control.c: In function 'Load_Control_handlerTask':
+src/load_control.c:50:5: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+     printf("Action: %d\n", action);
+     ^
+src/load_control.c:50:5: warning: incompatible implicit declaration of built-in function 'printf'
+src/load_control.c:50:5: note: include '<stdio.h>' or provide a declaration of 'printf'
+In file included from c:\compsys723_projects\723-frequencyrelay\niosproject\software\723_frequency_relay\inc\load_control.h:24:0,
+                 from src/load_control.c:7:
+src/load_control.c: At top level:
+c:\compsys723_projects\723-frequencyrelay\niosproject\software\723_frequency_relay\inc\switch_polling.h:1:13: warning: 'Switch_Polling_handlerTask' declared 'static' but never defined [-Wunused-function]
+ static void Switch_Polling_handlerTask(void *pvParameters);
+             ^
+Info: Linking 723_Frequency_Relay.elf
+nios2-elf-g++  -T'C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/linker.x' -msys-crt0='C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp   -Wl,-Map=723_Frequency_Relay.map   -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o 723_Frequency_Relay.elf obj/default/FreeRTOS/croutine.o obj/default/FreeRTOS/event_groups.o obj/default/FreeRTOS/heap.o obj/default/FreeRTOS/list.o obj/default/FreeRTOS/port.o obj/default/FreeRTOS/queue.o obj/default/FreeRTOS/tasks.o obj/default/FreeRTOS/timers.o obj/default/src/frequency_analyser.o obj/default/src/load_control.o obj/default/src/main.o obj/default/src/peak_detector.o obj/default/src/switch_polling.o obj/default/src/timer.o obj/default/FreeRTOS/port_asm.o -lm -msys-lib=m
+nios2-elf-insert 723_Frequency_Relay.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "C:/COMPSYS723_Projects/723-FrequencyRelay/niosProject/software/723_Frequency_Relay" --sopcinfo C:/COMPSYS723_Projects/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
+Info: (723_Frequency_Relay.elf) 613 KBytes program size (code + initialized data).
+Info:                           130561 KBytes free for stack + heap.
+Info: Creating 723_Frequency_Relay.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source 723_Frequency_Relay.elf >723_Frequency_Relay.objdump
+[723_Frequency_Relay build complete]
+20:22:43 **** Incremental Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+[723_Frequency_Relay build complete]
+20:31:25 **** Incremental Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/cygdrive/c/intelFPGA_lite/18.1/quartus/bin64/cygwin/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+Info: Compiling src/load_control.c to obj/default/src/load_control.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/load_control.o src/load_control.c
+src/load_control.c: In function 'Load_Control_handlerTask':
+src/load_control.c:51:5: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+     printf("Action: %d\n", action);
+     ^
+src/load_control.c:51:5: warning: incompatible implicit declaration of built-in function 'printf'
+src/load_control.c:51:5: note: include '<stdio.h>' or provide a declaration of 'printf'
+In file included from c:\compsys723_projects\723-frequencyrelay\niosproject\software\723_frequency_relay\inc\load_control.h:24:0,
+                 from src/load_control.c:7:
+src/load_control.c: At top level:
+c:\compsys723_projects\723-frequencyrelay\niosproject\software\723_frequency_relay\inc\switch_polling.h:1:13: warning: 'Switch_Polling_handlerTask' declared 'static' but never defined [-Wunused-function]
+ static void Switch_Polling_handlerTask(void *pvParameters);
+             ^
+Info: Compiling src/switch_polling.c to obj/default/src/switch_polling.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/switch_polling.o src/switch_polling.c
+Info: Linking 723_Frequency_Relay.elf
+nios2-elf-g++  -T'C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/linker.x' -msys-crt0='C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp   -Wl,-Map=723_Frequency_Relay.map   -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o 723_Frequency_Relay.elf obj/default/FreeRTOS/croutine.o obj/default/FreeRTOS/event_groups.o obj/default/FreeRTOS/heap.o obj/default/FreeRTOS/list.o obj/default/FreeRTOS/port.o obj/default/FreeRTOS/queue.o obj/default/FreeRTOS/tasks.o obj/default/FreeRTOS/timers.o obj/default/src/frequency_analyser.o obj/default/src/load_control.o obj/default/src/main.o obj/default/src/peak_detector.o obj/default/src/switch_polling.o obj/default/src/timer.o obj/default/FreeRTOS/port_asm.o -lm -msys-lib=m
+nios2-elf-insert 723_Frequency_Relay.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "C:/COMPSYS723_Projects/723-FrequencyRelay/niosProject/software/723_Frequency_Relay" --sopcinfo C:/COMPSYS723_Projects/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
+Info: (723_Frequency_Relay.elf) 613 KBytes program size (code + initialized data).
+Info:                           130561 KBytes free for stack + heap.
+Info: Creating 723_Frequency_Relay.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source 723_Frequency_Relay.elf >723_Frequency_Relay.objdump
+[723_Frequency_Relay build complete]
+20:32:42 **** Incremental Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+Info: Compiling src/load_control.c to obj/default/src/load_control.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/load_control.o src/load_control.c
+src/load_control.c: In function 'Load_Control_handlerTask':
+src/load_control.c:41:6: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+      printf("Load\n");
+      ^
+src/load_control.c:41:6: warning: incompatible implicit declaration of built-in function 'printf'
+src/load_control.c:41:6: note: include '<stdio.h>' or provide a declaration of 'printf'
+In file included from c:\compsys723_projects\723-frequencyrelay\niosproject\software\723_frequency_relay\inc\load_control.h:24:0,
+                 from src/load_control.c:7:
+src/load_control.c: At top level:
+c:\compsys723_projects\723-frequencyrelay\niosproject\software\723_frequency_relay\inc\switch_polling.h:1:13: warning: 'Switch_Polling_handlerTask' declared 'static' but never defined [-Wunused-function]
+ static void Switch_Polling_handlerTask(void *pvParameters);
+             ^
+Info: Linking 723_Frequency_Relay.elf
+nios2-elf-g++  -T'C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/linker.x' -msys-crt0='C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp   -Wl,-Map=723_Frequency_Relay.map   -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o 723_Frequency_Relay.elf obj/default/FreeRTOS/croutine.o obj/default/FreeRTOS/event_groups.o obj/default/FreeRTOS/heap.o obj/default/FreeRTOS/list.o obj/default/FreeRTOS/port.o obj/default/FreeRTOS/queue.o obj/default/FreeRTOS/tasks.o obj/default/FreeRTOS/timers.o obj/default/src/frequency_analyser.o obj/default/src/load_control.o obj/default/src/main.o obj/default/src/peak_detector.o obj/default/src/switch_polling.o obj/default/src/timer.o obj/default/FreeRTOS/port_asm.o -lm -msys-lib=m
+nios2-elf-insert 723_Frequency_Relay.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "C:/COMPSYS723_Projects/723-FrequencyRelay/niosProject/software/723_Frequency_Relay" --sopcinfo C:/COMPSYS723_Projects/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
+Info: (723_Frequency_Relay.elf) 613 KBytes program size (code + initialized data).
+Info:                           130561 KBytes free for stack + heap.
+Info: Creating 723_Frequency_Relay.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source 723_Frequency_Relay.elf >723_Frequency_Relay.objdump
+[723_Frequency_Relay build complete]
+20:35:00 **** Incremental Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+Info: Compiling src/load_control.c to obj/default/src/load_control.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/load_control.o src/load_control.c
+src/load_control.c: In function 'Load_Control_handlerTask':
+src/load_control.c:43:7: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+       printf("Load\n");
+       ^
+src/load_control.c:43:7: warning: incompatible implicit declaration of built-in function 'printf'
+src/load_control.c:43:7: note: include '<stdio.h>' or provide a declaration of 'printf'
+src/load_control.c:52:5: warning: incompatible implicit declaration of built-in function 'printf'
+     printf("Action: %d\n", action);
+     ^
+src/load_control.c:52:5: note: include '<stdio.h>' or provide a declaration of 'printf'
+In file included from c:\compsys723_projects\723-frequencyrelay\niosproject\software\723_frequency_relay\inc\load_control.h:24:0,
+                 from src/load_control.c:7:
+src/load_control.c: At top level:
+c:\compsys723_projects\723-frequencyrelay\niosproject\software\723_frequency_relay\inc\switch_polling.h:1:13: warning: 'Switch_Polling_handlerTask' declared 'static' but never defined [-Wunused-function]
+ static void Switch_Polling_handlerTask(void *pvParameters);
+             ^
+Info: Linking 723_Frequency_Relay.elf
+nios2-elf-g++  -T'C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/linker.x' -msys-crt0='C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp   -Wl,-Map=723_Frequency_Relay.map   -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o 723_Frequency_Relay.elf obj/default/FreeRTOS/croutine.o obj/default/FreeRTOS/event_groups.o obj/default/FreeRTOS/heap.o obj/default/FreeRTOS/list.o obj/default/FreeRTOS/port.o obj/default/FreeRTOS/queue.o obj/default/FreeRTOS/tasks.o obj/default/FreeRTOS/timers.o obj/default/src/frequency_analyser.o obj/default/src/load_control.o obj/default/src/main.o obj/default/src/peak_detector.o obj/default/src/switch_polling.o obj/default/src/timer.o obj/default/FreeRTOS/port_asm.o -lm -msys-lib=m
+nios2-elf-insert 723_Frequency_Relay.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "C:/COMPSYS723_Projects/723-FrequencyRelay/niosProject/software/723_Frequency_Relay" --sopcinfo C:/COMPSYS723_Projects/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
+Info: (723_Frequency_Relay.elf) 613 KBytes program size (code + initialized data).
+Info:                           130561 KBytes free for stack + heap.
+Info: Creating 723_Frequency_Relay.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source 723_Frequency_Relay.elf >723_Frequency_Relay.objdump
+[723_Frequency_Relay build complete]
+20:38:09 **** Incremental Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+Info: Compiling src/switch_polling.c to obj/default/src/switch_polling.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/switch_polling.o src/switch_polling.c
+Info: Linking 723_Frequency_Relay.elf
+nios2-elf-g++  -T'C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/linker.x' -msys-crt0='C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp   -Wl,-Map=723_Frequency_Relay.map   -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o 723_Frequency_Relay.elf obj/default/FreeRTOS/croutine.o obj/default/FreeRTOS/event_groups.o obj/default/FreeRTOS/heap.o obj/default/FreeRTOS/list.o obj/default/FreeRTOS/port.o obj/default/FreeRTOS/queue.o obj/default/FreeRTOS/tasks.o obj/default/FreeRTOS/timers.o obj/default/src/frequency_analyser.o obj/default/src/load_control.o obj/default/src/main.o obj/default/src/peak_detector.o obj/default/src/switch_polling.o obj/default/src/timer.o obj/default/FreeRTOS/port_asm.o -lm -msys-lib=m
+nios2-elf-insert 723_Frequency_Relay.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "C:/COMPSYS723_Projects/723-FrequencyRelay/niosProject/software/723_Frequency_Relay" --sopcinfo C:/COMPSYS723_Projects/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
+Info: (723_Frequency_Relay.elf) 613 KBytes program size (code + initialized data).
+Info:                           130561 KBytes free for stack + heap.
+Info: Creating 723_Frequency_Relay.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source 723_Frequency_Relay.elf >723_Frequency_Relay.objdump
+[723_Frequency_Relay build complete]
+20:38:52 **** Incremental Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+Info: Compiling src/switch_polling.c to obj/default/src/switch_polling.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/switch_polling.o src/switch_polling.c
+Info: Linking 723_Frequency_Relay.elf
+nios2-elf-g++  -T'C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/linker.x' -msys-crt0='C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp   -Wl,-Map=723_Frequency_Relay.map   -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o 723_Frequency_Relay.elf obj/default/FreeRTOS/croutine.o obj/default/FreeRTOS/event_groups.o obj/default/FreeRTOS/heap.o obj/default/FreeRTOS/list.o obj/default/FreeRTOS/port.o obj/default/FreeRTOS/queue.o obj/default/FreeRTOS/tasks.o obj/default/FreeRTOS/timers.o obj/default/src/frequency_analyser.o obj/default/src/load_control.o obj/default/src/main.o obj/default/src/peak_detector.o obj/default/src/switch_polling.o obj/default/src/timer.o obj/default/FreeRTOS/port_asm.o -lm -msys-lib=m
+nios2-elf-insert 723_Frequency_Relay.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "C:/COMPSYS723_Projects/723-FrequencyRelay/niosProject/software/723_Frequency_Relay" --sopcinfo C:/COMPSYS723_Projects/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
+Info: (723_Frequency_Relay.elf) 613 KBytes program size (code + initialized data).
+Info:                           130561 KBytes free for stack + heap.
+Info: Creating 723_Frequency_Relay.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source 723_Frequency_Relay.elf >723_Frequency_Relay.objdump
+[723_Frequency_Relay build complete]
+20:40:12 **** Incremental Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+Info: Compiling src/load_control.c to obj/default/src/load_control.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/load_control.o src/load_control.c
+src/load_control.c: In function 'Load_Control_handlerTask':
+src/load_control.c:43:7: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+       printf("Load\n");
+       ^
+src/load_control.c:43:7: warning: incompatible implicit declaration of built-in function 'printf'
+src/load_control.c:43:7: note: include '<stdio.h>' or provide a declaration of 'printf'
+src/load_control.c:53:5: warning: incompatible implicit declaration of built-in function 'printf'
+     printf("Action: %d\n", action);
+     ^
+src/load_control.c:53:5: note: include '<stdio.h>' or provide a declaration of 'printf'
+In file included from c:\compsys723_projects\723-frequencyrelay\niosproject\software\723_frequency_relay\inc\load_control.h:24:0,
+                 from src/load_control.c:7:
+src/load_control.c: At top level:
+c:\compsys723_projects\723-frequencyrelay\niosproject\software\723_frequency_relay\inc\switch_polling.h:1:13: warning: 'Switch_Polling_handlerTask' declared 'static' but never defined [-Wunused-function]
+ static void Switch_Polling_handlerTask(void *pvParameters);
+             ^
+Info: Linking 723_Frequency_Relay.elf
+nios2-elf-g++  -T'C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/linker.x' -msys-crt0='C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp   -Wl,-Map=723_Frequency_Relay.map   -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o 723_Frequency_Relay.elf obj/default/FreeRTOS/croutine.o obj/default/FreeRTOS/event_groups.o obj/default/FreeRTOS/heap.o obj/default/FreeRTOS/list.o obj/default/FreeRTOS/port.o obj/default/FreeRTOS/queue.o obj/default/FreeRTOS/tasks.o obj/default/FreeRTOS/timers.o obj/default/src/frequency_analyser.o obj/default/src/load_control.o obj/default/src/main.o obj/default/src/peak_detector.o obj/default/src/switch_polling.o obj/default/src/timer.o obj/default/FreeRTOS/port_asm.o -lm -msys-lib=m
+nios2-elf-insert 723_Frequency_Relay.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "C:/COMPSYS723_Projects/723-FrequencyRelay/niosProject/software/723_Frequency_Relay" --sopcinfo C:/COMPSYS723_Projects/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
+Info: (723_Frequency_Relay.elf) 613 KBytes program size (code + initialized data).
+Info:                           130561 KBytes free for stack + heap.
+Info: Creating 723_Frequency_Relay.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source 723_Frequency_Relay.elf >723_Frequency_Relay.objdump
+[723_Frequency_Relay build complete]
+20:41:54 **** Incremental Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+Info: Compiling src/switch_polling.c to obj/default/src/switch_polling.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/switch_polling.o src/switch_polling.c
+Info: Linking 723_Frequency_Relay.elf
+nios2-elf-g++  -T'C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/linker.x' -msys-crt0='C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp   -Wl,-Map=723_Frequency_Relay.map   -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o 723_Frequency_Relay.elf obj/default/FreeRTOS/croutine.o obj/default/FreeRTOS/event_groups.o obj/default/FreeRTOS/heap.o obj/default/FreeRTOS/list.o obj/default/FreeRTOS/port.o obj/default/FreeRTOS/queue.o obj/default/FreeRTOS/tasks.o obj/default/FreeRTOS/timers.o obj/default/src/frequency_analyser.o obj/default/src/load_control.o obj/default/src/main.o obj/default/src/peak_detector.o obj/default/src/switch_polling.o obj/default/src/timer.o obj/default/FreeRTOS/port_asm.o -lm -msys-lib=m
+nios2-elf-insert 723_Frequency_Relay.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "C:/COMPSYS723_Projects/723-FrequencyRelay/niosProject/software/723_Frequency_Relay" --sopcinfo C:/COMPSYS723_Projects/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
+Info: (723_Frequency_Relay.elf) 613 KBytes program size (code + initialized data).
+Info:                           130561 KBytes free for stack + heap.
+Info: Creating 723_Frequency_Relay.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source 723_Frequency_Relay.elf >723_Frequency_Relay.objdump
+[723_Frequency_Relay build complete]
+20:42:56 **** Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+Info: Compiling src/switch_polling.c to obj/default/src/switch_polling.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/switch_polling.o src/switch_polling.c
+Info: Linking 723_Frequency_Relay.elf
+nios2-elf-g++  -T'C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/linker.x' -msys-crt0='C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp   -Wl,-Map=723_Frequency_Relay.map   -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o 723_Frequency_Relay.elf obj/default/FreeRTOS/croutine.o obj/default/FreeRTOS/event_groups.o obj/default/FreeRTOS/heap.o obj/default/FreeRTOS/list.o obj/default/FreeRTOS/port.o obj/default/FreeRTOS/queue.o obj/default/FreeRTOS/tasks.o obj/default/FreeRTOS/timers.o obj/default/src/frequency_analyser.o obj/default/src/load_control.o obj/default/src/main.o obj/default/src/peak_detector.o obj/default/src/switch_polling.o obj/default/src/timer.o obj/default/FreeRTOS/port_asm.o -lm -msys-lib=m
+nios2-elf-insert 723_Frequency_Relay.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "C:/COMPSYS723_Projects/723-FrequencyRelay/niosProject/software/723_Frequency_Relay" --sopcinfo C:/COMPSYS723_Projects/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
+Info: (723_Frequency_Relay.elf) 613 KBytes program size (code + initialized data).
+Info:                           130561 KBytes free for stack + heap.
+Info: Creating 723_Frequency_Relay.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source 723_Frequency_Relay.elf >723_Frequency_Relay.objdump
+[723_Frequency_Relay build complete]
+20:43:00 **** Incremental Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+[723_Frequency_Relay build complete]
+20:48:06 **** Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+Info: Compiling src/load_control.c to obj/default/src/load_control.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/load_control.o src/load_control.c
+src/load_control.c: In function 'Load_Control_handlerTask':
+src/load_control.c:43:7: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+       printf("Load\n");
+       ^
+src/load_control.c:43:7: warning: incompatible implicit declaration of built-in function 'printf'
+src/load_control.c:43:7: note: include '<stdio.h>' or provide a declaration of 'printf'
+src/load_control.c:53:5: warning: incompatible implicit declaration of built-in function 'printf'
+     printf("Action: %d\n", action);
+     ^
+src/load_control.c:53:5: note: include '<stdio.h>' or provide a declaration of 'printf'
+In file included from c:\compsys723_projects\723-frequencyrelay\niosproject\software\723_frequency_relay\inc\load_control.h:24:0,
+                 from src/load_control.c:7:
+src/load_control.c: At top level:
+c:\compsys723_projects\723-frequencyrelay\niosproject\software\723_frequency_relay\inc\switch_polling.h:1:13: warning: 'Switch_Polling_handlerTask' declared 'static' but never defined [-Wunused-function]
+ static void Switch_Polling_handlerTask(void *pvParameters);
+             ^
+Info: Linking 723_Frequency_Relay.elf
+nios2-elf-g++  -T'C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/linker.x' -msys-crt0='C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp   -Wl,-Map=723_Frequency_Relay.map   -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o 723_Frequency_Relay.elf obj/default/FreeRTOS/croutine.o obj/default/FreeRTOS/event_groups.o obj/default/FreeRTOS/heap.o obj/default/FreeRTOS/list.o obj/default/FreeRTOS/port.o obj/default/FreeRTOS/queue.o obj/default/FreeRTOS/tasks.o obj/default/FreeRTOS/timers.o obj/default/src/frequency_analyser.o obj/default/src/load_control.o obj/default/src/main.o obj/default/src/peak_detector.o obj/default/src/switch_polling.o obj/default/src/timer.o obj/default/FreeRTOS/port_asm.o -lm -msys-lib=m
+nios2-elf-insert 723_Frequency_Relay.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "C:/COMPSYS723_Projects/723-FrequencyRelay/niosProject/software/723_Frequency_Relay" --sopcinfo C:/COMPSYS723_Projects/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
+Info: (723_Frequency_Relay.elf) 613 KBytes program size (code + initialized data).
+Info:                           130561 KBytes free for stack + heap.
+Info: Creating 723_Frequency_Relay.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source 723_Frequency_Relay.elf >723_Frequency_Relay.objdump
+[723_Frequency_Relay build complete]
+20:48:54 **** Incremental Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+Info: Compiling src/switch_polling.c to obj/default/src/switch_polling.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/switch_polling.o src/switch_polling.c
+Info: Linking 723_Frequency_Relay.elf
+nios2-elf-g++  -T'C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/linker.x' -msys-crt0='C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp   -Wl,-Map=723_Frequency_Relay.map   -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o 723_Frequency_Relay.elf obj/default/FreeRTOS/croutine.o obj/default/FreeRTOS/event_groups.o obj/default/FreeRTOS/heap.o obj/default/FreeRTOS/list.o obj/default/FreeRTOS/port.o obj/default/FreeRTOS/queue.o obj/default/FreeRTOS/tasks.o obj/default/FreeRTOS/timers.o obj/default/src/frequency_analyser.o obj/default/src/load_control.o obj/default/src/main.o obj/default/src/peak_detector.o obj/default/src/switch_polling.o obj/default/src/timer.o obj/default/FreeRTOS/port_asm.o -lm -msys-lib=m
+nios2-elf-insert 723_Frequency_Relay.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "C:/COMPSYS723_Projects/723-FrequencyRelay/niosProject/software/723_Frequency_Relay" --sopcinfo C:/COMPSYS723_Projects/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
+Info: (723_Frequency_Relay.elf) 613 KBytes program size (code + initialized data).
+Info:                           130561 KBytes free for stack + heap.
+Info: Creating 723_Frequency_Relay.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source 723_Frequency_Relay.elf >723_Frequency_Relay.objdump
+[723_Frequency_Relay build complete]
+20:49:58 **** Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+Command canceled
+20:50:04 **** Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+Info: Compiling src/switch_polling.c to obj/default/src/switch_polling.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/switch_polling.o src/switch_polling.c
+Info: Linking 723_Frequency_Relay.elf
+nios2-elf-g++  -T'C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/linker.x' -msys-crt0='C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp   -Wl,-Map=723_Frequency_Relay.map   -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o 723_Frequency_Relay.elf obj/default/FreeRTOS/croutine.o obj/default/FreeRTOS/event_groups.o obj/default/FreeRTOS/heap.o obj/default/FreeRTOS/list.o obj/default/FreeRTOS/port.o obj/default/FreeRTOS/queue.o obj/default/FreeRTOS/tasks.o obj/default/FreeRTOS/timers.o obj/default/src/frequency_analyser.o obj/default/src/load_control.o obj/default/src/main.o obj/default/src/peak_detector.o obj/default/src/switch_polling.o obj/default/src/timer.o obj/default/FreeRTOS/port_asm.o -lm -msys-lib=m
+nios2-elf-insert 723_Frequency_Relay.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "C:/COMPSYS723_Projects/723-FrequencyRelay/niosProject/software/723_Frequency_Relay" --sopcinfo C:/COMPSYS723_Projects/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
+Info: (723_Frequency_Relay.elf) 613 KBytes program size (code + initialized data).
+Info:                           130561 KBytes free for stack + heap.
+Info: Creating 723_Frequency_Relay.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source 723_Frequency_Relay.elf >723_Frequency_Relay.objdump
+[723_Frequency_Relay build complete]
+20:50:08 **** Incremental Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+[723_Frequency_Relay build complete]
+20:51:58 **** Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+Info: Compiling src/load_control.c to obj/default/src/load_control.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/load_control.o src/load_control.c
+src/load_control.c: In function 'Load_Control_handlerTask':
+src/load_control.c:43:7: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+       printf("Load\n");
+       ^
+src/load_control.c:43:7: warning: incompatible implicit declaration of built-in function 'printf'
+src/load_control.c:43:7: note: include '<stdio.h>' or provide a declaration of 'printf'
+src/load_control.c:53:5: warning: incompatible implicit declaration of built-in function 'printf'
+     printf("Action: %d\n", action);
+     ^
+src/load_control.c:53:5: note: include '<stdio.h>' or provide a declaration of 'printf'
+In file included from c:\compsys723_projects\723-frequencyrelay\niosproject\software\723_frequency_relay\inc\load_control.h:24:0,
+                 from src/load_control.c:7:
+src/load_control.c: At top level:
+c:\compsys723_projects\723-frequencyrelay\niosproject\software\723_frequency_relay\inc\switch_polling.h:1:13: warning: 'Switch_Polling_handlerTask' declared 'static' but never defined [-Wunused-function]
+ static void Switch_Polling_handlerTask(void *pvParameters);
+             ^
+Info: Compiling src/switch_polling.c to obj/default/src/switch_polling.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/switch_polling.o src/switch_polling.c
+Info: Linking 723_Frequency_Relay.elf
+nios2-elf-g++  -T'C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/linker.x' -msys-crt0='C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp   -Wl,-Map=723_Frequency_Relay.map   -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o 723_Frequency_Relay.elf obj/default/FreeRTOS/croutine.o obj/default/FreeRTOS/event_groups.o obj/default/FreeRTOS/heap.o obj/default/FreeRTOS/list.o obj/default/FreeRTOS/port.o obj/default/FreeRTOS/queue.o obj/default/FreeRTOS/tasks.o obj/default/FreeRTOS/timers.o obj/default/src/frequency_analyser.o obj/default/src/load_control.o obj/default/src/main.o obj/default/src/peak_detector.o obj/default/src/switch_polling.o obj/default/src/timer.o obj/default/FreeRTOS/port_asm.o -lm -msys-lib=m
+nios2-elf-insert 723_Frequency_Relay.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "C:/COMPSYS723_Projects/723-FrequencyRelay/niosProject/software/723_Frequency_Relay" --sopcinfo C:/COMPSYS723_Projects/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
+Info: (723_Frequency_Relay.elf) 613 KBytes program size (code + initialized data).
+Info:                           130561 KBytes free for stack + heap.
+Info: Creating 723_Frequency_Relay.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source 723_Frequency_Relay.elf >723_Frequency_Relay.objdump
+[723_Frequency_Relay build complete]
+20:52:03 **** Incremental Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+[723_Frequency_Relay build complete]
+20:52:51 **** Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+Info: Compiling src/switch_polling.c to obj/default/src/switch_polling.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/switch_polling.o src/switch_polling.c
+Info: Linking 723_Frequency_Relay.elf
+nios2-elf-g++  -T'C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/linker.x' -msys-crt0='C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp   -Wl,-Map=723_Frequency_Relay.map   -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o 723_Frequency_Relay.elf obj/default/FreeRTOS/croutine.o obj/default/FreeRTOS/event_groups.o obj/default/FreeRTOS/heap.o obj/default/FreeRTOS/list.o obj/default/FreeRTOS/port.o obj/default/FreeRTOS/queue.o obj/default/FreeRTOS/tasks.o obj/default/FreeRTOS/timers.o obj/default/src/frequency_analyser.o obj/default/src/load_control.o obj/default/src/main.o obj/default/src/peak_detector.o obj/default/src/switch_polling.o obj/default/src/timer.o obj/default/FreeRTOS/port_asm.o -lm -msys-lib=m
+nios2-elf-insert 723_Frequency_Relay.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "C:/COMPSYS723_Projects/723-FrequencyRelay/niosProject/software/723_Frequency_Relay" --sopcinfo C:/COMPSYS723_Projects/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
+Info: (723_Frequency_Relay.elf) 613 KBytes program size (code + initialized data).
+Info:                           130561 KBytes free for stack + heap.
+Info: Creating 723_Frequency_Relay.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source 723_Frequency_Relay.elf >723_Frequency_Relay.objdump
+[723_Frequency_Relay build complete]
+20:52:56 **** Incremental Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+[723_Frequency_Relay build complete]
+20:53:29 **** Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+Info: Compiling src/switch_polling.c to obj/default/src/switch_polling.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/switch_polling.o src/switch_polling.c
+Info: Linking 723_Frequency_Relay.elf
+nios2-elf-g++  -T'C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/linker.x' -msys-crt0='C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp   -Wl,-Map=723_Frequency_Relay.map   -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o 723_Frequency_Relay.elf obj/default/FreeRTOS/croutine.o obj/default/FreeRTOS/event_groups.o obj/default/FreeRTOS/heap.o obj/default/FreeRTOS/list.o obj/default/FreeRTOS/port.o obj/default/FreeRTOS/queue.o obj/default/FreeRTOS/tasks.o obj/default/FreeRTOS/timers.o obj/default/src/frequency_analyser.o obj/default/src/load_control.o obj/default/src/main.o obj/default/src/peak_detector.o obj/default/src/switch_polling.o obj/default/src/timer.o obj/default/FreeRTOS/port_asm.o -lm -msys-lib=m
+nios2-elf-insert 723_Frequency_Relay.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "C:/COMPSYS723_Projects/723-FrequencyRelay/niosProject/software/723_Frequency_Relay" --sopcinfo C:/COMPSYS723_Projects/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
+Info: (723_Frequency_Relay.elf) 613 KBytes program size (code + initialized data).
+Info:                           130561 KBytes free for stack + heap.
+Info: Creating 723_Frequency_Relay.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source 723_Frequency_Relay.elf >723_Frequency_Relay.objdump
+[723_Frequency_Relay build complete]
+20:53:34 **** Incremental Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+[723_Frequency_Relay build complete]
+20:54:47 **** Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+Info: Compiling src/load_control.c to obj/default/src/load_control.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/load_control.o src/load_control.c
+In file included from c:\compsys723_projects\723-frequencyrelay\niosproject\software\723_frequency_relay\inc\load_control.h:24:0,
+                 from src/load_control.c:7:
+c:\compsys723_projects\723-frequencyrelay\niosproject\software\723_frequency_relay\inc\switch_polling.h:1:13: warning: 'Switch_Polling_handlerTask' declared 'static' but never defined [-Wunused-function]
+ static void Switch_Polling_handlerTask(void *pvParameters);
+             ^
+Info: Linking 723_Frequency_Relay.elf
+nios2-elf-g++  -T'C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/linker.x' -msys-crt0='C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp   -Wl,-Map=723_Frequency_Relay.map   -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o 723_Frequency_Relay.elf obj/default/FreeRTOS/croutine.o obj/default/FreeRTOS/event_groups.o obj/default/FreeRTOS/heap.o obj/default/FreeRTOS/list.o obj/default/FreeRTOS/port.o obj/default/FreeRTOS/queue.o obj/default/FreeRTOS/tasks.o obj/default/FreeRTOS/timers.o obj/default/src/frequency_analyser.o obj/default/src/load_control.o obj/default/src/main.o obj/default/src/peak_detector.o obj/default/src/switch_polling.o obj/default/src/timer.o obj/default/FreeRTOS/port_asm.o -lm -msys-lib=m
+nios2-elf-insert 723_Frequency_Relay.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "C:/COMPSYS723_Projects/723-FrequencyRelay/niosProject/software/723_Frequency_Relay" --sopcinfo C:/COMPSYS723_Projects/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
+Info: (723_Frequency_Relay.elf) 613 KBytes program size (code + initialized data).
+Info:                           130561 KBytes free for stack + heap.
+Info: Creating 723_Frequency_Relay.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source 723_Frequency_Relay.elf >723_Frequency_Relay.objdump
+[723_Frequency_Relay build complete]
+20:54:52 **** Incremental Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+[723_Frequency_Relay build complete]
+20:55:45 **** Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+Info: Compiling src/switch_polling.c to obj/default/src/switch_polling.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/switch_polling.o src/switch_polling.c
+Info: Linking 723_Frequency_Relay.elf
+nios2-elf-g++  -T'C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/linker.x' -msys-crt0='C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp   -Wl,-Map=723_Frequency_Relay.map   -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o 723_Frequency_Relay.elf obj/default/FreeRTOS/croutine.o obj/default/FreeRTOS/event_groups.o obj/default/FreeRTOS/heap.o obj/default/FreeRTOS/list.o obj/default/FreeRTOS/port.o obj/default/FreeRTOS/queue.o obj/default/FreeRTOS/tasks.o obj/default/FreeRTOS/timers.o obj/default/src/frequency_analyser.o obj/default/src/load_control.o obj/default/src/main.o obj/default/src/peak_detector.o obj/default/src/switch_polling.o obj/default/src/timer.o obj/default/FreeRTOS/port_asm.o -lm -msys-lib=m
+nios2-elf-insert 723_Frequency_Relay.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "C:/COMPSYS723_Projects/723-FrequencyRelay/niosProject/software/723_Frequency_Relay" --sopcinfo C:/COMPSYS723_Projects/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
+Info: (723_Frequency_Relay.elf) 613 KBytes program size (code + initialized data).
+Info:                           130561 KBytes free for stack + heap.
+Info: Creating 723_Frequency_Relay.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source 723_Frequency_Relay.elf >723_Frequency_Relay.objdump
+[723_Frequency_Relay build complete]
+20:55:50 **** Incremental Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+[723_Frequency_Relay build complete]
+20:56:17 **** Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+Info: Compiling src/switch_polling.c to obj/default/src/switch_polling.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/switch_polling.o src/switch_polling.c
+Info: Linking 723_Frequency_Relay.elf
+nios2-elf-g++  -T'C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/linker.x' -msys-crt0='C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp   -Wl,-Map=723_Frequency_Relay.map   -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o 723_Frequency_Relay.elf obj/default/FreeRTOS/croutine.o obj/default/FreeRTOS/event_groups.o obj/default/FreeRTOS/heap.o obj/default/FreeRTOS/list.o obj/default/FreeRTOS/port.o obj/default/FreeRTOS/queue.o obj/default/FreeRTOS/tasks.o obj/default/FreeRTOS/timers.o obj/default/src/frequency_analyser.o obj/default/src/load_control.o obj/default/src/main.o obj/default/src/peak_detector.o obj/default/src/switch_polling.o obj/default/src/timer.o obj/default/FreeRTOS/port_asm.o -lm -msys-lib=m
+nios2-elf-insert 723_Frequency_Relay.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "C:/COMPSYS723_Projects/723-FrequencyRelay/niosProject/software/723_Frequency_Relay" --sopcinfo C:/COMPSYS723_Projects/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
+Info: (723_Frequency_Relay.elf) 613 KBytes program size (code + initialized data).
+Info:                           130561 KBytes free for stack + heap.
+Info: Creating 723_Frequency_Relay.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source 723_Frequency_Relay.elf >723_Frequency_Relay.objdump
+[723_Frequency_Relay build complete]
+20:56:23 **** Incremental Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+[723_Frequency_Relay build complete]
+20:59:10 **** Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+Info: Compiling src/load_control.c to obj/default/src/load_control.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/load_control.o src/load_control.c
+In file included from c:\compsys723_projects\723-frequencyrelay\niosproject\software\723_frequency_relay\inc\load_control.h:24:0,
+                 from src/load_control.c:7:
+c:\compsys723_projects\723-frequencyrelay\niosproject\software\723_frequency_relay\inc\switch_polling.h:1:13: warning: 'Switch_Polling_handlerTask' declared 'static' but never defined [-Wunused-function]
+ static void Switch_Polling_handlerTask(void *pvParameters);
+             ^
+Info: Compiling src/switch_polling.c to obj/default/src/switch_polling.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/switch_polling.o src/switch_polling.c
+Info: Linking 723_Frequency_Relay.elf
+nios2-elf-g++  -T'C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/linker.x' -msys-crt0='C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp   -Wl,-Map=723_Frequency_Relay.map   -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o 723_Frequency_Relay.elf obj/default/FreeRTOS/croutine.o obj/default/FreeRTOS/event_groups.o obj/default/FreeRTOS/heap.o obj/default/FreeRTOS/list.o obj/default/FreeRTOS/port.o obj/default/FreeRTOS/queue.o obj/default/FreeRTOS/tasks.o obj/default/FreeRTOS/timers.o obj/default/src/frequency_analyser.o obj/default/src/load_control.o obj/default/src/main.o obj/default/src/peak_detector.o obj/default/src/switch_polling.o obj/default/src/timer.o obj/default/FreeRTOS/port_asm.o -lm -msys-lib=m
+nios2-elf-insert 723_Frequency_Relay.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "C:/COMPSYS723_Projects/723-FrequencyRelay/niosProject/software/723_Frequency_Relay" --sopcinfo C:/COMPSYS723_Projects/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
+Info: (723_Frequency_Relay.elf) 613 KBytes program size (code + initialized data).
+Info:                           130561 KBytes free for stack + heap.
+Info: Creating 723_Frequency_Relay.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source 723_Frequency_Relay.elf >723_Frequency_Relay.objdump
+[723_Frequency_Relay build complete]
+20:59:14 **** Incremental Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+[723_Frequency_Relay build complete]
+21:00:03 **** Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+Info: Compiling src/load_control.c to obj/default/src/load_control.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/HAL/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/drivers/inc -IC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/../723_Frequency_Relay/  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/src/load_control.o src/load_control.c
+In file included from c:\compsys723_projects\723-frequencyrelay\niosproject\software\723_frequency_relay\inc\load_control.h:24:0,
+                 from src/load_control.c:7:
+c:\compsys723_projects\723-frequencyrelay\niosproject\software\723_frequency_relay\inc\switch_polling.h:1:13: warning: 'Switch_Polling_handlerTask' declared 'static' but never defined [-Wunused-function]
+ static void Switch_Polling_handlerTask(void *pvParameters);
+             ^
+Info: Linking 723_Frequency_Relay.elf
+nios2-elf-g++  -T'C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/linker.x' -msys-crt0='C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp   -Wl,-Map=723_Frequency_Relay.map   -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o 723_Frequency_Relay.elf obj/default/FreeRTOS/croutine.o obj/default/FreeRTOS/event_groups.o obj/default/FreeRTOS/heap.o obj/default/FreeRTOS/list.o obj/default/FreeRTOS/port.o obj/default/FreeRTOS/queue.o obj/default/FreeRTOS/tasks.o obj/default/FreeRTOS/timers.o obj/default/src/frequency_analyser.o obj/default/src/load_control.o obj/default/src/main.o obj/default/src/peak_detector.o obj/default/src/switch_polling.o obj/default/src/timer.o obj/default/FreeRTOS/port_asm.o -lm -msys-lib=m
+nios2-elf-insert 723_Frequency_Relay.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 7 --sidp 0x430f0 --timestamp 1393900972 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios2 --quartus_project_dir "C:/COMPSYS723_Projects/723-FrequencyRelay/niosProject/software/723_Frequency_Relay" --sopcinfo C:/COMPSYS723_Projects/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
+Info: (723_Frequency_Relay.elf) 613 KBytes program size (code + initialized data).
+Info:                           130561 KBytes free for stack + heap.
+Info: Creating 723_Frequency_Relay.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source 723_Frequency_Relay.elf >723_Frequency_Relay.objdump
+[723_Frequency_Relay build complete]
+21:00:08 **** Incremental Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+[723_Frequency_Relay build complete]

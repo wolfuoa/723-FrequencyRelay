@@ -9,17 +9,23 @@
 #define LOAD_CONTROL_Q_SIZE 10
 #define LOAD_CONTROL_Q_TYPE int
 
-#define LOAD_CONTROL_HANDLER_PRIORITY (tskIDLE_PRIORITY + 1)
+#define LOAD_CONTROL_HANDLER_PRIORITY 5//(tskIDLE_PRIORITY + 1)
 
 QueueHandle_t Load_Control_Q;
 
 static void Load_Control_handlerTask(void *pvParameters);
 static void Load_Control_initDataStructs();
 
+System_Status_T SystemStatus;
+SemaphoreHandle_t SystemStatusMutex;
 
 int Load_Control_Init()
 {
     Load_Control_initDataStructs();
+
+    SystemStatusMutex = xSemaphoreCreateMutex();
+    xSemaphoreGive(SystemStatusMutex);
+
     if (xTaskCreate(Load_Control_handlerTask, "Load_Control_T", configMINIMAL_STACK_SIZE, NULL, LOAD_CONTROL_HANDLER_PRIORITY, NULL) != pdPASS)
     {
         return 1;
@@ -32,10 +38,31 @@ static void Load_Control_handlerTask(void *pvParameters)
     int action;
     while (1)
     {
+
+    	if (xSemaphoreTake(LoadSwitchStatusMutex, (TickType_t)10) == pdTRUE){
+
+    		IOWR_ALTERA_AVALON_PIO_DATA(RED_LEDS_BASE,LoadSwitchStatus);
+
+    	}
+    	xSemaphoreGive(LoadSwitchStatusMutex);
+
         // Read from Peak_Detector_Q
-        if (xQueueReceive(Load_Control_Q, &action, portMAX_DELAY) == pdTRUE)
-        {
-            printf("Action: %d\n", action);
+        if (xQueueReceive(Load_Control_Q, &action, portMAX_DELAY) == pdTRUE){
+        	if (xSemaphoreTake(SystemStatusMutex, (TickType_t)10) == pdTRUE){
+        		IOWR_ALTERA_AVALON_PIO_DATA(GREEN_LEDS_BASE,SystemStatus);
+				//printf("Action: %d\n", action);
+				if (!action && SystemStatus != SYSTEM_MAINTENANCE){
+					//Shed the load
+					SystemStatus = SYSTEM_MANAGING;
+				}
+				// TEMP: MUST change to see if all load has been unsheded when stable
+				else if(SystemStatus == SYSTEM_MANAGING){
+					SystemStatus = SYSTEM_OK;
+				}
+
+        	}
+        	xSemaphoreGive(SystemStatusMutex);
+
         }
     }
 }
