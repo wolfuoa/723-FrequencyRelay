@@ -2,9 +2,9 @@
  * system.h - SOPC Builder system and BSP software package information
  *
  * Machine generated for CPU 'nios2' in SOPC Builder design 'nios2'
- * SOPC Builder design path: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
+ * SOPC Builder design path: C:/COMPSYS723_Projects/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
  *
- * Generated: Sat Apr 06 14:53:19 NZDT 2024
+ * Generated: Thu Apr 11 14:35:55 NZST 2024
  */
 
 /*

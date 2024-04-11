@@ -74,6 +74,7 @@ static void Peak_Detector_handlerTask(void *pvParameters)
             // Replace previousFrequency
             previousFrequency = frequencyReading;
 
+            // Dont change the thresholds whie we are checking the thresholds
             if (xSemaphoreTake(Peak_Detector_thresholdMutex_X, (TickType_t)10) == pdTRUE)
             {
                 // Determine stability of system
@@ -84,11 +85,14 @@ static void Peak_Detector_handlerTask(void *pvParameters)
 
             if (xSemaphoreTake(repeatActionMutex_X, (TickType_t)10) == pdTRUE)
             {
-                // If system is stable and goes outside threshold
+                // If system status is stable and goes outside threshold
                 if (((systemStability == SYSTEM_FREQUENCY_STATE_STABLE) || repeatActionTimeout) && (thresholdEval == SYSTEM_FREQUENCY_STATE_UNSTABLE))
                 {
+
                     xQueueSendToBack(Load_Control_Q, &thresholdEval, pdFALSE);
 
+
+                    //Reset the timer cus no need to repeat action
                     repeatActionTimeout = false;
                     if (xTimerStart(repeatActionTimer, 0) != pdPASS)
                     {
@@ -96,7 +100,7 @@ static void Peak_Detector_handlerTask(void *pvParameters)
                     }
                 }
 
-                // If system is unstable and goes inside threshold
+                // If system status is unstable and goes inside threshold
                 else if (((systemStability == SYSTEM_FREQUENCY_STATE_UNSTABLE) || repeatActionTimeout) && (thresholdEval == SYSTEM_FREQUENCY_STATE_STABLE))
                 {
                     xQueueSendToBack(Load_Control_Q, &thresholdEval, pdFALSE);
@@ -108,8 +112,9 @@ static void Peak_Detector_handlerTask(void *pvParameters)
                     }
                 }
 
+                //Changing the systems status
                 systemStability = thresholdEval;
-
+                // can alter the repeat action timeout
                 xSemaphoreGive(repeatActionMutex_X);
             }
         }
