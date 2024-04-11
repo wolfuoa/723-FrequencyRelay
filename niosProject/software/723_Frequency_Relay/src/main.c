@@ -10,17 +10,17 @@
 
 /* Scheduler includes. */
 #include "FreeRTOS/FreeRTOS.h"
-#include "FreeRTOS/task.h"
 #include "FreeRTOS/queue.h"
 #include "FreeRTOS/semphr.h"
+#include "FreeRTOS/task.h"
 
-#include <sys/alt_irq.h>
-#include <io.h>
 #include <altera_avalon_pio_regs.h>
+#include <io.h>
+#include <sys/alt_irq.h>
 
 #include "inc/frequency_analyser.h"
-#include "inc/peak_detector.h"
 #include "inc/load_control.h"
+#include "inc/peak_detector.h"
 
 /* The parameters passed to the reg test tasks.  This is just done to check
  the parameter passing mechanism is working correctly. */
@@ -33,38 +33,53 @@
 /*
  * Create the demo tasks then start the scheduler.
  */
-int main(void)
-{
+int main(void) {
 
-	// Context is not required, but this is an example of how to do it
-	int ctx;
-	if (Frequency_Analyser_initIRQ(&ctx))
-	{
-		printf("Could not register Frequency Analyser ISR\n");
-	}
+  // Context is not required, but this is an example of how to do it
+  int freqCtx;
+  if (Frequency_Analyser_initIRQ(&freqCtx)) {
+    printf("Could not register Frequency Analyser ISR\n");
+  }
 
-	if (Peak_Detector_init())
-	{
-		printf("Could not start Peak Detector Task");
-	}
+  int buttonCtx;
+  if (Button_initIRQ(&buttonCtx)) {
+    printf("Could not register Button ISR\n");
+  }
 
-	if (Load_Control_Init())
-	{
-		printf("Could not start Load Control Task");
-	}
+  int keyboardCtx;
+  if (Keyboard_initIRQ(&keyboardCtx)) {
+    printf("Could not register Keyboard ISR\n");
+  }
 
-	//	freq_semaphore = xSemaphoreCreateBinary();
+  if (Peak_Detector_init()) {
+    printf("Could not start Peak Detector Task");
+  }
 
-	/* The RegTest tasks as described at the top of this file. */
-	// xTaskCreate(prvFirstRegTestTask, "Rreg1", configMINIMAL_STACK_SIZE, mainREG_TEST_1_PARAMETER, mainREG_TEST_PRIORITY, NULL);
-	// xTaskCreate(prvSecondRegTestTask, "Rreg2", configMINIMAL_STACK_SIZE, mainREG_TEST_2_PARAMETER, mainREG_TEST_PRIORITY, NULL);
+  if (Load_Control_init()) {
+    printf("Could not start Load Control Task");
+  }
 
-	/* Finally start the scheduler. */
-	vTaskStartScheduler();
-	/* Will only reach here if there is insufficient heap available to start
-	 the scheduler. */
-	for (;;)
-		;
+  if (Button_init()) {
+    printf("Could not start Button Task");
+  }
+
+  if (Keyboard_init()) {
+    printf("Could not start Key Listener Task");
+  }
+  // freq_semaphore = xSemaphoreCreateBinary();
+
+  /* The RegTest tasks as described at the top of this file. */
+  // xTaskCreate(prvFirstRegTestTask, "Rreg1", configMINIMAL_STACK_SIZE,
+  // mainREG_TEST_1_PARAMETER, mainREG_TEST_PRIORITY, NULL);
+  // xTaskCreate(prvSecondRegTestTask, "Rreg2", configMINIMAL_STACK_SIZE,
+  // mainREG_TEST_2_PARAMETER, mainREG_TEST_PRIORITY, NULL);
+
+  /* Finally start the scheduler. */
+  vTaskStartScheduler();
+  /* Will only reach here if there is insufficient heap available to start
+   the scheduler. */
+  for (;;)
+    ;
 }
 // static void prvFirstRegTestTask(void *pvParameters)
 // {

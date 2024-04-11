@@ -16,30 +16,27 @@ QueueHandle_t Load_Control_Q;
 static void Load_Control_handlerTask(void *pvParameters);
 static void Load_Control_initDataStructs();
 
-int Load_Control_Init()
-{
-    Load_Control_initDataStructs();
-    if (xTaskCreate(Load_Control_handlerTask, "Load_Control_T", configMINIMAL_STACK_SIZE, NULL, LOAD_CONTROL_HANDLER_PRIORITY, NULL) != pdPASS)
-    {
-        return 1;
-    }
-    return 0;
+int Load_Control_init() {
+  Load_Control_initDataStructs();
+  if (xTaskCreate(Load_Control_handlerTask, "Load_Control_T",
+                  configMINIMAL_STACK_SIZE, NULL, LOAD_CONTROL_HANDLER_PRIORITY,
+                  NULL) != pdPASS) {
+    return 1;
+  }
+  return 0;
 }
 
-static void Load_Control_handlerTask(void *pvParameters)
-{
-    int action;
-    while (1)
-    {
-        // Read from Peak_Detector_Q
-        if (xQueueReceive(Load_Control_Q, &action, portMAX_DELAY) == pdTRUE)
-        {
-            printf("Action: %d\n", action);
-        }
+static void Load_Control_handlerTask(void *pvParameters) {
+  int action;
+  while (1) {
+    // Read from Peak_Detector_Q
+    if (xQueueReceive(Load_Control_Q, &action, portMAX_DELAY) == pdTRUE) {
+      printf("Action: %d\n", action);
     }
+  }
 }
 
-static void Load_Control_initDataStructs()
-{
-    Load_Control_Q = xQueueCreate(LOAD_CONTROL_Q_SIZE, sizeof(LOAD_CONTROL_Q_TYPE));
+static void Load_Control_initDataStructs() {
+  Load_Control_Q =
+      xQueueCreate(LOAD_CONTROL_Q_SIZE, sizeof(LOAD_CONTROL_Q_TYPE));
 }

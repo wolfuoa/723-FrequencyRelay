@@ -1,0 +1,60 @@
+// button.c
+//      author: Nicholas Wolf
+
+#include "FreeRTOS/FreeRTOS.h"
+#include "FreeRTOS/task.h"
+
+#include "inc/button.h"
+
+#define BUTTON_Q_SIZE 10
+#define BUTTON_Q_TYPE int
+
+#define BUTTON_HANDLER_PRIORITY (tskIDLE_PRIORITY + 1)
+
+QueueHandle_t Button_Q;
+
+static void Button_handlerTask(void *pvParameters);
+static void Button_initDataStructs();
+
+void Button_ISR(void *ctx, alt_u32 id) {
+  unsigned int temp = IORD_ALTERA_AVALON_PIO_EDGE_CAP(PUSH_BUTTON_BASE);
+  xQueueSendToBackFromISR(Button_Q, &temp, pdFALSE);
+  IOWR_ALTERA_AVALON_PIO_EDGE_CAP(PUSH_BUTTON_BASE, 0x0);
+}
+
+int Button_init() {
+  Button_initDataStructs();
+  if (xTaskCreate(Button_handlerTask, "Button_T", configMINIMAL_STACK_SIZE,
+                  NULL, BUTTON_HANDLER_PRIORITY, NULL) != pdPASS) {
+    return 1;
+  }
+  return 0;
+}
+
+static void Button_handlerTask(void *pvParameters) {
+  int buttonVal;
+  while (1) {
+    if (xQueueReceive(Button_Q, &buttonVal, portMAX_DELAY) == pdTRUE) {
+      printf("Button Pressed: %d\n", buttonVal);
+    }
+  }
+}
+
+static void Button_initDataStructs() {
+  Button_Q = xQueueCreate(BUTTON_Q_SIZE, sizeof(BUTTON_Q_TYPE));
+}
+
+int Button_initIRQ(int *receiver) {
+  printf("Creating Button ISR\n");
+  void *ctx = (void *)receiver;
+  IOWR_ALTERA_AVALON_PIO_EDGE_CAP(PUSH_BUTTON_BASE, 0);
+  // enable interrupts for last 3 buttons {0111}
+  IOWR_ALTERA_AVALON_PIO_IRQ_MASK(PUSH_BUTTON_BASE, 0x7);
+  // Register ISR into LUT
+  if (alt_irq_register(PUSH_BUTTON_IRQ, ctx, Button_ISR) != 0) {
+    // Fail
+    return 1;
+  }
+  alt_irq_enable(PUSH_BUTTON_IRQ);
+  return 0;
+}
