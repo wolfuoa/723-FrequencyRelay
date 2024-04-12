@@ -49,10 +49,8 @@ static void Load_Control_handlerTask(void *pvParameters)
         // Read from Peak_Detector_Q
         if (xQueueReceive(Load_Control_Q, &action, portMAX_DELAY) == pdTRUE){
         	if (xSemaphoreTake(SystemStatusMutex, (TickType_t)10) == pdTRUE){
-
-        		//Temporary Green LED showing the state 1 = MANAGING and 0 = OK
         		IOWR_ALTERA_AVALON_PIO_DATA(GREEN_LEDS_BASE,SystemStatus);
-				//printf("Action: %d\n", action);
+				printf("Action: %d\n", action);
 				if (!action && SystemStatus != SYSTEM_MAINTENANCE){
 					//Shed the load
 					SystemStatus = SYSTEM_MANAGING;

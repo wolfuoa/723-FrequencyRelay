@@ -11,7 +11,7 @@ Program Header:
     LOAD off    0x0001b000 vaddr 0x01000000 paddr 0x01000000 align 2**12
          filesz 0x00000000 memsz 0x00000000 flags r-x
     LOAD off    0x0001b000 vaddr 0x08000000 paddr 0x08000000 align 2**12
-         filesz 0x00002624 memsz 0x0007f9ec flags rw-
+         filesz 0x0000263c memsz 0x0007fa04 flags rw-
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
@@ -21,74 +21,74 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
   2 .text         000198bc  00000254  00000254  00001254  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  3 .rodata       00000774  08000000  08000000  0001b000  2**2
+  3 .rodata       0000078c  08000000  08000000  0001b000  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  4 .rwdata       00001eb0  08000774  08000774  0001b774  2**2
+  4 .rwdata       00001eb0  0800078c  0800078c  0001b78c  2**2
                   CONTENTS, ALLOC, LOAD, DATA, SMALL_DATA
-  5 .bss          0007d46d  08002624  08002624  0001d624  2**2
+  5 .bss          0007d46d  0800263c  0800263c  0001d63c  2**2
                   ALLOC, SMALL_DATA
-  6 .onchip_memory 00000000  00019b10  00019b10  0001d624  2**0
+  6 .onchip_memory 00000000  00019b10  00019b10  0001d63c  2**0
                   CONTENTS
-  7 .flash_controller 00000000  01000020  01000020  0001d624  2**0
+  7 .flash_controller 00000000  01000020  01000020  0001d63c  2**0
                   CONTENTS
-  8 .sdram        00000000  0807f9ec  0807f9ec  0001d624  2**0
+  8 .sdram        00000000  0807fa04  0807fa04  0001d63c  2**0
                   CONTENTS
-  9 .comment      00000023  00000000  00000000  0001d624  2**0
+  9 .comment      00000023  00000000  00000000  0001d63c  2**0
                   CONTENTS, READONLY
- 10 .debug_aranges 000011f8  00000000  00000000  0001d648  2**3
+ 10 .debug_aranges 000011f8  00000000  00000000  0001d660  2**3
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_info   0002cdae  00000000  00000000  0001e840  2**0
+ 11 .debug_info   0002cdae  00000000  00000000  0001e858  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_abbrev 0000b8a8  00000000  00000000  0004b5ee  2**0
+ 12 .debug_abbrev 0000b8a8  00000000  00000000  0004b606  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_line   0000fc38  00000000  00000000  00056e96  2**0
+ 13 .debug_line   0000fc38  00000000  00000000  00056eae  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_frame  000040d4  00000000  00000000  00066ad0  2**2
+ 14 .debug_frame  000040d4  00000000  00000000  00066ae8  2**2
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_str    00006171  00000000  00000000  0006aba4  2**0
+ 15 .debug_str    00006171  00000000  00000000  0006abbc  2**0
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_loc    00018bd0  00000000  00000000  00070d15  2**0
+ 16 .debug_loc    00018bd0  00000000  00000000  00070d2d  2**0
                   CONTENTS, READONLY, DEBUGGING
- 17 .debug_alt_sim_info 00000050  00000000  00000000  000898e8  2**2
+ 17 .debug_alt_sim_info 00000050  00000000  00000000  00089900  2**2
                   CONTENTS, READONLY, DEBUGGING
- 18 .debug_ranges 00001bc0  00000000  00000000  00089938  2**3
+ 18 .debug_ranges 00001bc0  00000000  00000000  00089950  2**3
                   CONTENTS, READONLY, DEBUGGING
- 19 .thread_model 00000003  00000000  00000000  00091235  2**0
+ 19 .thread_model 00000003  00000000  00000000  0009124d  2**0
                   CONTENTS, READONLY
- 20 .cpu          00000005  00000000  00000000  00091238  2**0
+ 20 .cpu          00000005  00000000  00000000  00091250  2**0
                   CONTENTS, READONLY
- 21 .qsys         00000001  00000000  00000000  0009123d  2**0
+ 21 .qsys         00000001  00000000  00000000  00091255  2**0
                   CONTENTS, READONLY
- 22 .simulation_enabled 00000001  00000000  00000000  0009123e  2**0
+ 22 .simulation_enabled 00000001  00000000  00000000  00091256  2**0
                   CONTENTS, READONLY
- 23 .sysid_hash   00000004  00000000  00000000  0009123f  2**0
+ 23 .sysid_hash   00000004  00000000  00000000  00091257  2**0
                   CONTENTS, READONLY
- 24 .sysid_base   00000004  00000000  00000000  00091243  2**0
+ 24 .sysid_base   00000004  00000000  00000000  0009125b  2**0
                   CONTENTS, READONLY
- 25 .sysid_time   00000004  00000000  00000000  00091247  2**0
+ 25 .sysid_time   00000004  00000000  00000000  0009125f  2**0
                   CONTENTS, READONLY
- 26 .stderr_dev   00000009  00000000  00000000  0009124b  2**0
+ 26 .stderr_dev   00000009  00000000  00000000  00091263  2**0
                   CONTENTS, READONLY
- 27 .stdin_dev    00000009  00000000  00000000  00091254  2**0
+ 27 .stdin_dev    00000009  00000000  00000000  0009126c  2**0
                   CONTENTS, READONLY
- 28 .stdout_dev   00000009  00000000  00000000  0009125d  2**0
+ 28 .stdout_dev   00000009  00000000  00000000  00091275  2**0
                   CONTENTS, READONLY
- 29 .sopc_system_name 00000005  00000000  00000000  00091266  2**0
+ 29 .sopc_system_name 00000005  00000000  00000000  0009127e  2**0
                   CONTENTS, READONLY
- 30 .quartus_project_dir 00000052  00000000  00000000  0009126b  2**0
+ 30 .quartus_project_dir 00000052  00000000  00000000  00091283  2**0
                   CONTENTS, READONLY
- 31 .sopcinfo     000b3e3a  00000000  00000000  000912bd  2**0
+ 31 .sopcinfo     000b3e3a  00000000  00000000  000912d5  2**0
                   CONTENTS, READONLY
 SYMBOL TABLE:
 01000000 l    d  .entry	00000000 .entry
 00000020 l    d  .exceptions	00000000 .exceptions
 00000254 l    d  .text	00000000 .text
 08000000 l    d  .rodata	00000000 .rodata
-08000774 l    d  .rwdata	00000000 .rwdata
-08002624 l    d  .bss	00000000 .bss
+0800078c l    d  .rwdata	00000000 .rwdata
+0800263c l    d  .bss	00000000 .bss
 00019b10 l    d  .onchip_memory	00000000 .onchip_memory
 01000020 l    d  .flash_controller	00000000 .flash_controller
-0807f9ec l    d  .sdram	00000000 .sdram
+0807fa04 l    d  .sdram	00000000 .sdram
 00000000 l    d  .comment	00000000 .comment
 00000000 l    d  .debug_aranges	00000000 .debug_aranges
 00000000 l    d  .debug_info	00000000 .debug_info
@@ -111,28 +111,28 @@ SYMBOL TABLE:
 0000016c l       .exceptions	00000000 call_scheduler
 00000000 l    df *ABS*	00000000 alt_irq_handler.c
 00000000 l    df *ABS*	00000000 croutine.c
-080026f8 l     O .bss	00000028 pxReadyCoRoutineLists
-08002720 l     O .bss	00000014 xDelayedCoRoutineList1
-08002734 l     O .bss	00000014 xDelayedCoRoutineList2
-08002624 l     O .bss	00000004 pxDelayedCoRoutineList
-08002628 l     O .bss	00000004 pxOverflowDelayedCoRoutineList
-08002748 l     O .bss	00000014 xPendingReadyCoRoutineList
-08002630 l     O .bss	00000004 uxTopCoRoutineReadyPriority
-08002634 l     O .bss	00000004 xCoRoutineTickCount
-08002638 l     O .bss	00000004 xLastTickCount
-0800263c l     O .bss	00000004 xPassedTicks
+08002710 l     O .bss	00000028 pxReadyCoRoutineLists
+08002738 l     O .bss	00000014 xDelayedCoRoutineList1
+0800274c l     O .bss	00000014 xDelayedCoRoutineList2
+0800263c l     O .bss	00000004 pxDelayedCoRoutineList
+08002640 l     O .bss	00000004 pxOverflowDelayedCoRoutineList
+08002760 l     O .bss	00000014 xPendingReadyCoRoutineList
+08002648 l     O .bss	00000004 uxTopCoRoutineReadyPriority
+0800264c l     O .bss	00000004 xCoRoutineTickCount
+08002650 l     O .bss	00000004 xLastTickCount
+08002654 l     O .bss	00000004 xPassedTicks
 000007bc l     F .text	000000a0 prvInitialiseCoRoutineLists
 00000498 l     F .text	000000e0 prvCheckPendingReadyList
 00000578 l     F .text	00000158 prvCheckDelayedList
 00000000 l    df *ABS*	00000000 event_groups.c
 00000f60 l     F .text	00000070 prvTestWaitCondition
 00000000 l    df *ABS*	00000000 heap.c
-0800275c l     O .bss	0007d000 xHeap
-080025b4 l     O .rwdata	00000002 heapSTRUCT_SIZE
-080025b8 l     O .rwdata	00000004 xTotalHeapSize
-08002640 l     O .bss	00000008 xStart
-08002648 l     O .bss	00000004 pxEnd
-080025bc l     O .rwdata	00000004 xFreeBytesRemaining
+08002774 l     O .bss	0007d000 xHeap
+080025cc l     O .rwdata	00000002 heapSTRUCT_SIZE
+080025d0 l     O .rwdata	00000004 xTotalHeapSize
+08002658 l     O .bss	00000008 xStart
+08002660 l     O .bss	00000004 pxEnd
+080025d4 l     O .rwdata	00000004 xFreeBytesRemaining
 00001210 l     F .text	000000c0 prvHeapInit
 000012d0 l     F .text	00000134 prvInsertBlockIntoFreeList
 00000000 l    df *ABS*	00000000 list.c
@@ -146,24 +146,24 @@ SYMBOL TABLE:
 00002820 l     F .text	0000009c prvCopyDataFromQueue
 000029b0 l     F .text	00000050 prvIsQueueEmpty
 00000000 l    df *ABS*	00000000 tasks.c
-0807f75c l     O .bss	000000f0 pxReadyTasksLists
-0807f84c l     O .bss	00000014 xDelayedTaskList1
-0807f860 l     O .bss	00000014 xDelayedTaskList2
-08002650 l     O .bss	00000004 pxDelayedTaskList
-08002654 l     O .bss	00000004 pxOverflowDelayedTaskList
-0807f874 l     O .bss	00000014 xPendingReadyList
-0807f888 l     O .bss	00000014 xTasksWaitingTermination
-08002658 l     O .bss	00000004 uxTasksDeleted
-0800265c l     O .bss	00000004 uxCurrentNumberOfTasks
-08002660 l     O .bss	00000004 xTickCount
-08002664 l     O .bss	00000004 uxTopReadyPriority
-08002668 l     O .bss	00000004 xSchedulerRunning
-0800266c l     O .bss	00000004 uxPendedTicks
-08002670 l     O .bss	00000004 xYieldPending
-08002674 l     O .bss	00000004 xNumOfOverflows
-08002678 l     O .bss	00000004 uxTaskNumber
-080025c0 l     O .rwdata	00000004 xNextTaskUnblockTime
-0800267c l     O .bss	00000004 uxSchedulerSuspended
+0807f774 l     O .bss	000000f0 pxReadyTasksLists
+0807f864 l     O .bss	00000014 xDelayedTaskList1
+0807f878 l     O .bss	00000014 xDelayedTaskList2
+08002668 l     O .bss	00000004 pxDelayedTaskList
+0800266c l     O .bss	00000004 pxOverflowDelayedTaskList
+0807f88c l     O .bss	00000014 xPendingReadyList
+0807f8a0 l     O .bss	00000014 xTasksWaitingTermination
+08002670 l     O .bss	00000004 uxTasksDeleted
+08002674 l     O .bss	00000004 uxCurrentNumberOfTasks
+08002678 l     O .bss	00000004 xTickCount
+0800267c l     O .bss	00000004 uxTopReadyPriority
+08002680 l     O .bss	00000004 xSchedulerRunning
+08002684 l     O .bss	00000004 uxPendedTicks
+08002688 l     O .bss	00000004 xYieldPending
+0800268c l     O .bss	00000004 xNumOfOverflows
+08002690 l     O .bss	00000004 uxTaskNumber
+080025d8 l     O .rwdata	00000004 xNextTaskUnblockTime
+08002694 l     O .bss	00000004 uxSchedulerSuspended
 00003bdc l     F .text	000000c4 prvAllocateTCBAndStack
 000038b0 l     F .text	0000014c prvInitialiseTCBVariables
 000039fc l     F .text	000000ac prvInitialiseTaskLists
@@ -175,11 +175,11 @@ SYMBOL TABLE:
 00003d64 l     F .text	00000044 prvDeleteTCB
 00003ca0 l     F .text	00000064 prvTaskCheckFreeStackSpace
 00000000 l    df *ABS*	00000000 timers.c
-0807f89c l     O .bss	00000014 xActiveTimerList1
-0807f8b0 l     O .bss	00000014 xActiveTimerList2
-08002680 l     O .bss	00000004 pxCurrentTimerList
-08002684 l     O .bss	00000004 pxOverflowTimerList
-08002688 l     O .bss	00000004 xTimerQueue
+0807f8b4 l     O .bss	00000014 xActiveTimerList1
+0807f8c8 l     O .bss	00000014 xActiveTimerList2
+08002698 l     O .bss	00000004 pxCurrentTimerList
+0800269c l     O .bss	00000004 pxOverflowTimerList
+080026a0 l     O .bss	00000004 xTimerQueue
 00005008 l     F .text	0000007c prvCheckForValidListAndQueue
 00004ae4 l     F .text	0000003c prvTimerTask
 00004a2c l     F .text	000000b8 prvProcessExpiredTimer
@@ -188,7 +188,7 @@ SYMBOL TABLE:
 00004b20 l     F .text	000000a0 prvProcessTimerOrBlockTask
 00004d60 l     F .text	00000198 prvProcessReceivedCommands
 00004c20 l     F .text	00000064 prvSampleTimeNow
-0800268c l     O .bss	00000004 xLastTime.2766
+080026a4 l     O .bss	00000004 xLastTime.2766
 00004ef8 l     F .text	00000110 prvSwitchTimerLists
 00000000 l    df *ABS*	00000000 frequency_analyser.c
 00000000 l    df *ABS*	00000000 load_control.c
@@ -198,8 +198,8 @@ SYMBOL TABLE:
 00000000 l    df *ABS*	00000000 peak_detector.c
 0000574c l     F .text	0000007c Peak_Detector_initDataStructs
 000054c8 l     F .text	00000284 Peak_Detector_handlerTask
-080026ac l     O .bss	00000004 previousFrequency.2288
-080026b0 l     O .bss	00000004 systemStability.2289
+080026c4 l     O .bss	00000004 previousFrequency.2288
+080026c8 l     O .bss	00000004 systemStability.2289
 000057c8 l     F .text	0000006c repeatActionTimerCallback
 00000000 l    df *ABS*	00000000 switch_polling.c
 000058c0 l     F .text	000000c8 Switch_Polling_handlerTask
@@ -222,9 +222,9 @@ SYMBOL TABLE:
 00000000 l    df *ABS*	00000000 puts.c
 00000000 l    df *ABS*	00000000 strlen.c
 00000000 l    df *ABS*	00000000 vfprintf.c
-08000286 l     O .rodata	00000010 zeroes.4404
+0800029e l     O .rodata	00000010 zeroes.4404
 000095e0 l     F .text	000000bc __sbprintf
-08000296 l     O .rodata	00000010 blanks.4403
+080002ae l     O .rodata	00000010 blanks.4403
 00000000 l    df *ABS*	00000000 wsetup.c
 00000000 l    df *ABS*	00000000 dtoa.c
 000097f0 l     F .text	00000200 quorem
@@ -237,17 +237,17 @@ SYMBOL TABLE:
 00000000 l    df *ABS*	00000000 fvwrite.c
 00000000 l    df *ABS*	00000000 fwalk.c
 00000000 l    df *ABS*	00000000 impure.c
-08000774 l     O .rwdata	00000424 impure_data
+0800078c l     O .rwdata	00000424 impure_data
 00000000 l    df *ABS*	00000000 locale.c
-08000bb8 l     O .rwdata	00000020 lc_ctype_charset
-08000b98 l     O .rwdata	00000020 lc_message_charset
-08000bd8 l     O .rwdata	00000038 lconv
+08000bd0 l     O .rwdata	00000020 lc_ctype_charset
+08000bb0 l     O .rwdata	00000020 lc_message_charset
+08000bf0 l     O .rwdata	00000038 lconv
 00000000 l    df *ABS*	00000000 makebuf.c
 00000000 l    df *ABS*	00000000 mallocr.c
 00000000 l    df *ABS*	00000000 memchr.c
 00000000 l    df *ABS*	00000000 memmove.c
 00000000 l    df *ABS*	00000000 mprec.c
-080002c8 l     O .rodata	0000000c p05.2768
+080002e0 l     O .rodata	0000000c p05.2768
 00000000 l    df *ABS*	00000000 mallocr.c
 00000000 l    df *ABS*	00000000 s_fpclassify.c
 00000000 l    df *ABS*	00000000 sbrkr.c
@@ -255,8 +255,8 @@ SYMBOL TABLE:
 00000000 l    df *ABS*	00000000 strcmp.c
 00000000 l    df *ABS*	00000000 vfprintf.c
 0000e65c l     F .text	000000fc __sprint_r.part.0
-080003fc l     O .rodata	00000010 blanks.4348
-080003ec l     O .rodata	00000010 zeroes.4349
+08000414 l     O .rodata	00000010 blanks.4348
+08000404 l     O .rodata	00000010 zeroes.4349
 0000fbe8 l     F .text	000000bc __sbprintf
 00000000 l    df *ABS*	00000000 writer.c
 00000000 l    df *ABS*	00000000 closer.c
@@ -299,18 +299,18 @@ SYMBOL TABLE:
 000131a0 l     F .text	0000003c alt_get_errno
 00000000 l    df *ABS*	00000000 alt_release_fd.c
 00000000 l    df *ABS*	00000000 alt_sbrk.c
-08002608 l     O .rwdata	00000004 heap_end
+08002620 l     O .rwdata	00000004 heap_end
 00000000 l    df *ABS*	00000000 alt_write.c
 000133ec l     F .text	0000003c alt_get_errno
 00000000 l    df *ABS*	00000000 alt_sys_init.c
 00013520 l     F .text	00000034 alt_dev_reg
-080011c0 l     O .rwdata	000000dc flash_controller
-0800129c l     O .rwdata	00001060 jtag_uart
-080022fc l     O .rwdata	00000120 character_lcd
-0800241c l     O .rwdata	000000c4 uart
-080024e0 l     O .rwdata	00000038 ps2
-08002518 l     O .rwdata	00000048 video_character_buffer_with_dma
-08002560 l     O .rwdata	00000054 video_pixel_buffer_dma
+080011d8 l     O .rwdata	000000dc flash_controller
+080012b4 l     O .rwdata	00001060 jtag_uart
+08002314 l     O .rwdata	00000120 character_lcd
+08002434 l     O .rwdata	000000c4 uart
+080024f8 l     O .rwdata	00000038 ps2
+08002530 l     O .rwdata	00000048 video_character_buffer_with_dma
+08002578 l     O .rwdata	00000054 video_pixel_buffer_dma
 00000000 l    df *ABS*	00000000 altera_avalon_cfi_flash.c
 000138e0 l     F .text	00000034 alt_flash_device_register
 00000000 l    df *ABS*	00000000 altera_avalon_cfi_flash_table.c
@@ -323,7 +323,7 @@ SYMBOL TABLE:
 00000000 l    df *ABS*	00000000 altera_avalon_jtag_uart_read.c
 00000000 l    df *ABS*	00000000 altera_avalon_jtag_uart_write.c
 00000000 l    df *ABS*	00000000 altera_avalon_lcd_16207.c
-0800260c l     O .rwdata	00000004 colstart
+08002624 l     O .rwdata	00000004 colstart
 00016020 l     F .text	000000b8 lcd_write_command
 000160d8 l     F .text	000000d8 lcd_write_data
 000161b0 l     F .text	000000d0 lcd_clear_screen
@@ -372,7 +372,7 @@ SYMBOL TABLE:
 00000000 l    df *ABS*	00000000 alt_get_fd.c
 00000000 l    df *ABS*	00000000 atexit.c
 00000000 l    df *ABS*	00000000 ctype_.c
-080005f3 l     O .rodata	00000180 _ctype_b
+0800060b l     O .rodata	00000180 _ctype_b
 00000000 l    df *ABS*	00000000 exit.c
 00000000 l    df *ABS*	00000000 __atexit.c
 00000000 l    df *ABS*	00000000 __call_atexit.c
@@ -380,13 +380,13 @@ SYMBOL TABLE:
 0000dca0 g     F .text	00000074 _mprec_log10
 0000dd8c g     F .text	0000008c __any_on
 00010184 g     F .text	00000054 _isatty_r
-080002d4 g     O .rodata	00000028 __mprec_tinytens
+080002ec g     O .rodata	00000028 __mprec_tinytens
 000130dc g     F .text	0000007c alt_main
 0000545c g     F .text	0000006c Peak_Detector_init
 00007260 g     F .text	000000c0 _puts_r
 000141f4 g     F .text	00000040 alt_read_query_entry_32bit
 00017b08 g     F .text	00000060 alt_up_ps2_disable_read_interrupt
-0807f8ec g     O .bss	00000100 alt_irq
+0807f904 g     O .bss	00000100 alt_irq
 000101d8 g     F .text	00000060 _lseek_r
 000000c4 g       .exceptions	00000000 restore_sp_from_pxCurrentTCB
 000034b4 g     F .text	00000080 vTaskPlaceOnUnorderedEventList
@@ -394,7 +394,7 @@ SYMBOL TABLE:
 000139a4 g     F .text	000002a8 alt_flash_cfi_write
 00000cb8 g     F .text	0000003c xEventGroupGetBitsFromISR
 00011934 g     F .text	00000088 .hidden __eqdf2
-0807f9ec g       *ABS*	00000000 __alt_heap_start
+0807fa04 g       *ABS*	00000000 __alt_heap_start
 00004874 g     F .text	000000ac xTimerCreate
 00007224 g     F .text	0000003c printf
 000103f0 g     F .text	0000009c _wcrtomb_r
@@ -422,23 +422,23 @@ SYMBOL TABLE:
 01000000 g     F .entry	00000000 __reset
 00001d4c g     F .text	00000090 xQueueGiveMutexRecursive
 00005104 g     F .text	00000058 Frequency_Analyser_ISR
-0800264c g     O .bss	00000004 pxCurrentTCB
+08002664 g     O .bss	00000004 pxCurrentTCB
 00010128 g     F .text	0000005c _fstat_r
 00013e98 g     F .text	000002e0 alt_flash_program_block
-080026dc g     O .bss	00000004 errno
+080026f4 g     O .bss	00000004 errno
 0000e498 g     F .text	00000008 __seofread
-080026e8 g     O .bss	00000004 alt_argv
+08002700 g     O .bss	00000004 alt_argv
 000043ac g     F .text	00000188 xTaskNotify
-0800a5b4 g       *ABS*	00000000 _gp
+0800a5cc g       *ABS*	00000000 _gp
 00018c14 g     F .text	00000030 usleep
-080026bc g     O .bss	00000004 LoadSwitchStatus
+080026d4 g     O .bss	00000004 LoadSwitchStatus
 00005b0c g     F .text	000004e4 .hidden __subsf3
 00000ab4 g     F .text	0000019c xEventGroupWaitBits
-08001040 g     O .rwdata	00000180 alt_fd_list
+08001058 g     O .rwdata	00000180 alt_fd_list
 000017e0 g     F .text	00000038 xPortStartScheduler
 00002f24 g     F .text	00000048 vTaskEndScheduler
 00018590 g     F .text	00000090 alt_find_dev
-080026b4 g     O .bss	00000004 repeatActionTimer
+080026cc g     O .bss	00000004 repeatActionTimer
 00006f84 g     F .text	00000148 memcpy
 00003448 g     F .text	0000006c vTaskPlaceOnEventList
 00002b78 g     F .text	000001c4 xTaskGenericCreate
@@ -460,14 +460,14 @@ SYMBOL TABLE:
 000071f4 g     F .text	00000030 _printf_r
 00006e4c g     F .text	00000064 .hidden __udivsi3
 00012f28 g     F .text	000000a4 isatty
-08000324 g     O .rodata	000000c8 __mprec_tens
+0800033c g     O .rodata	000000c8 __mprec_tens
 00003d04 g     F .text	00000060 uxTaskGetStackHighWaterMark
 0000c1b4 g     F .text	0000000c __locale_charset
 00005a44 g     F .text	000000c8 .hidden __lesf2
 00001498 g     F .text	0000008c vListInsertEnd
-080026d8 g     O .bss	00000004 __malloc_top_pad
+080026f0 g     O .bss	00000004 __malloc_top_pad
 000008e4 g     F .text	00000054 xEventGroupCreate
-080025dc g     O .rwdata	00000004 __mb_cur_max
+080025f4 g     O .rwdata	00000004 __mb_cur_max
 0000c1e4 g     F .text	0000000c _localeconv_r
 0000d228 g     F .text	0000003c __i2b
 0000baf4 g     F .text	000004bc __sfvwrite_r
@@ -477,45 +477,45 @@ SYMBOL TABLE:
 00010238 g     F .text	00000060 _read_r
 0000146c g     F .text	0000002c vListInitialiseItem
 00018378 g     F .text	00000078 alt_dcache_flush
-080025fc g     O .rwdata	00000004 alt_max_fd
+08002614 g     O .rwdata	00000004 alt_max_fd
 00014178 g     F .text	0000003c alt_read_query_entry_8bit
 000018d4 g     F .text	0000004c vPortSysTickHandler
 0000fe1c g     F .text	000000f0 _fclose_r
 00017954 g     F .text	00000030 read_num_bytes_available
 00019148 g     F .text	0000018c alt_erase_block_intel
 0000b2f0 g     F .text	00000030 fflush
-080026d4 g     O .bss	00000004 __malloc_max_sbrked_mem
-08002694 g     O .bss	00000004 Load_Control_Q
+080026ec g     O .bss	00000004 __malloc_max_sbrked_mem
+080026ac g     O .bss	00000004 Load_Control_Q
 00001920 g     F .text	00000170 alt_irq_register
 000178bc g     F .text	00000034 read_RI_bit
 00011088 g     F .text	000008ac .hidden __adddf3
 0000d9a4 g     F .text	0000010c __b2d
 00010b50 g     F .text	00000538 .hidden __umoddi3
 00013008 g     F .text	000000d4 lseek
-080025d4 g     O .rwdata	00000004 _global_impure_ptr
+080025ec g     O .rwdata	00000004 _global_impure_ptr
 00000cf4 g     F .text	00000180 xEventGroupSetBits
 0000de18 g     F .text	00000564 _realloc_r
-0807f9ec g       *ABS*	00000000 __bss_end
+0807fa04 g       *ABS*	00000000 __bss_end
 00018b0c g     F .text	00000108 alt_tick
 000105d8 g     F .text	00000578 .hidden __udivdi3
 00010084 g     F .text	00000024 _fputwc_r
-080002fc g     O .rodata	00000028 __mprec_bigtens
+08000314 g     O .rodata	00000028 __mprec_bigtens
 0000d00c g     F .text	00000104 __s2b
 00012c20 g     F .text	000000a8 .hidden __floatunsidf
 0000d6e4 g     F .text	00000060 __mcmp
 00000fd0 g     F .text	00000180 pvPortMalloc
 000170f8 g     F .text	000000a4 altera_avalon_uart_init
 000179b8 g     F .text	0000002c read_data_byte
-08002698 g     O .bss	00000004 SystemStatus
+080026b0 g     O .bss	00000004 SystemStatus
 0000b690 g     F .text	00000018 __fp_lock_all
 00002654 g     F .text	0000003c vQueueDelete
 00001818 g     F .text	00000020 vPortEndScheduler
 00001404 g     F .text	00000068 vListInitialise
 00018a70 g     F .text	0000009c alt_alarm_stop
 000178f0 g     F .text	00000030 read_RE_bit
-080026e0 g     O .bss	00000004 alt_irq_active
+080026f8 g     O .bss	00000004 alt_irq_active
 0000017c g     F .exceptions	000000d8 alt_irq_handler
-08001018 g     O .rwdata	00000028 alt_dev_null
+08001030 g     O .rwdata	00000028 alt_dev_null
 000030dc g     F .text	00000028 xTaskGetTickCount
 00001edc g     F .text	000001a0 xQueueGenericSend
 00014694 g     F .text	0000009c alt_set_flash_algorithm_func
@@ -525,7 +525,7 @@ SYMBOL TABLE:
 00003fac g     F .text	000000fc xTaskPriorityDisinherit
 00014234 g     F .text	00000044 alt_write_flash_command_8bit_device_8bit_mode
 00000000 g       *ABS*	00000000 __alt_mem_onchip_memory
-080025f4 g     O .rwdata	00000008 alt_dev_list
+0800260c g     O .rwdata	00000008 alt_dev_list
 00013428 g     F .text	000000f8 write
 00005988 g     F .text	000000bc .hidden __gtsf2
 000035a0 g     F .text	000000f4 xTaskRemoveFromEventList
@@ -536,17 +536,17 @@ SYMBOL TABLE:
 000154e8 g     F .text	000000d8 alt_check_primary_table
 0000d45c g     F .text	00000140 __pow5mult
 0000e770 g     F .text	0000145c ___vfiprintf_internal_r
-080026cc g     O .bss	00000004 __nlocale_changed
+080026e4 g     O .bss	00000004 __nlocale_changed
 00006eb0 g     F .text	00000058 .hidden __umodsi3
 00013cd8 g     F .text	00000064 alt_flash_cfi_read
 0001442c g     F .text	00000038 alt_write_native_8bit
-0807f9ec g       *ABS*	00000000 end
+0807fa04 g       *ABS*	00000000 end
 00017e98 g     F .text	00000098 alt_up_ps2_write_fd
 00014278 g     F .text	00000078 alt_write_flash_command_16bit_device_8bit_mode
 000167e8 g     F .text	000004d4 altera_avalon_lcd_16207_write
 00002d3c g     F .text	000000d0 vTaskDelete
 00017f6c g     F .text	00000080 alt_up_char_buffer_init
-080026c0 g     O .bss	00000004 LoadSwitchStatusMutex
+080026d8 g     O .bss	00000004 LoadSwitchStatusMutex
 00017710 g     F .text	000001ac altera_avalon_uart_write
 000147b0 g     F .text	000005c8 alt_read_cfi_table
 00015724 g     F .text	000000b4 altera_avalon_jtag_uart_init
@@ -565,37 +565,37 @@ SYMBOL TABLE:
 000037a8 g     F .text	000000c4 xTaskCheckForTimeOut
 000006d0 g     F .text	000000ec vCoRoutineSchedule
 0000b7e4 g     F .text	00000310 _free_r
-080026a8 g     O .bss	00000001 repeatActionTimeout
-080025cc g     O .rwdata	00000004 g_peakDetectorLowerROCThreshold
+080026c0 g     O .bss	00000001 repeatActionTimeout
+080025e4 g     O .rwdata	00000004 g_peakDetectorLowerROCThreshold
 0000c1c0 g     F .text	00000010 __locale_mb_cur_max
-0800262c g     O .bss	00000004 pxCurrentCoRoutine
+08002644 g     O .bss	00000004 pxCurrentCoRoutine
 0001995c g     F .text	00000180 __call_exitprocs
-080026c8 g     O .bss	00000004 __mlocale_changed
+080026e0 g     O .bss	00000004 __mlocale_changed
 000041d8 g     F .text	000000cc ulTaskNotifyTake
-080025e0 g     O .rwdata	00000004 __malloc_sbrk_base
+080025f8 g     O .rwdata	00000004 __malloc_sbrk_base
 00000254 g     F .text	00000048 _start
-080026f0 g     O .bss	00000004 _alt_tick_rate
+08002708 g     O .bss	00000004 _alt_tick_rate
 00002f6c g     F .text	0000002c vTaskSuspendAll
 00003104 g     F .text	0000002c xTaskGetTickCountFromISR
 0000d59c g     F .text	00000148 __lshift
-080026f4 g     O .bss	00000004 _alt_nticks
+0800270c g     O .bss	00000004 _alt_nticks
 000131dc g     F .text	000000fc read
 0001358c g     F .text	00000354 alt_sys_init
 00006060 g     F .text	00000124 .hidden __floatsisf
 000015fc g     F .text	00000098 uxListRemove
-080025c4 g     O .rwdata	00000004 g_peakDetectorLowerFrequencyThreshold
+080025dc g     O .rwdata	00000004 g_peakDetectorLowerFrequencyThreshold
 00019844 g     F .text	00000118 __register_exitproc
 00017db4 g     F .text	00000058 alt_up_ps2_clear_fifo
 000141b4 g     F .text	00000040 alt_read_query_entry_16bit
 0000d264 g     F .text	000001f8 __multiply
 00015a88 g     F .text	00000068 altera_avalon_jtag_uart_close
 00003e84 g     F .text	00000128 vTaskPriorityInherit
-0807f8c4 g     O .bss	00000028 __malloc_current_mallinfo
+0807f8dc g     O .bss	00000028 __malloc_current_mallinfo
 000144d0 g     F .text	000001c4 alt_set_flash_width_func
 0000dab0 g     F .text	0000014c __d2b
 00003314 g     F .text	00000134 vTaskSwitchContext
 00004534 g     F .text	000001bc xTaskNotifyFromISR
-080025c8 g     O .rwdata	00000004 g_peakDetectorHigherFrequencyThreshold
+080025e0 g     O .rwdata	00000004 g_peakDetectorHigherFrequencyThreshold
 000155c0 g     F .text	00000060 altera_avalon_jtag_uart_read_fd
 00019754 g     F .text	000000a4 alt_get_fd
 00003534 g     F .text	0000006c vTaskPlaceOnEventListRestricted
@@ -605,7 +605,7 @@ SYMBOL TABLE:
 00018cd0 g     F .text	00000210 alt_erase_block_amd
 00006f08 g     F .text	0000007c memcmp
 00015680 g     F .text	00000050 altera_avalon_jtag_uart_close_fd
-0807f9ec g       *ABS*	00000000 __alt_stack_base
+0807fa04 g       *ABS*	00000000 __alt_stack_base
 000156d0 g     F .text	00000054 altera_avalon_jtag_uart_ioctl_fd
 00004920 g     F .text	000000dc xTimerGenericCommand
 0000969c g     F .text	00000154 __swsetup_r
@@ -615,11 +615,11 @@ SYMBOL TABLE:
 0000b540 g     F .text	00000118 __sfp
 0000dd14 g     F .text	00000078 __copybits
 00003130 g     F .text	00000020 uxTaskGetNumberOfTasks
-08000c10 g     O .rwdata	00000408 __malloc_av_
+08000c28 g     O .rwdata	00000408 __malloc_av_
 0000b68c g     F .text	00000004 __sinit_lock_release
 00011b8c g     F .text	00000718 .hidden __muldf3
 0000e444 g     F .text	00000054 __sread
-080025d0 g     O .rwdata	00000004 g_peakDetectorHigherROCThreshold
+080025e8 g     O .rwdata	00000004 g_peakDetectorHigherROCThreshold
 0001964c g     F .text	00000108 alt_find_file
 0001842c g     F .text	000000a4 alt_dev_llist_insert
 00013158 g     F .text	00000024 __malloc_lock
@@ -628,14 +628,14 @@ SYMBOL TABLE:
 0000b294 g     F .text	0000005c _fflush_r
 00000e74 g     F .text	00000074 vEventGroupDelete
 0000fd58 g     F .text	000000c4 _calloc_r
-08002610 g     O .rwdata	00000008 alt_flash_dev_list
+08002628 g     O .rwdata	00000008 alt_flash_dev_list
 00014340 g     F .text	0000004c alt_write_flash_command_16bit_device_16bit_mode
-08002624 g       *ABS*	00000000 __bss_start
+0800263c g       *ABS*	00000000 __bss_start
 000070cc g     F .text	00000128 memset
 000053f0 g     F .text	0000006c main
-080026a0 g     O .bss	00000004 Peak_Detector_thresholdMutex_X
-080026ec g     O .bss	00000004 alt_envp
-080026d0 g     O .bss	00000004 __malloc_max_total_mem
+080026b8 g     O .bss	00000004 Peak_Detector_thresholdMutex_X
+08002704 g     O .bss	00000004 alt_envp
+080026e8 g     O .bss	00000004 __malloc_max_total_mem
 00017fec g     F .text	0000003c alt_up_char_buffer_open_dev
 00015620 g     F .text	00000060 altera_avalon_jtag_uart_write_fd
 000103d8 g     F .text	00000018 __swbuf
@@ -652,7 +652,7 @@ SYMBOL TABLE:
 0000c3d0 g     F .text	0000080c _malloc_r
 0001054c g     F .text	00000030 __ascii_wctomb
 000049fc g     F .text	00000030 pcTimerGetTimerName
-08002600 g     O .rwdata	00000004 alt_errno
+08002618 g     O .rwdata	00000004 alt_errno
 000143dc g     F .text	00000050 alt_write_flash_command_32bit_device_32bit_mode
 0000bfb0 g     F .text	000000c4 _fwalk
 0000243c g     F .text	000000d8 xQueueReceiveFromISR
@@ -675,9 +675,9 @@ SYMBOL TABLE:
 00002f98 g     F .text	00000144 xTaskResumeAll
 000025d0 g     F .text	00000054 uxQueueSpacesAvailable
 00017984 g     F .text	00000034 read_data_valid
-0800013f g     O .rodata	00000100 .hidden __clz_tab
+08000157 g     O .rodata	00000100 .hidden __clz_tab
 00002e84 g     F .text	000000a0 vTaskStartScheduler
-080026c4 g     O .bss	00000004 _PathLocale
+080026dc g     O .bss	00000004 _PathLocale
 00017c44 g     F .text	00000064 alt_up_ps2_write_data_byte_with_ack
 000197f8 g     F .text	00000014 atexit
 00005988 g     F .text	000000bc .hidden __gesf2
@@ -686,9 +686,9 @@ SYMBOL TABLE:
 00002a98 g     F .text	00000048 xQueueIsQueueFullFromISR
 000050d4 g     F .text	00000030 pvTimerGetTimerID
 000003e0 g     F .text	000000b8 vCoRoutineAddToDelayedList
-080025d8 g     O .rwdata	00000004 _impure_ptr
+080025f0 g     O .rwdata	00000004 _impure_ptr
 00005834 g     F .text	0000008c switch_polling_init
-080026e4 g     O .bss	00000004 alt_argc
+080026fc g     O .bss	00000004 alt_argc
 0000b078 g     F .text	0000021c __sflush_r
 00018530 g     F .text	00000060 _do_dtors
 0000c1dc g     F .text	00000008 __locale_cjk_lang
@@ -696,25 +696,25 @@ SYMBOL TABLE:
 0000b6a8 g     F .text	00000018 __fp_unlock_all
 0000386c g     F .text	00000028 vTaskMissedYield
 00016e98 g     F .text	00000060 altera_avalon_lcd_16207_write_fd
-080025ec g     O .rwdata	00000008 alt_fs_list
-0800269c g     O .bss	00000004 SystemStatusMutex
+08002604 g     O .rwdata	00000008 alt_fs_list
+080026b4 g     O .bss	00000004 SystemStatusMutex
 000142f0 g     F .text	00000050 alt_write_flash_command_32bit_device_8bit_mode
 00002590 g     F .text	00000040 uxQueueMessagesWaiting
 0000222c g     F .text	00000210 xQueueGenericReceive
 00003150 g     F .text	000001c4 xTaskIncrementTick
 0000c208 g     F .text	0000000c localeconv
 00001a90 g     F .text	00000118 xQueueGenericReset
-080026b8 g     O .bss	00000004 Peak_Detector_Q
-08002624 g       *ABS*	00000000 _edata
+080026d0 g     O .bss	00000004 Peak_Detector_Q
+0800263c g       *ABS*	00000000 _edata
 00016fe8 g     F .text	00000060 altera_avalon_uart_read_fd
-0807f9ec g       *ABS*	00000000 _end
+0807fa04 g       *ABS*	00000000 _end
 00018620 g     F .text	00000068 alt_flash_open_dev
 0000ff20 g     F .text	00000164 __fputwc
 00015af0 g     F .text	000000f0 altera_avalon_jtag_uart_ioctl
 000011f0 g     F .text	00000020 vPortInitialiseBlocks
 00005084 g     F .text	00000050 xTimerIsTimerActive
 0000e4a0 g     F .text	0000007c __swrite
-080025e4 g     O .rwdata	00000004 __malloc_trim_threshold
+080025fc g     O .rwdata	00000004 __malloc_trim_threshold
 00018c44 g     F .text	00000024 altera_nios2_qsys_irq_init
 0000c1d0 g     F .text	0000000c __locale_msgcharset
 0001980c g     F .text	00000038 exit
@@ -722,17 +722,17 @@ SYMBOL TABLE:
 000179e4 g     F .text	000000c8 alt_up_ps2_init
 0000d744 g     F .text	000001fc __mdiff
 00018688 g     F .text	00000054 alt_flash_close_dev
-080026a4 g     O .bss	00000004 repeatActionMutex_X
+080026bc g     O .bss	00000004 repeatActionMutex_X
 00006dd8 g     F .text	00000074 .hidden __modsi3
-08002620 g     O .rwdata	00000004 __ctype_ptr__
+08002638 g     O .rwdata	00000004 __ctype_ptr__
 00002e0c g     F .text	00000078 vTaskDelay
 10000000 g       *ABS*	00000000 __alt_data_end
 0000b684 g     F .text	00000004 __sfp_lock_release
 08000000 g       *ABS*	00000000 __alt_mem_sdram
 00003e38 g     F .text	0000004c xTaskGetSchedulerState
-080004f2 g     O .rodata	00000101 _ctype_
+0800050a g     O .rodata	00000101 _ctype_
 00017468 g     F .text	00000054 altera_avalon_uart_close
-08002690 g     O .bss	00000004 freq_semaphore
+080026a8 g     O .bss	00000004 freq_semaphore
 00019adc g     F .text	00000034 _exit
 0001824c g     F .text	0000012c alt_alarm_start
 0000c214 g     F .text	000001bc __smakebuf_r
@@ -744,10 +744,10 @@ SYMBOL TABLE:
 0001891c g     F .text	00000154 open
 000119bc g     F .text	000000dc .hidden __gedf2
 00013c4c g     F .text	0000008c alt_flash_cfi_get_info
-080025e8 g     O .rwdata	00000004 __wctomb
+08002600 g     O .rwdata	00000004 __wctomb
 0000e758 g     F .text	00000018 __sprint_r
 0000376c g     F .text	0000003c vTaskSetTimeOutState
-08002604 g     O .rwdata	00000004 alt_priority_mask
+0800261c g     O .rwdata	00000004 alt_priority_mask
 000095c4 g     F .text	0000001c __vfprintf_internal
 000174f8 g     F .text	000001dc altera_avalon_uart_read
 0001057c g     F .text	0000005c _wctomb_r
@@ -756,7 +756,7 @@ SYMBOL TABLE:
 00017e0c g     F .text	0000008c alt_up_ps2_read_fd
 000122a4 g     F .text	000008fc .hidden __subdf3
 0000d178 g     F .text	000000b0 __lo0bits
-08002618 g     O .rwdata	00000008 alt_alarm_list
+08002630 g     O .rwdata	00000008 alt_alarm_list
 000184d0 g     F .text	00000060 _do_ctors
 0000515c g     F .text	000000cc Frequency_Analyser_initIRQ
 0000415c g     F .text	00000044 uxTaskResetEventItemValue
@@ -851,7 +851,7 @@ save_context:
 
 save_sp_to_pxCurrentTCB:
 	movia	et, pxCurrentTCB	# Load the address of the pxCurrentTCB pointer
-  a0:	c6099304 	addi	et,et,9804
+  a0:	c6099904 	addi	et,et,9828
 	ldw		et, (et)			# Load the value of the pxCurrentTCB pointer
   a4:	c6000017 	ldw	et,0(et)
 	stw		sp, (et)			# Store the stack pointer into the top of the TCB
@@ -887,7 +887,7 @@ hw_irq_handler:
     .section .exceptions.irqreturn, "xa"
 restore_sp_from_pxCurrentTCB:
 	movia	et, pxCurrentTCB		# Load the address of the pxCurrentTCB pointer
-  c8:	c6099304 	addi	et,et,9804
+  c8:	c6099904 	addi	et,et,9828
 	ldw		et, (et)				# Load the value of the pxCurrentTCB pointer
   cc:	c6000017 	ldw	et,0(et)
 	ldw		sp, (et)				# Load the stack pointer with the top value of the TCB
@@ -1052,13 +1052,13 @@ static ALT_INLINE alt_u32 ALT_ALWAYS_INLINE alt_irq_pending (void)
 #else
         alt_irq[i].handler(alt_irq[i].context, i); 
  1bc:	00820234 	movhi	r2,2056
- 1c0:	10be3b04 	addi	r2,r2,-1812
+ 1c0:	10be4104 	addi	r2,r2,-1788
  1c4:	e0fffd17 	ldw	r3,-12(fp)
  1c8:	180690fa 	slli	r3,r3,3
  1cc:	10c5883a 	add	r2,r2,r3
  1d0:	10c00017 	ldw	r3,0(r2)
  1d4:	00820234 	movhi	r2,2056
- 1d8:	10be3b04 	addi	r2,r2,-1812
+ 1d8:	10be4104 	addi	r2,r2,-1788
  1dc:	e13ffd17 	ldw	r4,-12(fp)
  1e0:	200890fa 	slli	r4,r4,3
  1e4:	1105883a 	add	r2,r2,r4
@@ -1151,7 +1151,7 @@ Disassembly of section .text:
     movhi gp, %hi(_gp)
      26c:	06820034 	movhi	gp,2048
     ori gp, gp, %lo(_gp)
-     270:	d6a96d14 	ori	gp,gp,42420
+     270:	d6a97314 	ori	gp,gp,42444
  */
 #ifndef ALT_SIM_OPTIMIZE
     /* Log that the BSS is about to be cleared. */
@@ -1160,12 +1160,12 @@ Disassembly of section .text:
     movhi r2, %hi(__bss_start)
      274:	00820034 	movhi	r2,2048
     ori r2, r2, %lo(__bss_start)
-     278:	10898914 	ori	r2,r2,9764
+     278:	10898f14 	ori	r2,r2,9788
 
     movhi r3, %hi(__bss_end)
      27c:	00c201f4 	movhi	r3,2055
     ori r3, r3, %lo(__bss_end)
-     280:	18fe7b14 	ori	r3,r3,63980
+     280:	18fe8114 	ori	r3,r3,64004
 
     beq r2, r3, 1f
      284:	10c00326 	beq	r2,r3,294 <_start+0x40>
@@ -1305,7 +1305,7 @@ CRCB_t *pxCoRoutine;
      38c:	10800b17 	ldw	r2,44(r2)
      390:	10c00524 	muli	r3,r2,20
      394:	00820034 	movhi	r2,2048
-     398:	1089be04 	addi	r2,r2,9976
+     398:	1089c404 	addi	r2,r2,10000
      39c:	1887883a 	add	r3,r3,r2
      3a0:	e0bffc17 	ldw	r2,-16(fp)
      3a4:	10800104 	addi	r2,r2,4
@@ -1455,7 +1455,7 @@ static ALT_INLINE alt_irq_context ALT_ALWAYS_INLINE
 		{
 			pxUnblockedCRCB = ( CRCB_t * ) listGET_OWNER_OF_HEAD_ENTRY( (&xPendingReadyCoRoutineList) );
      4c4:	00820034 	movhi	r2,2048
-     4c8:	1089d204 	addi	r2,r2,10056
+     4c8:	1089d804 	addi	r2,r2,10080
      4cc:	10800317 	ldw	r2,12(r2)
      4d0:	10800317 	ldw	r2,12(r2)
      4d4:	e0bffd15 	stw	r2,-12(fp)
@@ -1494,7 +1494,7 @@ static ALT_INLINE alt_irq_context ALT_ALWAYS_INLINE
      528:	10800b17 	ldw	r2,44(r2)
      52c:	10c00524 	muli	r3,r2,20
      530:	00820034 	movhi	r2,2048
-     534:	1089be04 	addi	r2,r2,9976
+     534:	1089c404 	addi	r2,r2,10000
      538:	1887883a 	add	r3,r3,r2
      53c:	e0bffd17 	ldw	r2,-12(fp)
      540:	10800104 	addi	r2,r2,4
@@ -1508,7 +1508,7 @@ static void prvCheckPendingReadyList( void )
 	the	ready lists itself. */
 	while( listLIST_IS_EMPTY( &xPendingReadyCoRoutineList ) == pdFALSE )
      550:	00820034 	movhi	r2,2048
-     554:	1089d204 	addi	r2,r2,10056
+     554:	1089d804 	addi	r2,r2,10080
      558:	10800017 	ldw	r2,0(r2)
      55c:	103fd31e 	bne	r2,zero,4ac <__alt_data_end+0xf00004ac>
 		portENABLE_INTERRUPTS();
@@ -1654,7 +1654,7 @@ static ALT_INLINE alt_irq_context ALT_ALWAYS_INLINE
      674:	10800b17 	ldw	r2,44(r2)
      678:	10c00524 	muli	r3,r2,20
      67c:	00820034 	movhi	r2,2048
-     680:	1089be04 	addi	r2,r2,9976
+     680:	1089c404 	addi	r2,r2,10000
      684:	1887883a 	add	r3,r3,r2
      688:	e0bffd17 	ldw	r2,-12(fp)
      68c:	10800104 	addi	r2,r2,4
@@ -1734,7 +1734,7 @@ void vCoRoutineSchedule( void )
 	while( listLIST_IS_EMPTY( &( pxReadyCoRoutineLists[ uxTopCoRoutineReadyPriority ] ) ) )
      700:	d0e01f17 	ldw	r3,-32644(gp)
      704:	00820034 	movhi	r2,2048
-     708:	1089be04 	addi	r2,r2,9976
+     708:	1089c404 	addi	r2,r2,10000
      70c:	18c00524 	muli	r3,r3,20
      710:	10c5883a 	add	r2,r2,r3
      714:	10800017 	ldw	r2,0(r2)
@@ -1748,7 +1748,7 @@ void vCoRoutineSchedule( void )
      71c:	d0a01f17 	ldw	r2,-32644(gp)
      720:	10c00524 	muli	r3,r2,20
      724:	00820034 	movhi	r2,2048
-     728:	1089be04 	addi	r2,r2,9976
+     728:	1089c404 	addi	r2,r2,10000
      72c:	1885883a 	add	r2,r3,r2
      730:	e0bfff15 	stw	r2,-4(fp)
      734:	e0bfff17 	ldw	r2,-4(fp)
@@ -1822,7 +1822,7 @@ UBaseType_t uxPriority;
      7d4:	e0bfff17 	ldw	r2,-4(fp)
      7d8:	10c00524 	muli	r3,r2,20
      7dc:	00820034 	movhi	r2,2048
-     7e0:	1089be04 	addi	r2,r2,9976
+     7e0:	1089c404 	addi	r2,r2,10000
      7e4:	1885883a 	add	r2,r3,r2
      7e8:	1009883a 	mov	r4,r2
      7ec:	00014040 	call	1404 <vListInitialise>
@@ -1844,26 +1844,26 @@ UBaseType_t uxPriority;
 
 	vListInitialise( ( List_t * ) &xDelayedCoRoutineList1 );
      808:	01020034 	movhi	r4,2048
-     80c:	2109c804 	addi	r4,r4,10016
+     80c:	2109ce04 	addi	r4,r4,10040
      810:	00014040 	call	1404 <vListInitialise>
 	vListInitialise( ( List_t * ) &xDelayedCoRoutineList2 );
      814:	01020034 	movhi	r4,2048
-     818:	2109cd04 	addi	r4,r4,10036
+     818:	2109d304 	addi	r4,r4,10060
      81c:	00014040 	call	1404 <vListInitialise>
 	vListInitialise( ( List_t * ) &xPendingReadyCoRoutineList );
      820:	01020034 	movhi	r4,2048
-     824:	2109d204 	addi	r4,r4,10056
+     824:	2109d804 	addi	r4,r4,10080
      828:	00014040 	call	1404 <vListInitialise>
 
 	/* Start with pxDelayedCoRoutineList using list1 and the
 	pxOverflowDelayedCoRoutineList using list2. */
 	pxDelayedCoRoutineList = &xDelayedCoRoutineList1;
      82c:	00820034 	movhi	r2,2048
-     830:	1089c804 	addi	r2,r2,10016
+     830:	1089ce04 	addi	r2,r2,10040
      834:	d0a01c15 	stw	r2,-32656(gp)
 	pxOverflowDelayedCoRoutineList = &xDelayedCoRoutineList2;
      838:	00820034 	movhi	r2,2048
-     83c:	1089cd04 	addi	r2,r2,10036
+     83c:	1089d304 	addi	r2,r2,10060
      840:	d0a01d15 	stw	r2,-32652(gp)
 }
      844:	0001883a 	nop
@@ -1903,7 +1903,7 @@ BaseType_t xReturn;
      894:	10800604 	addi	r2,r2,24
      898:	100b883a 	mov	r5,r2
      89c:	01020034 	movhi	r4,2048
-     8a0:	2109d204 	addi	r4,r4,10056
+     8a0:	2109d804 	addi	r4,r4,10080
      8a4:	00014980 	call	1498 <vListInsertEnd>
 
 	if( pxUnblockedCRCB->uxPriority >= pxCurrentCoRoutine->uxPriority )
@@ -3146,7 +3146,7 @@ static void prvHeapInit( void )
         blocks.  The void cast is used to prevent compiler warnings. */
         xStart.pxNextFreeBlock = ( void * ) xHeap.ucHeap;
     121c:	00820034 	movhi	r2,2048
-    1220:	1089d704 	addi	r2,r2,10076
+    1220:	1089dd04 	addi	r2,r2,10100
     1224:	d0a02315 	stw	r2,-32628(gp)
         xStart.xBlockSize = ( size_t ) 0;
     1228:	d0202415 	stw	zero,-32624(gp)
@@ -3157,7 +3157,7 @@ static void prvHeapInit( void )
     122c:	00c00234 	movhi	r3,8
     1230:	18f40004 	addi	r3,r3,-12288
     1234:	00820034 	movhi	r2,2048
-    1238:	1089d704 	addi	r2,r2,10076
+    1238:	1089dd04 	addi	r2,r2,10100
     123c:	1885883a 	add	r2,r3,r2
     1240:	e0bffe15 	stw	r2,-8(fp)
         pucHeapEnd -= heapSTRUCT_SIZE;
@@ -3182,7 +3182,7 @@ static void prvHeapInit( void )
         entire heap space, minus the space taken by pxEnd. */
         pxFirstFreeBlock = ( void * ) xHeap.ucHeap;
     1274:	00820034 	movhi	r2,2048
-    1278:	1089d704 	addi	r2,r2,10076
+    1278:	1089dd04 	addi	r2,r2,10100
     127c:	e0bfff15 	stw	r2,-4(fp)
         pxFirstFreeBlock->xBlockSize = xTotalHeapSize - heapSTRUCT_SIZE;
     1280:	00800234 	movhi	r2,8
@@ -3976,7 +3976,7 @@ static ALT_INLINE alt_irq_context ALT_ALWAYS_INLINE
 	
 		alt_irq[id].handler = handler;
     196c:	00820234 	movhi	r2,2056
-    1970:	10be3b04 	addi	r2,r2,-1812
+    1970:	10be4104 	addi	r2,r2,-1788
     1974:	e0fffd17 	ldw	r3,-12(fp)
     1978:	180690fa 	slli	r3,r3,3
     197c:	10c5883a 	add	r2,r2,r3
@@ -3984,7 +3984,7 @@ static ALT_INLINE alt_irq_context ALT_ALWAYS_INLINE
     1984:	10c00015 	stw	r3,0(r2)
 		alt_irq[id].context = context;
     1988:	00820234 	movhi	r2,2056
-    198c:	10be3b04 	addi	r2,r2,-1812
+    198c:	10be4104 	addi	r2,r2,-1788
     1990:	e0fffd17 	ldw	r3,-12(fp)
     1994:	180690fa 	slli	r3,r3,3
     1998:	10c5883a 	add	r2,r2,r3
@@ -6502,7 +6502,7 @@ BaseType_t xTaskGenericCreate( TaskFunction_t pxTaskCode, const char * const pcN
     2cbc:	10800b17 	ldw	r2,44(r2)
     2cc0:	10c00524 	muli	r3,r2,20
     2cc4:	00820234 	movhi	r2,2056
-    2cc8:	10bdd704 	addi	r2,r2,-2212
+    2cc8:	10bddd04 	addi	r2,r2,-2188
     2ccc:	1887883a 	add	r3,r3,r2
     2cd0:	e0bffa17 	ldw	r2,-24(fp)
     2cd4:	10800104 	addi	r2,r2,4
@@ -6621,7 +6621,7 @@ BaseType_t xTaskGenericCreate( TaskFunction_t pxTaskCode, const char * const pcN
     2d9c:	10800104 	addi	r2,r2,4
     2da0:	100b883a 	mov	r5,r2
     2da4:	01020234 	movhi	r4,2056
-    2da8:	213e2204 	addi	r4,r4,-1912
+    2da8:	213e2804 	addi	r4,r4,-1888
     2dac:	00014980 	call	1498 <vListInsertEnd>
 
 			/* Increment the ucTasksDeleted variable so the idle task knows
@@ -6970,7 +6970,7 @@ BaseType_t xAlreadyYielded = pdFALSE;
 				{
 					pxTCB = ( TCB_t * ) listGET_OWNER_OF_HEAD_ENTRY( ( &xPendingReadyList ) );
     2fd0:	00820234 	movhi	r2,2056
-    2fd4:	10be1d04 	addi	r2,r2,-1932
+    2fd4:	10be2304 	addi	r2,r2,-1908
     2fd8:	10800317 	ldw	r2,12(r2)
     2fdc:	10800317 	ldw	r2,12(r2)
     2fe0:	e0bfff15 	stw	r2,-4(fp)
@@ -6996,7 +6996,7 @@ BaseType_t xAlreadyYielded = pdFALSE;
     3024:	10800b17 	ldw	r2,44(r2)
     3028:	10c00524 	muli	r3,r2,20
     302c:	00820234 	movhi	r2,2056
-    3030:	10bdd704 	addi	r2,r2,-2212
+    3030:	10bddd04 	addi	r2,r2,-2188
     3034:	1887883a 	add	r3,r3,r2
     3038:	e0bfff17 	ldw	r2,-4(fp)
     303c:	10800104 	addi	r2,r2,4
@@ -7023,7 +7023,7 @@ BaseType_t xAlreadyYielded = pdFALSE;
 				appropriate ready list. */
 				while( listLIST_IS_EMPTY( &xPendingReadyList ) == pdFALSE )
     3068:	00820234 	movhi	r2,2056
-    306c:	10be1d04 	addi	r2,r2,-1932
+    306c:	10be2304 	addi	r2,r2,-1908
     3070:	10800017 	ldw	r2,0(r2)
     3074:	103fd61e 	bne	r2,zero,2fd0 <__alt_data_end+0xf0002fd0>
 
@@ -7326,7 +7326,7 @@ BaseType_t xSwitchRequired = pdFALSE;
     3268:	10800b17 	ldw	r2,44(r2)
     326c:	10c00524 	muli	r3,r2,20
     3270:	00820234 	movhi	r2,2056
-    3274:	10bdd704 	addi	r2,r2,-2212
+    3274:	10bddd04 	addi	r2,r2,-2188
     3278:	1887883a 	add	r3,r3,r2
     327c:	e0bffe17 	ldw	r2,-8(fp)
     3280:	10800104 	addi	r2,r2,4
@@ -7364,7 +7364,7 @@ BaseType_t xSwitchRequired = pdFALSE;
     32b0:	d0a02617 	ldw	r2,-32616(gp)
     32b4:	10c00b17 	ldw	r3,44(r2)
     32b8:	00820234 	movhi	r2,2056
-    32bc:	10bdd704 	addi	r2,r2,-2212
+    32bc:	10bddd04 	addi	r2,r2,-2188
     32c0:	18c00524 	muli	r3,r3,20
     32c4:	10c5883a 	add	r2,r2,r3
     32c8:	10800017 	ldw	r2,0(r2)
@@ -7486,7 +7486,7 @@ void vTaskSwitchContext( void )
     33ac:	d0a02c15 	stw	r2,-32592(gp)
     33b0:	d0e02c17 	ldw	r3,-32592(gp)
     33b4:	00820234 	movhi	r2,2056
-    33b8:	10bdd704 	addi	r2,r2,-2212
+    33b8:	10bddd04 	addi	r2,r2,-2188
     33bc:	18c00524 	muli	r3,r3,20
     33c0:	10c5883a 	add	r2,r2,r3
     33c4:	10800017 	ldw	r2,0(r2)
@@ -7494,7 +7494,7 @@ void vTaskSwitchContext( void )
     33cc:	d0a02c17 	ldw	r2,-32592(gp)
     33d0:	10c00524 	muli	r3,r2,20
     33d4:	00820234 	movhi	r2,2056
-    33d8:	10bdd704 	addi	r2,r2,-2212
+    33d8:	10bddd04 	addi	r2,r2,-2188
     33dc:	1885883a 	add	r2,r3,r2
     33e0:	e0bfff15 	stw	r2,-4(fp)
     33e4:	e0bfff17 	ldw	r2,-4(fp)
@@ -7754,7 +7754,7 @@ BaseType_t xTaskRemoveFromEventList( const List_t * const pxEventList )
     360c:	10800b17 	ldw	r2,44(r2)
     3610:	10c00524 	muli	r3,r2,20
     3614:	00820234 	movhi	r2,2056
-    3618:	10bdd704 	addi	r2,r2,-2212
+    3618:	10bddd04 	addi	r2,r2,-2188
     361c:	1887883a 	add	r3,r3,r2
     3620:	e0bffe17 	ldw	r2,-8(fp)
     3624:	10800104 	addi	r2,r2,4
@@ -7772,7 +7772,7 @@ BaseType_t xTaskRemoveFromEventList( const List_t * const pxEventList )
     363c:	10800604 	addi	r2,r2,24
     3640:	100b883a 	mov	r5,r2
     3644:	01020234 	movhi	r4,2056
-    3648:	213e1d04 	addi	r4,r4,-1932
+    3648:	213e2304 	addi	r4,r4,-1908
     364c:	00014980 	call	1498 <vListInsertEnd>
 	}
 
@@ -7868,7 +7868,7 @@ BaseType_t xTaskRemoveFromUnorderedEventList( ListItem_t * pxEventListItem, cons
     3700:	10800b17 	ldw	r2,44(r2)
     3704:	10c00524 	muli	r3,r2,20
     3708:	00820234 	movhi	r2,2056
-    370c:	10bdd704 	addi	r2,r2,-2212
+    370c:	10bddd04 	addi	r2,r2,-2188
     3710:	1887883a 	add	r3,r3,r2
     3714:	e0bffd17 	ldw	r2,-12(fp)
     3718:	10800104 	addi	r2,r2,4
@@ -8263,7 +8263,7 @@ UBaseType_t uxPriority;
     3a14:	e0bfff17 	ldw	r2,-4(fp)
     3a18:	10c00524 	muli	r3,r2,20
     3a1c:	00820234 	movhi	r2,2056
-    3a20:	10bdd704 	addi	r2,r2,-2212
+    3a20:	10bddd04 	addi	r2,r2,-2188
     3a24:	1885883a 	add	r2,r3,r2
     3a28:	1009883a 	mov	r4,r2
     3a2c:	00014040 	call	1404 <vListInitialise>
@@ -8285,22 +8285,22 @@ UBaseType_t uxPriority;
 
 	vListInitialise( &xDelayedTaskList1 );
     3a48:	01020234 	movhi	r4,2056
-    3a4c:	213e1304 	addi	r4,r4,-1972
+    3a4c:	213e1904 	addi	r4,r4,-1948
     3a50:	00014040 	call	1404 <vListInitialise>
 	vListInitialise( &xDelayedTaskList2 );
     3a54:	01020234 	movhi	r4,2056
-    3a58:	213e1804 	addi	r4,r4,-1952
+    3a58:	213e1e04 	addi	r4,r4,-1928
     3a5c:	00014040 	call	1404 <vListInitialise>
 	vListInitialise( &xPendingReadyList );
     3a60:	01020234 	movhi	r4,2056
-    3a64:	213e1d04 	addi	r4,r4,-1932
+    3a64:	213e2304 	addi	r4,r4,-1908
     3a68:	00014040 	call	1404 <vListInitialise>
 
 	#if ( INCLUDE_vTaskDelete == 1 )
 	{
 		vListInitialise( &xTasksWaitingTermination );
     3a6c:	01020234 	movhi	r4,2056
-    3a70:	213e2204 	addi	r4,r4,-1912
+    3a70:	213e2804 	addi	r4,r4,-1888
     3a74:	00014040 	call	1404 <vListInitialise>
 	}
 	#endif /* INCLUDE_vTaskSuspend */
@@ -8309,11 +8309,11 @@ UBaseType_t uxPriority;
 	using list2. */
 	pxDelayedTaskList = &xDelayedTaskList1;
     3a78:	00820234 	movhi	r2,2056
-    3a7c:	10be1304 	addi	r2,r2,-1972
+    3a7c:	10be1904 	addi	r2,r2,-1948
     3a80:	d0a02715 	stw	r2,-32612(gp)
 	pxOverflowDelayedTaskList = &xDelayedTaskList2;
     3a84:	00820234 	movhi	r2,2056
-    3a88:	10be1804 	addi	r2,r2,-1952
+    3a88:	10be1e04 	addi	r2,r2,-1928
     3a8c:	d0a02815 	stw	r2,-32608(gp)
 }
     3a90:	0001883a 	nop
@@ -8345,7 +8345,7 @@ static void prvCheckTasksWaitingTermination( void )
 			{
 				xListIsEmpty = listLIST_IS_EMPTY( &xTasksWaitingTermination );
     3ac0:	00820234 	movhi	r2,2056
-    3ac4:	10be2204 	addi	r2,r2,-1912
+    3ac4:	10be2804 	addi	r2,r2,-1888
     3ac8:	10800017 	ldw	r2,0(r2)
     3acc:	1005003a 	cmpeq	r2,r2,zero
     3ad0:	10803fcc 	andi	r2,r2,255
@@ -8365,7 +8365,7 @@ static void prvCheckTasksWaitingTermination( void )
 				{
 					pxTCB = ( TCB_t * ) listGET_OWNER_OF_HEAD_ENTRY( ( &xTasksWaitingTermination ) );
     3ae8:	00820234 	movhi	r2,2056
-    3aec:	10be2204 	addi	r2,r2,-1912
+    3aec:	10be2804 	addi	r2,r2,-1888
     3af0:	10800317 	ldw	r2,12(r2)
     3af4:	10800317 	ldw	r2,12(r2)
     3af8:	e0bfff15 	stw	r2,-4(fp)
@@ -8911,7 +8911,7 @@ TCB_t *pxTCB;
     3eec:	10800b17 	ldw	r2,44(r2)
     3ef0:	11000524 	muli	r4,r2,20
     3ef4:	00820234 	movhi	r2,2056
-    3ef8:	10bdd704 	addi	r2,r2,-2212
+    3ef8:	10bddd04 	addi	r2,r2,-2188
     3efc:	2085883a 	add	r2,r4,r2
     3f00:	1880021e 	bne	r3,r2,3f0c <vTaskPriorityInherit+0x88>
     3f04:	00800044 	movi	r2,1
@@ -8947,7 +8947,7 @@ TCB_t *pxTCB;
     3f58:	10800b17 	ldw	r2,44(r2)
     3f5c:	10c00524 	muli	r3,r2,20
     3f60:	00820234 	movhi	r2,2056
-    3f64:	10bdd704 	addi	r2,r2,-2212
+    3f64:	10bddd04 	addi	r2,r2,-2188
     3f68:	1887883a 	add	r3,r3,r2
     3f6c:	e0bffe17 	ldw	r2,-8(fp)
     3f70:	10800104 	addi	r2,r2,4
@@ -9069,7 +9069,7 @@ TCB_t *pxTCB;
     4060:	10800b17 	ldw	r2,44(r2)
     4064:	10c00524 	muli	r3,r2,20
     4068:	00820234 	movhi	r2,2056
-    406c:	10bdd704 	addi	r2,r2,-2212
+    406c:	10bddd04 	addi	r2,r2,-2188
     4070:	1887883a 	add	r3,r3,r2
     4074:	e0bffe17 	ldw	r2,-8(fp)
     4078:	10800104 	addi	r2,r2,4
@@ -9678,7 +9678,7 @@ TickType_t uxReturn;
     44d8:	10800b17 	ldw	r2,44(r2)
     44dc:	10c00524 	muli	r3,r2,20
     44e0:	00820234 	movhi	r2,2056
-    44e4:	10bdd704 	addi	r2,r2,-2212
+    44e4:	10bddd04 	addi	r2,r2,-2188
     44e8:	1887883a 	add	r3,r3,r2
     44ec:	e0bffb17 	ldw	r2,-20(fp)
     44f0:	10800104 	addi	r2,r2,4
@@ -9872,7 +9872,7 @@ TickType_t uxReturn;
     466c:	10800b17 	ldw	r2,44(r2)
     4670:	10c00524 	muli	r3,r2,20
     4674:	00820234 	movhi	r2,2056
-    4678:	10bdd704 	addi	r2,r2,-2212
+    4678:	10bddd04 	addi	r2,r2,-2188
     467c:	1887883a 	add	r3,r3,r2
     4680:	e0bff917 	ldw	r2,-28(fp)
     4684:	10800104 	addi	r2,r2,4
@@ -9890,7 +9890,7 @@ TickType_t uxReturn;
     469c:	10800604 	addi	r2,r2,24
     46a0:	100b883a 	mov	r5,r2
     46a4:	01020234 	movhi	r4,2056
-    46a8:	213e1d04 	addi	r4,r4,-1932
+    46a8:	213e2304 	addi	r4,r4,-1908
     46ac:	00014980 	call	1498 <vListInsertEnd>
 				}
 
@@ -9999,7 +9999,7 @@ TickType_t uxReturn;
     4784:	10800b17 	ldw	r2,44(r2)
     4788:	10c00524 	muli	r3,r2,20
     478c:	00820234 	movhi	r2,2056
-    4790:	10bdd704 	addi	r2,r2,-2212
+    4790:	10bddd04 	addi	r2,r2,-2188
     4794:	1887883a 	add	r3,r3,r2
     4798:	e0bffb17 	ldw	r2,-20(fp)
     479c:	10800104 	addi	r2,r2,4
@@ -10017,7 +10017,7 @@ TickType_t uxReturn;
     47b4:	10800604 	addi	r2,r2,24
     47b8:	100b883a 	mov	r5,r2
     47bc:	01020234 	movhi	r4,2056
-    47c0:	213e1d04 	addi	r4,r4,-1932
+    47c0:	213e2304 	addi	r4,r4,-1908
     47c4:	00014980 	call	1498 <vListInsertEnd>
 				}
 
@@ -11052,19 +11052,19 @@ static void prvCheckForValidListAndQueue( void )
 		{
 			vListInitialise( &xActiveTimerList1 );
     5024:	01020234 	movhi	r4,2056
-    5028:	213e2704 	addi	r4,r4,-1892
+    5028:	213e2d04 	addi	r4,r4,-1868
     502c:	00014040 	call	1404 <vListInitialise>
 			vListInitialise( &xActiveTimerList2 );
     5030:	01020234 	movhi	r4,2056
-    5034:	213e2c04 	addi	r4,r4,-1872
+    5034:	213e3204 	addi	r4,r4,-1848
     5038:	00014040 	call	1404 <vListInitialise>
 			pxCurrentTimerList = &xActiveTimerList1;
     503c:	00820234 	movhi	r2,2056
-    5040:	10be2704 	addi	r2,r2,-1892
+    5040:	10be2d04 	addi	r2,r2,-1868
     5044:	d0a03315 	stw	r2,-32564(gp)
 			pxOverflowTimerList = &xActiveTimerList2;
     5048:	00820234 	movhi	r2,2056
-    504c:	10be2c04 	addi	r2,r2,-1872
+    504c:	10be3204 	addi	r2,r2,-1848
     5050:	d0a03415 	stw	r2,-32560(gp)
 			xTimerQueue = xQueueCreate( ( UBaseType_t ) configTIMER_QUEUE_LENGTH, sizeof( DaemonTaskMessage_t ) );
     5054:	000d883a 	mov	r6,zero
@@ -11711,7 +11711,6 @@ static void Peak_Detector_handlerTask(void *pvParameters)
     5670:	1009883a 	mov	r4,r2
     5674:	0001edc0 	call	1edc <xQueueGenericSend>
 
-
                     //Reset the timer cus no need to repeat action
                     repeatActionTimeout = false;
     5678:	d0203d05 	stb	zero,-32524(gp)
@@ -11727,18 +11726,18 @@ static void Peak_Detector_handlerTask(void *pvParameters)
     569c:	10800060 	cmpeqi	r2,r2,1
     56a0:	1000211e 	bne	r2,zero,5728 <Peak_Detector_handlerTask+0x260>
                     {
-                        printf("Cannot reset timer\n");
+                        printf("Cannot reset timer\n\r");
     56a4:	01020034 	movhi	r4,2048
     56a8:	21003f04 	addi	r4,r4,252
-    56ac:	00073200 	call	7320 <puts>
-                    xQueueSendToBack(Load_Control_Q, &thresholdEval, pdFALSE);
+    56ac:	00072240 	call	7224 <printf>
 
+                    xQueueSendToBack(Load_Control_Q, &thresholdEval, pdFALSE);
 
                     //Reset the timer cus no need to repeat action
                     repeatActionTimeout = false;
                     if (xTimerStart(repeatActionTimer, 0) != pdPASS)
     56b0:	00001d06 	br	5728 <Peak_Detector_handlerTask+0x260>
-                        printf("Cannot reset timer\n");
+                        printf("Cannot reset timer\n\r");
                     }
                 }
 
@@ -11778,7 +11777,7 @@ static void Peak_Detector_handlerTask(void *pvParameters)
                     {
                         printf("Cannot reset timer\n");
     571c:	01020034 	movhi	r4,2048
-    5720:	21003f04 	addi	r4,r4,252
+    5720:	21004504 	addi	r4,r4,276
     5724:	00073200 	call	7320 <puts>
                     }
                 }
@@ -11826,7 +11825,7 @@ static void Peak_Detector_initDataStructs()
     5784:	01800044 	movi	r6,1
     5788:	01407d04 	movi	r5,500
     578c:	01020034 	movhi	r4,2048
-    5790:	21004404 	addi	r4,r4,272
+    5790:	21004a04 	addi	r4,r4,296
     5794:	00048740 	call	4874 <xTimerCreate>
     5798:	d0a04015 	stw	r2,-32512(gp)
     Peak_Detector_Q = xQueueCreate(PEAK_DETECTOR_Q_SIZE, sizeof(PEAK_DETECTOR_Q_TYPE));
@@ -11913,7 +11912,7 @@ int switch_polling_init(){
     587c:	000f883a 	mov	r7,zero
     5880:	01840004 	movi	r6,4096
     5884:	01420034 	movhi	r5,2048
-    5888:	29404904 	addi	r5,r5,292
+    5888:	29404f04 	addi	r5,r5,316
     588c:	01000034 	movhi	r4,0
     5890:	21163004 	addi	r4,r4,22720
     5894:	0002b780 	call	2b78 <xTaskGenericCreate>
@@ -11961,46 +11960,47 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     5904:	1009883a 	mov	r4,r2
     5908:	000222c0 	call	222c <xQueueGenericReceive>
     590c:	10800058 	cmpnei	r2,r2,1
-    5910:	1000161e 	bne	r2,zero,596c <Switch_Polling_handlerTask+0xac>
-			vTaskDelay(pdMS_TO_TICKS(500));
-    5914:	01007d04 	movi	r4,500
-    5918:	0002e0c0 	call	2e0c <vTaskDelay>
-			//Cant turn on load when in managing
+    5910:	1000141e 	bne	r2,zero,5964 <Switch_Polling_handlerTask+0xa4>
+				//printf("LoadSwithSemaphor\n\r");
 				if (SystemStatus == SYSTEM_MANAGING){
-    591c:	d0a03917 	ldw	r2,-32540(gp)
-    5920:	10800058 	cmpnei	r2,r2,1
-    5924:	1000071e 	bne	r2,zero,5944 <Switch_Polling_handlerTask+0x84>
+    5914:	d0a03917 	ldw	r2,-32540(gp)
+    5918:	10800058 	cmpnei	r2,r2,1
+    591c:	1000071e 	bne	r2,zero,593c <Switch_Polling_handlerTask+0x7c>
 					LoadSwitchStatus &= IORD_ALTERA_AVALON_PIO_DATA(SLIDE_SWITCH_BASE);
-    5928:	00800134 	movhi	r2,4
-    592c:	108c2c04 	addi	r2,r2,12464
-    5930:	10c00037 	ldwio	r3,0(r2)
-    5934:	d0a04217 	ldw	r2,-32504(gp)
-    5938:	1884703a 	and	r2,r3,r2
-    593c:	d0a04215 	stw	r2,-32504(gp)
-    5940:	00000406 	br	5954 <Switch_Polling_handlerTask+0x94>
+    5920:	00800134 	movhi	r2,4
+    5924:	108c2c04 	addi	r2,r2,12464
+    5928:	10c00037 	ldwio	r3,0(r2)
+    592c:	d0a04217 	ldw	r2,-32504(gp)
+    5930:	1884703a 	and	r2,r3,r2
+    5934:	d0a04215 	stw	r2,-32504(gp)
+    5938:	00000406 	br	594c <Switch_Polling_handlerTask+0x8c>
 				} else{
 					LoadSwitchStatus = IORD_ALTERA_AVALON_PIO_DATA(SLIDE_SWITCH_BASE);
-    5944:	00800134 	movhi	r2,4
-    5948:	108c2c04 	addi	r2,r2,12464
-    594c:	10800037 	ldwio	r2,0(r2)
-    5950:	d0a04215 	stw	r2,-32504(gp)
+    593c:	00800134 	movhi	r2,4
+    5940:	108c2c04 	addi	r2,r2,12464
+    5944:	10800037 	ldwio	r2,0(r2)
+    5948:	d0a04215 	stw	r2,-32504(gp)
 				}
 
 				xSemaphoreGive(LoadSwitchStatusMutex);
-    5954:	d0a04317 	ldw	r2,-32500(gp)
-    5958:	000f883a 	mov	r7,zero
-    595c:	000d883a 	mov	r6,zero
-    5960:	000b883a 	mov	r5,zero
-    5964:	1009883a 	mov	r4,r2
-    5968:	0001edc0 	call	1edc <xQueueGenericSend>
+    594c:	d0a04317 	ldw	r2,-32500(gp)
+    5950:	000f883a 	mov	r7,zero
+    5954:	000d883a 	mov	r6,zero
+    5958:	000b883a 	mov	r5,zero
+    595c:	1009883a 	mov	r4,r2
+    5960:	0001edc0 	call	1edc <xQueueGenericSend>
 			}
 			xSemaphoreGive(SystemStatusMutex);
-    596c:	d0a03a17 	ldw	r2,-32536(gp)
-    5970:	000f883a 	mov	r7,zero
-    5974:	000d883a 	mov	r6,zero
-    5978:	000b883a 	mov	r5,zero
-    597c:	1009883a 	mov	r4,r2
-    5980:	0001edc0 	call	1edc <xQueueGenericSend>
+    5964:	d0a03a17 	ldw	r2,-32536(gp)
+    5968:	000f883a 	mov	r7,zero
+    596c:	000d883a 	mov	r6,zero
+    5970:	000b883a 	mov	r5,zero
+    5974:	1009883a 	mov	r4,r2
+    5978:	0001edc0 	call	1edc <xQueueGenericSend>
+			//must delay when giving the semaphore so that the task wont take it again before the other
+			vTaskDelay(pdMS_TO_TICKS(500));
+    597c:	01007d04 	movi	r4,500
+    5980:	0002e0c0 	call	2e0c <vTaskDelay>
 		}
 	}
     5984:	003fd306 	br	58d4 <__alt_data_end+0xf00058d4>
@@ -13278,7 +13278,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     6d1c:	00c00604 	movi	r3,24
     6d20:	20c8d83a 	srl	r4,r4,r3
     6d24:	00c20034 	movhi	r3,2048
-    6d28:	18c04fc4 	addi	r3,r3,319
+    6d28:	18c055c4 	addi	r3,r3,343
     6d2c:	1909883a 	add	r4,r3,r4
     6d30:	20c00003 	ldbu	r3,0(r4)
     6d34:	10c5c83a 	sub	r2,r2,r3
@@ -13621,7 +13621,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     7230:	d9800215 	stw	r6,8(sp)
     7234:	d9c00315 	stw	r7,12(sp)
     7238:	00820034 	movhi	r2,2048
-    723c:	10897604 	addi	r2,r2,9688
+    723c:	10897c04 	addi	r2,r2,9712
     7240:	10800017 	ldw	r2,0(r2)
     7244:	200b883a 	mov	r5,r4
     7248:	d9800104 	addi	r6,sp,4
@@ -13643,7 +13643,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     7280:	10c00044 	addi	r3,r2,1
     7284:	d8800115 	stw	r2,4(sp)
     7288:	00820034 	movhi	r2,2048
-    728c:	10809004 	addi	r2,r2,576
+    728c:	10809604 	addi	r2,r2,600
     7290:	d8800215 	stw	r2,8(sp)
     7294:	00800044 	movi	r2,1
     7298:	d8800315 	stw	r2,12(sp)
@@ -13683,7 +13683,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
 
 00007320 <puts>:
     7320:	00820034 	movhi	r2,2048
-    7324:	10897604 	addi	r2,r2,9688
+    7324:	10897c04 	addi	r2,r2,9712
     7328:	200b883a 	mov	r5,r4
     732c:	11000017 	ldw	r4,0(r2)
     7330:	00072601 	jmpi	7260 <_puts_r>
@@ -13773,7 +13773,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     7470:	d8c00404 	addi	r3,sp,16
     7474:	05020034 	movhi	r20,2048
     7478:	d9001e04 	addi	r4,sp,120
-    747c:	a500a184 	addi	r20,r20,646
+    747c:	a500a784 	addi	r20,r20,670
     7480:	d8c01e15 	stw	r3,120(sp)
     7484:	d8002015 	stw	zero,128(sp)
     7488:	d8001f15 	stw	zero,124(sp)
@@ -13949,7 +13949,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     7730:	94800094 	ori	r18,r18,2
     7734:	9802871e 	bne	r19,zero,8154 <___vfprintf_internal_r+0xd88>
     7738:	00820034 	movhi	r2,2048
-    773c:	10809a04 	addi	r2,r2,616
+    773c:	1080a004 	addi	r2,r2,640
     7740:	d8803915 	stw	r2,228(sp)
     7744:	04401e04 	movi	r17,120
     7748:	d8802917 	ldw	r2,164(sp)
@@ -14126,7 +14126,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     79f4:	008011c4 	movi	r2,71
     79f8:	1445330e 	bge	r2,r17,8ec8 <___vfprintf_internal_r+0x1afc>
     79fc:	04020034 	movhi	r16,2048
-    7a00:	84009204 	addi	r16,r16,584
+    7a00:	84009804 	addi	r16,r16,608
     7a04:	00c000c4 	movi	r3,3
     7a08:	00bfdfc4 	movi	r2,-129
     7a0c:	d8c02a15 	stw	r3,168(sp)
@@ -14215,7 +14215,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     7b58:	d8801f17 	ldw	r2,124(sp)
     7b5c:	4cc50d0e 	bge	r9,r19,8f94 <___vfprintf_internal_r+0x1bc8>
     7b60:	01420034 	movhi	r5,2048
-    7b64:	2940a584 	addi	r5,r5,662
+    7b64:	2940ab84 	addi	r5,r5,686
     7b68:	dc403b15 	stw	r17,236(sp)
     7b6c:	d9403515 	stw	r5,212(sp)
     7b70:	9823883a 	mov	r17,r19
@@ -14231,7 +14231,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     7b98:	01020034 	movhi	r4,2048
     7b9c:	18c00404 	addi	r3,r3,16
     7ba0:	10800044 	addi	r2,r2,1
-    7ba4:	2100a584 	addi	r4,r4,662
+    7ba4:	2100ab84 	addi	r4,r4,686
     7ba8:	41000015 	stw	r4,0(r8)
     7bac:	45800115 	stw	r22,4(r8)
     7bb0:	d8c02015 	stw	r3,128(sp)
@@ -14300,7 +14300,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     7cac:	d8801f17 	ldw	r2,124(sp)
     7cb0:	e584140e 	bge	fp,r22,8d04 <___vfprintf_internal_r+0x1938>
     7cb4:	01420034 	movhi	r5,2048
-    7cb8:	2940a184 	addi	r5,r5,646
+    7cb8:	2940a784 	addi	r5,r5,670
     7cbc:	dc402915 	stw	r17,164(sp)
     7cc0:	d9402b15 	stw	r5,172(sp)
     7cc4:	b023883a 	mov	r17,r22
@@ -14368,7 +14368,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     7dbc:	d8801f17 	ldw	r2,124(sp)
     7dc0:	8c04a20e 	bge	r17,r16,904c <___vfprintf_internal_r+0x1c80>
     7dc4:	01420034 	movhi	r5,2048
-    7dc8:	2940a584 	addi	r5,r5,662
+    7dc8:	2940ab84 	addi	r5,r5,686
     7dcc:	d9403515 	stw	r5,212(sp)
     7dd0:	048001c4 	movi	r18,7
     7dd4:	dcc02c17 	ldw	r19,176(sp)
@@ -14379,7 +14379,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     7de8:	01020034 	movhi	r4,2048
     7dec:	18c00404 	addi	r3,r3,16
     7df0:	10800044 	addi	r2,r2,1
-    7df4:	2100a584 	addi	r4,r4,662
+    7df4:	2100ab84 	addi	r4,r4,686
     7df8:	41000015 	stw	r4,0(r8)
     7dfc:	44400115 	stw	r17,4(r8)
     7e00:	d8c02015 	stw	r3,128(sp)
@@ -14451,7 +14451,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     7f08:	18c03fcc 	andi	r3,r3,255
     7f0c:	18059d1e 	bne	r3,zero,9584 <___vfprintf_internal_r+0x21b8>
     7f10:	01420034 	movhi	r5,2048
-    7f14:	29409504 	addi	r5,r5,596
+    7f14:	29409b04 	addi	r5,r5,620
     7f18:	d9403915 	stw	r5,228(sp)
     7f1c:	9080080c 	andi	r2,r18,32
     7f20:	10005226 	beq	r2,zero,806c <___vfprintf_internal_r+0xca0>
@@ -14533,7 +14533,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     8050:	18c03fcc 	andi	r3,r3,255
     8054:	1805551e 	bne	r3,zero,95ac <___vfprintf_internal_r+0x21e0>
     8058:	01420034 	movhi	r5,2048
-    805c:	29409a04 	addi	r5,r5,616
+    805c:	2940a004 	addi	r5,r5,640
     8060:	d9403915 	stw	r5,228(sp)
     8064:	9080080c 	andi	r2,r18,32
     8068:	103fae1e 	bne	r2,zero,7f24 <__alt_data_end+0xf0007f24>
@@ -14596,7 +14596,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     814c:	0039883a 	mov	fp,zero
     8150:	003e7206 	br	7b1c <__alt_data_end+0xf0007b1c>
     8154:	01020034 	movhi	r4,2048
-    8158:	21009a04 	addi	r4,r4,616
+    8158:	2100a004 	addi	r4,r4,640
     815c:	0039883a 	mov	fp,zero
     8160:	d9003915 	stw	r4,228(sp)
     8164:	04401e04 	movi	r17,120
@@ -14610,7 +14610,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     8184:	d8002785 	stb	zero,158(sp)
     8188:	003fec06 	br	813c <__alt_data_end+0xf000813c>
     818c:	01420034 	movhi	r5,2048
-    8190:	29409a04 	addi	r5,r5,616
+    8190:	2940a004 	addi	r5,r5,640
     8194:	d9403915 	stw	r5,228(sp)
     8198:	d8c02d15 	stw	r3,180(sp)
     819c:	1025883a 	mov	r18,r2
@@ -14641,7 +14641,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     8200:	1000f71e 	bne	r2,zero,85e0 <___vfprintf_internal_r+0x1214>
     8204:	d8801f17 	ldw	r2,124(sp)
     8208:	01020034 	movhi	r4,2048
-    820c:	2100a104 	addi	r4,r4,644
+    820c:	2100a704 	addi	r4,r4,668
     8210:	18c00044 	addi	r3,r3,1
     8214:	10800044 	addi	r2,r2,1
     8218:	41000015 	stw	r4,0(r8)
@@ -14677,7 +14677,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     8290:	d8801f17 	ldw	r2,124(sp)
     8294:	8c00880e 	bge	r17,r16,84b8 <___vfprintf_internal_r+0x10ec>
     8298:	01420034 	movhi	r5,2048
-    829c:	2940a184 	addi	r5,r5,646
+    829c:	2940a784 	addi	r5,r5,670
     82a0:	d9402b15 	stw	r5,172(sp)
     82a4:	058001c4 	movi	r22,7
     82a8:	dcc02c17 	ldw	r19,176(sp)
@@ -14709,7 +14709,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     8310:	d8801f17 	ldw	r2,124(sp)
     8314:	e5838f0e 	bge	fp,r22,9154 <___vfprintf_internal_r+0x1d88>
     8318:	01420034 	movhi	r5,2048
-    831c:	2940a184 	addi	r5,r5,646
+    831c:	2940a784 	addi	r5,r5,670
     8320:	dc403015 	stw	r17,192(sp)
     8324:	d9402b15 	stw	r5,172(sp)
     8328:	b023883a 	mov	r17,r22
@@ -14813,7 +14813,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     84b0:	b2000204 	addi	r8,r22,8
     84b4:	003e3a06 	br	7da0 <__alt_data_end+0xf0007da0>
     84b8:	01020034 	movhi	r4,2048
-    84bc:	2100a184 	addi	r4,r4,646
+    84bc:	2100a784 	addi	r4,r4,670
     84c0:	d9002b15 	stw	r4,172(sp)
     84c4:	d9002b17 	ldw	r4,172(sp)
     84c8:	1c07883a 	add	r3,r3,r16
@@ -14911,7 +14911,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     8638:	d8801f17 	ldw	r2,124(sp)
     863c:	b4419d0e 	bge	r22,r17,8cb4 <___vfprintf_internal_r+0x18e8>
     8640:	01020034 	movhi	r4,2048
-    8644:	2100a184 	addi	r4,r4,646
+    8644:	2100a784 	addi	r4,r4,670
     8648:	d9002b15 	stw	r4,172(sp)
     864c:	070001c4 	movi	fp,7
     8650:	dcc02c17 	ldw	r19,176(sp)
@@ -14982,7 +14982,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     8754:	07000404 	movi	fp,16
     8758:	e400810e 	bge	fp,r16,8960 <___vfprintf_internal_r+0x1594>
     875c:	01420034 	movhi	r5,2048
-    8760:	2940a184 	addi	r5,r5,646
+    8760:	2940a784 	addi	r5,r5,670
     8764:	d9402b15 	stw	r5,172(sp)
     8768:	01c001c4 	movi	r7,7
     876c:	dcc02c17 	ldw	r19,176(sp)
@@ -15074,7 +15074,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     88c4:	d8801f17 	ldw	r2,124(sp)
     88c8:	8c3efb0e 	bge	r17,r16,84b8 <__alt_data_end+0xf00084b8>
     88cc:	01420034 	movhi	r5,2048
-    88d0:	2940a184 	addi	r5,r5,646
+    88d0:	2940a784 	addi	r5,r5,670
     88d4:	d9402b15 	stw	r5,172(sp)
     88d8:	058001c4 	movi	r22,7
     88dc:	dcc02c17 	ldw	r19,176(sp)
@@ -15111,7 +15111,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     8958:	45800204 	addi	r22,r8,8
     895c:	003eca06 	br	8488 <__alt_data_end+0xf0008488>
     8960:	01020034 	movhi	r4,2048
-    8964:	2100a184 	addi	r4,r4,646
+    8964:	2100a784 	addi	r4,r4,670
     8968:	d9002b15 	stw	r4,172(sp)
     896c:	d8802b17 	ldw	r2,172(sp)
     8970:	1c07883a 	add	r3,r3,r16
@@ -15324,7 +15324,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     8cac:	0005883a 	mov	r2,zero
     8cb0:	003d4006 	br	81b4 <__alt_data_end+0xf00081b4>
     8cb4:	01420034 	movhi	r5,2048
-    8cb8:	2940a184 	addi	r5,r5,646
+    8cb8:	2940a784 	addi	r5,r5,670
     8cbc:	d9402b15 	stw	r5,172(sp)
     8cc0:	d9402b17 	ldw	r5,172(sp)
     8cc4:	1c47883a 	add	r3,r3,r17
@@ -15344,7 +15344,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     8cfc:	90a4703a 	and	r18,r18,r2
     8d00:	003a9106 	br	7748 <__alt_data_end+0xf0007748>
     8d04:	01020034 	movhi	r4,2048
-    8d08:	2100a184 	addi	r4,r4,646
+    8d08:	2100a784 	addi	r4,r4,670
     8d0c:	d9002b15 	stw	r4,172(sp)
     8d10:	003c0c06 	br	7d44 <__alt_data_end+0xf0007d44>
     8d14:	d9002c17 	ldw	r4,176(sp)
@@ -15360,7 +15360,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     8d3c:	01000044 	movi	r4,1
     8d40:	18c00044 	addi	r3,r3,1
     8d44:	10800044 	addi	r2,r2,1
-    8d48:	2940a104 	addi	r5,r5,644
+    8d48:	2940a704 	addi	r5,r5,668
     8d4c:	41000115 	stw	r4,4(r8)
     8d50:	41400015 	stw	r5,0(r8)
     8d54:	d8c02015 	stw	r3,128(sp)
@@ -15390,7 +15390,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     8db4:	05800404 	movi	r22,16
     8db8:	b440860e 	bge	r22,r17,8fd4 <___vfprintf_internal_r+0x1c08>
     8dbc:	01420034 	movhi	r5,2048
-    8dc0:	2940a184 	addi	r5,r5,646
+    8dc0:	2940a784 	addi	r5,r5,670
     8dc4:	d9402b15 	stw	r5,172(sp)
     8dc8:	070001c4 	movi	fp,7
     8dcc:	dcc02c17 	ldw	r19,176(sp)
@@ -15419,7 +15419,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     8e28:	008011c4 	movi	r2,71
     8e2c:	1440b816 	blt	r2,r17,9110 <___vfprintf_internal_r+0x1d44>
     8e30:	04020034 	movhi	r16,2048
-    8e34:	84009304 	addi	r16,r16,588
+    8e34:	84009904 	addi	r16,r16,612
     8e38:	00c000c4 	movi	r3,3
     8e3c:	00bfdfc4 	movi	r2,-129
     8e40:	d8c02a15 	stw	r3,168(sp)
@@ -15457,7 +15457,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     8ec0:	203dc10e 	bge	r4,zero,85c8 <__alt_data_end+0xf00085c8>
     8ec4:	003f7506 	br	8c9c <__alt_data_end+0xf0008c9c>
     8ec8:	04020034 	movhi	r16,2048
-    8ecc:	84009104 	addi	r16,r16,580
+    8ecc:	84009704 	addi	r16,r16,604
     8ed0:	003acc06 	br	7a04 <__alt_data_end+0xf0007a04>
     8ed4:	d9002c17 	ldw	r4,176(sp)
     8ed8:	d9801e04 	addi	r6,sp,120
@@ -15508,7 +15508,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     8f8c:	28c7883a 	add	r3,r5,r3
     8f90:	003b7d06 	br	7d88 <__alt_data_end+0xf0007d88>
     8f94:	01020034 	movhi	r4,2048
-    8f98:	2100a584 	addi	r4,r4,662
+    8f98:	2100ab84 	addi	r4,r4,686
     8f9c:	d9003515 	stw	r4,212(sp)
     8fa0:	003b1406 	br	7bf4 <__alt_data_end+0xf0007bf4>
     8fa4:	013fffc4 	movi	r4,-1
@@ -15524,7 +15524,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     8fcc:	da000404 	addi	r8,sp,16
     8fd0:	003d9406 	br	8624 <__alt_data_end+0xf0008624>
     8fd4:	01020034 	movhi	r4,2048
-    8fd8:	2100a184 	addi	r4,r4,646
+    8fd8:	2100a784 	addi	r4,r4,670
     8fdc:	d9002b15 	stw	r4,172(sp)
     8fe0:	d9002b17 	ldw	r4,172(sp)
     8fe4:	1c47883a 	add	r3,r3,r17
@@ -15554,7 +15554,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     9044:	10fbcb26 	beq	r2,r3,7f74 <__alt_data_end+0xf0007f74>
     9048:	003a8f06 	br	7a88 <__alt_data_end+0xf0007a88>
     904c:	01020034 	movhi	r4,2048
-    9050:	2100a584 	addi	r4,r4,662
+    9050:	2100ab84 	addi	r4,r4,686
     9054:	d9003515 	stw	r4,212(sp)
     9058:	003b7606 	br	7e34 <__alt_data_end+0xf0007e34>
     905c:	d8802917 	ldw	r2,164(sp)
@@ -15568,7 +15568,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     907c:	dcc02d15 	stw	r19,180(sp)
     9080:	d8002915 	stw	zero,164(sp)
     9084:	d8003215 	stw	zero,200(sp)
-    9088:	84009f04 	addi	r16,r16,636
+    9088:	8400a504 	addi	r16,r16,660
     908c:	0039883a 	mov	fp,zero
     9090:	003aa206 	br	7b1c <__alt_data_end+0xf0007b1c>
     9094:	0021883a 	mov	r16,zero
@@ -15603,7 +15603,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     9108:	07000b44 	movi	fp,45
     910c:	003a8006 	br	7b10 <__alt_data_end+0xf0007b10>
     9110:	04020034 	movhi	r16,2048
-    9114:	84009404 	addi	r16,r16,592
+    9114:	84009a04 	addi	r16,r16,616
     9118:	003f4706 	br	8e38 <__alt_data_end+0xf0008e38>
     911c:	d8c02d17 	ldw	r3,180(sp)
     9120:	d9002f17 	ldw	r4,188(sp)
@@ -15620,7 +15620,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     914c:	dd803215 	stw	r22,200(sp)
     9150:	003e8906 	br	8b78 <__alt_data_end+0xf0008b78>
     9154:	01020034 	movhi	r4,2048
-    9158:	2100a184 	addi	r4,r4,646
+    9158:	2100a784 	addi	r4,r4,670
     915c:	d9002b15 	stw	r4,172(sp)
     9160:	003c9106 	br	83a8 <__alt_data_end+0xf00083a8>
     9164:	e005883a 	mov	r2,fp
@@ -15906,7 +15906,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
 
 000095c4 <__vfprintf_internal>:
     95c4:	00820034 	movhi	r2,2048
-    95c8:	10897604 	addi	r2,r2,9688
+    95c8:	10897c04 	addi	r2,r2,9712
     95cc:	300f883a 	mov	r7,r6
     95d0:	280d883a 	mov	r6,r5
     95d4:	200b883a 	mov	r5,r4
@@ -15965,7 +15965,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
 0000969c <__swsetup_r>:
     969c:	00820034 	movhi	r2,2048
     96a0:	defffd04 	addi	sp,sp,-12
-    96a4:	10897604 	addi	r2,r2,9688
+    96a4:	10897c04 	addi	r2,r2,9712
     96a8:	dc400115 	stw	r17,4(sp)
     96ac:	2023883a 	mov	r17,r4
     96b0:	11000017 	ldw	r4,0(r2)
@@ -16225,7 +16225,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     9a98:	10019e26 	beq	r2,zero,a114 <_dtoa_r+0x724>
     9a9c:	d8c02517 	ldw	r3,148(sp)
     9aa0:	00820034 	movhi	r2,2048
-    9aa4:	1080a144 	addi	r2,r2,645
+    9aa4:	1080a744 	addi	r2,r2,669
     9aa8:	18800015 	stw	r2,0(r3)
     9aac:	10bfffc4 	addi	r2,r2,-1
     9ab0:	dfc02117 	ldw	ra,132(sp)
@@ -16245,7 +16245,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     9ae8:	18800015 	stw	r2,0(r3)
     9aec:	90017726 	beq	r18,zero,a0cc <_dtoa_r+0x6dc>
     9af0:	00820034 	movhi	r2,2048
-    9af4:	1080ad04 	addi	r2,r2,692
+    9af4:	1080b304 	addi	r2,r2,716
     9af8:	d9002517 	ldw	r4,148(sp)
     9afc:	203fec26 	beq	r4,zero,9ab0 <__alt_data_end+0xf0009ab0>
     9b00:	10c000c7 	ldb	r3,3(r2)
@@ -16340,7 +16340,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     9c64:	10c27536 	bltu	r2,r3,a63c <_dtoa_r+0xc4c>
     9c68:	180490fa 	slli	r2,r3,3
     9c6c:	00c20034 	movhi	r3,2048
-    9c70:	18c0c904 	addi	r3,r3,804
+    9c70:	18c0cf04 	addi	r3,r3,828
     9c74:	1885883a 	add	r2,r3,r2
     9c78:	11000017 	ldw	r4,0(r2)
     9c7c:	11400117 	ldw	r5,4(r2)
@@ -16413,14 +16413,14 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     9d88:	100490fa 	slli	r2,r2,3
     9d8c:	382bd13a 	srai	r21,r7,4
     9d90:	00c20034 	movhi	r3,2048
-    9d94:	18c0c904 	addi	r3,r3,804
+    9d94:	18c0cf04 	addi	r3,r3,828
     9d98:	1885883a 	add	r2,r3,r2
     9d9c:	a8c0040c 	andi	r3,r21,16
     9da0:	12400017 	ldw	r9,0(r2)
     9da4:	12000117 	ldw	r8,4(r2)
     9da8:	18037926 	beq	r3,zero,ab90 <_dtoa_r+0x11a0>
     9dac:	00820034 	movhi	r2,2048
-    9db0:	1080bf04 	addi	r2,r2,764
+    9db0:	1080c504 	addi	r2,r2,788
     9db4:	11800817 	ldw	r6,32(r2)
     9db8:	11c00917 	ldw	r7,36(r2)
     9dbc:	9009883a 	mov	r4,r18
@@ -16436,7 +16436,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     9de4:	1829883a 	mov	r20,r3
     9de8:	a8001126 	beq	r21,zero,9e30 <_dtoa_r+0x440>
     9dec:	05c20034 	movhi	r23,2048
-    9df0:	bdc0bf04 	addi	r23,r23,764
+    9df0:	bdc0c504 	addi	r23,r23,788
     9df4:	4805883a 	mov	r2,r9
     9df8:	4007883a 	mov	r3,r8
     9dfc:	a980004c 	andi	r6,r21,1
@@ -16492,7 +16492,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     9ec4:	60bfffc4 	addi	r2,r12,-1
     9ec8:	100490fa 	slli	r2,r2,3
     9ecc:	00c20034 	movhi	r3,2048
-    9ed0:	18c0c904 	addi	r3,r3,804
+    9ed0:	18c0cf04 	addi	r3,r3,828
     9ed4:	1885883a 	add	r2,r3,r2
     9ed8:	11800017 	ldw	r6,0(r2)
     9edc:	11c00117 	ldw	r7,4(r2)
@@ -16624,7 +16624,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     a0d4:	88a2703a 	and	r17,r17,r2
     a0d8:	883e851e 	bne	r17,zero,9af0 <__alt_data_end+0xf0009af0>
     a0dc:	00820034 	movhi	r2,2048
-    a0e0:	1080aa04 	addi	r2,r2,680
+    a0e0:	1080b004 	addi	r2,r2,704
     a0e4:	003e8406 	br	9af8 <__alt_data_end+0xf0009af8>
     a0e8:	10c00204 	addi	r3,r2,8
     a0ec:	003e8706 	br	9b0c <__alt_data_end+0xf0009b0c>
@@ -16638,7 +16638,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     a10c:	d8001115 	stw	zero,68(sp)
     a110:	003ea506 	br	9ba8 <__alt_data_end+0xf0009ba8>
     a114:	00820034 	movhi	r2,2048
-    a118:	1080a104 	addi	r2,r2,644
+    a118:	1080a704 	addi	r2,r2,668
     a11c:	003e6406 	br	9ab0 <__alt_data_end+0xf0009ab0>
     a120:	e0001115 	stw	zero,68(fp)
     a124:	000b883a 	mov	r5,zero
@@ -16661,7 +16661,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     a168:	200490fa 	slli	r2,r4,3
     a16c:	00c20034 	movhi	r3,2048
     a170:	d9802217 	ldw	r6,136(sp)
-    a174:	18c0c904 	addi	r3,r3,804
+    a174:	18c0cf04 	addi	r3,r3,828
     a178:	1885883a 	add	r2,r3,r2
     a17c:	14000017 	ldw	r16,0(r2)
     a180:	14400117 	ldw	r17,4(r2)
@@ -17337,7 +17337,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     abf8:	888003cc 	andi	r2,r17,15
     abfc:	100490fa 	slli	r2,r2,3
     ac00:	00c20034 	movhi	r3,2048
-    ac04:	18c0c904 	addi	r3,r3,804
+    ac04:	18c0cf04 	addi	r3,r3,828
     ac08:	1885883a 	add	r2,r3,r2
     ac0c:	11800017 	ldw	r6,0(r2)
     ac10:	11c00117 	ldw	r7,4(r2)
@@ -17349,7 +17349,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     ac28:	d8c01015 	stw	r3,64(sp)
     ac2c:	8800e826 	beq	r17,zero,afd0 <_dtoa_r+0x15e0>
     ac30:	05020034 	movhi	r20,2048
-    ac34:	a500bf04 	addi	r20,r20,764
+    ac34:	a500c504 	addi	r20,r20,788
     ac38:	04000084 	movi	r16,2
     ac3c:	8980004c 	andi	r6,r17,1
     ac40:	1009883a 	mov	r4,r2
@@ -17403,7 +17403,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     ad00:	61bfffc4 	addi	r6,r12,-1
     ad04:	300490fa 	slli	r2,r6,3
     ad08:	00c20034 	movhi	r3,2048
-    ad0c:	18c0c904 	addi	r3,r3,804
+    ad0c:	18c0cf04 	addi	r3,r3,828
     ad10:	1885883a 	add	r2,r3,r2
     ad14:	11000017 	ldw	r4,0(r2)
     ad18:	11400117 	ldw	r5,4(r2)
@@ -17788,12 +17788,12 @@ static void Switch_Polling_handlerTask(void *pvParameters)
 0000b2f0 <fflush>:
     b2f0:	20000526 	beq	r4,zero,b308 <fflush+0x18>
     b2f4:	00820034 	movhi	r2,2048
-    b2f8:	10897604 	addi	r2,r2,9688
+    b2f8:	10897c04 	addi	r2,r2,9712
     b2fc:	200b883a 	mov	r5,r4
     b300:	11000017 	ldw	r4,0(r2)
     b304:	000b2941 	jmpi	b294 <_fflush_r>
     b308:	00820034 	movhi	r2,2048
-    b30c:	10897504 	addi	r2,r2,9684
+    b30c:	10897b04 	addi	r2,r2,9708
     b310:	11000017 	ldw	r4,0(r2)
     b314:	01400074 	movhi	r5,1
     b318:	296ca504 	addi	r5,r5,-19820
@@ -17949,7 +17949,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     b540:	defffb04 	addi	sp,sp,-20
     b544:	dc000015 	stw	r16,0(sp)
     b548:	04020034 	movhi	r16,2048
-    b54c:	84097504 	addi	r16,r16,9684
+    b54c:	84097b04 	addi	r16,r16,9708
     b550:	dcc00315 	stw	r19,12(sp)
     b554:	2027883a 	mov	r19,r4
     b558:	81000017 	ldw	r4,0(r16)
@@ -18019,7 +18019,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
 
 0000b658 <_cleanup>:
     b658:	00820034 	movhi	r2,2048
-    b65c:	10897504 	addi	r2,r2,9684
+    b65c:	10897b04 	addi	r2,r2,9708
     b660:	11000017 	ldw	r4,0(r2)
     b664:	01400074 	movhi	r5,1
     b668:	297f8704 	addi	r5,r5,-484
@@ -18045,7 +18045,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
 
 0000b690 <__fp_lock_all>:
     b690:	00820034 	movhi	r2,2048
-    b694:	10897604 	addi	r2,r2,9688
+    b694:	10897c04 	addi	r2,r2,9712
     b698:	11000017 	ldw	r4,0(r2)
     b69c:	01400074 	movhi	r5,1
     b6a0:	296d3404 	addi	r5,r5,-19248
@@ -18053,7 +18053,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
 
 0000b6a8 <__fp_unlock_all>:
     b6a8:	00820034 	movhi	r2,2048
-    b6ac:	10897604 	addi	r2,r2,9688
+    b6ac:	10897c04 	addi	r2,r2,9712
     b6b0:	11000017 	ldw	r4,0(r2)
     b6b4:	01400074 	movhi	r5,1
     b6b8:	296cc804 	addi	r5,r5,-19680
@@ -18068,7 +18068,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     b6d4:	dc000015 	stw	r16,0(sp)
     b6d8:	dfc00415 	stw	ra,16(sp)
     b6dc:	2821883a 	mov	r16,r5
-    b6e0:	9cc30404 	addi	r19,r19,3088
+    b6e0:	9cc30a04 	addi	r19,r19,3112
     b6e4:	2025883a 	mov	r18,r4
     b6e8:	00131580 	call	13158 <__malloc_lock>
     b6ec:	98800217 	ldw	r2,8(r19)
@@ -18104,7 +18104,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     b764:	00ffffc4 	movi	r3,-1
     b768:	10c00d26 	beq	r2,r3,b7a0 <_malloc_trim_r+0xe0>
     b76c:	00c20234 	movhi	r3,2056
-    b770:	18fe3104 	addi	r3,r3,-1852
+    b770:	18fe3704 	addi	r3,r3,-1828
     b774:	18800017 	ldw	r2,0(r3)
     b778:	99000217 	ldw	r4,8(r19)
     b77c:	8c23c83a 	sub	r17,r17,r16
@@ -18124,13 +18124,13 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     b7b4:	1107c83a 	sub	r3,r2,r4
     b7b8:	28ffdd0e 	bge	r5,r3,b730 <__alt_data_end+0xf000b730>
     b7bc:	01420034 	movhi	r5,2048
-    b7c0:	29497804 	addi	r5,r5,9696
+    b7c0:	29497e04 	addi	r5,r5,9720
     b7c4:	29400017 	ldw	r5,0(r5)
     b7c8:	18c00054 	ori	r3,r3,1
     b7cc:	20c00115 	stw	r3,4(r4)
     b7d0:	00c20234 	movhi	r3,2056
     b7d4:	1145c83a 	sub	r2,r2,r5
-    b7d8:	18fe3104 	addi	r3,r3,-1852
+    b7d8:	18fe3704 	addi	r3,r3,-1828
     b7dc:	18800015 	stw	r2,0(r3)
     b7e0:	003fd306 	br	b730 <__alt_data_end+0xf000b730>
 
@@ -18148,7 +18148,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     b80c:	01020034 	movhi	r4,2048
     b810:	81bffe04 	addi	r6,r16,-8
     b814:	3884703a 	and	r2,r7,r2
-    b818:	21030404 	addi	r4,r4,3088
+    b818:	21030a04 	addi	r4,r4,3112
     b81c:	308b883a 	add	r5,r6,r2
     b820:	2a400117 	ldw	r9,4(r5)
     b824:	22000217 	ldw	r8,8(r4)
@@ -18215,7 +18215,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     b918:	20c00017 	ldw	r3,0(r4)
     b91c:	01c20034 	movhi	r7,2048
     b920:	213ffe04 	addi	r4,r4,-8
-    b924:	39c30404 	addi	r7,r7,3088
+    b924:	39c30a04 	addi	r7,r7,3112
     b928:	20c04426 	beq	r4,r3,ba3c <_free_r+0x258>
     b92c:	01ffff04 	movi	r7,-4
     b930:	19400117 	ldw	r5,4(r3)
@@ -18232,7 +18232,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     b95c:	29c00217 	ldw	r7,8(r5)
     b960:	10c5883a 	add	r2,r2,r3
     b964:	00c20034 	movhi	r3,2048
-    b968:	18c30604 	addi	r3,r3,3096
+    b968:	18c30c04 	addi	r3,r3,3120
     b96c:	38c03b26 	beq	r7,r3,ba5c <_free_r+0x278>
     b970:	2a000317 	ldw	r8,12(r5)
     b974:	11400054 	ori	r5,r2,1
@@ -18255,12 +18255,12 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     b9b8:	10c00054 	ori	r3,r2,1
     b9bc:	30c00115 	stw	r3,4(r6)
     b9c0:	00c20034 	movhi	r3,2048
-    b9c4:	18c97904 	addi	r3,r3,9700
+    b9c4:	18c97f04 	addi	r3,r3,9724
     b9c8:	18c00017 	ldw	r3,0(r3)
     b9cc:	21800215 	stw	r6,8(r4)
     b9d0:	10ffc036 	bltu	r2,r3,b8d4 <__alt_data_end+0xf000b8d4>
     b9d4:	00820034 	movhi	r2,2048
-    b9d8:	1089b604 	addi	r2,r2,9944
+    b9d8:	1089bc04 	addi	r2,r2,9968
     b9dc:	11400017 	ldw	r5,0(r2)
     b9e0:	8809883a 	mov	r4,r17
     b9e4:	000b6c00 	call	b6c0 <_malloc_trim_r>
@@ -18743,7 +18743,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     c138:	30001b26 	beq	r6,zero,c1a8 <_setlocale_r+0x70>
     c13c:	01420034 	movhi	r5,2048
     c140:	defffe04 	addi	sp,sp,-8
-    c144:	2940af04 	addi	r5,r5,700
+    c144:	2940b504 	addi	r5,r5,724
     c148:	3009883a 	mov	r4,r6
     c14c:	dc000015 	stw	r16,0(sp)
     c150:	dfc00115 	stw	ra,4(sp)
@@ -18751,41 +18751,41 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     c158:	000e5800 	call	e580 <strcmp>
     c15c:	1000061e 	bne	r2,zero,c178 <_setlocale_r+0x40>
     c160:	00820034 	movhi	r2,2048
-    c164:	1080ae04 	addi	r2,r2,696
+    c164:	1080b404 	addi	r2,r2,720
     c168:	dfc00117 	ldw	ra,4(sp)
     c16c:	dc000017 	ldw	r16,0(sp)
     c170:	dec00204 	addi	sp,sp,8
     c174:	f800283a 	ret
     c178:	01420034 	movhi	r5,2048
-    c17c:	2940ae04 	addi	r5,r5,696
+    c17c:	2940b404 	addi	r5,r5,720
     c180:	8009883a 	mov	r4,r16
     c184:	000e5800 	call	e580 <strcmp>
     c188:	103ff526 	beq	r2,zero,c160 <__alt_data_end+0xf000c160>
     c18c:	01420034 	movhi	r5,2048
-    c190:	29409904 	addi	r5,r5,612
+    c190:	29409f04 	addi	r5,r5,636
     c194:	8009883a 	mov	r4,r16
     c198:	000e5800 	call	e580 <strcmp>
     c19c:	103ff026 	beq	r2,zero,c160 <__alt_data_end+0xf000c160>
     c1a0:	0005883a 	mov	r2,zero
     c1a4:	003ff006 	br	c168 <__alt_data_end+0xf000c168>
     c1a8:	00820034 	movhi	r2,2048
-    c1ac:	1080ae04 	addi	r2,r2,696
+    c1ac:	1080b404 	addi	r2,r2,720
     c1b0:	f800283a 	ret
 
 0000c1b4 <__locale_charset>:
     c1b4:	00820034 	movhi	r2,2048
-    c1b8:	1082ee04 	addi	r2,r2,3000
+    c1b8:	1082f404 	addi	r2,r2,3024
     c1bc:	f800283a 	ret
 
 0000c1c0 <__locale_mb_cur_max>:
     c1c0:	00820034 	movhi	r2,2048
-    c1c4:	10897704 	addi	r2,r2,9692
+    c1c4:	10897d04 	addi	r2,r2,9716
     c1c8:	10800017 	ldw	r2,0(r2)
     c1cc:	f800283a 	ret
 
 0000c1d0 <__locale_msgcharset>:
     c1d0:	00820034 	movhi	r2,2048
-    c1d4:	1082e604 	addi	r2,r2,2968
+    c1d4:	1082ec04 	addi	r2,r2,2992
     c1d8:	f800283a 	ret
 
 0000c1dc <__locale_cjk_lang>:
@@ -18794,12 +18794,12 @@ static void Switch_Polling_handlerTask(void *pvParameters)
 
 0000c1e4 <_localeconv_r>:
     c1e4:	00820034 	movhi	r2,2048
-    c1e8:	1082f604 	addi	r2,r2,3032
+    c1e8:	1082fc04 	addi	r2,r2,3056
     c1ec:	f800283a 	ret
 
 0000c1f0 <setlocale>:
     c1f0:	00820034 	movhi	r2,2048
-    c1f4:	10897604 	addi	r2,r2,9688
+    c1f4:	10897c04 	addi	r2,r2,9712
     c1f8:	280d883a 	mov	r6,r5
     c1fc:	200b883a 	mov	r5,r4
     c200:	11000017 	ldw	r4,0(r2)
@@ -18807,7 +18807,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
 
 0000c208 <localeconv>:
     c208:	00820034 	movhi	r2,2048
-    c20c:	1082f604 	addi	r2,r2,3032
+    c20c:	1082fc04 	addi	r2,r2,3056
     c210:	f800283a 	ret
 
 0000c214 <__smakebuf_r>:
@@ -18956,7 +18956,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     c444:	4209883a 	add	r4,r8,r8
     c448:	04c20034 	movhi	r19,2048
     c44c:	2109883a 	add	r4,r4,r4
-    c450:	9cc30404 	addi	r19,r19,3088
+    c450:	9cc30a04 	addi	r19,r19,3112
     c454:	2109883a 	add	r4,r4,r4
     c458:	9909883a 	add	r4,r19,r4
     c45c:	24000117 	ldw	r16,4(r4)
@@ -18978,7 +18978,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     c49c:	3809883a 	mov	r4,r7
     c4a0:	01820034 	movhi	r6,2048
     c4a4:	9c000417 	ldw	r16,16(r19)
-    c4a8:	31830404 	addi	r6,r6,3088
+    c4a8:	31830a04 	addi	r6,r6,3112
     c4ac:	32000204 	addi	r8,r6,8
     c4b0:	82013426 	beq	r16,r8,c984 <_malloc_r+0x5b4>
     c4b4:	80c00117 	ldw	r3,4(r16)
@@ -19073,7 +19073,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     c618:	01000084 	movi	r4,2
     c61c:	04c20034 	movhi	r19,2048
     c620:	1085883a 	add	r2,r2,r2
-    c624:	9cc30404 	addi	r19,r19,3088
+    c624:	9cc30a04 	addi	r19,r19,3112
     c628:	1085883a 	add	r2,r2,r2
     c62c:	9885883a 	add	r2,r19,r2
     c630:	14000117 	ldw	r16,4(r2)
@@ -19135,8 +19135,8 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     c710:	18805d16 	blt	r3,r2,c888 <_malloc_r+0x4b8>
     c714:	05c20034 	movhi	r23,2048
     c718:	00820034 	movhi	r2,2048
-    c71c:	1089b604 	addi	r2,r2,9944
-    c720:	bdc97804 	addi	r23,r23,9696
+    c71c:	1089bc04 	addi	r2,r2,9968
+    c720:	bdc97e04 	addi	r23,r23,9720
     c724:	15400017 	ldw	r21,0(r2)
     c728:	b8c00017 	ldw	r3,0(r23)
     c72c:	00bfffc4 	movi	r2,-1
@@ -19156,7 +19156,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     c764:	a080e826 	beq	r20,r2,cb08 <_malloc_r+0x738>
     c768:	a180a636 	bltu	r20,r6,ca04 <_malloc_r+0x634>
     c76c:	07020234 	movhi	fp,2056
-    c770:	e73e3104 	addi	fp,fp,-1852
+    c770:	e73e3704 	addi	fp,fp,-1828
     c774:	e0800017 	ldw	r2,0(fp)
     c778:	a887883a 	add	r3,r21,r2
     c77c:	e0c00015 	stw	r3,0(fp)
@@ -19205,12 +19205,12 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     c828:	21400215 	stw	r5,8(r4)
     c82c:	3080cd36 	bltu	r6,r2,cb64 <_malloc_r+0x794>
     c830:	00820034 	movhi	r2,2048
-    c834:	1089b504 	addi	r2,r2,9940
+    c834:	1089bb04 	addi	r2,r2,9964
     c838:	11000017 	ldw	r4,0(r2)
     c83c:	20c0012e 	bgeu	r4,r3,c844 <_malloc_r+0x474>
     c840:	10c00015 	stw	r3,0(r2)
     c844:	00820034 	movhi	r2,2048
-    c848:	1089b404 	addi	r2,r2,9936
+    c848:	1089ba04 	addi	r2,r2,9960
     c84c:	11000017 	ldw	r4,0(r2)
     c850:	9c000217 	ldw	r16,8(r19)
     c854:	20c0012e 	bgeu	r4,r3,c85c <_malloc_r+0x48c>
@@ -19259,7 +19259,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     c900:	28800017 	ldw	r2,0(r5)
     c904:	01820034 	movhi	r6,2048
     c908:	297ffe04 	addi	r5,r5,-8
-    c90c:	31830404 	addi	r6,r6,3088
+    c90c:	31830a04 	addi	r6,r6,3112
     c910:	28806526 	beq	r5,r2,caa8 <_malloc_r+0x6d8>
     c914:	01bfff04 	movi	r6,-4
     c918:	10c00117 	ldw	r3,4(r2)
@@ -19323,7 +19323,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     ca00:	003fbc06 	br	c8f4 <__alt_data_end+0xf000c8f4>
     ca04:	84ff5926 	beq	r16,r19,c76c <__alt_data_end+0xf000c76c>
     ca08:	00820034 	movhi	r2,2048
-    ca0c:	10830404 	addi	r2,r2,3088
+    ca0c:	10830a04 	addi	r2,r2,3112
     ca10:	14000217 	ldw	r16,8(r2)
     ca14:	00bfff04 	movi	r2,-4
     ca18:	80c00117 	ldw	r3,4(r16)
@@ -19403,7 +19403,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     cb40:	01c01f84 	movi	r7,126
     cb44:	003e4006 	br	c448 <__alt_data_end+0xf000c448>
     cb48:	00820034 	movhi	r2,2048
-    cb4c:	10897804 	addi	r2,r2,9696
+    cb4c:	10897e04 	addi	r2,r2,9720
     cb50:	15000015 	stw	r20,0(r2)
     cb54:	003f1106 	br	c79c <__alt_data_end+0xf000c79c>
     cb58:	00800044 	movi	r2,1
@@ -19413,7 +19413,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     cb68:	9009883a 	mov	r4,r18
     cb6c:	000b7e40 	call	b7e4 <_free_r>
     cb70:	00820234 	movhi	r2,2056
-    cb74:	10be3104 	addi	r2,r2,-1852
+    cb74:	10be3704 	addi	r2,r2,-1828
     cb78:	10c00017 	ldw	r3,0(r2)
     cb7c:	003f2c06 	br	c830 <__alt_data_end+0xf000c830>
     cb80:	00c05504 	movi	r3,340
@@ -20066,7 +20066,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     d544:	10bfffc4 	addi	r2,r2,-1
     d548:	1085883a 	add	r2,r2,r2
     d54c:	00c20034 	movhi	r3,2048
-    d550:	18c0b204 	addi	r3,r3,712
+    d550:	18c0b804 	addi	r3,r3,736
     d554:	1085883a 	add	r2,r2,r2
     d558:	1885883a 	add	r2,r3,r2
     d55c:	11800017 	ldw	r6,0(r2)
@@ -20571,7 +20571,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     dce8:	f800283a 	ret
     dcec:	202090fa 	slli	r16,r4,3
     dcf0:	00820034 	movhi	r2,2048
-    dcf4:	1080c904 	addi	r2,r2,804
+    dcf4:	1080cf04 	addi	r2,r2,828
     dcf8:	1421883a 	add	r16,r2,r16
     dcfc:	80800017 	ldw	r2,0(r16)
     dd00:	80c00117 	ldw	r3,4(r16)
@@ -20680,7 +20680,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     de84:	8c805736 	bltu	r17,r18,dfe4 <_realloc_r+0x1cc>
     de88:	80c0300e 	bge	r16,r3,df4c <_realloc_r+0x134>
     de8c:	07020034 	movhi	fp,2048
-    de90:	e7030404 	addi	fp,fp,3088
+    de90:	e7030a04 	addi	fp,fp,3112
     de94:	e1c00217 	ldw	r7,8(fp)
     de98:	9c09883a 	add	r4,r19,r16
     de9c:	22000117 	ldw	r8,4(r4)
@@ -21032,7 +21032,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     e3f4:	dc000015 	stw	r16,0(sp)
     e3f8:	04020034 	movhi	r16,2048
     e3fc:	dc400115 	stw	r17,4(sp)
-    e400:	8409b704 	addi	r16,r16,9948
+    e400:	8409bd04 	addi	r16,r16,9972
     e404:	2023883a 	mov	r17,r4
     e408:	2809883a 	mov	r4,r5
     e40c:	dfc00215 	stw	ra,8(sp)
@@ -21312,8 +21312,8 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     e80c:	05c20034 	movhi	r23,2048
     e810:	da801f15 	stw	r10,124(sp)
     e814:	1295c83a 	sub	r10,r2,r10
-    e818:	b580ff04 	addi	r22,r22,1020
-    e81c:	bdc0fb04 	addi	r23,r23,1004
+    e818:	b5810504 	addi	r22,r22,1044
+    e81c:	bdc10104 	addi	r23,r23,1028
     e820:	dec01a15 	stw	sp,104(sp)
     e824:	d8001c15 	stw	zero,112(sp)
     e828:	d8001b15 	stw	zero,108(sp)
@@ -21519,7 +21519,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     eb48:	5d000094 	ori	r20,r11,2
     eb4c:	90032b1e 	bne	r18,zero,f7fc <___vfiprintf_internal_r+0x108c>
     eb50:	00820034 	movhi	r2,2048
-    eb54:	10809a04 	addi	r2,r2,616
+    eb54:	1080a004 	addi	r2,r2,640
     eb58:	d8802615 	stw	r2,152(sp)
     eb5c:	0039883a 	mov	fp,zero
     eb60:	48017b1e 	bne	r9,zero,f150 <___vfiprintf_internal_r+0x9e0>
@@ -21545,7 +21545,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     ebb0:	d8801c17 	ldw	r2,112(sp)
     ebb4:	38c3ad0e 	bge	r7,r3,fa6c <___vfiprintf_internal_r+0x12fc>
     ebb8:	02820034 	movhi	r10,2048
-    ebbc:	5280ff04 	addi	r10,r10,1020
+    ebbc:	52810504 	addi	r10,r10,1044
     ebc0:	dc002915 	stw	r16,164(sp)
     ebc4:	d9801b17 	ldw	r6,108(sp)
     ebc8:	da802415 	stw	r10,144(sp)
@@ -21609,7 +21609,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     ecb0:	01c00404 	movi	r7,16
     ecb4:	3f03890e 	bge	r7,fp,fadc <___vfiprintf_internal_r+0x136c>
     ecb8:	00c20034 	movhi	r3,2048
-    ecbc:	18c0fb04 	addi	r3,r3,1004
+    ecbc:	18c10104 	addi	r3,r3,1028
     ecc0:	d8c02415 	stw	r3,144(sp)
     ecc4:	8007883a 	mov	r3,r16
     ecc8:	034001c4 	movi	r13,7
@@ -21738,7 +21738,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     eeb4:	21003fcc 	andi	r4,r4,255
     eeb8:	2003421e 	bne	r4,zero,fbc4 <___vfiprintf_internal_r+0x1454>
     eebc:	00820034 	movhi	r2,2048
-    eec0:	10809a04 	addi	r2,r2,616
+    eec0:	1080a004 	addi	r2,r2,640
     eec4:	d8802615 	stw	r2,152(sp)
     eec8:	a080080c 	andi	r2,r20,32
     eecc:	1000aa26 	beq	r2,zero,f178 <___vfiprintf_internal_r+0xa08>
@@ -21908,7 +21908,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     f15c:	21003fcc 	andi	r4,r4,255
     f160:	2002811e 	bne	r4,zero,fb68 <___vfiprintf_internal_r+0x13f8>
     f164:	00820034 	movhi	r2,2048
-    f168:	10809504 	addi	r2,r2,596
+    f168:	10809b04 	addi	r2,r2,620
     f16c:	d8802615 	stw	r2,152(sp)
     f170:	a080080c 	andi	r2,r20,32
     f174:	103f561e 	bne	r2,zero,eed0 <__alt_data_end+0xf000eed0>
@@ -22044,7 +22044,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     f37c:	01c00404 	movi	r7,16
     f380:	3f01900e 	bge	r7,fp,f9c4 <___vfiprintf_internal_r+0x1254>
     f384:	00c20034 	movhi	r3,2048
-    f388:	18c0fb04 	addi	r3,r3,1004
+    f388:	18c10104 	addi	r3,r3,1028
     f38c:	d8c02415 	stw	r3,144(sp)
     f390:	034001c4 	movi	r13,7
     f394:	00000506 	br	f3ac <___vfiprintf_internal_r+0xc3c>
@@ -22093,7 +22093,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     f440:	003fd806 	br	f3a4 <__alt_data_end+0xf000f3a4>
     f444:	d9401b17 	ldw	r5,108(sp)
     f448:	00c20034 	movhi	r3,2048
-    f44c:	18c0ff04 	addi	r3,r3,1020
+    f44c:	18c10504 	addi	r3,r3,1044
     f450:	d8c02415 	stw	r3,144(sp)
     f454:	29400044 	addi	r5,r5,1
     f458:	d8c02417 	ldw	r3,144(sp)
@@ -22144,7 +22144,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     f50c:	01c00404 	movi	r7,16
     f510:	3cffcc0e 	bge	r7,r19,f444 <__alt_data_end+0xf000f444>
     f514:	02820034 	movhi	r10,2048
-    f518:	5280ff04 	addi	r10,r10,1020
+    f518:	52810504 	addi	r10,r10,1044
     f51c:	d9001b17 	ldw	r4,108(sp)
     f520:	da802415 	stw	r10,144(sp)
     f524:	382b883a 	mov	r21,r7
@@ -22293,7 +22293,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     f760:	21000044 	addi	r4,r4,1
     f764:	003d8006 	br	ed68 <__alt_data_end+0xf000ed68>
     f768:	01020034 	movhi	r4,2048
-    f76c:	21009a04 	addi	r4,r4,616
+    f76c:	2100a004 	addi	r4,r4,640
     f770:	d9002615 	stw	r4,152(sp)
     f774:	d8c02215 	stw	r3,136(sp)
     f778:	1029883a 	mov	r20,r2
@@ -22330,7 +22330,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     f7f4:	8025883a 	mov	r18,r16
     f7f8:	003c2e06 	br	e8b4 <__alt_data_end+0xf000e8b4>
     f7fc:	00820034 	movhi	r2,2048
-    f800:	10809a04 	addi	r2,r2,616
+    f800:	1080a004 	addi	r2,r2,640
     f804:	0039883a 	mov	fp,zero
     f808:	d8802615 	stw	r2,152(sp)
     f80c:	003f9006 	br	f650 <__alt_data_end+0xf000f650>
@@ -22444,7 +22444,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     f9bc:	0039883a 	mov	fp,zero
     f9c0:	003ddb06 	br	f130 <__alt_data_end+0xf000f130>
     f9c4:	02820034 	movhi	r10,2048
-    f9c8:	5280fb04 	addi	r10,r10,1004
+    f9c8:	52810104 	addi	r10,r10,1028
     f9cc:	da802415 	stw	r10,144(sp)
     f9d0:	003e8306 	br	f3e0 <__alt_data_end+0xf000f3e0>
     f9d4:	d8801c17 	ldw	r2,112(sp)
@@ -22487,7 +22487,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     fa68:	003e4206 	br	f374 <__alt_data_end+0xf000f374>
     fa6c:	d9401b17 	ldw	r5,108(sp)
     fa70:	01020034 	movhi	r4,2048
-    fa74:	2100ff04 	addi	r4,r4,1020
+    fa74:	21010504 	addi	r4,r4,1044
     fa78:	d9002415 	stw	r4,144(sp)
     fa7c:	29400044 	addi	r5,r5,1
     fa80:	003c6d06 	br	ec38 <__alt_data_end+0xf000ec38>
@@ -22511,10 +22511,10 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     fac8:	48001516 	blt	r9,zero,fb20 <___vfiprintf_internal_r+0x13b0>
     facc:	05420034 	movhi	r21,2048
     fad0:	d8c02215 	stw	r3,136(sp)
-    fad4:	ad409f04 	addi	r21,r21,636
+    fad4:	ad40a504 	addi	r21,r21,660
     fad8:	003d1406 	br	ef2c <__alt_data_end+0xf000ef2c>
     fadc:	02820034 	movhi	r10,2048
-    fae0:	5280fb04 	addi	r10,r10,1004
+    fae0:	52810104 	addi	r10,r10,1028
     fae4:	da802415 	stw	r10,144(sp)
     fae8:	200d883a 	mov	r6,r4
     faec:	003c9106 	br	ed34 <__alt_data_end+0xf000ed34>
@@ -22576,7 +22576,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
 
 0000fbcc <__vfiprintf_internal>:
     fbcc:	00820034 	movhi	r2,2048
-    fbd0:	10897604 	addi	r2,r2,9688
+    fbd0:	10897c04 	addi	r2,r2,9712
     fbd4:	300f883a 	mov	r7,r6
     fbd8:	280d883a 	mov	r6,r5
     fbdc:	200b883a 	mov	r5,r4
@@ -22639,7 +22639,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     fcb0:	04020034 	movhi	r16,2048
     fcb4:	dc400115 	stw	r17,4(sp)
     fcb8:	300b883a 	mov	r5,r6
-    fcbc:	8409b704 	addi	r16,r16,9948
+    fcbc:	8409bd04 	addi	r16,r16,9972
     fcc0:	2023883a 	mov	r17,r4
     fcc4:	380d883a 	mov	r6,r7
     fcc8:	1009883a 	mov	r4,r2
@@ -22663,7 +22663,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
     fd08:	dc000015 	stw	r16,0(sp)
     fd0c:	04020034 	movhi	r16,2048
     fd10:	dc400115 	stw	r17,4(sp)
-    fd14:	8409b704 	addi	r16,r16,9948
+    fd14:	8409bd04 	addi	r16,r16,9972
     fd18:	2023883a 	mov	r17,r4
     fd1c:	2809883a 	mov	r4,r5
     fd20:	dfc00215 	stw	ra,8(sp)
@@ -22796,7 +22796,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
 
 0000ff0c <fclose>:
     ff0c:	00820034 	movhi	r2,2048
-    ff10:	10897604 	addi	r2,r2,9688
+    ff10:	10897c04 	addi	r2,r2,9712
     ff14:	200b883a 	mov	r5,r4
     ff18:	11000017 	ldw	r4,0(r2)
     ff1c:	000fe1c1 	jmpi	fe1c <_fclose_r>
@@ -22906,7 +22906,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
 000100a8 <fputwc>:
    100a8:	00820034 	movhi	r2,2048
    100ac:	defffc04 	addi	sp,sp,-16
-   100b0:	10897604 	addi	r2,r2,9688
+   100b0:	10897c04 	addi	r2,r2,9712
    100b4:	dc000115 	stw	r16,4(sp)
    100b8:	14000017 	ldw	r16,0(r2)
    100bc:	dc400215 	stw	r17,8(sp)
@@ -22943,7 +22943,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
    10130:	dc000015 	stw	r16,0(sp)
    10134:	04020034 	movhi	r16,2048
    10138:	dc400115 	stw	r17,4(sp)
-   1013c:	8409b704 	addi	r16,r16,9948
+   1013c:	8409bd04 	addi	r16,r16,9972
    10140:	2023883a 	mov	r17,r4
    10144:	300b883a 	mov	r5,r6
    10148:	1009883a 	mov	r4,r2
@@ -22967,7 +22967,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
    10188:	dc000015 	stw	r16,0(sp)
    1018c:	04020034 	movhi	r16,2048
    10190:	dc400115 	stw	r17,4(sp)
-   10194:	8409b704 	addi	r16,r16,9948
+   10194:	8409bd04 	addi	r16,r16,9972
    10198:	2023883a 	mov	r17,r4
    1019c:	2809883a 	mov	r4,r5
    101a0:	dfc00215 	stw	ra,8(sp)
@@ -22992,7 +22992,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
    101e4:	04020034 	movhi	r16,2048
    101e8:	dc400115 	stw	r17,4(sp)
    101ec:	300b883a 	mov	r5,r6
-   101f0:	8409b704 	addi	r16,r16,9948
+   101f0:	8409bd04 	addi	r16,r16,9972
    101f4:	2023883a 	mov	r17,r4
    101f8:	380d883a 	mov	r6,r7
    101fc:	1009883a 	mov	r4,r2
@@ -23018,7 +23018,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
    10244:	04020034 	movhi	r16,2048
    10248:	dc400115 	stw	r17,4(sp)
    1024c:	300b883a 	mov	r5,r6
-   10250:	8409b704 	addi	r16,r16,9948
+   10250:	8409bd04 	addi	r16,r16,9972
    10254:	2023883a 	mov	r17,r4
    10258:	380d883a 	mov	r6,r7
    1025c:	1009883a 	mov	r4,r2
@@ -23121,7 +23121,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
 
 000103d8 <__swbuf>:
    103d8:	00820034 	movhi	r2,2048
-   103dc:	10897604 	addi	r2,r2,9688
+   103dc:	10897c04 	addi	r2,r2,9712
    103e0:	280d883a 	mov	r6,r5
    103e4:	200b883a 	mov	r5,r4
    103e8:	11000017 	ldw	r4,0(r2)
@@ -23133,7 +23133,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
    103f8:	dc800815 	stw	r18,32(sp)
    103fc:	dc400715 	stw	r17,28(sp)
    10400:	dc000615 	stw	r16,24(sp)
-   10404:	10897a04 	addi	r2,r2,9704
+   10404:	10898004 	addi	r2,r2,9728
    10408:	dfc00915 	stw	ra,36(sp)
    1040c:	2021883a 	mov	r16,r4
    10410:	3823883a 	mov	r17,r7
@@ -23173,7 +23173,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
    10490:	00820034 	movhi	r2,2048
    10494:	dc800615 	stw	r18,24(sp)
    10498:	dc400515 	stw	r17,20(sp)
-   1049c:	10897604 	addi	r2,r2,9688
+   1049c:	10897c04 	addi	r2,r2,9712
    104a0:	dfc00915 	stw	ra,36(sp)
    104a4:	dd000815 	stw	r20,32(sp)
    104a8:	dcc00715 	stw	r19,28(sp)
@@ -23182,7 +23182,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
    104b4:	14400017 	ldw	r17,0(r2)
    104b8:	20001926 	beq	r4,zero,10520 <wcrtomb+0x94>
    104bc:	00820034 	movhi	r2,2048
-   104c0:	10897a04 	addi	r2,r2,9704
+   104c0:	10898004 	addi	r2,r2,9728
    104c4:	15000017 	ldw	r20,0(r2)
    104c8:	2021883a 	mov	r16,r4
    104cc:	2827883a 	mov	r19,r5
@@ -23207,7 +23207,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
    10518:	dec00a04 	addi	sp,sp,40
    1051c:	f800283a 	ret
    10520:	00820034 	movhi	r2,2048
-   10524:	10897a04 	addi	r2,r2,9704
+   10524:	10898004 	addi	r2,r2,9728
    10528:	14000017 	ldw	r16,0(r2)
    1052c:	000c1b40 	call	c1b4 <__locale_charset>
    10530:	100f883a 	mov	r7,r2
@@ -23235,7 +23235,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
 0001057c <_wctomb_r>:
    1057c:	00820034 	movhi	r2,2048
    10580:	defff904 	addi	sp,sp,-28
-   10584:	10897a04 	addi	r2,r2,9704
+   10584:	10898004 	addi	r2,r2,9728
    10588:	dfc00615 	stw	ra,24(sp)
    1058c:	dc400515 	stw	r17,20(sp)
    10590:	dc000415 	stw	r16,16(sp)
@@ -23283,7 +23283,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
    10630:	100490fa 	slli	r2,r2,3
    10634:	3086d83a 	srl	r3,r6,r2
    10638:	01020034 	movhi	r4,2048
-   1063c:	21004fc4 	addi	r4,r4,319
+   1063c:	210055c4 	addi	r4,r4,343
    10640:	20c7883a 	add	r3,r4,r3
    10644:	18c00003 	ldbu	r3,0(r3)
    10648:	1885883a 	add	r2,r3,r2
@@ -23346,7 +23346,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
    1072c:	00800404 	movi	r2,16
    10730:	3886d83a 	srl	r3,r7,r2
    10734:	01020034 	movhi	r4,2048
-   10738:	21004fc4 	addi	r4,r4,319
+   10738:	210055c4 	addi	r4,r4,343
    1073c:	20c7883a 	add	r3,r4,r3
    10740:	18c00003 	ldbu	r3,0(r3)
    10744:	05400804 	movi	r21,32
@@ -23370,7 +23370,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
    1078c:	00800404 	movi	r2,16
    10790:	8886d83a 	srl	r3,r17,r2
    10794:	01020034 	movhi	r4,2048
-   10798:	21004fc4 	addi	r4,r4,319
+   10798:	210055c4 	addi	r4,r4,343
    1079c:	20c7883a 	add	r3,r4,r3
    107a0:	18c00003 	ldbu	r3,0(r3)
    107a4:	1885883a 	add	r2,r3,r2
@@ -23635,7 +23635,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
    10ba8:	200890fa 	slli	r4,r4,3
    10bac:	3104d83a 	srl	r2,r6,r4
    10bb0:	00c20034 	movhi	r3,2048
-   10bb4:	18c04fc4 	addi	r3,r3,319
+   10bb4:	18c055c4 	addi	r3,r3,343
    10bb8:	1885883a 	add	r2,r3,r2
    10bbc:	10c00003 	ldbu	r3,0(r2)
    10bc0:	00800804 	movi	r2,32
@@ -23694,7 +23694,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
    10c94:	01000404 	movi	r4,16
    10c98:	3904d83a 	srl	r2,r7,r4
    10c9c:	00c20034 	movhi	r3,2048
-   10ca0:	18c04fc4 	addi	r3,r3,319
+   10ca0:	18c055c4 	addi	r3,r3,343
    10ca4:	1885883a 	add	r2,r3,r2
    10ca8:	14c00003 	ldbu	r19,0(r2)
    10cac:	00c00804 	movi	r3,32
@@ -23722,7 +23722,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
    10d04:	00800404 	movi	r2,16
    10d08:	9886d83a 	srl	r3,r19,r2
    10d0c:	01020034 	movhi	r4,2048
-   10d10:	21004fc4 	addi	r4,r4,319
+   10d10:	210055c4 	addi	r4,r4,343
    10d14:	20c7883a 	add	r3,r4,r3
    10d18:	18c00003 	ldbu	r3,0(r3)
    10d1c:	1887883a 	add	r3,r3,r2
@@ -25817,7 +25817,7 @@ int ALT_CLOSE (int fildes)
    12d20:	e0bfff17 	ldw	r2,-4(fp)
    12d24:	10c00324 	muli	r3,r2,12
    12d28:	00820034 	movhi	r2,2048
-   12d2c:	10841004 	addi	r2,r2,4160
+   12d2c:	10841604 	addi	r2,r2,4184
    12d30:	1885883a 	add	r2,r3,r2
    12d34:	00000106 	br	12d3c <close+0x38>
    12d38:	0005883a 	mov	r2,zero
@@ -25955,7 +25955,7 @@ int ALT_FSTAT (int file, struct stat *st)
    12e5c:	e0bffe17 	ldw	r2,-8(fp)
    12e60:	10c00324 	muli	r3,r2,12
    12e64:	00820034 	movhi	r2,2048
-   12e68:	10841004 	addi	r2,r2,4160
+   12e68:	10841604 	addi	r2,r2,4184
    12e6c:	1885883a 	add	r2,r3,r2
    12e70:	00000106 	br	12e78 <fstat+0x3c>
    12e74:	0005883a 	mov	r2,zero
@@ -26060,7 +26060,7 @@ int ALT_ISATTY (int file)
    12f44:	e0bfff17 	ldw	r2,-4(fp)
    12f48:	10c00324 	muli	r3,r2,12
    12f4c:	00820034 	movhi	r2,2048
-   12f50:	10841004 	addi	r2,r2,4160
+   12f50:	10841604 	addi	r2,r2,4184
    12f54:	1885883a 	add	r2,r3,r2
    12f58:	00000106 	br	12f60 <isatty+0x38>
    12f5c:	0005883a 	mov	r2,zero
@@ -26170,7 +26170,7 @@ off_t ALT_LSEEK (int file, off_t ptr, int dir)
    13030:	e0bffd17 	ldw	r2,-12(fp)
    13034:	10c00324 	muli	r3,r2,12
    13038:	00820034 	movhi	r2,2048
-   1303c:	10841004 	addi	r2,r2,4160
+   1303c:	10841604 	addi	r2,r2,4184
    13040:	1885883a 	add	r2,r3,r2
    13044:	00000106 	br	1304c <lseek+0x44>
    13048:	0005883a 	mov	r2,zero
@@ -26280,11 +26280,11 @@ void alt_main (void)
     ALT_LOG_PRINT_BOOT("[alt_main.c] Redirecting IO.\r\n");
     alt_io_redirect(ALT_STDOUT, ALT_STDIN, ALT_STDERR);
    130fc:	01820034 	movhi	r6,2048
-   13100:	31810604 	addi	r6,r6,1048
+   13100:	31810c04 	addi	r6,r6,1072
    13104:	01420034 	movhi	r5,2048
-   13108:	29410604 	addi	r5,r5,1048
+   13108:	29410c04 	addi	r5,r5,1072
    1310c:	01020034 	movhi	r4,2048
-   13110:	21010604 	addi	r4,r4,1048
+   13110:	21010c04 	addi	r4,r4,1072
    13114:	00187a00 	call	187a0 <alt_io_redirect>
   /* 
    * Call the C++ constructors 
@@ -26409,7 +26409,7 @@ int ALT_READ (int file, void *ptr, size_t len)
    13200:	e0bffd17 	ldw	r2,-12(fp)
    13204:	10c00324 	muli	r3,r2,12
    13208:	00820034 	movhi	r2,2048
-   1320c:	10841004 	addi	r2,r2,4160
+   1320c:	10841604 	addi	r2,r2,4184
    13210:	1885883a 	add	r2,r3,r2
    13214:	00000106 	br	1321c <read+0x40>
    13218:	0005883a 	mov	r2,zero
@@ -26514,7 +26514,7 @@ void alt_release_fd (int fd)
   {
     alt_fd_list[fd].fd_flags = 0;
    132f4:	00820034 	movhi	r2,2048
-   132f8:	10841004 	addi	r2,r2,4160
+   132f8:	10841604 	addi	r2,r2,4184
    132fc:	e0ffff17 	ldw	r3,-4(fp)
    13300:	18c00324 	muli	r3,r3,12
    13304:	10c5883a 	add	r2,r2,r3
@@ -26522,7 +26522,7 @@ void alt_release_fd (int fd)
    1330c:	10000015 	stw	zero,0(r2)
     alt_fd_list[fd].dev      = 0;
    13310:	00820034 	movhi	r2,2048
-   13314:	10841004 	addi	r2,r2,4160
+   13314:	10841604 	addi	r2,r2,4184
    13318:	e0ffff17 	ldw	r3,-4(fp)
    1331c:	18c00324 	muli	r3,r3,12
    13320:	10c5883a 	add	r2,r2,r3
@@ -26680,7 +26680,7 @@ int ALT_WRITE (int file, const void *ptr, size_t len)
    1344c:	e0bffd17 	ldw	r2,-12(fp)
    13450:	10c00324 	muli	r3,r2,12
    13454:	00820034 	movhi	r2,2048
-   13458:	10841004 	addi	r2,r2,4160
+   13458:	10841604 	addi	r2,r2,4184
    1345c:	1885883a 	add	r2,r3,r2
    13460:	00000106 	br	13468 <write+0x40>
    13464:	0005883a 	mov	r2,zero
@@ -26839,23 +26839,23 @@ void alt_sys_init( void )
     ALTERA_AVALON_TIMER_INIT ( TIMER1US, timer1us);
     ALTERA_AVALON_CFI_FLASH_INIT ( FLASH_CONTROLLER, flash_controller);
    135b4:	01020034 	movhi	r4,2048
-   135b8:	21047004 	addi	r4,r4,4544
+   135b8:	21047604 	addi	r4,r4,4568
    135bc:	00139140 	call	13914 <alt_flash_cfi_init>
     ALTERA_AVALON_JTAG_UART_INIT ( JTAG_UART, jtag_uart);
    135c0:	01800144 	movi	r6,5
    135c4:	000b883a 	mov	r5,zero
    135c8:	01020034 	movhi	r4,2048
-   135cc:	2104b104 	addi	r4,r4,4804
+   135cc:	2104b704 	addi	r4,r4,4828
    135d0:	00157240 	call	15724 <altera_avalon_jtag_uart_init>
    135d4:	01020034 	movhi	r4,2048
-   135d8:	2104a704 	addi	r4,r4,4764
+   135d8:	2104ad04 	addi	r4,r4,4788
    135dc:	00135200 	call	13520 <alt_dev_reg>
     ALTERA_AVALON_LCD_16207_INIT ( CHARACTER_LCD, character_lcd);
    135e0:	01020034 	movhi	r4,2048
-   135e4:	2108c904 	addi	r4,r4,8996
+   135e4:	2108cf04 	addi	r4,r4,9020
    135e8:	0016d680 	call	16d68 <altera_avalon_lcd_16207_init>
    135ec:	01020034 	movhi	r4,2048
-   135f0:	2108bf04 	addi	r4,r4,8956
+   135f0:	2108c504 	addi	r4,r4,8980
    135f4:	00135200 	call	13520 <alt_dev_reg>
     ALTERA_AVALON_SYSID_QSYS_INIT ( SYSTEM_ID, system_id);
    135f8:	0001883a 	nop
@@ -26863,156 +26863,156 @@ void alt_sys_init( void )
    135fc:	018000c4 	movi	r6,3
    13600:	000b883a 	mov	r5,zero
    13604:	01020034 	movhi	r4,2048
-   13608:	21091104 	addi	r4,r4,9284
+   13608:	21091704 	addi	r4,r4,9308
    1360c:	00170f80 	call	170f8 <altera_avalon_uart_init>
    13610:	01020034 	movhi	r4,2048
-   13614:	21090704 	addi	r4,r4,9244
+   13614:	21090d04 	addi	r4,r4,9268
    13618:	00135200 	call	13520 <alt_dev_reg>
     ALTERA_UP_AVALON_PS2_INIT ( PS2, ps2);
    1361c:	01020034 	movhi	r4,2048
-   13620:	21093804 	addi	r4,r4,9440
+   13620:	21093e04 	addi	r4,r4,9464
    13624:	00179e40 	call	179e4 <alt_up_ps2_init>
    13628:	01020034 	movhi	r4,2048
-   1362c:	21093804 	addi	r4,r4,9440
+   1362c:	21093e04 	addi	r4,r4,9464
    13630:	00135200 	call	13520 <alt_dev_reg>
     ALTERA_UP_AVALON_VIDEO_CHARACTER_BUFFER_WITH_DMA_INIT ( VIDEO_CHARACTER_BUFFER_WITH_DMA, video_character_buffer_with_dma);
    13634:	00820034 	movhi	r2,2048
-   13638:	10894604 	addi	r2,r2,9496
+   13638:	10894c04 	addi	r2,r2,9520
    1363c:	10800a17 	ldw	r2,40(r2)
    13640:	10800104 	addi	r2,r2,4
    13644:	10800017 	ldw	r2,0(r2)
    13648:	10ffffcc 	andi	r3,r2,65535
    1364c:	00820034 	movhi	r2,2048
-   13650:	10894604 	addi	r2,r2,9496
+   13650:	10894c04 	addi	r2,r2,9520
    13654:	10c00c15 	stw	r3,48(r2)
    13658:	00820034 	movhi	r2,2048
-   1365c:	10894604 	addi	r2,r2,9496
+   1365c:	10894c04 	addi	r2,r2,9520
    13660:	10800a17 	ldw	r2,40(r2)
    13664:	10800104 	addi	r2,r2,4
    13668:	10800017 	ldw	r2,0(r2)
    1366c:	1006d43a 	srli	r3,r2,16
    13670:	00820034 	movhi	r2,2048
-   13674:	10894604 	addi	r2,r2,9496
+   13674:	10894c04 	addi	r2,r2,9520
    13678:	10c00d15 	stw	r3,52(r2)
    1367c:	00820034 	movhi	r2,2048
-   13680:	10894604 	addi	r2,r2,9496
+   13680:	10894c04 	addi	r2,r2,9520
    13684:	10800c17 	ldw	r2,48(r2)
    13688:	10801068 	cmpgeui	r2,r2,65
    1368c:	1000081e 	bne	r2,zero,136b0 <alt_sys_init+0x124>
    13690:	00820034 	movhi	r2,2048
-   13694:	10894604 	addi	r2,r2,9496
+   13694:	10894c04 	addi	r2,r2,9520
    13698:	00c00fc4 	movi	r3,63
    1369c:	10c00f15 	stw	r3,60(r2)
    136a0:	00820034 	movhi	r2,2048
-   136a4:	10894604 	addi	r2,r2,9496
+   136a4:	10894c04 	addi	r2,r2,9520
    136a8:	00c00184 	movi	r3,6
    136ac:	10c01015 	stw	r3,64(r2)
    136b0:	00820034 	movhi	r2,2048
-   136b4:	10894604 	addi	r2,r2,9496
+   136b4:	10894c04 	addi	r2,r2,9520
    136b8:	10800d17 	ldw	r2,52(r2)
    136bc:	10800868 	cmpgeui	r2,r2,33
    136c0:	1000041e 	bne	r2,zero,136d4 <alt_sys_init+0x148>
    136c4:	00820034 	movhi	r2,2048
-   136c8:	10894604 	addi	r2,r2,9496
+   136c8:	10894c04 	addi	r2,r2,9520
    136cc:	00c007c4 	movi	r3,31
    136d0:	10c01115 	stw	r3,68(r2)
    136d4:	01020034 	movhi	r4,2048
-   136d8:	21094604 	addi	r4,r4,9496
+   136d8:	21094c04 	addi	r4,r4,9520
    136dc:	0017f6c0 	call	17f6c <alt_up_char_buffer_init>
    136e0:	01020034 	movhi	r4,2048
-   136e4:	21094604 	addi	r4,r4,9496
+   136e4:	21094c04 	addi	r4,r4,9520
    136e8:	00135200 	call	13520 <alt_dev_reg>
     ALTERA_UP_AVALON_VIDEO_PIXEL_BUFFER_DMA_INIT ( VIDEO_PIXEL_BUFFER_DMA, video_pixel_buffer_dma);
    136ec:	00820034 	movhi	r2,2048
-   136f0:	10895804 	addi	r2,r2,9568
+   136f0:	10895e04 	addi	r2,r2,9592
    136f4:	10800a17 	ldw	r2,40(r2)
    136f8:	10800017 	ldw	r2,0(r2)
    136fc:	1007883a 	mov	r3,r2
    13700:	00820034 	movhi	r2,2048
-   13704:	10895804 	addi	r2,r2,9568
+   13704:	10895e04 	addi	r2,r2,9592
    13708:	10c00b15 	stw	r3,44(r2)
    1370c:	00820034 	movhi	r2,2048
-   13710:	10895804 	addi	r2,r2,9568
+   13710:	10895e04 	addi	r2,r2,9592
    13714:	10800a17 	ldw	r2,40(r2)
    13718:	10800104 	addi	r2,r2,4
    1371c:	10800017 	ldw	r2,0(r2)
    13720:	1007883a 	mov	r3,r2
    13724:	00820034 	movhi	r2,2048
-   13728:	10895804 	addi	r2,r2,9568
+   13728:	10895e04 	addi	r2,r2,9592
    1372c:	10c00c15 	stw	r3,48(r2)
    13730:	00820034 	movhi	r2,2048
-   13734:	10895804 	addi	r2,r2,9568
+   13734:	10895e04 	addi	r2,r2,9592
    13738:	10800a17 	ldw	r2,40(r2)
    1373c:	10800204 	addi	r2,r2,8
    13740:	10800017 	ldw	r2,0(r2)
    13744:	10ffffcc 	andi	r3,r2,65535
    13748:	00820034 	movhi	r2,2048
-   1374c:	10895804 	addi	r2,r2,9568
+   1374c:	10895e04 	addi	r2,r2,9592
    13750:	10c00f15 	stw	r3,60(r2)
    13754:	00820034 	movhi	r2,2048
-   13758:	10895804 	addi	r2,r2,9568
+   13758:	10895e04 	addi	r2,r2,9592
    1375c:	10800a17 	ldw	r2,40(r2)
    13760:	10800204 	addi	r2,r2,8
    13764:	10800017 	ldw	r2,0(r2)
    13768:	1006d43a 	srli	r3,r2,16
    1376c:	00820034 	movhi	r2,2048
-   13770:	10895804 	addi	r2,r2,9568
+   13770:	10895e04 	addi	r2,r2,9592
    13774:	10c01015 	stw	r3,64(r2)
    13778:	00820034 	movhi	r2,2048
-   1377c:	10895804 	addi	r2,r2,9568
+   1377c:	10895e04 	addi	r2,r2,9592
    13780:	10800a17 	ldw	r2,40(r2)
    13784:	10800304 	addi	r2,r2,12
    13788:	10800017 	ldw	r2,0(r2)
    1378c:	1005d07a 	srai	r2,r2,1
    13790:	10c0004c 	andi	r3,r2,1
    13794:	00820034 	movhi	r2,2048
-   13798:	10895804 	addi	r2,r2,9568
+   13798:	10895e04 	addi	r2,r2,9592
    1379c:	10c00d15 	stw	r3,52(r2)
    137a0:	00820034 	movhi	r2,2048
-   137a4:	10895804 	addi	r2,r2,9568
+   137a4:	10895e04 	addi	r2,r2,9592
    137a8:	10800a17 	ldw	r2,40(r2)
    137ac:	10800304 	addi	r2,r2,12
    137b0:	10800017 	ldw	r2,0(r2)
    137b4:	1005d13a 	srai	r2,r2,4
    137b8:	10c003cc 	andi	r3,r2,15
    137bc:	00820034 	movhi	r2,2048
-   137c0:	10895804 	addi	r2,r2,9568
+   137c0:	10895e04 	addi	r2,r2,9592
    137c4:	10c00e15 	stw	r3,56(r2)
    137c8:	00820034 	movhi	r2,2048
-   137cc:	10895804 	addi	r2,r2,9568
+   137cc:	10895e04 	addi	r2,r2,9592
    137d0:	10800a17 	ldw	r2,40(r2)
    137d4:	10800304 	addi	r2,r2,12
    137d8:	10800017 	ldw	r2,0(r2)
    137dc:	1005d43a 	srai	r2,r2,16
    137e0:	e0bfff05 	stb	r2,-4(fp)
    137e4:	00820034 	movhi	r2,2048
-   137e8:	10895804 	addi	r2,r2,9568
+   137e8:	10895e04 	addi	r2,r2,9592
    137ec:	10800a17 	ldw	r2,40(r2)
    137f0:	10800304 	addi	r2,r2,12
    137f4:	10800017 	ldw	r2,0(r2)
    137f8:	1004d63a 	srli	r2,r2,24
    137fc:	e0bfff45 	stb	r2,-3(fp)
    13800:	00820034 	movhi	r2,2048
-   13804:	10895804 	addi	r2,r2,9568
+   13804:	10895e04 	addi	r2,r2,9592
    13808:	10800e17 	ldw	r2,56(r2)
    1380c:	10800058 	cmpnei	r2,r2,1
    13810:	1000041e 	bne	r2,zero,13824 <alt_sys_init+0x298>
    13814:	00820034 	movhi	r2,2048
-   13818:	10895804 	addi	r2,r2,9568
+   13818:	10895e04 	addi	r2,r2,9592
    1381c:	10001115 	stw	zero,68(r2)
    13820:	00000e06 	br	1385c <alt_sys_init+0x2d0>
    13824:	00820034 	movhi	r2,2048
-   13828:	10895804 	addi	r2,r2,9568
+   13828:	10895e04 	addi	r2,r2,9592
    1382c:	10800e17 	ldw	r2,56(r2)
    13830:	10800098 	cmpnei	r2,r2,2
    13834:	1000051e 	bne	r2,zero,1384c <alt_sys_init+0x2c0>
    13838:	00820034 	movhi	r2,2048
-   1383c:	10895804 	addi	r2,r2,9568
+   1383c:	10895e04 	addi	r2,r2,9592
    13840:	00c00044 	movi	r3,1
    13844:	10c01115 	stw	r3,68(r2)
    13848:	00000406 	br	1385c <alt_sys_init+0x2d0>
    1384c:	00820034 	movhi	r2,2048
-   13850:	10895804 	addi	r2,r2,9568
+   13850:	10895e04 	addi	r2,r2,9592
    13854:	00c00084 	movi	r3,2
    13858:	10c01115 	stw	r3,68(r2)
    1385c:	e0bfff03 	ldbu	r2,-4(fp)
@@ -27021,15 +27021,15 @@ void alt_sys_init( void )
    13868:	00ffffc4 	movi	r3,-1
    1386c:	1886d83a 	srl	r3,r3,r2
    13870:	00820034 	movhi	r2,2048
-   13874:	10895804 	addi	r2,r2,9568
+   13874:	10895e04 	addi	r2,r2,9592
    13878:	10c01215 	stw	r3,72(r2)
    1387c:	e0ffff03 	ldbu	r3,-4(fp)
    13880:	00820034 	movhi	r2,2048
-   13884:	10895804 	addi	r2,r2,9568
+   13884:	10895e04 	addi	r2,r2,9592
    13888:	10801117 	ldw	r2,68(r2)
    1388c:	1887883a 	add	r3,r3,r2
    13890:	00820034 	movhi	r2,2048
-   13894:	10895804 	addi	r2,r2,9568
+   13894:	10895e04 	addi	r2,r2,9592
    13898:	10c01315 	stw	r3,76(r2)
    1389c:	e0bfff43 	ldbu	r2,-3(fp)
    138a0:	00c00804 	movi	r3,32
@@ -27037,10 +27037,10 @@ void alt_sys_init( void )
    138a8:	00ffffc4 	movi	r3,-1
    138ac:	1886d83a 	srl	r3,r3,r2
    138b0:	00820034 	movhi	r2,2048
-   138b4:	10895804 	addi	r2,r2,9568
+   138b4:	10895e04 	addi	r2,r2,9592
    138b8:	10c01415 	stw	r3,80(r2)
    138bc:	01020034 	movhi	r4,2048
-   138c0:	21095804 	addi	r4,r4,9568
+   138c0:	21095e04 	addi	r4,r4,9592
    138c4:	00135200 	call	13520 <alt_dev_reg>
 }
    138c8:	0001883a 	nop
@@ -35186,7 +35186,7 @@ void alt_up_char_buffer_init(alt_up_char_buffer_dev *char_buffer) {
    17f8c:	00000b06 	br	17fbc <alt_up_char_buffer_init+0x50>
 		if (strcmp(name, "_avalon_char_buffer_slave") == 0) {
    17f90:	01420034 	movhi	r5,2048
-   17f94:	29413604 	addi	r5,r5,1240
+   17f94:	29413c04 	addi	r5,r5,1264
    17f98:	e13ffe17 	ldw	r4,-8(fp)
    17f9c:	000e5800 	call	e580 <strcmp>
    17fa0:	1000031e 	bne	r2,zero,17fb0 <alt_up_char_buffer_init+0x44>
@@ -36048,7 +36048,7 @@ static void alt_open_fd(alt_fd* fd, const char* name, int flags, int mode)
   {
     fd->dev      = alt_fd_list[old].dev;
    18718:	00820034 	movhi	r2,2048
-   1871c:	10841004 	addi	r2,r2,4160
+   1871c:	10841604 	addi	r2,r2,4184
    18720:	e0fffb17 	ldw	r3,-20(fp)
    18724:	18c00324 	muli	r3,r3,12
    18728:	10c5883a 	add	r2,r2,r3
@@ -36057,7 +36057,7 @@ static void alt_open_fd(alt_fd* fd, const char* name, int flags, int mode)
    18734:	10c00015 	stw	r3,0(r2)
     fd->priv     = alt_fd_list[old].priv;
    18738:	00820034 	movhi	r2,2048
-   1873c:	10841004 	addi	r2,r2,4160
+   1873c:	10841604 	addi	r2,r2,4184
    18740:	e0fffb17 	ldw	r3,-20(fp)
    18744:	18c00324 	muli	r3,r3,12
    18748:	10c5883a 	add	r2,r2,r3
@@ -36067,7 +36067,7 @@ static void alt_open_fd(alt_fd* fd, const char* name, int flags, int mode)
    18758:	10c00115 	stw	r3,4(r2)
     fd->fd_flags = alt_fd_list[old].fd_flags;
    1875c:	00820034 	movhi	r2,2048
-   18760:	10841004 	addi	r2,r2,4160
+   18760:	10841604 	addi	r2,r2,4184
    18764:	e0fffb17 	ldw	r3,-20(fp)
    18768:	18c00324 	muli	r3,r3,12
    1876c:	10c5883a 	add	r2,r2,r3
@@ -36109,21 +36109,21 @@ void alt_io_redirect(const char* stdout_dev,
    187c0:	01800044 	movi	r6,1
    187c4:	e17ffd17 	ldw	r5,-12(fp)
    187c8:	01020034 	movhi	r4,2048
-   187cc:	21041304 	addi	r4,r4,4172
+   187cc:	21041904 	addi	r4,r4,4196
    187d0:	00186dc0 	call	186dc <alt_open_fd>
   alt_open_fd (&alt_fd_list[STDIN_FILENO], stdin_dev, O_RDONLY, 0777);
    187d4:	01c07fc4 	movi	r7,511
    187d8:	000d883a 	mov	r6,zero
    187dc:	e17ffe17 	ldw	r5,-8(fp)
    187e0:	01020034 	movhi	r4,2048
-   187e4:	21041004 	addi	r4,r4,4160
+   187e4:	21041604 	addi	r4,r4,4184
    187e8:	00186dc0 	call	186dc <alt_open_fd>
   alt_open_fd (&alt_fd_list[STDERR_FILENO], stderr_dev, O_WRONLY, 0777);
    187ec:	01c07fc4 	movi	r7,511
    187f0:	01800044 	movi	r6,1
    187f4:	e17fff17 	ldw	r5,-4(fp)
    187f8:	01020034 	movhi	r4,2048
-   187fc:	21041604 	addi	r4,r4,4184
+   187fc:	21041c04 	addi	r4,r4,4208
    18800:	00186dc0 	call	186dc <alt_open_fd>
 }  
    18804:	0001883a 	nop
@@ -36191,7 +36191,7 @@ static int alt_file_locked (alt_fd* fd)
   {
     if ((alt_fd_list[i].dev == fd->dev) &&
    18884:	00820034 	movhi	r2,2048
-   18888:	10841004 	addi	r2,r2,4160
+   18888:	10841604 	addi	r2,r2,4184
    1888c:	e0fffe17 	ldw	r3,-8(fp)
    18890:	18c00324 	muli	r3,r3,12
    18894:	10c5883a 	add	r2,r2,r3
@@ -36201,7 +36201,7 @@ static int alt_file_locked (alt_fd* fd)
    188a4:	1880111e 	bne	r3,r2,188ec <alt_file_locked+0x94>
         (alt_fd_list[i].fd_flags & ALT_FD_EXCL) &&
    188a8:	00820034 	movhi	r2,2048
-   188ac:	10841004 	addi	r2,r2,4160
+   188ac:	10841604 	addi	r2,r2,4184
    188b0:	e0fffe17 	ldw	r3,-8(fp)
    188b4:	18c00324 	muli	r3,r3,12
    188b8:	10c5883a 	add	r2,r2,r3
@@ -36219,7 +36219,7 @@ static int alt_file_locked (alt_fd* fd)
    188c8:	e0bffe17 	ldw	r2,-8(fp)
    188cc:	10c00324 	muli	r3,r2,12
    188d0:	00820034 	movhi	r2,2048
-   188d4:	10841004 	addi	r2,r2,4160
+   188d4:	10841604 	addi	r2,r2,4184
    188d8:	1887883a 	add	r3,r3,r2
    */
 
@@ -36333,7 +36333,7 @@ int ALT_OPEN (const char* file, int flags, int mode)
    189a0:	e0bff917 	ldw	r2,-28(fp)
    189a4:	10c00324 	muli	r3,r2,12
    189a8:	00820034 	movhi	r2,2048
-   189ac:	10841004 	addi	r2,r2,4160
+   189ac:	10841604 	addi	r2,r2,4184
    189b0:	1885883a 	add	r2,r3,r2
    189b4:	e0bffc15 	stw	r2,-16(fp)
       fd->fd_flags = (flags & ~ALT_FD_FLAGS_MASK);
@@ -37892,7 +37892,7 @@ int alt_get_fd (alt_dev* dev)
   {
     if (!alt_fd_list[i].dev)
    19774:	00820034 	movhi	r2,2048
-   19778:	10841004 	addi	r2,r2,4160
+   19778:	10841604 	addi	r2,r2,4184
    1977c:	e0fffd17 	ldw	r3,-12(fp)
    19780:	18c00324 	muli	r3,r3,12
    19784:	10c5883a 	add	r2,r2,r3
@@ -37901,7 +37901,7 @@ int alt_get_fd (alt_dev* dev)
     {
       alt_fd_list[i].dev = dev;
    19790:	00820034 	movhi	r2,2048
-   19794:	10841004 	addi	r2,r2,4160
+   19794:	10841604 	addi	r2,r2,4184
    19798:	e0fffd17 	ldw	r3,-12(fp)
    1979c:	18c00324 	muli	r3,r3,12
    197a0:	10c5883a 	add	r2,r2,r3
@@ -37961,7 +37961,7 @@ int alt_get_fd (alt_dev* dev)
    1981c:	2021883a 	mov	r16,r4
    19820:	001995c0 	call	1995c <__call_exitprocs>
    19824:	00820034 	movhi	r2,2048
-   19828:	10897504 	addi	r2,r2,9684
+   19828:	10897b04 	addi	r2,r2,9708
    1982c:	11000017 	ldw	r4,0(r2)
    19830:	20800f17 	ldw	r2,60(r4)
    19834:	10000126 	beq	r2,zero,1983c <exit+0x30>
@@ -37973,7 +37973,7 @@ int alt_get_fd (alt_dev* dev)
    19844:	defffa04 	addi	sp,sp,-24
    19848:	dc000315 	stw	r16,12(sp)
    1984c:	04020034 	movhi	r16,2048
-   19850:	84097504 	addi	r16,r16,9684
+   19850:	84097b04 	addi	r16,r16,9708
    19854:	80c00017 	ldw	r3,0(r16)
    19858:	dc400415 	stw	r17,16(sp)
    1985c:	dfc00515 	stw	ra,20(sp)
@@ -38058,7 +38058,7 @@ int alt_get_fd (alt_dev* dev)
    19990:	04800044 	movi	r18,1
    19994:	057fffc4 	movi	r21,-1
    19998:	00820034 	movhi	r2,2048
-   1999c:	10897504 	addi	r2,r2,9684
+   1999c:	10897b04 	addi	r2,r2,9708
    199a0:	12000017 	ldw	r8,0(r2)
    199a4:	45005217 	ldw	r20,328(r8)
    199a8:	44c05204 	addi	r19,r8,328

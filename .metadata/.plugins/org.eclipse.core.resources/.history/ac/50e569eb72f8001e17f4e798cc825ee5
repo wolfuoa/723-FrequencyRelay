@@ -91,6 +91,7 @@ static void Peak_Detector_handlerTask(void *pvParameters)
 
                     xQueueSendToBack(Load_Control_Q, &thresholdEval, pdFALSE);
 
+
                     //Reset the timer cus no need to repeat action
                     repeatActionTimeout = false;
                     if (xTimerStart(repeatActionTimer, 0) != pdPASS)

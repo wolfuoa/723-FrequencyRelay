@@ -3,6 +3,23 @@
 #include <stdio.h>
 #include <string.h>
 
+/* Scheduler includes. */
+#include "FreeRTOS/FreeRTOS.h"
+#include "FreeRTOS/task.h"
+#include "FreeRTOS/queue.h"
+#include "FreeRTOS/semphr.h"
+
+#include <sys/alt_irq.h>
+#include <io.h>
+#include <altera_avalon_pio_regs.h>
+
+#include "inc/frequency_analyser.h"
+#include "inc/peak_detector.h"
+#include "inc/load_control.h"
+
+#include "inc/frequency_analyser.h"
+#include "inc/peak_detector.h"
+#include "inc/load_control.h"
 #include "inc/Switch_Polling.h"
 
 #define SWITCH_POLLING_TASK_PRIORITY 4
@@ -28,7 +45,8 @@ static void Switch_Polling_handlerTask(void *pvParameters)
 		if (xSemaphoreTake(SystemStatusMutex, (TickType_t)10) == pdTRUE){
 
 			if (xSemaphoreTake(LoadSwitchStatusMutex, (TickType_t)10) == pdTRUE) {
-				//printf("LoadSwithSemaphor\n\r");
+				printf("LoadSwithSemaphor\n\r");
+				//Cant turn on load when in managing
 				if (SystemStatus == SYSTEM_MANAGING){
 					LoadSwitchStatus &= IORD_ALTERA_AVALON_PIO_DATA(SLIDE_SWITCH_BASE);
 				} else{
@@ -36,10 +54,9 @@ static void Switch_Polling_handlerTask(void *pvParameters)
 				}
 
 				xSemaphoreGive(LoadSwitchStatusMutex);
+				vTaskDelay(pdMS_TO_TICKS(500));
 			}
 			xSemaphoreGive(SystemStatusMutex);
-			//must delay when giving the semaphore so that the task wont take it again before the other
-			vTaskDelay(pdMS_TO_TICKS(500));
 		}
 	}
 
