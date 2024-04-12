@@ -1,0 +1,13 @@
+/*
+ * VGA.c
+ *
+ *  Created on: 12/04/2024
+ *      Author: skend
+ */
+/* Standard includes. */
+#include <stddef.h>
+#include <stdio.h>
+#include <string.h>
+
+
+

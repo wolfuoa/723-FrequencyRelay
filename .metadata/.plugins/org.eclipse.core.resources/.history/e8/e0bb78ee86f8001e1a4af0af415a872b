@@ -1,0 +1,18 @@
+/*
+ * VGA.h
+ *
+ *  Created on: 12/04/2024
+ *      Author: skend
+ */
+
+#ifndef INC_VGA_H_
+#define INC_VGA_H_
+
+
+#include "FreeRTOS/queue.h"
+#include "FreeRTOS/semphr.h"
+
+
+
+
+#endif /* INC_VGA_H_ */

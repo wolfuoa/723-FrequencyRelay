@@ -21,6 +21,7 @@
 #include "inc/frequency_analyser.h"
 #include "inc/peak_detector.h"
 #include "inc/load_control.h"
+#include "inc/VGA.h"
 
 /* The parameters passed to the reg test tasks.  This is just done to check
  the parameter passing mechanism is working correctly. */
@@ -51,6 +52,10 @@ int main(void)
 	if (Load_Control_Init())
 	{
 		printf("Could not start Load Control Task");
+	}
+	if (VGA_Init())
+	{
+		printf("Could not start VGA Control Task");
 	}
 
 	//	freq_semaphore = xSemaphoreCreateBinary();

@@ -1,0 +1,14 @@
+#ifndef VGA_H
+#define VGA_H
+#include <stdbool.h>
+
+#include "FreeRTOS/FreeRTOS.h"
+#include "FreeRTOS/task.h"
+#include "FreeRTOS/timers.h"
+
+#include "inc/peak_detector.h"
+#include "inc/load_control.h"
+
+
+
+#endif

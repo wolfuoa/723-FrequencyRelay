@@ -1,0 +1,10 @@
+16:56:10 **** Incremental Build of configuration Nios II for project 723_Frequency_Relay ****
+make all 
+/usr/bin/sh: line 0: cd: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/: No such file or directory
+Info: Building C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+[BSP build complete]
+[723_Frequency_Relay build complete]
+
+16:56:12 Build Finished (took 2s.10ms)
+

@@ -1,0 +1,21 @@
+#ifndef VGA_H
+#define VGA_H
+#include <stdbool.h>
+
+#include "FreeRTOS/FreeRTOS.h"
+#include "FreeRTOS/task.h"
+#include "FreeRTOS/timers.h"
+
+#include "inc/peak_detector.h"
+#include "inc/load_control.h"
+
+#include "sys/alt_irq.h"
+#include "system.h"
+#include "io.h"
+#include "altera_up_avalon_video_character_buffer_with_dma.h"
+#include "altera_up_avalon_video_pixel_buffer_dma.h"
+
+
+static void PRVGADraw_Task(void *pvParameters);
+
+#endif
