@@ -1,23 +1,16 @@
 /* Scheduler includes. */
 #include "FreeRTOS/FreeRTOS.h"
 #include "FreeRTOS/task.h"
-#include "FreeRTOS/queue.h"
 #include "FreeRTOS/semphr.h"
 
-#include <sys/alt_irq.h>
-#include <io.h>
+
 #include <altera_avalon_pio_regs.h>
 
-#include "inc/frequency_analyser.h"
-#include "inc/peak_detector.h"
-#include "inc/load_control.h"
-
-#include "inc/frequency_analyser.h"
-#include "inc/peak_detector.h"
 #include "inc/load_control.h"
 
 
 static void Switch_Polling_handlerTask(void *pvParameters);
+int switch_polling_init();
 
 
 extern int LoadSwitchStatus;

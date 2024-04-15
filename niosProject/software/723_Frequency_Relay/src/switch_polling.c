@@ -1,8 +1,4 @@
 /* Standard includes. */
-#include <stddef.h>
-#include <stdio.h>
-#include <string.h>
-
 #include "inc/Switch_Polling.h"
 
 #define SWITCH_POLLING_TASK_PRIORITY 4
@@ -39,7 +35,7 @@ static void Switch_Polling_handlerTask(void *pvParameters)
 			}
 			xSemaphoreGive(SystemStatusMutex);
 			//must delay when giving the semaphore so that the task wont take it again before the other
-			vTaskDelay(pdMS_TO_TICKS(500));
+			vTaskDelay(pdMS_TO_TICKS(300));
 		}
 	}
 
