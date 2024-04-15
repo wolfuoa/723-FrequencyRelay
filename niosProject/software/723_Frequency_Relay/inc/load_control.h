@@ -17,12 +17,7 @@
 #include "inc/frequency_analyser.h"
 #include "inc/peak_detector.h"
 #include "inc/load_control.h"
-
-#include "inc/frequency_analyser.h"
-#include "inc/peak_detector.h"
-#include "inc/load_control.h"
 #include "inc/Switch_Polling.h"
-
 
 typedef enum System_Status_T
 {

@@ -88,11 +88,9 @@ static void Peak_Detector_handlerTask(void *pvParameters)
                 // If system status is stable and goes outside threshold
                 if (((systemStability == SYSTEM_FREQUENCY_STATE_STABLE) || repeatActionTimeout) && (thresholdEval == SYSTEM_FREQUENCY_STATE_UNSTABLE))
                 {
-
                     xQueueSendToBack(Load_Control_Q, &thresholdEval, pdFALSE);
 
-
-                    //Reset the timer cus no need to repeat action
+                    // Reset the timer cus no need to repeat action
                     repeatActionTimeout = false;
                     if (xTimerStart(repeatActionTimer, 0) != pdPASS)
                     {
@@ -112,7 +110,7 @@ static void Peak_Detector_handlerTask(void *pvParameters)
                     }
                 }
 
-                //Changing the systems status
+                // Changing the systems status
                 systemStability = thresholdEval;
 
                 xSemaphoreGive(repeatActionMutex_X);

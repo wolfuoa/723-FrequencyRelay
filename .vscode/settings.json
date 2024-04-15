@@ -5,6 +5,7 @@
         "frequency_analyser.h": "c",
         "altera_avalon_pio_regs.h": "c",
         "timers.h": "c",
-        "load_control.h": "c"
+        "load_control.h": "c",
+        "task.h": "c"
     }
 }

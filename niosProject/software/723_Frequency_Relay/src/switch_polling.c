@@ -3,36 +3,34 @@
 #include <stdio.h>
 #include <string.h>
 
-/* Scheduler includes. */
-#include "FreeRTOS/FreeRTOS.h"
-#include "FreeRTOS/task.h"
-#include "FreeRTOS/queue.h"
-#include "FreeRTOS/semphr.h"
-
 #include <sys/alt_irq.h>
 #include <io.h>
 #include <altera_avalon_pio_regs.h>
 
-#include "inc/frequency_analyser.h"
-#include "inc/peak_detector.h"
-#include "inc/load_control.h"
-
-#include "inc/frequency_analyser.h"
-#include "inc/peak_detector.h"
-#include "inc/load_control.h"
 #include "inc/Switch_Polling.h"
+#include "inc/frequency_analyser.h"
+#include "inc/peak_detector.h"
+#include "inc/load_control.h"
 
-#define SWITCH_POLLING_TASK_PRIORITY 4
+#define SWITCH_POLLING_TASK_PRIORITY (tskIDLE_PRIORITY + 1)
+
+#define SWITCH_POLLING_Q_TYPE int
+#define SWITCH_POLLING_Q_SIZE 10
 
 // Mutexed LoadSwitchStatus
 int LoadSwitchStatus;
 SemaphoreHandle_t LoadSwitchStatusMutex;
 
-int switch_polling_init(){
-	LoadSwitchStatusMutex = xSemaphoreCreateMutex();
-	xSemaphoreGive(LoadSwitchStatusMutex);
+QueueHandle_t Switch_Polling_Q;
 
-	if(xTaskCreate(Switch_Polling_handlerTask, "Switch_Polling_handlerTask", configMINIMAL_STACK_SIZE, NULL, SWITCH_POLLING_TASK_PRIORITY, NULL) !=pdPASS){
+static void Switch_Polling_initDataStructs();
+
+int switch_polling_init()
+{
+	Switch_Polling_initDataStructs();
+
+	if (xTaskCreate(Switch_Polling_handlerTask, "Switch_Polling_handlerTask", configMINIMAL_STACK_SIZE, NULL, SWITCH_POLLING_TASK_PRIORITY, NULL) != pdPASS)
+	{
 		return 1;
 	}
 	return 0;
@@ -40,24 +38,38 @@ int switch_polling_init(){
 
 static void Switch_Polling_handlerTask(void *pvParameters)
 {
-	while(1){
+	static int previousLoads;
 
-		if (xSemaphoreTake(SystemStatusMutex, (TickType_t)10) == pdTRUE){
+	int entry;
+	while (1)
+	{
+		entry = IORD_ALTERA_AVALON_PIO_DATA(SLIDE_SWITCH_BASE);
+		if (entry != previousLoads)
+		{
+			if (xSemaphoreTake(SystemStatusMutex, (TickType_t)10) == pdTRUE)
+			{
+				previousLoads = entry;
 
-			if (xSemaphoreTake(LoadSwitchStatusMutex, (TickType_t)10) == pdTRUE) {
-			vTaskDelay(pdMS_TO_TICKS(500));
-			//Cant turn on load when in managing
-				if (SystemStatus == SYSTEM_MANAGING){
-					LoadSwitchStatus &= IORD_ALTERA_AVALON_PIO_DATA(SLIDE_SWITCH_BASE);
-				} else{
-					LoadSwitchStatus = IORD_ALTERA_AVALON_PIO_DATA(SLIDE_SWITCH_BASE);
+				// Cant turn on load when in managing
+				if (SystemStatus == SYSTEM_MANAGING)
+				{
+					LoadSwitchStatus &= entry;
 				}
-
-				xSemaphoreGive(LoadSwitchStatusMutex);
+				else
+				{
+					LoadSwitchStatus = entry;
+				}
+				xSemaphoreGive(SystemStatusMutex);
 			}
-			xSemaphoreGive(SystemStatusMutex);
+			xQueueSendToBack(Switch_Polling_Q, LoadSwitchStatus, pdFALSE);
+			printf("Loadss %d\n", LoadSwitchStatus);
 		}
 	}
+	// vTaskDelay(pdMS_TO_TICKS(500));
+}
 
-
+static void Switch_Polling_initDataStructs()
+{
+	LoadSwitchStatusMutex = xSemaphoreCreateMutex();
+	Switch_Polling_Q = xQueueCreate(SWITCH_POLLING_Q_SIZE, sizeof(SWITCH_POLLING_Q_TYPE));
 }

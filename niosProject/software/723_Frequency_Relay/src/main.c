@@ -53,10 +53,10 @@ int main(void)
 		printf("Could not start Load Control Task");
 	}
 
-	if (switch_polling_init())
-	{
-		printf("Could not start Load Control Task");
-	}
+	// if (switch_polling_init())
+	// {
+	// 	printf("Could not start Load Control Task");
+	// }
 
 	if (Button_init())
 	{
