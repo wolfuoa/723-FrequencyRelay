@@ -4,6 +4,8 @@
 #include "FreeRTOS/FreeRTOS.h"
 #include "FreeRTOS/task.h"
 
+#include <system.h>
+
 #include "inc/load_control.h"
 
 #define LOAD_CONTROL_Q_SIZE 10
@@ -39,19 +41,19 @@ int Load_Control_Init()
 
 static void Load_Control_handlerTask(void *pvParameters)
 {
-	static int localSwitchStatus;
+	uint8_t localSwitchStatus;
+	uint8_t tempSwitchStatus;
 
-	int tempSwitchStatus;
 	int action;
 	while (1)
 	{
-		tempSwitchStatus = IORD_ALTERA_AVALON_PIO_DATA(SLIDE_SWITCH_BASE);
 		// xQueueReceive(Switch_Polling_Q, localSwitchStatus, (TickType_t)10);
 		// Read from Peak_Detector_Q
 		if (xQueueReceive(Load_Control_Q, &action, portMAX_DELAY) == pdTRUE)
 		{
 			if (xSemaphoreTake(SystemStatusMutex, (TickType_t)10) == pdTRUE)
 			{
+				tempSwitchStatus = IORD_ALTERA_AVALON_PIO_DATA(SLIDE_SWITCH_BASE);
 				// printf("Loads: %d\r\n", Load_Control_loads);
 				IOWR_ALTERA_AVALON_PIO_DATA(GREEN_LEDS_BASE, ~Load_Control_loads);
 				printf("Action: %d\n", action);
@@ -68,8 +70,6 @@ static void Load_Control_handlerTask(void *pvParameters)
 				// TEMP: MUST change to see if all load has been unsheded when stable
 				else if (SystemStatus == SYSTEM_MANAGING)
 				{
-					localSwitchStatus &= tempSwitchStatus;
-
 					// SystemStatus = SYSTEM_OK;
 					if (Load_Control_loads != 0xFF)
 					{
@@ -79,14 +79,19 @@ static void Load_Control_handlerTask(void *pvParameters)
 					else if (Load_Control_loads == 0xFF)
 					{
 						SystemStatus = SYSTEM_OK;
-						localSwitchStatus = tempSwitchStatus;
 					}
 				}
 
-				// IOWR_ALTERA_AVALON_PIO_DATA(RED_LEDS_BASE, localSwitchStatus; & Load_Control_loads);
-				IOWR_ALTERA_AVALON_PIO_DATA(RED_LEDS_BASE, localSwitchStatus);
-				printf("LD_SW_ST: %d, LD_CTRL_LDS: %d, ANDED: %d\r\n", localSwitchStatus, Load_Control_loads, (localSwitchStatus & Load_Control_loads));
+				if ((SystemStatus == SYSTEM_OK) || (SystemStatus == SYSTEM_MAINTENANCE))
+				{
+					localSwitchStatus = tempSwitchStatus;
+				} else if (SystemStatus == SYSTEM_MANAGING)
+				{
+					localSwitchStatus = Load_Control_loads & tempSwitchStatus;
+				}
 
+				// printf("LD_SW_ST: %d, LD_CTRL_LDS: %d, ANDED: %d\r\n", localSwitchStatus, Load_Control_loads, (localSwitchStatus & Load_Control_loads));
+				IOWR_ALTERA_AVALON_PIO_DATA(RED_LEDS_BASE, localSwitchStatus);
 				xSemaphoreGive(SystemStatusMutex);
 			}
 			vTaskDelay((TickType_t)10);
