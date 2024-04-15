@@ -21,6 +21,8 @@
 #include "inc/frequency_analyser.h"
 #include "inc/peak_detector.h"
 #include "inc/load_control.h"
+#include "inc/button.h"
+#include "inc/switch_polling.h"
 
 /*
  * Create the demo tasks then start the scheduler.
@@ -28,12 +30,17 @@
 int main(void)
 {
 
-	// Context is not required, but this is an example of how to do it
-	int ctx;
-	//Enable the frequency analyser IRQ
-	if (Frequency_Analyser_initIRQ(&ctx))
+	// Context is not required, but this is an example of how to do it int freqCtx;
+	int freqCtx;
+	if (Frequency_Analyser_initIRQ(&freqCtx))
 	{
 		printf("Could not register Frequency Analyser ISR\n");
+	}
+
+	int buttonCtx;
+	if (Button_initIRQ(&buttonCtx))
+	{
+		printf("Could not register Button ISR\n");
 	}
 
 	if (Peak_Detector_init())
@@ -45,10 +52,16 @@ int main(void)
 	{
 		printf("Could not start Load Control Task");
 	}
-	if (switch_polling_init()){
+
+	if (switch_polling_init())
+	{
 		printf("Could not start Load Control Task");
 	}
 
+	if (Button_init())
+	{
+		printf("Could not start Button Task");
+	}
 
 	/* Finally start the scheduler. */
 	vTaskStartScheduler();
@@ -57,4 +70,3 @@ int main(void)
 	for (;;)
 		;
 }
-

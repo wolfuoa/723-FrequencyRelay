@@ -1,9 +1,9 @@
 # memory.gdb - GDB memory region definitions
 #
 # Machine generated for CPU 'nios2' in SOPC Builder design 'nios2'
-# SOPC Builder design path: C:/COMPSYS723_Projects/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
+# SOPC Builder design path: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
 #
-# Generated: Thu Apr 11 14:35:55 NZST 2024
+# Generated: Mon Apr 15 13:18:57 NZST 2024
 
 # DO NOT MODIFY THIS FILE
 #
