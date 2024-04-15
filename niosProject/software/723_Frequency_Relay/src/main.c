@@ -3,20 +3,12 @@
  * 		authors: Nicholas Wolf, Janith Hetteriachchi, Robert Sefaj
  */
 
-/* Standard includes. */
-#include <stddef.h>
-#include <stdio.h>
-#include <string.h>
 
 /* Scheduler includes. */
 #include "FreeRTOS/FreeRTOS.h"
 #include "FreeRTOS/task.h"
 #include "FreeRTOS/queue.h"
 #include "FreeRTOS/semphr.h"
-
-#include <sys/alt_irq.h>
-#include <io.h>
-#include <altera_avalon_pio_regs.h>
 
 #include "inc/frequency_analyser.h"
 #include "inc/peak_detector.h"
@@ -45,7 +37,7 @@ int main(void)
 	{
 		printf("Could not start Load Control Task");
 	}
-	if (switch_polling_init()){
+	if (Switch_Polling_init()){
 		printf("Could not start Load Control Task");
 	}
 

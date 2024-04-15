@@ -10,7 +10,7 @@
 
 
 static void Switch_Polling_handlerTask(void *pvParameters);
-int switch_polling_init();
+int Switch_Polling_init();
 
 
 extern int LoadSwitchStatus;

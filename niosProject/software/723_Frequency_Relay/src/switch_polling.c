@@ -1,5 +1,5 @@
 /* Standard includes. */
-#include "inc/Switch_Polling.h"
+#include <inc/switch_polling.h>
 
 #define SWITCH_POLLING_TASK_PRIORITY 4
 
@@ -7,9 +7,10 @@
 int LoadSwitchStatus;
 SemaphoreHandle_t LoadSwitchStatusMutex;
 
-int switch_polling_init(){
-	LoadSwitchStatusMutex = xSemaphoreCreateMutex();
-	xSemaphoreGive(LoadSwitchStatusMutex);
+static void Switch_Polling_initDataStructs();
+
+int Switch_Polling_init(){
+	Switch_Polling_initDataStructs();
 
 	if(xTaskCreate(Switch_Polling_handlerTask, "Switch_Polling_handlerTask", configMINIMAL_STACK_SIZE, NULL, SWITCH_POLLING_TASK_PRIORITY, NULL) !=pdPASS){
 		return 1;
@@ -38,6 +39,10 @@ static void Switch_Polling_handlerTask(void *pvParameters)
 			vTaskDelay(pdMS_TO_TICKS(300));
 		}
 	}
+}
 
-
+static void Switch_Polling_initDataStructs()
+{
+	LoadSwitchStatusMutex = xSemaphoreCreateMutex();
+	xSemaphoreGive(LoadSwitchStatusMutex);
 }
