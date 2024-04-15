@@ -55,7 +55,7 @@ static void Load_Control_handlerTask(void *pvParameters)
 			{
 				tempSwitchStatus = IORD_ALTERA_AVALON_PIO_DATA(SLIDE_SWITCH_BASE);
 				// printf("Loads: %d\r\n", Load_Control_loads);
-				IOWR_ALTERA_AVALON_PIO_DATA(GREEN_LEDS_BASE, ~Load_Control_loads);
+				//IOWR_ALTERA_AVALON_PIO_DATA(GREEN_LEDS_BASE, ~Load_Control_loads);
 				printf("Action: %d\n", action);
 				if (!action && SystemStatus != SYSTEM_MAINTENANCE)
 				{
@@ -91,6 +91,9 @@ static void Load_Control_handlerTask(void *pvParameters)
 				}
 
 				// printf("LD_SW_ST: %d, LD_CTRL_LDS: %d, ANDED: %d\r\n", localSwitchStatus, Load_Control_loads, (localSwitchStatus & Load_Control_loads));
+
+				IOWR_ALTERA_AVALON_PIO_DATA(GREEN_LEDS_BASE, ~(Load_Control_loads));
+
 				IOWR_ALTERA_AVALON_PIO_DATA(RED_LEDS_BASE, localSwitchStatus);
 				xSemaphoreGive(SystemStatusMutex);
 			}
