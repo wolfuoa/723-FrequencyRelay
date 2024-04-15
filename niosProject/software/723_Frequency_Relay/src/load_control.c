@@ -15,9 +15,15 @@ QueueHandle_t Load_Control_Q;
 
 static void Load_Control_handlerTask(void *pvParameters);
 static void Load_Control_initDataStructs();
+static void shed_load();
+static void unshed_load();
 
 System_Status_T SystemStatus;
 SemaphoreHandle_t SystemStatusMutex;
+
+// Loads are represented by this 8-bit value, the priority is
+// given by the position of the bits.
+uint8_t Loads = 0xFF;
 
 int Load_Control_Init()
 {
@@ -54,17 +60,50 @@ static void Load_Control_handlerTask(void *pvParameters)
 				if (!action && SystemStatus != SYSTEM_MAINTENANCE){
 					//Shed the load
 					SystemStatus = SYSTEM_MANAGING;
+					if (Loads != 0){
+						shed_load();
+						printf("SHEDDING LOADS");
+					}
 				}
 				// TEMP: MUST change to see if all load has been unsheded when stable
 				else if(SystemStatus == SYSTEM_MANAGING){
 					SystemStatus = SYSTEM_OK;
+					if (Loads != 0xFF){
+						unshed_load();
+						printf("UNSHEDDING LOADS");
+					}
 				}
-
         	}
         	xSemaphoreGive(SystemStatusMutex);
 
         }
     }
+}
+
+
+static void shed_load()
+{
+	// Shed the load of lowest priority.
+	for (uint8_t i = 0x01; i == 0; i << 1){
+		if (Loads & i){
+			Loads & (i ^ 0xFF);
+			// ## TODO: Time Stamping ##
+			return;
+		}
+	}
+}
+
+
+static void unshed_load()
+{
+	// Unshed the load of highest priority.
+	for (uint8_t i = 0x80; i == 0; i >> 1){
+		if (!(Loads & i)){
+			Loads ^ i;
+			// ## TODO: Time Stamping ##
+			return;
+		}
+	}
 }
 
 static void Load_Control_initDataStructs()
