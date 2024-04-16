@@ -40,7 +40,7 @@ static void
 Keyboard_initDataStructs();
 static void Keyboard_handlerTask(void *pvParameters);
 static void Keyboard_initIRQ(unsigned char *receiver);
-static int isEntryOk(unsigned char *buf, int len);
+static int isEntryOk(unsigned char *buf, int len, int locationOfDecimal);
 
 void Keyboard_ISR(void *ctx, alt_u32 id)
 {
@@ -54,13 +54,13 @@ void Keyboard_ISR(void *ctx, alt_u32 id)
         switch (mode)
         {
         case KB_ASCII_MAKE_CODE:
-            //            printf("ENTRY: %d\n", entry);
+            // printf("ENTRY: %d\n", entry);
             xQueueSendToBackFromISR(Keyboard_Q, &entry, pdFALSE);
             break;
         case KB_LONG_BINARY_MAKE_CODE:
             break;
         case KB_BINARY_MAKE_CODE:
-            //            printf("ENTRY: %d\n", entry);
+            // printf("ENTRY: %d\n", entry);
             xQueueSendToBackFromISR(Keyboard_Q, &entry, pdFALSE);
             break;
         case KB_BREAK_CODE:
@@ -104,11 +104,12 @@ int Keyboard_init()
 static void Keyboard_handlerTask(void *pvParameters)
 {
     KEYBOARD_ENTRY_STATUS_T keyboardStatus;
-    unsigned char buf[10];
-    unsigned char resultStr[10];
-    int changeEntry;
+    char buf[10];
+    char resultStr[10];
+    float changeEntry;
     int len = 0;
     int idx = 0;
+    int locationOfDecimal;
 
     unsigned char scanCode;
     while (1)
@@ -174,15 +175,27 @@ static void Keyboard_handlerTask(void *pvParameters)
             {
                 for (int i = 0; i < len; ++i)
                 {
-                    idx += sprintf(&resultStr[idx], "%d", buf[i]);
+                    if (buf[i] == '.')
+                    {
+                        resultStr[idx] = '.';
+                        locationOfDecimal = idx;
+                        idx++;
+                    }
+                    else
+                    {
+                        idx += sprintf(&resultStr[idx], "%d", buf[i]);
+                    }
                 }
 
-                changeEntry = atoi(resultStr);
-                printf("%d\n", changeEntry);
+                // Truncate String
+                resultStr[9] = '\0';
+
+                sscanf(resultStr, "%f", &changeEntry);
+                // printf("%f\n", changeEntry);
 
                 printf("ENTERED: %s\n", resultStr);
 
-                if (isEntryOk(buf, len))
+                if (isEntryOk(buf, len, locationOfDecimal))
                 {
                     printf("Error: Number out of bounds\n");
                 }
@@ -197,14 +210,22 @@ static void Keyboard_handlerTask(void *pvParameters)
             }
             else
             {
-                for (int i = 0; i < 10; ++i)
+                if (scanCode == key_Decimal)
                 {
-                    if (scanCode == keyCodes[i])
+                    buf[len] = '.';
+                    len++;
+                }
+                else
+                {
+                    for (int i = 0; i < 10; ++i)
                     {
-                        buf[len] = i;
-                        len++;
+                        if (scanCode == keyCodes[i])
+                        {
+                            buf[len] = i;
+                            len++;
 
-                        break;
+                            break;
+                        }
                     }
                 }
             }
@@ -218,13 +239,14 @@ static void Keyboard_initDataStructs()
     Keyboard_Q = xQueueCreate(KEYBOARD_Q_SIZE, sizeof(KEYBOARD_Q_TYPE));
 }
 
-static int isEntryOk(unsigned char *buf, int len)
+static int isEntryOk(unsigned char *buf, int len, int locationOfDecimal)
 {
-    if (len >= 3)
+
+    if (len == 0)
     {
         return 1;
     }
-    if (buf[0] > 5 && len != 1)
+    if (locationOfDecimal >= 3)
     {
         return 1;
     }

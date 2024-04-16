@@ -11,5 +11,6 @@ const unsigned char key_R = 45;
 const unsigned char key_Esc = 118;
 const unsigned char key_L = 75;
 const unsigned char key_U = 60;
+const unsigned char key_Decimal = 73;
 
 #endif // KEYBOARD_COMMON_H
