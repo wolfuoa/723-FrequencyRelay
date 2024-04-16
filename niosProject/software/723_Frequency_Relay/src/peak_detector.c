@@ -9,9 +9,10 @@
 
 #include "inc/peak_detector.h"
 #include "inc/load_control.h"
+#include "inc/vga.h"
 
 #define PEAK_DETECTOR_Q_SIZE 100
-#define PEAK_DETECTOR_Q_TYPE float
+#define PEAK_DETECTOR_Q_TYPE double
 
 #define PEAK_DETECTOR_HANDLER_PRIORITY (tskIDLE_PRIORITY + 1)
 
@@ -22,10 +23,10 @@ typedef enum System_Frequency_State_T
 } System_Frequency_State_T;
 
 // Global Variables
-float g_peakDetectorLowerFrequencyThreshold = 49;  // Hz
-float g_peakDetectorHigherFrequencyThreshold = 52; // Hz
-float g_peakDetectorLowerROCThreshold = -2;        // Hz
-float g_peakDetectorHigherROCThreshold = 2;        // Hz
+double g_peakDetectorLowerFrequencyThreshold = 49;  // Hz
+double g_peakDetectorHigherFrequencyThreshold = 52; // Hz
+double g_peakDetectorLowerROCThreshold = -2;        // Hz
+double g_peakDetectorHigherROCThreshold = 2;        // Hz
 
 // Global Data Structs
 QueueHandle_t Peak_Detector_Q;
@@ -56,8 +57,8 @@ static void Peak_Detector_handlerTask(void *pvParameters)
     static System_Frequency_State_T systemStability;
 
     int temp;
-    float frequencyReading;
-    float rateOfChangeReading;
+    double frequencyReading;
+    double rateOfChangeReading;
     System_Frequency_State_T thresholdEval;
     while (1)
     {
@@ -74,9 +75,17 @@ static void Peak_Detector_handlerTask(void *pvParameters)
             // Replace previousFrequency
             previousFrequency = frequencyReading;
 
+            VGA_Stats currentVGAStats = {
+                frequencyReading,
+                rateOfChangeReading};
+
+            // VGA Queue
+            xQueueSendToBack(Q_VGA_Stats, &currentVGAStats, pdFALSE);
+
             // Dont change the thresholds while we are checking the thresholds
             if (xSemaphoreTake(Peak_Detector_thresholdMutex_X, (TickType_t)10) == pdTRUE)
             {
+                //                printf("FreqL %f, FreqH %f, RocL %f, RocH %f\n", g_peakDetectorLowerFrequencyThreshold, g_peakDetectorHigherFrequencyThreshold, g_peakDetectorLowerROCThreshold, g_peakDetectorHigherROCThreshold);
                 // Determine stability of system
                 thresholdEval = ((frequencyReading > g_peakDetectorLowerFrequencyThreshold) && (frequencyReading < g_peakDetectorHigherFrequencyThreshold) && (rateOfChangeReading >= g_peakDetectorLowerROCThreshold) && (rateOfChangeReading < g_peakDetectorHigherROCThreshold));
                 // printf("stable? %d\n", thresholdEval);
@@ -88,10 +97,9 @@ static void Peak_Detector_handlerTask(void *pvParameters)
                 // If system status is stable and goes outside threshold
                 if (((systemStability == SYSTEM_FREQUENCY_STATE_STABLE) || repeatActionTimeout) && (thresholdEval == SYSTEM_FREQUENCY_STATE_UNSTABLE))
                 {
-
                     xQueueSendToBack(Load_Control_Q, &thresholdEval, pdFALSE);
 
-                    //Reset the timer cus no need to repeat action
+                    // Reset the timer cus no need to repeat action
                     repeatActionTimeout = false;
                     if (xTimerStart(repeatActionTimer, 0) != pdPASS)
                     {
@@ -111,7 +119,7 @@ static void Peak_Detector_handlerTask(void *pvParameters)
                     }
                 }
 
-                //Changing the systems status
+                // Changing the systems status
                 systemStability = thresholdEval;
 
                 xSemaphoreGive(repeatActionMutex_X);

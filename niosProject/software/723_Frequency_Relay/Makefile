@@ -156,6 +156,9 @@ C_SRCS += src/frequency_analyser.c
 C_SRCS += src/peak_detector.c
 C_SRCS += src/load_control.c
 C_SRCS += src/switch_polling.c
+C_SRCS += src/button.c
+C_SRCS += src/vga.c
+C_SRCS += src/keyboard.c
 CXX_SRCS :=
 ASM_SRCS := FreeRTOS/port_asm.S
 
@@ -190,7 +193,9 @@ CRT0 :=
 SYS_LIB :=
 
 # Define path to the root of the BSP.
-BSP_ROOT_DIR := C:\COMPSYS723_Projects\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
+# BSP_ROOT_DIR := C:\COMPSYS723_Projects\723-FrequencyRlaelay\niosProject\software\723_Frequency_Rey_bsp
+# BSP_ROOT_DIR := C:\COMPSYS723_Projects\723-FrequencyRlaelay\niosProject\software\723_Frequency_Rey_bsp
+BSP_ROOT_DIR := H:\Documents\GitHub\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp
 
 # List of application specific include directories, library directories and library names
 APP_INCLUDE_DIRS := ${BSP_ROOT_DIR}/../723_Frequency_Relay/
