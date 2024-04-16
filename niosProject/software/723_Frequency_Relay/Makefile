@@ -157,6 +157,8 @@ C_SRCS += src/peak_detector.c
 C_SRCS += src/load_control.c
 C_SRCS += src/switch_polling.c
 C_SRCS += src/button.c
+C_SRCS += src/vga.c
+C_SRCS += src/keyboard.c
 CXX_SRCS :=
 ASM_SRCS := FreeRTOS/port_asm.S
 

@@ -6,6 +6,11 @@
         "altera_avalon_pio_regs.h": "c",
         "timers.h": "c",
         "load_control.h": "c",
-        "task.h": "c"
+        "task.h": "c",
+        "altera_up_avalon_ps2.h": "c",
+        "alt_irq.h": "c",
+        "io.h": "c",
+        "keyboard.h": "c",
+        "freertos.h": "c"
     }
 }
