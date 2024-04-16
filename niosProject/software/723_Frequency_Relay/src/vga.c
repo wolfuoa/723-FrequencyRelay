@@ -15,12 +15,12 @@ void freq_relay();
 
 // For frequency plot
 #define FREQPLT_ORI_X 101     // x axis pixel position at the plot origin
-#define FREQPLT_GRID_SIZE_X 5 // pixel separation in the x axis between two data points
+#define FREQPLT_GRID_SIZE_X 80 // pixel separation in the x axis between two data points
 #define FREQPLT_ORI_Y 199.0   // y axis pixel position at the plot origin
 #define FREQPLT_FREQ_RES 20.0 // number of pixels per Hz (y axis scale)
 
 #define ROCPLT_ORI_X 101
-#define ROCPLT_GRID_SIZE_X 5
+#define ROCPLT_GRID_SIZE_X 80
 #define ROCPLT_ORI_Y 259.0
 #define ROCPLT_ROC_RES 0.5 // number of pixels per Hz/s (y axis scale)
 
@@ -74,8 +74,8 @@ void PRVGADraw_Task(void *pvParameters)
     alt_up_char_buffer_clear(char_buf);
 
     // Set up plot axes
-    alt_up_pixel_buffer_dma_draw_hline(pixel_buf, 100, 590, 200, ((0x3ff << 20) + (0x3ff << 10) + (0x3ff)), 0);
-    alt_up_pixel_buffer_dma_draw_hline(pixel_buf, 100, 590, 300, ((0x3ff << 20) + (0x3ff << 10) + (0x3ff)), 0);
+    alt_up_pixel_buffer_dma_draw_hline(pixel_buf, 100, 500, 200, ((0x3ff << 20) + (0x3ff << 10) + (0x3ff)), 0);
+    alt_up_pixel_buffer_dma_draw_hline(pixel_buf, 100, 500, 300, ((0x3ff << 20) + (0x3ff << 10) + (0x3ff)), 0);
     alt_up_pixel_buffer_dma_draw_vline(pixel_buf, 100, 50, 200, ((0x3ff << 20) + (0x3ff << 10) + (0x3ff)), 0);
     alt_up_pixel_buffer_dma_draw_vline(pixel_buf, 100, 220, 300, ((0x3ff << 20) + (0x3ff << 10) + (0x3ff)), 0);
 
@@ -92,8 +92,11 @@ void PRVGADraw_Task(void *pvParameters)
     alt_up_char_buffer_string(char_buf, "-30", 9, 34);
     alt_up_char_buffer_string(char_buf, "-60", 9, 36);
 
+    //Thresholds default displays
+    alt_up_char_buffer_string(char_buf, "Lower Frequency Threshold:", 4, 41);
+
     double freq[100], dfreq[100];
-    int i = 99, j = 0;
+    int i = 0, j = 0;
     Line line_freq, line_roc;
     VGA_Stats stats;
 
@@ -120,7 +123,7 @@ void PRVGADraw_Task(void *pvParameters)
         alt_up_pixel_buffer_dma_draw_box(pixel_buf, 101, 0, 639, 199, 0, 0);
         alt_up_pixel_buffer_dma_draw_box(pixel_buf, 101, 201, 639, 299, 0, 0);
 
-        for (j = 0; j < 99; ++j)
+        for (j = 0; j <5; ++j)
         { // i here points to the oldest data, j loops through all the data to be drawn on VGA
             if (((int)(freq[(i + j) % 100]) > MIN_FREQ) && ((int)(freq[(i + j + 1) % 100]) > MIN_FREQ))
             {
@@ -144,6 +147,6 @@ void PRVGADraw_Task(void *pvParameters)
                 alt_up_pixel_buffer_dma_draw_line(pixel_buf, line_roc.x1, line_roc.y1, line_roc.x2, line_roc.y2, 0x3ff << 0, 0);
             }
         }
-        vTaskDelay(10);
+        vTaskDelay(pdMS_TO_TICKS(50));
     }
 }
