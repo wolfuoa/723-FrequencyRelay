@@ -18,6 +18,8 @@
 
 QueueHandle_t Button_Q;
 
+System_Status_T SystemStatus;
+
 static void Button_handlerTask(void *pvParameters);
 static void Button_initDataStructs();
 
@@ -51,9 +53,25 @@ static void Button_handlerTask(void *pvParameters)
     int buttonVal;
     while (1)
     {
-        if (xQueueReceive(Button_Q, &buttonVal, portMAX_DELAY) == pdTRUE)
+        xQueueReceive(Button_Q, &buttonVal, portMAX_DELAY);
+
+        if (buttonVal != 0)
         {
-            printf("Button Pressed: %d\n", buttonVal);
+            if (xSemaphoreTake(SystemStatusMutex, (TickType_t)10) == pdTRUE)
+            {
+                if (buttonVal == 4)
+                {
+                    SystemStatus = SYSTEM_MAINTENANCE;
+                } 
+                else if (buttonVal == 2)
+                {
+                    SystemStatus = SYSTEM_OK;
+                } 
+
+                buttonVal = 0;
+
+                xSemaphoreGive(SystemStatusMutex); 
+            }
         }
     }
 }
