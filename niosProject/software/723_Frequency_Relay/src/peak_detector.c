@@ -9,6 +9,7 @@
 
 #include "inc/peak_detector.h"
 #include "inc/load_control.h"
+#include "inc/vga.h"
 
 #define PEAK_DETECTOR_Q_SIZE 100
 #define PEAK_DETECTOR_Q_TYPE float
@@ -56,7 +57,7 @@ static void Peak_Detector_handlerTask(void *pvParameters)
     static System_Frequency_State_T systemStability;
 
     int temp;
-    float frequencyReading;
+    double frequencyReading;
     float rateOfChangeReading;
     System_Frequency_State_T thresholdEval;
     while (1)
@@ -73,6 +74,8 @@ static void Peak_Detector_handlerTask(void *pvParameters)
 
             // Replace previousFrequency
             previousFrequency = frequencyReading;
+
+            xQueueSendToBack(Q_VGA_Stats, &frequencyReading, pdFALSE);
 
             // Dont change the thresholds while we are checking the thresholds
             if (xSemaphoreTake(Peak_Detector_thresholdMutex_X, (TickType_t)10) == pdTRUE)

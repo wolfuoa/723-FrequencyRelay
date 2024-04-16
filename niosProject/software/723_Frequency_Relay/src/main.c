@@ -13,6 +13,7 @@
 #include "inc/frequency_analyser.h"
 #include "inc/peak_detector.h"
 #include "inc/load_control.h"
+#include "inc/vga.h"
 
 /*
  * Create the demo tasks then start the scheduler.
@@ -40,6 +41,9 @@ int main(void)
 	if (Switch_Polling_init()){
 		printf("Could not start Load Control Task");
 	}
+	if (VGA_Init()){
+			printf("Could not VGA Task");
+		}
 
 
 	/* Finally start the scheduler. */
