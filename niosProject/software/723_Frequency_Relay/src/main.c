@@ -48,14 +48,6 @@ int main(void)
 	{
 		printf("Could not start Load Control Task");
 	}
-	if (Switch_Polling_init())
-	{
-		printf("Could not start Load Control Task");
-	}
-	if (VGA_Init())
-	{
-		printf("Could not VGA Task");
-	}
 
 	// if (switch_polling_init())
 	// {
@@ -81,6 +73,5 @@ int main(void)
 	vTaskStartScheduler();
 	/* Will only reach here if there is insufficient heap available to start
 	 the scheduler. */
-	for (;;)
-		;
+	for (;;);
 }

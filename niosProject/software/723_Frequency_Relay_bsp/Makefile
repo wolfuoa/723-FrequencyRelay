@@ -101,7 +101,7 @@ ACDS_VERSION := 18.1
 # BUILD_NUMBER: 625
 
 SETTINGS_FILE := settings.bsp
-SOPC_FILE := H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
+SOPC_FILE := D:\Documents\UOA\2024\no_space\CS723\asn\repos\723-FrequencyRelay\Nios2Files\nios2.sopcinfo
 
 #-------------------------------------------------------------------------------
 #                             TOOL & COMMAND DEFINITIONS

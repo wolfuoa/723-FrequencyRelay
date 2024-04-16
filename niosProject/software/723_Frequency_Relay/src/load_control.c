@@ -84,6 +84,7 @@ static void Load_Control_handlerTask(void *pvParameters)
 
 				if ((SystemStatus == SYSTEM_OK) || (SystemStatus == SYSTEM_MAINTENANCE))
 				{
+					Load_Control_loads = 0xFF;
 					localSwitchStatus = tempSwitchStatus;
 				}
 				else if (SystemStatus == SYSTEM_MANAGING)
