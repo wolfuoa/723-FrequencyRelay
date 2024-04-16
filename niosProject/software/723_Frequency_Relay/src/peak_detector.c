@@ -16,11 +16,6 @@
 
 #define PEAK_DETECTOR_HANDLER_PRIORITY (tskIDLE_PRIORITY + 1)
 
-typedef enum System_Frequency_State_T
-{
-    SYSTEM_FREQUENCY_STATE_UNSTABLE = 0,
-    SYSTEM_FREQUENCY_STATE_STABLE = 1
-} System_Frequency_State_T;
 
 // Global Variables
 double g_peakDetectorLowerFrequencyThreshold = 49;  // Hz
@@ -131,6 +126,7 @@ static void Peak_Detector_handlerTask(void *pvParameters)
 
                 // Changing the systems status
                 systemStability = thresholdEval;
+                xQueueSendToBack(Q_SystemStatus, &systemStability, pdFALSE);
 
                 xSemaphoreGive(repeatActionMutex_X);
             }

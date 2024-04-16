@@ -31,6 +31,7 @@ TaskHandle_t PRVGADraw;
 
 QueueHandle_t Q_VGA_Stats;
 QueueHandle_t Q_Threshhold;
+QueueHandle_t Q_SystemStatus;
 
 typedef struct
 {
@@ -44,6 +45,7 @@ int VGA_Init()
 {
     Q_VGA_Stats = xQueueCreate(100, sizeof(VGA_Stats));
     Q_Threshhold =  xQueueCreate(100, sizeof(VGA_Thresholds));
+    Q_SystemStatus =  xQueueCreate(100, sizeof(int));
 
 
     if (xTaskCreate(PRVGADraw_Task, "DrawTsk", configMINIMAL_STACK_SIZE, NULL, PRVGADraw_Task_P, &PRVGADraw) != pdPASS)
@@ -100,6 +102,10 @@ void PRVGADraw_Task(void *pvParameters)
 
     alt_up_char_buffer_string(char_buf, "- ROC Threshold:", 4, 48);
     alt_up_char_buffer_string(char_buf, "+ ROC Threshold:", 4, 51);
+
+    // System State
+    alt_up_char_buffer_string(char_buf, "System Status:", 34, 41);
+
     double freq[100], dfreq[100];
     int i = 0, j = 0;
     Line line_freq, line_roc;
@@ -107,16 +113,18 @@ void PRVGADraw_Task(void *pvParameters)
 
     VGA_Thresholds thresholdsToPrint;
     char ThreshStr[5];
-    char ThreshStr2[5];
+
+    System_Frequency_State_T currentVgaSystemStatus;
 
     while (1)
     {
+    	//reciving the threshold queue
     	if (xQueueReceive(Q_Threshhold, &thresholdsToPrint, portMAX_DELAY) == pdTRUE){
     		sprintf(ThreshStr, "%.1f Hz", thresholdsToPrint.peakDetectorLowerFrequencyThreshold);
     		alt_up_char_buffer_string(char_buf, ThreshStr, 23, 41);
 
-    		sprintf(ThreshStr2, "%.1f Hz", thresholdsToPrint.peakDetectorHigherFrequencyThreshold);
-    		alt_up_char_buffer_string(char_buf, ThreshStr2, 23, 44);
+    		sprintf(ThreshStr, "%.1f Hz", thresholdsToPrint.peakDetectorHigherFrequencyThreshold);
+    		alt_up_char_buffer_string(char_buf, ThreshStr, 23, 44);
 
     		sprintf(ThreshStr, "%.1f Hz", thresholdsToPrint.peakDetectorLowerROCThreshold);
     		alt_up_char_buffer_string(char_buf, ThreshStr, 23, 48);
@@ -124,6 +132,20 @@ void PRVGADraw_Task(void *pvParameters)
     		sprintf(ThreshStr, "%.1f Hz", thresholdsToPrint.peakDetectorHigherROCThreshold);
     		alt_up_char_buffer_string(char_buf, ThreshStr, 23, 51);
     	}
+
+
+    	//recieving the system status queue
+    	if (xQueueReceive(Q_SystemStatus, &currentVgaSystemStatus, portMAX_DELAY) == pdTRUE){
+    		switch(currentVgaSystemStatus){
+    			case(SYSTEM_FREQUENCY_STATE_UNSTABLE):
+						alt_up_char_buffer_string(char_buf, "Unstable", 50, 41);
+    			break;
+    			case(SYSTEM_FREQUENCY_STATE_STABLE):
+						alt_up_char_buffer_string(char_buf, "         ", 50, 41);
+						alt_up_char_buffer_string(char_buf, "Stable", 50, 41);
+    		}
+    	}
+
 
         // receive frequency data from queue
         if (xQueueReceive(Q_VGA_Stats, &stats, portMAX_DELAY) == pdTRUE)

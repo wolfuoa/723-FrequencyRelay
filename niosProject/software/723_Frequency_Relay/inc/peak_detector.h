@@ -15,6 +15,12 @@ extern double g_peakDetectorHigherFrequencyThreshold; // Hz
 extern double g_peakDetectorLowerROCThreshold;        // Hz
 extern double g_peakDetectorHigherROCThreshold;       // Hz
 
+typedef enum System_Frequency_State_T
+{
+    SYSTEM_FREQUENCY_STATE_UNSTABLE = 0,
+    SYSTEM_FREQUENCY_STATE_STABLE = 1
+} System_Frequency_State_T;
+
 int Peak_Detector_init();
 
 #endif // PEAK_DETECTOR_H
