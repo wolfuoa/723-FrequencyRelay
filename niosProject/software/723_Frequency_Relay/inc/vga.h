@@ -1,12 +1,12 @@
 /*
- * VGA.h
- *
- *  Created on: 12/04/2024
- *      Author: skend
- */
 
-#ifndef INC_VGA_H_
-#define INC_VGA_H_
+VGA.h*
+Created on: 12/04/2024
+Author: skend
+*/
+
+#ifndef INCVGA_H
+#define INCVGA_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -30,4 +30,4 @@ typedef struct VGA_Stats
 
 int VGA_Init();
 
-#endif /* INC_VGA_H_ */
+#endif /* INC_VGA_H */

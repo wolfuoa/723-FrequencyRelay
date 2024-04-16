@@ -25,7 +25,7 @@ QueueHandle_t Switch_Polling_Q;
 
 static void Switch_Polling_initDataStructs();
 
-int switch_polling_init()
+int Switch_Polling_init()
 {
 	Switch_Polling_initDataStructs();
 
@@ -62,7 +62,6 @@ static void Switch_Polling_handlerTask(void *pvParameters)
 				xSemaphoreGive(SystemStatusMutex);
 			}
 			xQueueSendToBack(Switch_Polling_Q, LoadSwitchStatus, pdFALSE);
-			printf("Loadss %d\n", LoadSwitchStatus);
 		}
 	}
 	// vTaskDelay(pdMS_TO_TICKS(500));

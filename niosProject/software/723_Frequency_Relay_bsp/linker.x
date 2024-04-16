@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2' in SOPC Builder design 'nios2'
  * SOPC Builder design path: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
  *
- * Generated: Mon Apr 15 15:19:04 NZST 2024
+ * Generated: Tue Apr 16 17:26:38 NZST 2024
  */
 
 /*
