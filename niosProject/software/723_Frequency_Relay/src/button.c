@@ -65,7 +65,7 @@ static void Button_handlerTask(void *pvParameters)
                 } 
                 else if (buttonVal == 2)
                 {
-                    SystemStatus = SYSTEM_OK;
+                    SystemStatus = SYSTEM_MANAGING;
                 } 
 
                 buttonVal = 0;
