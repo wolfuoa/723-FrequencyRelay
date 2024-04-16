@@ -89,6 +89,16 @@ static void Peak_Detector_handlerTask(void *pvParameters)
                 // Determine stability of system
                 thresholdEval = ((frequencyReading > g_peakDetectorLowerFrequencyThreshold) && (frequencyReading < g_peakDetectorHigherFrequencyThreshold) && (rateOfChangeReading >= g_peakDetectorLowerROCThreshold) && (rateOfChangeReading < g_peakDetectorHigherROCThreshold));
                 // printf("stable? %d\n", thresholdEval);
+
+                //Testing: sending thresholds to VGA
+                VGA_Thresholds currentThresholds = {
+                	g_peakDetectorLowerFrequencyThreshold,  // Hz
+                	g_peakDetectorHigherFrequencyThreshold, // Hz
+                	g_peakDetectorLowerROCThreshold,        // Hz
+                	g_peakDetectorHigherROCThreshold,       // Hz
+                };
+                xQueueSendToBack(Q_Threshhold, &currentThresholds, pdFALSE);
+
                 xSemaphoreGive(Peak_Detector_thresholdMutex_X);
             }
 

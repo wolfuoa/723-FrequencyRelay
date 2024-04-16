@@ -30,7 +30,7 @@ void freq_relay();
 TaskHandle_t PRVGADraw;
 
 QueueHandle_t Q_VGA_Stats;
-QueueHandle_t Q_DFREQ;
+QueueHandle_t Q_Threshhold;
 
 typedef struct
 {
@@ -43,6 +43,8 @@ typedef struct
 int VGA_Init()
 {
     Q_VGA_Stats = xQueueCreate(100, sizeof(VGA_Stats));
+    Q_Threshhold =  xQueueCreate(100, sizeof(VGA_Thresholds));
+
 
     if (xTaskCreate(PRVGADraw_Task, "DrawTsk", configMINIMAL_STACK_SIZE, NULL, PRVGADraw_Task_P, &PRVGADraw) != pdPASS)
     {
@@ -93,15 +95,35 @@ void PRVGADraw_Task(void *pvParameters)
     alt_up_char_buffer_string(char_buf, "-60", 9, 36);
 
     //Thresholds default displays
-    alt_up_char_buffer_string(char_buf, "Lower Frequency Threshold:", 4, 41);
+    alt_up_char_buffer_string(char_buf, "- Freq Threshold:", 4, 41);
+    alt_up_char_buffer_string(char_buf, "+ Freq Threshold:", 4, 44);
 
+    alt_up_char_buffer_string(char_buf, "- ROC Threshold:", 4, 48);
+    alt_up_char_buffer_string(char_buf, "+ ROC Threshold:", 4, 51);
     double freq[100], dfreq[100];
     int i = 0, j = 0;
     Line line_freq, line_roc;
     VGA_Stats stats;
 
+    VGA_Thresholds thresholdsToPrint;
+    char ThreshStr[5];
+    char ThreshStr2[5];
+
     while (1)
     {
+    	if (xQueueReceive(Q_Threshhold, &thresholdsToPrint, portMAX_DELAY) == pdTRUE){
+    		sprintf(ThreshStr, "%.1f Hz", thresholdsToPrint.peakDetectorLowerFrequencyThreshold);
+    		alt_up_char_buffer_string(char_buf, ThreshStr, 23, 41);
+
+    		sprintf(ThreshStr2, "%.1f Hz", thresholdsToPrint.peakDetectorHigherFrequencyThreshold);
+    		alt_up_char_buffer_string(char_buf, ThreshStr2, 23, 44);
+
+    		sprintf(ThreshStr, "%.1f Hz", thresholdsToPrint.peakDetectorLowerROCThreshold);
+    		alt_up_char_buffer_string(char_buf, ThreshStr, 23, 48);
+
+    		sprintf(ThreshStr, "%.1f Hz", thresholdsToPrint.peakDetectorHigherROCThreshold);
+    		alt_up_char_buffer_string(char_buf, ThreshStr, 23, 51);
+    	}
 
         // receive frequency data from queue
         if (xQueueReceive(Q_VGA_Stats, &stats, portMAX_DELAY) == pdTRUE)

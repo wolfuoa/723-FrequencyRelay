@@ -21,12 +21,22 @@ Author: skend
 #include "FreeRTOS/queue.h"
 
 extern QueueHandle_t Q_VGA_Stats;
+extern QueueHandle_t Q_Threshhold;
+
 
 typedef struct VGA_Stats
 {
     double currentFrequency;
     double currentROC;
 } VGA_Stats;
+
+typedef struct VGA_Thresholds
+{
+	double peakDetectorLowerFrequencyThreshold;
+	double peakDetectorHigherFrequencyThreshold;
+	double peakDetectorLowerROCThreshold;
+	double peakDetectorHigherROCThreshold;
+} VGA_Thresholds;
 
 int VGA_Init();
 
