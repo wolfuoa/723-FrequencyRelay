@@ -1,10 +1,12 @@
+/*
+ * VGA.h
+ *
+ *  Created on: 12/04/2024
+ *      Author: skend
+ */
 
-// VGA.h
-// Created on: 12/04/2024
-// Author: skend
-
-#ifndef INCVGA_H
-#define INCVGA_H
+#ifndef INC_VGA_H_
+#define INC_VGA_H_
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -18,6 +20,14 @@
 #include "FreeRTOS/task.h"
 #include "FreeRTOS/queue.h"
 
+extern QueueHandle_t Q_VGA_Stats;
+
+typedef struct VGA_Stats
+{
+    double currentFrequency;
+    double currentROC;
+} VGA_Stats;
+
 int VGA_Init();
 
-#endif /* INC_VGA_H */
+#endif /* INC_VGA_H_ */

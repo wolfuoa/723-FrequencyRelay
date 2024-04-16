@@ -1,3 +1,4 @@
 activeuserprofiles=A-Device;Team
 eclipse.preferences.version=1
 org.eclipse.rse.systemtype.local.systemType.defaultUserId=skend
+useridperkey=A-Device.Local\=skend;

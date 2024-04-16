@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;723_Frequency_Relay/inc/Switch_Polling.h&apos; to &apos;switch_polling.h&apos;" description="Rename resource &apos;Switch_Polling.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="inc/Switch_Polling.h" name="switch_polling.h" stamp="1713145274823" updateReferences="true"/>
+</session>

@@ -56,7 +56,7 @@ static void Load_Control_handlerTask(void *pvParameters)
 				tempSwitchStatus = IORD_ALTERA_AVALON_PIO_DATA(SLIDE_SWITCH_BASE);
 				// printf("Loads: %d\r\n", Load_Control_loads);
 				// IOWR_ALTERA_AVALON_PIO_DATA(GREEN_LEDS_BASE, ~Load_Control_loads);
-//				printf("Action: %d\n", action);
+				//				printf("Action: %d\n", action);
 				if (!action && SystemStatus != SYSTEM_MAINTENANCE)
 				{
 					// Shed the load
@@ -64,7 +64,7 @@ static void Load_Control_handlerTask(void *pvParameters)
 					if (Load_Control_loads != 0)
 					{
 						shed_load();
-//						printf("SHEDDING LOADS\r\n");
+						//						printf("SHEDDING LOADS\r\n");
 					}
 				}
 				// TEMP: MUST change to see if all load has been unsheded when stable
@@ -74,7 +74,7 @@ static void Load_Control_handlerTask(void *pvParameters)
 					if (Load_Control_loads != 0xFF)
 					{
 						unshed_load();
-//						printf("UNSHEDDING LOADS\r\n");
+						//						printf("UNSHEDDING LOADS\r\n");
 					}
 					else if (Load_Control_loads == 0xFF)
 					{

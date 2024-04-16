@@ -9,6 +9,7 @@
 
 #include "inc/peak_detector.h"
 #include "inc/load_control.h"
+#include "inc/vga.h"
 
 #define PEAK_DETECTOR_Q_SIZE 100
 #define PEAK_DETECTOR_Q_TYPE double
@@ -56,8 +57,8 @@ static void Peak_Detector_handlerTask(void *pvParameters)
     static System_Frequency_State_T systemStability;
 
     int temp;
-    float frequencyReading;
-    float rateOfChangeReading;
+    double frequencyReading;
+    double rateOfChangeReading;
     System_Frequency_State_T thresholdEval;
     while (1)
     {
@@ -74,10 +75,17 @@ static void Peak_Detector_handlerTask(void *pvParameters)
             // Replace previousFrequency
             previousFrequency = frequencyReading;
 
+            VGA_Stats currentVGAStats = {
+                frequencyReading,
+                rateOfChangeReading};
+
+            // VGA Queue
+            xQueueSendToBack(Q_VGA_Stats, &currentVGAStats, pdFALSE);
+
             // Dont change the thresholds while we are checking the thresholds
             if (xSemaphoreTake(Peak_Detector_thresholdMutex_X, (TickType_t)10) == pdTRUE)
             {
-//                printf("FreqL %f, FreqH %f, RocL %f, RocH %f\n", g_peakDetectorLowerFrequencyThreshold, g_peakDetectorHigherFrequencyThreshold, g_peakDetectorLowerROCThreshold, g_peakDetectorHigherROCThreshold);
+                //                printf("FreqL %f, FreqH %f, RocL %f, RocH %f\n", g_peakDetectorLowerFrequencyThreshold, g_peakDetectorHigherFrequencyThreshold, g_peakDetectorLowerROCThreshold, g_peakDetectorHigherROCThreshold);
                 // Determine stability of system
                 thresholdEval = ((frequencyReading > g_peakDetectorLowerFrequencyThreshold) && (frequencyReading < g_peakDetectorHigherFrequencyThreshold) && (rateOfChangeReading >= g_peakDetectorLowerROCThreshold) && (rateOfChangeReading < g_peakDetectorHigherROCThreshold));
                 // printf("stable? %d\n", thresholdEval);
@@ -95,7 +103,7 @@ static void Peak_Detector_handlerTask(void *pvParameters)
                     repeatActionTimeout = false;
                     if (xTimerStart(repeatActionTimer, 0) != pdPASS)
                     {
-                        printf("Cannot reset timer\n");
+                        printf("Cannot reset timer\n\r");
                     }
                 }
 
