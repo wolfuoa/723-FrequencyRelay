@@ -11,6 +11,7 @@
         "alt_irq.h": "c",
         "io.h": "c",
         "keyboard.h": "c",
-        "freertos.h": "c"
+        "freertos.h": "c",
+        "queue.h": "c"
     }
 }

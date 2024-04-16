@@ -10,10 +10,10 @@
 extern QueueHandle_t Peak_Detector_Q;
 extern SemaphoreHandle_t Peak_Detector_thresholdMutex_X;
 
-extern float g_peakDetectorLowerFrequencyThreshold;  // Hz
-extern float g_peakDetectorHigherFrequencyThreshold; // Hz
-extern float g_peakDetectorLowerROCThreshold;        // Hz
-extern float g_peakDetectorHigherROCThreshold;       // Hz
+extern double g_peakDetectorLowerFrequencyThreshold;  // Hz
+extern double g_peakDetectorHigherFrequencyThreshold; // Hz
+extern double g_peakDetectorLowerROCThreshold;        // Hz
+extern double g_peakDetectorHigherROCThreshold;       // Hz
 
 int Peak_Detector_init();
 

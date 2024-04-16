@@ -11,7 +11,7 @@
 #include "inc/load_control.h"
 
 #define PEAK_DETECTOR_Q_SIZE 100
-#define PEAK_DETECTOR_Q_TYPE float
+#define PEAK_DETECTOR_Q_TYPE double
 
 #define PEAK_DETECTOR_HANDLER_PRIORITY (tskIDLE_PRIORITY + 1)
 
@@ -22,10 +22,10 @@ typedef enum System_Frequency_State_T
 } System_Frequency_State_T;
 
 // Global Variables
-float g_peakDetectorLowerFrequencyThreshold = 49;  // Hz
-float g_peakDetectorHigherFrequencyThreshold = 52; // Hz
-float g_peakDetectorLowerROCThreshold = -2;        // Hz
-float g_peakDetectorHigherROCThreshold = 2;        // Hz
+double g_peakDetectorLowerFrequencyThreshold = 49;  // Hz
+double g_peakDetectorHigherFrequencyThreshold = 52; // Hz
+double g_peakDetectorLowerROCThreshold = -2;        // Hz
+double g_peakDetectorHigherROCThreshold = 2;        // Hz
 
 // Global Data Structs
 QueueHandle_t Peak_Detector_Q;
@@ -77,6 +77,7 @@ static void Peak_Detector_handlerTask(void *pvParameters)
             // Dont change the thresholds while we are checking the thresholds
             if (xSemaphoreTake(Peak_Detector_thresholdMutex_X, (TickType_t)10) == pdTRUE)
             {
+//                printf("FreqL %f, FreqH %f, RocL %f, RocH %f\n", g_peakDetectorLowerFrequencyThreshold, g_peakDetectorHigherFrequencyThreshold, g_peakDetectorLowerROCThreshold, g_peakDetectorHigherROCThreshold);
                 // Determine stability of system
                 thresholdEval = ((frequencyReading > g_peakDetectorLowerFrequencyThreshold) && (frequencyReading < g_peakDetectorHigherFrequencyThreshold) && (rateOfChangeReading >= g_peakDetectorLowerROCThreshold) && (rateOfChangeReading < g_peakDetectorHigherROCThreshold));
                 // printf("stable? %d\n", thresholdEval);
