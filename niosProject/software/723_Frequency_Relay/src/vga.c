@@ -32,6 +32,7 @@ TaskHandle_t PRVGADraw;
 
 
 QueueHandle_t Q_VGA_Stats;
+QueueHandle_t Q_DFREQ;
 
 typedef struct{
 	unsigned int x1;
@@ -43,7 +44,7 @@ typedef struct{
 
 
 int VGA_Init(){
-		Q_VGA_Stats = xQueueCreate( 100, sizeof(double) );
+		Q_VGA_Stats = xQueueCreate( 100, sizeof(VGA_Stats) );
 
 		if(xTaskCreate( PRVGADraw_Task, "DrawTsk", configMINIMAL_STACK_SIZE, NULL, PRVGADraw_Task_P, &PRVGADraw) != pdPASS){
 			return 1;
@@ -96,24 +97,18 @@ void PRVGADraw_Task(void *pvParameters ){
 	double freq[100], dfreq[100];
 	int i = 99, j = 0;
 	Line line_freq, line_roc;
+	VGA_Stats stats;
 
 	while(1){
 
 		//receive frequency data from queue
 		while(uxQueueMessagesWaiting( Q_VGA_Stats ) != 0){
-			xQueueReceive( Q_VGA_Stats, freq+i, 0 );
-
-			//calculate frequency RoC
-
-			if(i==0){
-				dfreq[0] = (freq[0]-freq[99]) * 2.0 * freq[0] * freq[99] / (freq[0]+freq[99]);
-			}
-			else{
-				dfreq[i] = (freq[i]-freq[i-1]) * 2.0 * freq[i]* freq[i-1] / (freq[i]+freq[i-1]);
-			}
-
-			if (dfreq[i] > 100.0){
-				dfreq[i] = 100.0;
+			xQueueReceive( Q_VGA_Stats, &stats, 0 );
+			freq[i] = stats.currentFrequency;
+			if (stats.currentROC > 10){
+				dfreq[i] = 0;
+			} else{
+				dfreq[i] = stats.currentROC * 100;
 			}
 
 

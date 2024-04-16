@@ -26,7 +26,13 @@
 
 extern QueueHandle_t Q_VGA_Stats;
 
+typedef struct VGA_Stats{
+	double currentFrequency;
+	double currentROC;
+} VGA_Stats;
+
 int VGA_Init();
+
 
 
 #endif /* INC_VGA_H_ */

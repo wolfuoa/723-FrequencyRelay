@@ -58,7 +58,7 @@ static void Peak_Detector_handlerTask(void *pvParameters)
 
     int temp;
     double frequencyReading;
-    float rateOfChangeReading;
+    double rateOfChangeReading;
     System_Frequency_State_T thresholdEval;
     while (1)
     {
@@ -75,7 +75,13 @@ static void Peak_Detector_handlerTask(void *pvParameters)
             // Replace previousFrequency
             previousFrequency = frequencyReading;
 
-            xQueueSendToBack(Q_VGA_Stats, &frequencyReading, pdFALSE);
+            VGA_Stats currentVGAStats = {
+            	frequencyReading,
+				rateOfChangeReading
+            };
+
+            //VGA Queue
+            xQueueSendToBack(Q_VGA_Stats, &currentVGAStats, pdFALSE);
 
             // Dont change the thresholds while we are checking the thresholds
             if (xSemaphoreTake(Peak_Detector_thresholdMutex_X, (TickType_t)10) == pdTRUE)
