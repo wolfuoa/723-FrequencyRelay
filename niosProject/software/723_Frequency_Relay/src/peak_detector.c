@@ -16,11 +16,6 @@
 
 #define PEAK_DETECTOR_HANDLER_PRIORITY (tskIDLE_PRIORITY + 1)
 
-typedef enum System_Frequency_State_T
-{
-    SYSTEM_FREQUENCY_STATE_UNSTABLE = 0,
-    SYSTEM_FREQUENCY_STATE_STABLE = 1
-} System_Frequency_State_T;
 
 // Global Variables
 double g_peakDetectorLowerFrequencyThreshold = 49;  // Hz
@@ -89,6 +84,16 @@ static void Peak_Detector_handlerTask(void *pvParameters)
                 // Determine stability of system
                 thresholdEval = ((frequencyReading > g_peakDetectorLowerFrequencyThreshold) && (frequencyReading < g_peakDetectorHigherFrequencyThreshold) && (rateOfChangeReading >= g_peakDetectorLowerROCThreshold) && (rateOfChangeReading < g_peakDetectorHigherROCThreshold));
                 // printf("stable? %d\n", thresholdEval);
+
+                //Testing: sending thresholds to VGA
+                VGA_Thresholds currentThresholds = {
+                	g_peakDetectorLowerFrequencyThreshold,  // Hz
+                	g_peakDetectorHigherFrequencyThreshold, // Hz
+                	g_peakDetectorLowerROCThreshold,        // Hz
+                	g_peakDetectorHigherROCThreshold,       // Hz
+                };
+                xQueueSendToBack(Q_Threshhold, &currentThresholds, pdFALSE);
+
                 xSemaphoreGive(Peak_Detector_thresholdMutex_X);
             }
 
@@ -121,6 +126,7 @@ static void Peak_Detector_handlerTask(void *pvParameters)
 
                 // Changing the systems status
                 systemStability = thresholdEval;
+                xQueueSendToBack(Q_SystemStatus, &systemStability, pdFALSE);
 
                 xSemaphoreGive(repeatActionMutex_X);
             }

@@ -20,13 +20,28 @@ Author: skend
 #include "FreeRTOS/task.h"
 #include "FreeRTOS/queue.h"
 
+#include "inc/peak_detector.h"
+
+
+
 extern QueueHandle_t Q_VGA_Stats;
+extern QueueHandle_t Q_Threshhold;
+extern QueueHandle_t Q_SystemStatus;
+
 
 typedef struct VGA_Stats
 {
     double currentFrequency;
     double currentROC;
 } VGA_Stats;
+
+typedef struct VGA_Thresholds
+{
+	double peakDetectorLowerFrequencyThreshold;
+	double peakDetectorHigherFrequencyThreshold;
+	double peakDetectorLowerROCThreshold;
+	double peakDetectorHigherROCThreshold;
+} VGA_Thresholds;
 
 int VGA_Init();
 
