@@ -6,6 +6,7 @@
 
 #include "FreeRTOS/queue.h"
 #include "FreeRTOS/semphr.h"
+#include "sys/alt_timestamp.h"
 
 extern QueueHandle_t Peak_Detector_Q;
 extern SemaphoreHandle_t Peak_Detector_thresholdMutex_X;

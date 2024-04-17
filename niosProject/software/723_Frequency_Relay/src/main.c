@@ -25,7 +25,6 @@
  */
 int main(void)
 {
-
 	// Context is not required, but this is an example of how to do it int freqCtx;
 	int freqCtx;
 	if (Frequency_Analyser_initIRQ(&freqCtx))

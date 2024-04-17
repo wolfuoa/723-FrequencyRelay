@@ -105,15 +105,18 @@ void PRVGADraw_Task(void *pvParameters)
     alt_up_char_buffer_string(char_buf, "- ROC Threshold:", 4, 48);
     alt_up_char_buffer_string(char_buf, "+ ROC Threshold:", 4, 51);
 
-    //detected unstability and time till we fixed instability
-    alt_up_char_buffer_string(char_buf, "Performance time: ", 4, 55);
-
     // System State
-    alt_up_char_buffer_string(char_buf, "- System Status:", 34, 41);
+    alt_up_char_buffer_string(char_buf, "> System Status:", 34, 41);
 
     //current Freq and ROC value
-    alt_up_char_buffer_string(char_buf, "+ Current ROC:", 34, 44);
-    alt_up_char_buffer_string(char_buf, "- Current Freq:", 34, 48);    
+    alt_up_char_buffer_string(char_buf, "> Current ROC:", 34, 44);
+    alt_up_char_buffer_string(char_buf, "> Current Freq:", 34, 48);    
+
+    // Performance measures
+    alt_up_char_buffer_string(char_buf, "> Reaction time: ", 34, 51);
+    alt_up_char_buffer_string(char_buf, "Avg Reaction time: ", 2, 55);
+    alt_up_char_buffer_string(char_buf, "Max Reaction time: ", 28, 55);
+    alt_up_char_buffer_string(char_buf, "Min Reaction time: ", 54, 55);
 
     double freq[100], dfreq[100];
     int i = 0, j = 0;
@@ -124,6 +127,11 @@ void PRVGADraw_Task(void *pvParameters)
     char ThreshStr[5];
 
     int performance_mesaure_to_print;
+    int max_performance_time = 0;
+    int min_performance_time = 0;
+    int running_performance_total = 0;
+    int numb_running_index = 0;
+
 
     System_Frequency_State_T currentVgaSystemStatus;
 
@@ -147,10 +155,35 @@ void PRVGADraw_Task(void *pvParameters)
 
         //reciving the performance value
     	if (xQueueReceive(Q_PerformanceMeasure, &performance_mesaure_to_print, (TickType_t)10) == pdTRUE){
-            printf("performance Q recieved %d\n\r", performance_mesaure_to_print);
-            alt_up_char_buffer_string(char_buf, "            ", 23, 55);
+            //update running average
+            running_performance_total += performance_mesaure_to_print;
+            numb_running_index++;
+
+            if (performance_mesaure_to_print > max_performance_time){
+                max_performance_time = performance_mesaure_to_print;
+            }
+            if (performance_mesaure_to_print < min_performance_time){
+                min_performance_time = performance_mesaure_to_print;
+            }
+
+            // reaction time
             sprintf(ThreshStr, "%d ms", performance_mesaure_to_print);
-            alt_up_char_buffer_string(char_buf, ThreshStr, 23, 55);
+            alt_up_char_buffer_string(char_buf, ThreshStr, 52, 51);
+
+            // AVG reaction code
+            alt_up_char_buffer_string(char_buf, "     ", 21, 55);
+            sprintf(ThreshStr, "%d ms", (running_performance_total/numb_running_index));
+            alt_up_char_buffer_string(char_buf, ThreshStr, 21, 55);
+
+            //Max reaction code
+            alt_up_char_buffer_string(char_buf, "     ", 47, 55);
+            sprintf(ThreshStr, "%d ms", max_performance_time);
+            alt_up_char_buffer_string(char_buf, ThreshStr, 47, 55);
+
+            //Min reaction code
+            alt_up_char_buffer_string(char_buf, "    ", 73, 55);
+            sprintf(ThreshStr, "%d ms", min_performance_time);
+            alt_up_char_buffer_string(char_buf, ThreshStr, 73, 55);
         }
         
 

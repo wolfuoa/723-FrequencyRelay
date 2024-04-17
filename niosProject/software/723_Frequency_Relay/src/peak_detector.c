@@ -3,6 +3,8 @@
 
 #include <stdbool.h>
 
+#include <sys/alt_timestamp.h>
+
 #include "FreeRTOS/FreeRTOS.h"
 #include "FreeRTOS/task.h"
 #include "FreeRTOS/timers.h"
@@ -136,7 +138,7 @@ static void Peak_Detector_handlerTask(void *pvParameters)
 
                             if(xSemaphoreTake(Peak_Detector_performanceTimerMutex_X, (TickType_t)10) == pdTRUE)
                             {
-                                g_peakDetectorPerformanceTimestamp = xTaskGetTickCount();
+                                g_peakDetectorPerformanceTimestamp = alt_timestamp();
                                 xSemaphoreGive(Peak_Detector_performanceTimerMutex_X);
                             }
                             xQueueSendToBack(Load_Control_Q, &thresholdEval, pdFALSE);
@@ -185,6 +187,8 @@ static void Peak_Detector_handlerTask(void *pvParameters)
 
 static void Peak_Detector_initDataStructs()
 {
+    alt_timestamp_start();
+
     repeatActionMutex_X = xSemaphoreCreateMutex();
     Peak_Detector_thresholdMutex_X = xSemaphoreCreateMutex();
     Peak_Detector_performanceTimerMutex_X = xSemaphoreCreateMutex();
