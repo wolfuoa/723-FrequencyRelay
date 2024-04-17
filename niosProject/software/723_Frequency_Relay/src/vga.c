@@ -118,6 +118,9 @@ void PRVGADraw_Task(void *pvParameters)
     alt_up_char_buffer_string(char_buf, "Max Reaction time: ", 28, 55);
     alt_up_char_buffer_string(char_buf, "Min Reaction time: ", 54, 55);
 
+    //uptime text
+    alt_up_char_buffer_string(char_buf, "Uptime: ", 34, 4);
+
     double freq[100], dfreq[100];
     int i = 0, j = 0;
     Line line_freq, line_roc;
@@ -132,23 +135,37 @@ void PRVGADraw_Task(void *pvParameters)
     int running_performance_total = 0;
     int numb_running_index = 0;
 
+    double uptime;
+
 
     System_Frequency_State_T currentVgaSystemStatus;
 
     while (1)
     {
+        // print the uptime
+        uptime = (double)xTaskGetTickCount()/1000;
+        sprintf(ThreshStr, "%.1f s", uptime);
+        alt_up_char_buffer_string(char_buf, "          ", 43, 4);
+        alt_up_char_buffer_string(char_buf, ThreshStr, 43, 4);
+
+
+
     	//reciving the threshold queue
     	if (xQueueReceive(Q_Threshhold, &thresholdsToPrint, portMAX_DELAY) == pdTRUE){
     		sprintf(ThreshStr, "%.1f Hz", thresholdsToPrint.peakDetectorLowerFrequencyThreshold);
+            alt_up_char_buffer_string(char_buf, "    ", 23, 41);
     		alt_up_char_buffer_string(char_buf, ThreshStr, 23, 41);
 
     		sprintf(ThreshStr, "%.1f Hz", thresholdsToPrint.peakDetectorHigherFrequencyThreshold);
+            alt_up_char_buffer_string(char_buf, "    ", 23, 44);
     		alt_up_char_buffer_string(char_buf, ThreshStr, 23, 44);
 
     		sprintf(ThreshStr, "%.1f Hz", thresholdsToPrint.peakDetectorLowerROCThreshold);
+            alt_up_char_buffer_string(char_buf, "          ", 23, 48);
     		alt_up_char_buffer_string(char_buf, ThreshStr, 23, 48);
 
     		sprintf(ThreshStr, "%.1f Hz", thresholdsToPrint.peakDetectorHigherROCThreshold);
+            alt_up_char_buffer_string(char_buf, "          ", 23, 51);
     		alt_up_char_buffer_string(char_buf, ThreshStr, 23, 51);
 
     	}
@@ -192,12 +209,12 @@ void PRVGADraw_Task(void *pvParameters)
     	if (xQueueReceive(Q_SystemStatus, &currentVgaSystemStatus, portMAX_DELAY) == pdTRUE){
     		switch(currentVgaSystemStatus){
     			case(SYSTEM_FREQUENCY_STATE_UNSTABLE):
-						alt_up_char_buffer_string(char_buf, "Unstable", 50, 41);
+						alt_up_char_buffer_string(char_buf, "Unstable", 52, 41);
     			break;
     			case(SYSTEM_FREQUENCY_STATE_STABLE):
                     //clear the previous value before placing the new one
-					alt_up_char_buffer_string(char_buf, "         ", 50, 41);
-					alt_up_char_buffer_string(char_buf, "Stable", 50, 41);
+					alt_up_char_buffer_string(char_buf, "         ", 52, 41);
+					alt_up_char_buffer_string(char_buf, "Stable", 52, 41);
     		}
     	}
 
@@ -217,13 +234,13 @@ void PRVGADraw_Task(void *pvParameters)
 
             i = ++i % 100; // point to the next data (oldest) to be overwritten
 
-            alt_up_char_buffer_string(char_buf, "            ", 50, 44);
+            alt_up_char_buffer_string(char_buf, "            ", 52, 44);
             sprintf(ThreshStr, "%2.2f Hz/s", dfreq[i]);
-    	    alt_up_char_buffer_string(char_buf, ThreshStr, 50, 44);
+    	    alt_up_char_buffer_string(char_buf, ThreshStr, 52, 44);
 
-            alt_up_char_buffer_string(char_buf, "           ", 50, 48);
+            alt_up_char_buffer_string(char_buf, "           ", 52, 48);
             sprintf(ThreshStr, "%2.2f Hz/s", freq[i]);
-    	    alt_up_char_buffer_string(char_buf, ThreshStr, 50, 48);
+    	    alt_up_char_buffer_string(char_buf, ThreshStr, 52, 48);
         }
 
         // clear old graph to draw new graph
