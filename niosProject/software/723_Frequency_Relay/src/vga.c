@@ -104,11 +104,11 @@ void PRVGADraw_Task(void *pvParameters)
     alt_up_char_buffer_string(char_buf, "+ ROC Threshold:", 4, 51);
 
     // System State
-    alt_up_char_buffer_string(char_buf, "System Status:", 34, 41);
+    alt_up_char_buffer_string(char_buf, "- System Status:", 34, 41);
 
     //current Freq and ROC value
-    alt_up_char_buffer_string(char_buf, "Current ROC:", 34, 44);
-    alt_up_char_buffer_string(char_buf, "Current Frequency:", 34, 48);
+    alt_up_char_buffer_string(char_buf, "+ Current ROC:", 34, 44);
+    alt_up_char_buffer_string(char_buf, "- Current Freq:", 34, 48);
 
     
 
@@ -169,10 +169,13 @@ void PRVGADraw_Task(void *pvParameters)
 
             i = ++i % 100; // point to the next data (oldest) to be overwritten
 
-            // printing the current ROC
-            //alt_up_char_buffer_string(char_buf, "         ", 50, 44);
+            alt_up_char_buffer_string(char_buf, "          ", 50, 44);
             sprintf(ThreshStr, "%2.2f Hz/s", dfreq[i]);
     	    alt_up_char_buffer_string(char_buf, ThreshStr, 50, 44);
+
+            alt_up_char_buffer_string(char_buf, "          ", 50, 48);
+            sprintf(ThreshStr, "%2.2f Hz/s", freq[i]);
+    	    alt_up_char_buffer_string(char_buf, ThreshStr, 50, 48);
         }
 
         // clear old graph to draw new graph
