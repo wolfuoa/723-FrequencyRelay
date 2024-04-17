@@ -1,8 +1,8 @@
 // button.h
 //      author: Nicholas Wolf
 
-#include "inc/peak_detector.h"
 #include "inc/load_control.h"
+#include "inc/peak_detector.h"
 
 #ifndef BUTTON_H
 #define BUTTON_H

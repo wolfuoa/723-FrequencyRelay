@@ -21,10 +21,9 @@ extern double g_peakDetectorHigherROCThreshold;       // Hz/s
 extern int g_peakDetectorPerformanceTimestamp;
 extern int g_peakDetectorDebounceFlag;
 
-typedef enum System_Frequency_State_T
-{
-    SYSTEM_FREQUENCY_STATE_UNSTABLE = 0,
-    SYSTEM_FREQUENCY_STATE_STABLE = 1
+typedef enum System_Frequency_State_T {
+  SYSTEM_FREQUENCY_STATE_UNSTABLE = 0,
+  SYSTEM_FREQUENCY_STATE_STABLE = 1
 } System_Frequency_State_T;
 
 int Peak_Detector_init();
