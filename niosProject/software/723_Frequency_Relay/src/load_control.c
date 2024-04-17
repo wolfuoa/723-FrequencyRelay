@@ -7,6 +7,7 @@
 #include <system.h>
 
 #include "inc/load_control.h"
+#include "inc/vga.h"
 
 #define LOAD_CONTROL_Q_SIZE 10
 #define LOAD_CONTROL_Q_TYPE int
@@ -115,7 +116,9 @@ static void Load_Control_handlerTask(void *pvParameters)
 					if(xSemaphoreTake(Peak_Detector_performanceTimerMutex_X, (TickType_t)10) == pdTRUE)
                         {
                             if (g_peakDetectorPerformanceTimestamp != 0){
-								printf("Time taken: %dms\n", xTaskGetTickCount() - g_peakDetectorPerformanceTimestamp);
+								int entry = xTaskGetTickCount() - g_peakDetectorPerformanceTimestamp;
+								printf("Time taken: %dms\n", entry);
+								xQueueSendToBack(Q_PerformanceMeasure, &entry, pdFALSE);
 								g_peakDetectorPerformanceTimestamp = 0;
 							}
                             xSemaphoreGive(Peak_Detector_performanceTimerMutex_X);

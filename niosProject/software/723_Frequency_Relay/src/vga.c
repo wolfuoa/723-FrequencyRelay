@@ -123,6 +123,8 @@ void PRVGADraw_Task(void *pvParameters)
     VGA_Thresholds thresholdsToPrint;
     char ThreshStr[5];
 
+    int performance_mesaure_to_print;
+
     System_Frequency_State_T currentVgaSystemStatus;
 
     while (1)
@@ -142,6 +144,14 @@ void PRVGADraw_Task(void *pvParameters)
     		alt_up_char_buffer_string(char_buf, ThreshStr, 23, 51);
 
     	}
+
+        //reciving the performance value
+    	if (xQueueReceive(Q_PerformanceMeasure, &performance_mesaure_to_print, (TickType_t)10) == pdTRUE){
+            printf("performance Q recieved %d\n\r", performance_mesaure_to_print);
+            alt_up_char_buffer_string(char_buf, "            ", 23, 55);
+            sprintf(ThreshStr, "%d ms", performance_mesaure_to_print);
+            alt_up_char_buffer_string(char_buf, ThreshStr, 23, 55);
+        }
         
 
 
