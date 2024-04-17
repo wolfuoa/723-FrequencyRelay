@@ -22,7 +22,7 @@ void freq_relay();
 #define ROCPLT_ORI_X 101
 #define ROCPLT_GRID_SIZE_X 80
 #define ROCPLT_ORI_Y 259.0
-#define ROCPLT_ROC_RES 0.5 // number of pixels per Hz/s (y axis scale)
+#define ROCPLT_ROC_RES 3 // number of pixels per Hz/s (y axis scale)
 
 #define MIN_FREQ 45.0 // minimum frequency to draw
 
@@ -90,11 +90,11 @@ void PRVGADraw_Task(void *pvParameters)
     alt_up_char_buffer_string(char_buf, "46", 10, 22);
 
     alt_up_char_buffer_string(char_buf, "df/dt(Hz/s)", 4, 26);
-    alt_up_char_buffer_string(char_buf, "60", 10, 28);
-    alt_up_char_buffer_string(char_buf, "30", 10, 30);
+    alt_up_char_buffer_string(char_buf, "10", 10, 28);
+    alt_up_char_buffer_string(char_buf, "5", 10, 30);
     alt_up_char_buffer_string(char_buf, "0", 10, 32);
-    alt_up_char_buffer_string(char_buf, "-30", 9, 34);
-    alt_up_char_buffer_string(char_buf, "-60", 9, 36);
+    alt_up_char_buffer_string(char_buf, "-5", 9, 34);
+    alt_up_char_buffer_string(char_buf, "-10", 9, 36);
 
     //Thresholds default displays
     alt_up_char_buffer_string(char_buf, "- Freq Threshold:", 4, 41);
@@ -105,6 +105,12 @@ void PRVGADraw_Task(void *pvParameters)
 
     // System State
     alt_up_char_buffer_string(char_buf, "System Status:", 34, 41);
+
+    //current Freq and ROC value
+    alt_up_char_buffer_string(char_buf, "Current ROC:", 34, 44);
+    alt_up_char_buffer_string(char_buf, "Current Frequency:", 34, 48);
+
+    
 
     double freq[100], dfreq[100];
     int i = 0, j = 0;
@@ -131,6 +137,7 @@ void PRVGADraw_Task(void *pvParameters)
 
     		sprintf(ThreshStr, "%.1f Hz", thresholdsToPrint.peakDetectorHigherROCThreshold);
     		alt_up_char_buffer_string(char_buf, ThreshStr, 23, 51);
+
     	}
 
 
@@ -157,10 +164,15 @@ void PRVGADraw_Task(void *pvParameters)
             }
             else
             {
-                dfreq[i] = stats.currentROC * 100;
+                dfreq[i] = stats.currentROC;
             }
 
             i = ++i % 100; // point to the next data (oldest) to be overwritten
+
+            // printing the current ROC
+            //alt_up_char_buffer_string(char_buf, "         ", 50, 44);
+            sprintf(ThreshStr, "%2.2f Hz/s", dfreq[i]);
+    	    alt_up_char_buffer_string(char_buf, ThreshStr, 50, 44);
         }
 
         // clear old graph to draw new graph

@@ -20,12 +20,15 @@
 // Global Variables
 double g_peakDetectorLowerFrequencyThreshold = 49;  // Hz
 double g_peakDetectorHigherFrequencyThreshold = 52; // Hz
-double g_peakDetectorLowerROCThreshold = -2;        // Hz
-double g_peakDetectorHigherROCThreshold = 2;        // Hz
+double g_peakDetectorLowerROCThreshold = -10;        // Hz/s
+double g_peakDetectorHigherROCThreshold = 10;        // Hz/s
+
+int g_peakDetectorPerformanceTimestamp;
 
 // Global Data Structs
 QueueHandle_t Peak_Detector_Q;
 SemaphoreHandle_t Peak_Detector_thresholdMutex_X = NULL;
+SemaphoreHandle_t Peak_Detector_performanceTimerMutex_X = NULL;
 
 // Protected Variables
 TimerHandle_t repeatActionTimer;
@@ -48,10 +51,15 @@ int Peak_Detector_init()
 
 static void Peak_Detector_handlerTask(void *pvParameters)
 {
-    static int previousFrequency;
+    static double previousFrequency;
     static System_Frequency_State_T systemStability;
+    static int previousTimestamp;
+
+    double frequencyDeltaBuf[10];
+    uint8_t frequencyBufIndex = 0;
 
     int temp;
+    int timestampForROC;
     double frequencyReading;
     double rateOfChangeReading;
     System_Frequency_State_T thresholdEval;
@@ -63,9 +71,23 @@ static void Peak_Detector_handlerTask(void *pvParameters)
             // Calculate the instantaneous frequency
             frequencyReading = 16000 / (double)temp;
             // printf("Reading: %f Hz\n", frequencyReading);
+            
+            frequencyDeltaBuf[frequencyBufIndex] = frequencyReading - previousFrequency;
+            frequencyBufIndex = (frequencyBufIndex < 10) ? frequencyBufIndex + 1 : 0;
 
-            // Calculate the rate of change of frequency
-            rateOfChangeReading = frequencyReading - previousFrequency;
+            // Read the timestamp
+            timestampForROC = xTaskGetTickCount();
+
+            // Calculate the rate of change of frequency - Hz/s
+            rateOfChangeReading = 0;
+            for (int j = 0; j < 10; ++j){
+                rateOfChangeReading += frequencyDeltaBuf[j];
+            }
+            rateOfChangeReading = 1000 * (rateOfChangeReading / 10) / (double)(timestampForROC - previousTimestamp);
+            // rateOfChangeReading = 1000 * ((frequencyReading - previousFrequency) / (double)((timestampForROC - previousTimestamp)));
+            
+            // printf("Difference - %d, ROC: %f, index: %d\n", timestampForROC - previousTimestamp, rateOfChangeReading, frequencyBufIndex);
+            previousTimestamp = timestampForROC;
 
             // Replace previousFrequency
             previousFrequency = frequencyReading;
@@ -102,6 +124,14 @@ static void Peak_Detector_handlerTask(void *pvParameters)
                 // If system status is stable and goes outside threshold
                 if (((systemStability == SYSTEM_FREQUENCY_STATE_STABLE) || repeatActionTimeout) && (thresholdEval == SYSTEM_FREQUENCY_STATE_UNSTABLE))
                 {
+                    // if (!repeatActionTimeout)
+                    // {
+                    //     if(xSemaphoreTake(Peak_Detector_performanceTimerMutex_X, (TickType_t)10) == pdTRUE)
+                    //     {
+                    //         g_peakDetectorPerformanceTimestamp = xTaskGetTickCount();
+                    //         xSemaphoreGive(Peak_Detector_performanceTimerMutex_X);
+                    //     }
+                    // }
                     xQueueSendToBack(Load_Control_Q, &thresholdEval, pdFALSE);
 
                     // Reset the timer cus no need to repeat action

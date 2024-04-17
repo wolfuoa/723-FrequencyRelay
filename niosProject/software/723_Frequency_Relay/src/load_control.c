@@ -41,6 +41,7 @@ int Load_Control_Init()
 
 static void Load_Control_handlerTask(void *pvParameters)
 {
+	static System_Frequency_State_T previousState;
 	uint8_t localSwitchStatus;
 	uint8_t tempSwitchStatus;
 
@@ -64,6 +65,7 @@ static void Load_Control_handlerTask(void *pvParameters)
 					if (Load_Control_loads != 0)
 					{
 						shed_load();
+						
 						//						printf("SHEDDING LOADS\r\n");
 					}
 				}
