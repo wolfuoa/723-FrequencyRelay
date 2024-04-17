@@ -37,45 +37,47 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
  10 .debug_aranges 00001610  00000000  00000000  0002b190  2**3
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_info   0003c3ea  00000000  00000000  0002c7a0  2**0
+ 11 .debug_info   0003c3ca  00000000  00000000  0002c7a0  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_abbrev 0000ec94  00000000  00000000  00068b8a  2**0
+ 12 .debug_abbrev 0000ec94  00000000  00000000  00068b6a  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_line   0001641a  00000000  00000000  0007781e  2**0
+ 13 .debug_line   00015f93  00000000  00000000  000777fe  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_frame  00004f48  00000000  00000000  0008dc38  2**2
+ 14 .debug_frame  00004f48  00000000  00000000  0008d794  2**2
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_str    00007441  00000000  00000000  00092b80  2**0
+ 15 .debug_str    00007421  00000000  00000000  000926dc  2**0
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_loc    000259e6  00000000  00000000  00099fc1  2**0
+ 16 .debug_loc    000259e6  00000000  00000000  00099afd  2**0
                   CONTENTS, READONLY, DEBUGGING
- 17 .debug_alt_sim_info 00000050  00000000  00000000  000bf9a8  2**2
+ 17 .debug_alt_sim_info 00000050  00000000  00000000  000bf4e4  2**2
                   CONTENTS, READONLY, DEBUGGING
- 18 .debug_ranges 00002140  00000000  00000000  000bf9f8  2**3
+ 18 .debug_ranges 00002140  00000000  00000000  000bf538  2**3
                   CONTENTS, READONLY, DEBUGGING
- 19 .thread_model 00000003  00000000  00000000  000c8ab3  2**0
+ 19 .thread_model 00000003  00000000  00000000  000c8615  2**0
                   CONTENTS, READONLY
- 20 .cpu          00000005  00000000  00000000  000c8ab6  2**0
+ 20 .cpu          00000005  00000000  00000000  000c8618  2**0
                   CONTENTS, READONLY
- 21 .qsys         00000001  00000000  00000000  000c8abb  2**0
+ 21 .qsys         00000001  00000000  00000000  000c861d  2**0
                   CONTENTS, READONLY
- 22 .simulation_enabled 00000001  00000000  00000000  000c8abc  2**0
+ 22 .simulation_enabled 00000001  00000000  00000000  000c861e  2**0
                   CONTENTS, READONLY
- 23 .sysid_hash   00000004  00000000  00000000  000c8abd  2**0
+ 23 .sysid_hash   00000004  00000000  00000000  000c861f  2**0
                   CONTENTS, READONLY
- 24 .sysid_base   00000004  00000000  00000000  000c8ac1  2**0
+ 24 .sysid_base   00000004  00000000  00000000  000c8623  2**0
                   CONTENTS, READONLY
- 25 .sysid_time   00000004  00000000  00000000  000c8ac5  2**0
+ 25 .sysid_time   00000004  00000000  00000000  000c8627  2**0
                   CONTENTS, READONLY
- 26 .stderr_dev   00000009  00000000  00000000  000c8ac9  2**0
+ 26 .stderr_dev   00000009  00000000  00000000  000c862b  2**0
                   CONTENTS, READONLY
- 27 .stdin_dev    00000009  00000000  00000000  000c8ad2  2**0
+ 27 .stdin_dev    00000009  00000000  00000000  000c8634  2**0
                   CONTENTS, READONLY
- 28 .stdout_dev   00000009  00000000  00000000  000c8adb  2**0
+ 28 .stdout_dev   00000009  00000000  00000000  000c863d  2**0
                   CONTENTS, READONLY
- 29 .sopc_system_name 00000005  00000000  00000000  000c8ae4  2**0
+ 29 .sopc_system_name 00000005  00000000  00000000  000c8646  2**0
                   CONTENTS, READONLY
- 30 .quartus_project_dir 0000006a  00000000  00000000  000c8ae9  2**0
+ 30 .quartus_project_dir 0000005a  00000000  00000000  000c864b  2**0
+                  CONTENTS, READONLY
+ 31 .sopcinfo     000b3e3a  00000000  00000000  000c86a5  2**0
                   CONTENTS, READONLY
 SYMBOL TABLE:
 01000000 l    d  .entry	00000000 .entry
@@ -97,7 +99,7 @@ SYMBOL TABLE:
 00000000 l    d  .debug_loc	00000000 .debug_loc
 00000000 l    d  .debug_alt_sim_info	00000000 .debug_alt_sim_info
 00000000 l    d  .debug_ranges	00000000 .debug_ranges
-00000000 l    df *ABS*	00000000 D:\Documents\UOA\2024\no_space\CS723\asn\repos\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/obj/HAL/src/crt0.o
+00000000 l    df *ABS*	00000000 C:\Users\jhet879\eclipse\723_1\723-FrequencyRelay\niosProject\software\723_Frequency_Relay_bsp/obj/HAL/src/crt0.o
 00000298 l       .text	00000000 alt_after_alt_main
 00000000 l    df *ABS*	00000000 obj/default/FreeRTOS/port_asm.o
 00000020 l       .exceptions	00000000 save_context
