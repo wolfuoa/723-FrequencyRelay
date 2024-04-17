@@ -27,6 +27,7 @@ Author: skend
 extern QueueHandle_t Q_VGA_Stats;
 extern QueueHandle_t Q_Threshhold;
 extern QueueHandle_t Q_SystemStatus;
+extern QueueHandle_t Q_PerformanceMeasure;
 
 
 typedef struct VGA_Stats

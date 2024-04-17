@@ -2,9 +2,9 @@
  * linker.h - Linker script mapping information
  *
  * Machine generated for CPU 'nios2' in SOPC Builder design 'nios2'
- * SOPC Builder design path: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
+ * SOPC Builder design path: C:/Users/jhet879/eclipse/723_1/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
  *
- * Generated: Tue Apr 16 17:26:38 NZST 2024
+ * Generated: Wed Apr 17 19:44:29 NZST 2024
  */
 
 /*

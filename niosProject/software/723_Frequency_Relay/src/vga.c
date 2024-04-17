@@ -22,7 +22,7 @@ void freq_relay();
 #define ROCPLT_ORI_X 101
 #define ROCPLT_GRID_SIZE_X 80
 #define ROCPLT_ORI_Y 259.0
-#define ROCPLT_ROC_RES 0.5 // number of pixels per Hz/s (y axis scale)
+#define ROCPLT_ROC_RES 3 // number of pixels per Hz/s (y axis scale)
 
 #define MIN_FREQ 45.0 // minimum frequency to draw
 
@@ -32,6 +32,7 @@ TaskHandle_t PRVGADraw;
 QueueHandle_t Q_VGA_Stats;
 QueueHandle_t Q_Threshhold;
 QueueHandle_t Q_SystemStatus;
+QueueHandle_t Q_PerformanceMeasure;
 
 typedef struct
 {
@@ -46,6 +47,7 @@ int VGA_Init()
     Q_VGA_Stats = xQueueCreate(100, sizeof(VGA_Stats));
     Q_Threshhold =  xQueueCreate(100, sizeof(VGA_Thresholds));
     Q_SystemStatus =  xQueueCreate(100, sizeof(int));
+    Q_PerformanceMeasure =  xQueueCreate(100, sizeof(int));
 
 
     if (xTaskCreate(PRVGADraw_Task, "DrawTsk", configMINIMAL_STACK_SIZE, NULL, PRVGADraw_Task_P, &PRVGADraw) != pdPASS)
@@ -90,11 +92,11 @@ void PRVGADraw_Task(void *pvParameters)
     alt_up_char_buffer_string(char_buf, "46", 10, 22);
 
     alt_up_char_buffer_string(char_buf, "df/dt(Hz/s)", 4, 26);
-    alt_up_char_buffer_string(char_buf, "60", 10, 28);
-    alt_up_char_buffer_string(char_buf, "30", 10, 30);
+    alt_up_char_buffer_string(char_buf, "10", 10, 28);
+    alt_up_char_buffer_string(char_buf, "5", 10, 30);
     alt_up_char_buffer_string(char_buf, "0", 10, 32);
-    alt_up_char_buffer_string(char_buf, "-30", 9, 34);
-    alt_up_char_buffer_string(char_buf, "-60", 9, 36);
+    alt_up_char_buffer_string(char_buf, "-5", 9, 34);
+    alt_up_char_buffer_string(char_buf, "-10", 9, 36);
 
     //Thresholds default displays
     alt_up_char_buffer_string(char_buf, "- Freq Threshold:", 4, 41);
@@ -104,7 +106,20 @@ void PRVGADraw_Task(void *pvParameters)
     alt_up_char_buffer_string(char_buf, "+ ROC Threshold:", 4, 51);
 
     // System State
-    alt_up_char_buffer_string(char_buf, "System Status:", 34, 41);
+    alt_up_char_buffer_string(char_buf, "> System Status:", 34, 41);
+
+    //current Freq and ROC value
+    alt_up_char_buffer_string(char_buf, "> Current ROC:", 34, 44);
+    alt_up_char_buffer_string(char_buf, "> Current Freq:", 34, 48);    
+
+    // Performance measures
+    alt_up_char_buffer_string(char_buf, "> Reaction time: ", 34, 51);
+    alt_up_char_buffer_string(char_buf, "Avg Reaction time: ", 2, 55);
+    alt_up_char_buffer_string(char_buf, "Max Reaction time: ", 28, 55);
+    alt_up_char_buffer_string(char_buf, "Min Reaction time: ", 54, 55);
+
+    //uptime text
+    alt_up_char_buffer_string(char_buf, "Uptime: ", 34, 4);
 
     double freq[100], dfreq[100];
     int i = 0, j = 0;
@@ -114,35 +129,92 @@ void PRVGADraw_Task(void *pvParameters)
     VGA_Thresholds thresholdsToPrint;
     char ThreshStr[5];
 
+    int performance_mesaure_to_print;
+    int max_performance_time = 0;
+    int min_performance_time = 0;
+    int running_performance_total = 0;
+    int numb_running_index = 0;
+
+    double uptime;
+
+
     System_Frequency_State_T currentVgaSystemStatus;
 
     while (1)
     {
+        // print the uptime
+        uptime = (double)xTaskGetTickCount()/1000;
+        sprintf(ThreshStr, "%.1f s", uptime);
+        alt_up_char_buffer_string(char_buf, "          ", 43, 4);
+        alt_up_char_buffer_string(char_buf, ThreshStr, 43, 4);
+
+
+
     	//reciving the threshold queue
     	if (xQueueReceive(Q_Threshhold, &thresholdsToPrint, portMAX_DELAY) == pdTRUE){
     		sprintf(ThreshStr, "%.1f Hz", thresholdsToPrint.peakDetectorLowerFrequencyThreshold);
+            alt_up_char_buffer_string(char_buf, "    ", 23, 41);
     		alt_up_char_buffer_string(char_buf, ThreshStr, 23, 41);
 
     		sprintf(ThreshStr, "%.1f Hz", thresholdsToPrint.peakDetectorHigherFrequencyThreshold);
+            alt_up_char_buffer_string(char_buf, "    ", 23, 44);
     		alt_up_char_buffer_string(char_buf, ThreshStr, 23, 44);
 
     		sprintf(ThreshStr, "%.1f Hz", thresholdsToPrint.peakDetectorLowerROCThreshold);
+            alt_up_char_buffer_string(char_buf, "          ", 23, 48);
     		alt_up_char_buffer_string(char_buf, ThreshStr, 23, 48);
 
     		sprintf(ThreshStr, "%.1f Hz", thresholdsToPrint.peakDetectorHigherROCThreshold);
+            alt_up_char_buffer_string(char_buf, "          ", 23, 51);
     		alt_up_char_buffer_string(char_buf, ThreshStr, 23, 51);
+
     	}
+
+        //reciving the performance value
+    	if (xQueueReceive(Q_PerformanceMeasure, &performance_mesaure_to_print, (TickType_t)10) == pdTRUE){
+            //update running average
+            running_performance_total += performance_mesaure_to_print;
+            numb_running_index++;
+
+            if (performance_mesaure_to_print > max_performance_time){
+                max_performance_time = performance_mesaure_to_print;
+            }
+            if (performance_mesaure_to_print < min_performance_time){
+                min_performance_time = performance_mesaure_to_print;
+            }
+
+            // reaction time
+            sprintf(ThreshStr, "%d ms", performance_mesaure_to_print);
+            alt_up_char_buffer_string(char_buf, ThreshStr, 52, 51);
+
+            // AVG reaction code
+            alt_up_char_buffer_string(char_buf, "     ", 21, 55);
+            sprintf(ThreshStr, "%d ms", (running_performance_total/numb_running_index));
+            alt_up_char_buffer_string(char_buf, ThreshStr, 21, 55);
+
+            //Max reaction code
+            alt_up_char_buffer_string(char_buf, "     ", 47, 55);
+            sprintf(ThreshStr, "%d ms", max_performance_time);
+            alt_up_char_buffer_string(char_buf, ThreshStr, 47, 55);
+
+            //Min reaction code
+            alt_up_char_buffer_string(char_buf, "    ", 73, 55);
+            sprintf(ThreshStr, "%d ms", min_performance_time);
+            alt_up_char_buffer_string(char_buf, ThreshStr, 73, 55);
+        }
+        
 
 
     	//recieving the system status queue
     	if (xQueueReceive(Q_SystemStatus, &currentVgaSystemStatus, portMAX_DELAY) == pdTRUE){
     		switch(currentVgaSystemStatus){
     			case(SYSTEM_FREQUENCY_STATE_UNSTABLE):
-						alt_up_char_buffer_string(char_buf, "Unstable", 50, 41);
+						alt_up_char_buffer_string(char_buf, "Unstable", 52, 41);
     			break;
     			case(SYSTEM_FREQUENCY_STATE_STABLE):
-						alt_up_char_buffer_string(char_buf, "         ", 50, 41);
-						alt_up_char_buffer_string(char_buf, "Stable", 50, 41);
+                    //clear the previous value before placing the new one
+					alt_up_char_buffer_string(char_buf, "         ", 52, 41);
+					alt_up_char_buffer_string(char_buf, "Stable", 52, 41);
     		}
     	}
 
@@ -157,10 +229,18 @@ void PRVGADraw_Task(void *pvParameters)
             }
             else
             {
-                dfreq[i] = stats.currentROC * 100;
+                dfreq[i] = stats.currentROC;
             }
 
             i = ++i % 100; // point to the next data (oldest) to be overwritten
+
+            alt_up_char_buffer_string(char_buf, "            ", 52, 44);
+            sprintf(ThreshStr, "%2.2f Hz/s", dfreq[i]);
+    	    alt_up_char_buffer_string(char_buf, ThreshStr, 52, 44);
+
+            alt_up_char_buffer_string(char_buf, "           ", 52, 48);
+            sprintf(ThreshStr, "%2.2f Hz/s", freq[i]);
+    	    alt_up_char_buffer_string(char_buf, ThreshStr, 52, 48);
         }
 
         // clear old graph to draw new graph

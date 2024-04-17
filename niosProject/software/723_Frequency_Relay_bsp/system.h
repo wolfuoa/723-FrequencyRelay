@@ -2,9 +2,9 @@
  * system.h - SOPC Builder system and BSP software package information
  *
  * Machine generated for CPU 'nios2' in SOPC Builder design 'nios2'
- * SOPC Builder design path: H:/Documents/GitHub/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
+ * SOPC Builder design path: C:/Users/jhet879/eclipse/723_1/723-FrequencyRelay/Nios2Files/nios2.sopcinfo
  *
- * Generated: Tue Apr 16 17:26:38 NZST 2024
+ * Generated: Wed Apr 17 19:44:29 NZST 2024
  */
 
 /*
@@ -262,7 +262,7 @@
 
 #define ALT_MAX_FD 32
 #define ALT_SYS_CLK TIMER1MS
-#define ALT_TIMESTAMP_CLK none
+#define ALT_TIMESTAMP_CLK TIMER1US
 
 
 /*

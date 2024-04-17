@@ -1,5 +1,6 @@
 {
     "files.associations": {
+        "*.json": "json",
         "stdio.h": "c",
         "peak_detector.h": "c",
         "frequency_analyser.h": "c",
@@ -12,6 +13,8 @@
         "io.h": "c",
         "keyboard.h": "c",
         "freertos.h": "c",
-        "queue.h": "c"
+        "queue.h": "c",
+        "alt_timestamp.h": "c",
+        "semphr.h": "c"
     }
 }

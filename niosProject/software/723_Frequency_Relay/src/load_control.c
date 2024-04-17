@@ -7,6 +7,8 @@
 #include <system.h>
 
 #include "inc/load_control.h"
+#include "inc/vga.h"
+#include "sys/alt_timestamp.h"
 
 #define LOAD_CONTROL_Q_SIZE 10
 #define LOAD_CONTROL_Q_TYPE int
@@ -39,8 +41,10 @@ int Load_Control_Init()
 	return 0;
 }
 
+uint8_t spammingTimestampFlag = 0;
 static void Load_Control_handlerTask(void *pvParameters)
 {
+	static System_Frequency_State_T previousState;
 	uint8_t localSwitchStatus;
 	uint8_t tempSwitchStatus;
 
@@ -59,6 +63,11 @@ static void Load_Control_handlerTask(void *pvParameters)
 				//				printf("Action: %d\n", action);
 				if (!action && SystemStatus != SYSTEM_MAINTENANCE)
 				{
+
+					if (Load_Control_loads == 0xFF){
+						spammingTimestampFlag = 1;
+					}
+
 					// Shed the load
 					SystemStatus = SYSTEM_MANAGING;
 					if (Load_Control_loads != 0)
@@ -78,7 +87,13 @@ static void Load_Control_handlerTask(void *pvParameters)
 					}
 					else if (Load_Control_loads == 0xFF)
 					{
+						if (xSemaphoreTake(Peak_Detector_debounceMutex_X, (TickType_t)10) == pdTRUE)
+                		{
+							g_peakDetectorDebounceFlag = 0;
+							xSemaphoreGive(Peak_Detector_debounceMutex_X);
+						}
 						SystemStatus = SYSTEM_OK;
+						// spammingTimestampFlag = 1;
 					}
 				}
 
@@ -97,6 +112,20 @@ static void Load_Control_handlerTask(void *pvParameters)
 				IOWR_ALTERA_AVALON_PIO_DATA(GREEN_LEDS_BASE, ~(Load_Control_loads));
 
 				IOWR_ALTERA_AVALON_PIO_DATA(RED_LEDS_BASE, localSwitchStatus);
+				if(spammingTimestampFlag)
+				{
+					if(xSemaphoreTake(Peak_Detector_performanceTimerMutex_X, (TickType_t)10) == pdTRUE)
+                        {
+                            if (g_peakDetectorPerformanceTimestamp != 0){
+								int entry = (alt_timestamp() - g_peakDetectorPerformanceTimestamp) / 1000;
+								printf("Time taken: %dms\n", entry);
+								xQueueSendToBack(Q_PerformanceMeasure, &entry, pdFALSE);
+								g_peakDetectorPerformanceTimestamp = 0;
+							}
+                            xSemaphoreGive(Peak_Detector_performanceTimerMutex_X);
+							spammingTimestampFlag = 0;
+                        }
+				}
 				xSemaphoreGive(SystemStatusMutex);
 			}
 			vTaskDelay((TickType_t)10);
@@ -114,7 +143,6 @@ static void shed_load()
 		{
 			Load_Control_loads &= (i ^ 0xFF);
 			// printf("SHEDDING OP: %d/r/n", (Load_Control_loads & (i ^ 0xFF)));
-			// ## TODO: Time Stamping ##
 			return;
 		}
 	}
@@ -128,7 +156,6 @@ static void unshed_load()
 		if (!(Load_Control_loads & i))
 		{
 			Load_Control_loads ^= i;
-			// ## TODO: Time Stamping ##
 			return;
 		}
 	}
