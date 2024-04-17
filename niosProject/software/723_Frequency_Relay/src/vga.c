@@ -32,6 +32,7 @@ TaskHandle_t PRVGADraw;
 QueueHandle_t Q_VGA_Stats;
 QueueHandle_t Q_Threshhold;
 QueueHandle_t Q_SystemStatus;
+QueueHandle_t Q_PerformanceMeasure;
 
 typedef struct
 {
@@ -46,6 +47,7 @@ int VGA_Init()
     Q_VGA_Stats = xQueueCreate(100, sizeof(VGA_Stats));
     Q_Threshhold =  xQueueCreate(100, sizeof(VGA_Thresholds));
     Q_SystemStatus =  xQueueCreate(100, sizeof(int));
+    Q_PerformanceMeasure =  xQueueCreate(100, sizeof(int));
 
 
     if (xTaskCreate(PRVGADraw_Task, "DrawTsk", configMINIMAL_STACK_SIZE, NULL, PRVGADraw_Task_P, &PRVGADraw) != pdPASS)
@@ -103,14 +105,15 @@ void PRVGADraw_Task(void *pvParameters)
     alt_up_char_buffer_string(char_buf, "- ROC Threshold:", 4, 48);
     alt_up_char_buffer_string(char_buf, "+ ROC Threshold:", 4, 51);
 
+    //detected unstability and time till we fixed instability
+    alt_up_char_buffer_string(char_buf, "Performance time: ", 4, 55);
+
     // System State
     alt_up_char_buffer_string(char_buf, "- System Status:", 34, 41);
 
     //current Freq and ROC value
     alt_up_char_buffer_string(char_buf, "+ Current ROC:", 34, 44);
-    alt_up_char_buffer_string(char_buf, "- Current Freq:", 34, 48);
-
-    
+    alt_up_char_buffer_string(char_buf, "- Current Freq:", 34, 48);    
 
     double freq[100], dfreq[100];
     int i = 0, j = 0;
@@ -139,6 +142,7 @@ void PRVGADraw_Task(void *pvParameters)
     		alt_up_char_buffer_string(char_buf, ThreshStr, 23, 51);
 
     	}
+        
 
 
     	//recieving the system status queue
@@ -148,8 +152,9 @@ void PRVGADraw_Task(void *pvParameters)
 						alt_up_char_buffer_string(char_buf, "Unstable", 50, 41);
     			break;
     			case(SYSTEM_FREQUENCY_STATE_STABLE):
-						alt_up_char_buffer_string(char_buf, "         ", 50, 41);
-						alt_up_char_buffer_string(char_buf, "Stable", 50, 41);
+                    //clear the previous value before placing the new one
+					alt_up_char_buffer_string(char_buf, "         ", 50, 41);
+					alt_up_char_buffer_string(char_buf, "Stable", 50, 41);
     		}
     	}
 
@@ -169,11 +174,11 @@ void PRVGADraw_Task(void *pvParameters)
 
             i = ++i % 100; // point to the next data (oldest) to be overwritten
 
-            alt_up_char_buffer_string(char_buf, "          ", 50, 44);
+            alt_up_char_buffer_string(char_buf, "            ", 50, 44);
             sprintf(ThreshStr, "%2.2f Hz/s", dfreq[i]);
     	    alt_up_char_buffer_string(char_buf, ThreshStr, 50, 44);
 
-            alt_up_char_buffer_string(char_buf, "          ", 50, 48);
+            alt_up_char_buffer_string(char_buf, "           ", 50, 48);
             sprintf(ThreshStr, "%2.2f Hz/s", freq[i]);
     	    alt_up_char_buffer_string(char_buf, ThreshStr, 50, 48);
         }

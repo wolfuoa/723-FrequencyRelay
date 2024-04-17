@@ -85,6 +85,11 @@ static void Load_Control_handlerTask(void *pvParameters)
 					}
 					else if (Load_Control_loads == 0xFF)
 					{
+						if (xSemaphoreTake(Peak_Detector_debounceMutex_X, (TickType_t)10) == pdTRUE)
+                		{
+							g_peakDetectorDebounceFlag = 0;
+							xSemaphoreGive(Peak_Detector_debounceMutex_X);
+						}
 						SystemStatus = SYSTEM_OK;
 						// spammingTimestampFlag = 1;
 					}
@@ -110,7 +115,7 @@ static void Load_Control_handlerTask(void *pvParameters)
 					if(xSemaphoreTake(Peak_Detector_performanceTimerMutex_X, (TickType_t)10) == pdTRUE)
                         {
                             if (g_peakDetectorPerformanceTimestamp != 0){
-								printf("Time taken: %dms, Current: %d, Prev: %d\n", xTaskGetTickCount() - g_peakDetectorPerformanceTimestamp, xTaskGetTickCount(), g_peakDetectorPerformanceTimestamp);
+								printf("Time taken: %dms\n", xTaskGetTickCount() - g_peakDetectorPerformanceTimestamp);
 								g_peakDetectorPerformanceTimestamp = 0;
 							}
                             xSemaphoreGive(Peak_Detector_performanceTimerMutex_X);

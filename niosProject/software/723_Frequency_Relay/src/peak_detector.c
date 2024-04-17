@@ -24,20 +24,25 @@ double g_peakDetectorLowerROCThreshold = -10;        // Hz/s
 double g_peakDetectorHigherROCThreshold = 10;        // Hz/s
 
 int g_peakDetectorPerformanceTimestamp;
+int g_peakDetectorDebounceFlag = 0;
 
 // Global Data Structs
 QueueHandle_t Peak_Detector_Q;
 SemaphoreHandle_t Peak_Detector_thresholdMutex_X = NULL;
 SemaphoreHandle_t Peak_Detector_performanceTimerMutex_X = NULL;
+SemaphoreHandle_t Peak_Detector_debounceMutex_X = NULL;
 
 // Protected Variables
 TimerHandle_t repeatActionTimer;
+TimerHandle_t debounceTimer;
 SemaphoreHandle_t repeatActionMutex_X = NULL;
 bool repeatActionTimeout = 0;
+uint8_t janith = 0;
 
 static void Peak_Detector_handlerTask(void *pvParameters);
 static void Peak_Detector_initDataStructs();
 static void repeatActionTimerCallback(TimerHandle_t t_timer);
+static void debounceTimerCallback(TimerHandle_t t_timer);
 
 int Peak_Detector_init()
 {
@@ -121,14 +126,42 @@ static void Peak_Detector_handlerTask(void *pvParameters)
 
             if (xSemaphoreTake(repeatActionMutex_X, (TickType_t)10) == pdTRUE)
             {
-                // If system status is stable and goes outside threshold
-                if ((systemStability == SYSTEM_FREQUENCY_STATE_STABLE) && (thresholdEval == SYSTEM_FREQUENCY_STATE_UNSTABLE))
+
+                if (xSemaphoreTake(Peak_Detector_debounceMutex_X, (TickType_t)10) == pdTRUE)
                 {
-                    if(xSemaphoreTake(Peak_Detector_performanceTimerMutex_X, (TickType_t)10) == pdTRUE)
+                        // If system status is stable and goes outside threshold
+                        if ((systemStability == SYSTEM_FREQUENCY_STATE_STABLE) && (thresholdEval == SYSTEM_FREQUENCY_STATE_UNSTABLE) && g_peakDetectorDebounceFlag == 0)
+                        {
+                            g_peakDetectorDebounceFlag = 1;
+
+                            if(xSemaphoreTake(Peak_Detector_performanceTimerMutex_X, (TickType_t)10) == pdTRUE)
+                            {
+                                g_peakDetectorPerformanceTimestamp = xTaskGetTickCount();
+                                xSemaphoreGive(Peak_Detector_performanceTimerMutex_X);
+                            }
+                            xQueueSendToBack(Load_Control_Q, &thresholdEval, pdFALSE);
+
+                            // Reset the timer cus no need to repeat action
+                            repeatActionTimeout = false;
+                            if (xTimerStart(repeatActionTimer, 0) != pdPASS)
+                            {
+                                printf("Cannot reset timer\n\r");
+                            }
+                        }
+                        // If system status is unstable and goes inside threshold
+                        else if ((repeatActionTimeout) && (thresholdEval == SYSTEM_FREQUENCY_STATE_UNSTABLE))
+                        {
+                            xQueueSendToBack(Load_Control_Q, &thresholdEval, pdFALSE);
+
+                            // Reset the timer cus no need to repeat action
+                            repeatActionTimeout = false;
+                            if (xTimerStart(repeatActionTimer, 0) != pdPASS)
+                            {
+                                printf("Cannot reset timer\n\r");
+                            }
+                        }
+                    else if ((repeatActionTimeout) && (thresholdEval == SYSTEM_FREQUENCY_STATE_STABLE))
                     {
-                        g_peakDetectorPerformanceTimestamp = xTaskGetTickCount();
-                        xSemaphoreGive(Peak_Detector_performanceTimerMutex_X);
-                    }
                     xQueueSendToBack(Load_Control_Q, &thresholdEval, pdFALSE);
 
                     // Reset the timer cus no need to repeat action
@@ -138,31 +171,8 @@ static void Peak_Detector_handlerTask(void *pvParameters)
                         printf("Cannot reset timer\n\r");
                     }
                 }
-                // If system status is unstable and goes inside threshold
-                // 
-                else if ((repeatActionTimeout) && (thresholdEval == SYSTEM_FREQUENCY_STATE_UNSTABLE))
-                {
-                        xQueueSendToBack(Load_Control_Q, &thresholdEval, pdFALSE);
-
-                    // Reset the timer cus no need to repeat action
-                    repeatActionTimeout = false;
-                    if (xTimerStart(repeatActionTimer, 0) != pdPASS)
-                    {
-                        printf("Cannot reset timer\n\r");
-                    }
+                    xSemaphoreGive(Peak_Detector_debounceMutex_X);
                 }
-                else if ((repeatActionTimeout) && (thresholdEval == SYSTEM_FREQUENCY_STATE_STABLE))
-                {
-                    xQueueSendToBack(Load_Control_Q, &thresholdEval, pdFALSE);
-
-                    // Reset the timer cus no need to repeat action
-                    repeatActionTimeout = false;
-                    if (xTimerStart(repeatActionTimer, 0) != pdPASS)
-                    {
-                        printf("Cannot reset timer\n\r");
-                    }
-                }
-
                 // Changing the systems status
                 systemStability = thresholdEval;
                 xQueueSendToBack(Q_SystemStatus, &systemStability, pdFALSE);
@@ -178,6 +188,7 @@ static void Peak_Detector_initDataStructs()
     repeatActionMutex_X = xSemaphoreCreateMutex();
     Peak_Detector_thresholdMutex_X = xSemaphoreCreateMutex();
     Peak_Detector_performanceTimerMutex_X = xSemaphoreCreateMutex();
+    Peak_Detector_debounceMutex_X = xSemaphoreCreateMutex();
     // Important: 500 is the amount of ticks. To convert to ms, divide by portTICK_PERIOD_MS
     repeatActionTimer = xTimerCreate("Repeat_Action_Timer", 500 / portTICK_PERIOD_MS, pdTRUE, NULL, repeatActionTimerCallback);
     Peak_Detector_Q = xQueueCreate(PEAK_DETECTOR_Q_SIZE, sizeof(PEAK_DETECTOR_Q_TYPE));
