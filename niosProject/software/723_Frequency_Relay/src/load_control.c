@@ -118,12 +118,13 @@ static void Load_Control_handlerTask(void *pvParameters)
                         {
                             if (g_peakDetectorPerformanceTimestamp != 0){
 								int entry = (alt_timestamp() - g_peakDetectorPerformanceTimestamp) / 1000;
-								printf("Time taken: %dms\n", entry);
+								// printf("Time taken: %dms\n", entry);
 								xQueueSendToBack(Q_PerformanceMeasure, &entry, pdFALSE);
 								g_peakDetectorPerformanceTimestamp = 0;
 							}
                             xSemaphoreGive(Peak_Detector_performanceTimerMutex_X);
 							spammingTimestampFlag = 0;
+							alt_timestamp_start();
                         }
 				}
 				xSemaphoreGive(SystemStatusMutex);

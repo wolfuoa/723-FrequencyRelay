@@ -39,7 +39,6 @@ TimerHandle_t repeatActionTimer;
 TimerHandle_t debounceTimer;
 SemaphoreHandle_t repeatActionMutex_X = NULL;
 bool repeatActionTimeout = 0;
-uint8_t janith = 0;
 
 static void Peak_Detector_handlerTask(void *pvParameters);
 static void Peak_Detector_initDataStructs();
