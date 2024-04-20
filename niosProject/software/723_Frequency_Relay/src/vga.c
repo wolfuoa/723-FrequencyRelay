@@ -131,7 +131,7 @@ void PRVGADraw_Task(void *pvParameters)
 
     int performance_mesaure_to_print;
     int max_performance_time = 0;
-    int min_performance_time = 0;
+    int min_performance_time = 100;
     int running_performance_total = 0;
     int numb_running_index = 0;
 
