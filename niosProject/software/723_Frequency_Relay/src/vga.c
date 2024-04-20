@@ -184,22 +184,23 @@ void PRVGADraw_Task(void *pvParameters)
             }
 
             // reaction time
-            sprintf(ThreshStr, "%d ms", performance_mesaure_to_print);
+            //alt_up_char_buffer_string(char_buf, "       ", 52, 51);
+            sprintf(ThreshStr, "%3d ms", performance_mesaure_to_print);
             alt_up_char_buffer_string(char_buf, ThreshStr, 52, 51);
 
             // AVG reaction code
-            alt_up_char_buffer_string(char_buf, "     ", 21, 55);
-            sprintf(ThreshStr, "%d ms", (running_performance_total/numb_running_index));
+            //alt_up_char_buffer_string(char_buf, "       ", 21, 55);
+            sprintf(ThreshStr, "%3d ms", (running_performance_total/numb_running_index));
             alt_up_char_buffer_string(char_buf, ThreshStr, 21, 55);
 
             //Max reaction code
-            alt_up_char_buffer_string(char_buf, "     ", 47, 55);
-            sprintf(ThreshStr, "%d ms", max_performance_time);
+            //alt_up_char_buffer_string(char_buf, "       ", 47, 55);
+            sprintf(ThreshStr, "%3d ms", max_performance_time);
             alt_up_char_buffer_string(char_buf, ThreshStr, 47, 55);
 
             //Min reaction code
-            alt_up_char_buffer_string(char_buf, "    ", 73, 55);
-            sprintf(ThreshStr, "%d ms", min_performance_time);
+            //alt_up_char_buffer_string(char_buf, "       ", 73, 55);
+            sprintf(ThreshStr, "%3d ms", min_performance_time);
             alt_up_char_buffer_string(char_buf, ThreshStr, 73, 55);
         }
         
@@ -234,12 +235,14 @@ void PRVGADraw_Task(void *pvParameters)
 
             i = ++i % 100; // point to the next data (oldest) to be overwritten
 
+            // Current ROC
             alt_up_char_buffer_string(char_buf, "            ", 52, 44);
             sprintf(ThreshStr, "%2.2f Hz/s", dfreq[i]);
     	    alt_up_char_buffer_string(char_buf, ThreshStr, 52, 44);
 
-            alt_up_char_buffer_string(char_buf, "           ", 52, 48);
-            sprintf(ThreshStr, "%2.2f Hz/s", freq[i]);
+            // Current Freq
+            //alt_up_char_buffer_string(char_buf, "           ", 52, 48);
+            sprintf(ThreshStr, "%2.2f Hz", freq[i]);
     	    alt_up_char_buffer_string(char_buf, ThreshStr, 52, 48);
         }
 

@@ -12,12 +12,14 @@
 
 // Define the external variable ONCE in one src file. Preferably the one it relates to the most
 SemaphoreHandle_t freq_semaphore;
+int g_freqAnalyserExampleGlobalTimestamp;
 
 // Dont declare this in the header file
 // Name the ISR something with ISR in the name
 // Here I am using the header/src domain at the front so we know exactly where the function is from
 void Frequency_Analyser_ISR(void *ctx, alt_u32 id)
 {
+    g_freqAnalyserExampleGlobalTimestamp = alt_timestamp();
     // Please use extended macros like IORD_ALTERA_AVALON_PIO_DATA for clarity
     unsigned int temp = IORD_ALTERA_AVALON_PIO_DATA(FREQUENCY_ANALYSER_BASE);
     xQueueSendToBackFromISR(Peak_Detector_Q, &temp, pdFALSE);
