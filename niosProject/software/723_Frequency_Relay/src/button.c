@@ -47,11 +47,12 @@ int Button_init()
 static void Button_handlerTask(void *pvParameters)
 {
     int buttonVal;
+    int previousButtonVal;
     while (1)
     {
         if (xQueueReceive(Button_Q, &buttonVal, portMAX_DELAY) == pdTRUE)
 		{
-            if (buttonVal != 0)
+            if (buttonVal != previousButtonVal)
             {
                 if (xSemaphoreTake(SystemStatusMutex, (TickType_t)10) == pdTRUE)
                 {
@@ -64,7 +65,7 @@ static void Button_handlerTask(void *pvParameters)
                         SystemStatus = SYSTEM_MANAGING;
                     } 
 
-                    buttonVal = 0;
+                    previousButtonVal = buttonVal;
 
                     xSemaphoreGive(SystemStatusMutex); 
                 }
