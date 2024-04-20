@@ -18,7 +18,7 @@
 #include "inc/keyboard_common.h"
 #include "inc/peak_detector.h"
 
-#define KEYBOARD_HANDLER_PRIORITY (tskIDLE_PRIORITY + 1)
+#define KEYBOARD_HANDLER_PRIORITY (tskIDLE_PRIORITY + 2)
 
 #define KEYBOARD_Q_TYPE unsigned char
 #define KEYBOARD_Q_SIZE 10

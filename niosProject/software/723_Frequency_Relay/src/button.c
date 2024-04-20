@@ -14,7 +14,7 @@
 #define BUTTON_Q_SIZE 10
 #define BUTTON_Q_TYPE int
 
-#define BUTTON_HANDLER_PRIORITY (tskIDLE_PRIORITY + 1)
+#define BUTTON_HANDLER_PRIORITY (tskIDLE_PRIORITY + 2)
 
 QueueHandle_t Button_Q;
 

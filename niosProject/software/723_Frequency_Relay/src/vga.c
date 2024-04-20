@@ -153,11 +153,11 @@ void PRVGADraw_Task(void *pvParameters)
     	//reciving the threshold queue
     	if (xQueueReceive(Q_Threshhold, &thresholdsToPrint, portMAX_DELAY) == pdTRUE){
     		sprintf(ThreshStr, "%.1f Hz", thresholdsToPrint.peakDetectorLowerFrequencyThreshold);
-            alt_up_char_buffer_string(char_buf, "    ", 23, 41);
+            alt_up_char_buffer_string(char_buf, "          ", 23, 41);
     		alt_up_char_buffer_string(char_buf, ThreshStr, 23, 41);
 
     		sprintf(ThreshStr, "%.1f Hz", thresholdsToPrint.peakDetectorHigherFrequencyThreshold);
-            alt_up_char_buffer_string(char_buf, "    ", 23, 44);
+            alt_up_char_buffer_string(char_buf, "          ", 23, 44);
     		alt_up_char_buffer_string(char_buf, ThreshStr, 23, 44);
 
     		sprintf(ThreshStr, "%.1f Hz", thresholdsToPrint.peakDetectorLowerROCThreshold);
