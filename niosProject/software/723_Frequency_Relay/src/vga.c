@@ -160,12 +160,12 @@ void PRVGADraw_Task(void *pvParameters)
             alt_up_char_buffer_string(char_buf, "          ", 23, 44);
     		alt_up_char_buffer_string(char_buf, ThreshStr, 23, 44);
 
-    		sprintf(ThreshStr, "%.1f Hz", thresholdsToPrint.peakDetectorLowerROCThreshold);
-            alt_up_char_buffer_string(char_buf, "          ", 23, 48);
+    		sprintf(ThreshStr, "%.1f Hz/s", thresholdsToPrint.peakDetectorLowerROCThreshold);
+            alt_up_char_buffer_string(char_buf, "            ", 23, 48);
     		alt_up_char_buffer_string(char_buf, ThreshStr, 23, 48);
 
-    		sprintf(ThreshStr, "%.1f Hz", thresholdsToPrint.peakDetectorHigherROCThreshold);
-            alt_up_char_buffer_string(char_buf, "          ", 23, 51);
+    		sprintf(ThreshStr, "%.1f Hz/s", thresholdsToPrint.peakDetectorHigherROCThreshold);
+            alt_up_char_buffer_string(char_buf, "            ", 23, 51);
     		alt_up_char_buffer_string(char_buf, ThreshStr, 23, 51);
 
     	}

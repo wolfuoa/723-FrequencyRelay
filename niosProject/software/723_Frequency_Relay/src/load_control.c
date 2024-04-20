@@ -13,7 +13,7 @@
 #define LOAD_CONTROL_Q_SIZE 10
 #define LOAD_CONTROL_Q_TYPE int
 
-#define LOAD_CONTROL_HANDLER_PRIORITY (tskIDLE_PRIORITY + 1)
+#define LOAD_CONTROL_HANDLER_PRIORITY (tskIDLE_PRIORITY + 2)
 
 QueueHandle_t Load_Control_Q;
 
@@ -47,6 +47,7 @@ static void Load_Control_handlerTask(void *pvParameters)
 	static System_Frequency_State_T previousState;
 	uint8_t localSwitchStatus;
 	uint8_t tempSwitchStatus;
+	int end_timestamp;
 
 	int action;
 	while (1)
@@ -112,12 +113,15 @@ static void Load_Control_handlerTask(void *pvParameters)
 				IOWR_ALTERA_AVALON_PIO_DATA(GREEN_LEDS_BASE, ~(Load_Control_loads));
 
 				IOWR_ALTERA_AVALON_PIO_DATA(RED_LEDS_BASE, localSwitchStatus);
+
+				end_timestamp = alt_timestamp();
+
 				if(spammingTimestampFlag)
 				{
 					if(xSemaphoreTake(Peak_Detector_performanceTimerMutex_X, (TickType_t)10) == pdTRUE)
                         {
                             if (g_peakDetectorPerformanceTimestamp != 0){
-								int entry = (alt_timestamp() - g_peakDetectorPerformanceTimestamp) / 1000;
+								int entry = (end_timestamp - g_peakDetectorPerformanceTimestamp) / 1000;
 								// printf("Time taken: %dms\n", entry);
 								xQueueSendToBack(Q_PerformanceMeasure, &entry, pdFALSE);
 								g_peakDetectorPerformanceTimestamp = 0;
