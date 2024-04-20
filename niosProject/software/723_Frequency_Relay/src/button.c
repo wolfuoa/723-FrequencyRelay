@@ -25,10 +25,6 @@ static void Button_initDataStructs();
 
 void Button_ISR(void *ctx, alt_u32 id)
 {
-    // int temp = IORD_ALTERA_AVALON_PIO_EDGE_CAP(PUSH_BUTTON_BASE);
-    // xQueueSendToBackFromISR(Button_Q, &temp, pdFALSE);
-    // IOWR_ALTERA_AVALON_PIO_EDGE_CAP(PUSH_BUTTON_BASE, 0x0);
-
     // return;
     int temp = IORD_ALTERA_AVALON_PIO_EDGE_CAP(PUSH_BUTTON_BASE);
     xQueueSendToBackFromISR(Button_Q, &temp, pdFALSE);
@@ -86,8 +82,8 @@ int Button_initIRQ(int *receiver)
     printf("Creating Button ISR\n");
     void *ctx = (void *)receiver;
     IOWR_ALTERA_AVALON_PIO_EDGE_CAP(PUSH_BUTTON_BASE, 0);
-    // enable interrupts for last 3 buttons {0111}
-    IOWR_ALTERA_AVALON_PIO_IRQ_MASK(PUSH_BUTTON_BASE, 0x7);
+    // enable interrupts for KEY3 and KEY2 {0110}
+    IOWR_ALTERA_AVALON_PIO_IRQ_MASK(PUSH_BUTTON_BASE, 0x6);
     // Register ISR into LUT
     if (alt_irq_register(PUSH_BUTTON_IRQ, ctx, Button_ISR) != 0)
     {
