@@ -131,48 +131,56 @@ static void Peak_Detector_handlerTask(void *pvParameters)
 
                 if (xSemaphoreTake(Peak_Detector_debounceMutex_X, (TickType_t)10) == pdTRUE)
                 {
-                        // If system status is stable and goes outside threshold
-                        if ((systemStability == SYSTEM_FREQUENCY_STATE_STABLE) && (thresholdEval == SYSTEM_FREQUENCY_STATE_UNSTABLE) && g_peakDetectorDebounceFlag == 0)
+                    // If system status is stable and goes outside threshold
+                    if ((systemStability == SYSTEM_FREQUENCY_STATE_STABLE) && (thresholdEval == SYSTEM_FREQUENCY_STATE_UNSTABLE) && g_peakDetectorDebounceFlag == 0)
+                    {
+                        g_peakDetectorDebounceFlag = 1;
+
+                        if(xSemaphoreTake(Peak_Detector_performanceTimerMutex_X, (TickType_t)10) == pdTRUE)
                         {
-                            g_peakDetectorDebounceFlag = 1;
-
-                            if(xSemaphoreTake(Peak_Detector_performanceTimerMutex_X, (TickType_t)10) == pdTRUE)
-                            {
-                                g_peakDetectorPerformanceTimestamp = alt_timestamp();
-                                xSemaphoreGive(Peak_Detector_performanceTimerMutex_X);
-                            }
-                            xQueueSendToBack(Load_Control_Q, &thresholdEval, pdFALSE);
-
-                            // Reset the timer cus no need to repeat action
-                            repeatActionTimeout = false;
-                            if (xTimerStart(repeatActionTimer, 0) != pdPASS)
-                            {
-                                printf("Cannot reset timer\n\r");
-                            }
+                            g_peakDetectorPerformanceTimestamp = alt_timestamp();
+                            xSemaphoreGive(Peak_Detector_performanceTimerMutex_X);
                         }
-                        // If system status is unstable and goes inside threshold
-                        else if ((repeatActionTimeout) && (thresholdEval == SYSTEM_FREQUENCY_STATE_UNSTABLE))
+                        xQueueSendToBack(Load_Control_Q, &thresholdEval, pdFALSE);
+
+                        // Reset the timer cus no need to repeat action
+                        repeatActionTimeout = false;
+                        if (xTimerStart(repeatActionTimer, 0) != pdPASS)
                         {
-                            xQueueSendToBack(Load_Control_Q, &thresholdEval, pdFALSE);
-
-                            // Reset the timer cus no need to repeat action
-                            repeatActionTimeout = false;
-                            if (xTimerStart(repeatActionTimer, 0) != pdPASS)
-                            {
-                                printf("Cannot reset timer\n\r");
-                            }
+                            printf("Cannot reset timer\n\r");
                         }
+                    }
+                    else if ((systemStability == SYSTEM_FREQUENCY_STATE_UNSTABLE) && (thresholdEval == SYSTEM_FREQUENCY_STATE_STABLE))
+                    {
+                        repeatActionTimeout = false;
+                        if (xTimerStart(repeatActionTimer, 0) != pdPASS)
+                        {
+                            printf("Cannot reset timer\n\r");
+                        }
+                    }
+                    // If system status is unstable and goes inside threshold
+                    else if ((repeatActionTimeout) && (thresholdEval == SYSTEM_FREQUENCY_STATE_UNSTABLE))
+                    {
+                        xQueueSendToBack(Load_Control_Q, &thresholdEval, pdFALSE);
+
+                        // Reset the timer cus no need to repeat action
+                        repeatActionTimeout = false;
+                        if (xTimerStart(repeatActionTimer, 0) != pdPASS)
+                        {
+                            printf("Cannot reset timer\n\r");
+                        }
+                    }
                     else if ((repeatActionTimeout) && (thresholdEval == SYSTEM_FREQUENCY_STATE_STABLE))
                     {
-                    xQueueSendToBack(Load_Control_Q, &thresholdEval, pdFALSE);
+                        xQueueSendToBack(Load_Control_Q, &thresholdEval, pdFALSE);
 
-                    // Reset the timer cus no need to repeat action
-                    repeatActionTimeout = false;
-                    if (xTimerStart(repeatActionTimer, 0) != pdPASS)
-                    {
-                        printf("Cannot reset timer\n\r");
+                        // Reset the timer cus no need to repeat action
+                        repeatActionTimeout = false;
+                        if (xTimerStart(repeatActionTimer, 0) != pdPASS)
+                        {
+                            printf("Cannot reset timer\n\r");
+                        }
                     }
-                }
                     xSemaphoreGive(Peak_Detector_debounceMutex_X);
                 }
                 // Changing the systems status
