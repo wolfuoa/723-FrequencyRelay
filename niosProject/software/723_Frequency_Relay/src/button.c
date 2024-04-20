@@ -49,24 +49,25 @@ static void Button_handlerTask(void *pvParameters)
     int buttonVal;
     while (1)
     {
-        xQueueReceive(Button_Q, &buttonVal, portMAX_DELAY);
-
-        if (buttonVal != 0)
-        {
-            if (xSemaphoreTake(SystemStatusMutex, (TickType_t)10) == pdTRUE)
+        if (xQueueReceive(Button_Q, &buttonVal, portMAX_DELAY) == pdTRUE)
+		{
+            if (buttonVal != 0)
             {
-                if (buttonVal == 4)
+                if (xSemaphoreTake(SystemStatusMutex, (TickType_t)10) == pdTRUE)
                 {
-                    SystemStatus = SYSTEM_MAINTENANCE;
-                } 
-                else if (buttonVal == 2)
-                {
-                    SystemStatus = SYSTEM_MANAGING;
-                } 
+                    if (buttonVal == 4)
+                    {
+                        SystemStatus = SYSTEM_MAINTENANCE;
+                    } 
+                    else if (buttonVal == 2)
+                    {
+                        SystemStatus = SYSTEM_MANAGING;
+                    } 
 
-                buttonVal = 0;
+                    buttonVal = 0;
 
-                xSemaphoreGive(SystemStatusMutex); 
+                    xSemaphoreGive(SystemStatusMutex); 
+                }
             }
         }
     }
