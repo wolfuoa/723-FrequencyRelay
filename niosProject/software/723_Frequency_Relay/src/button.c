@@ -14,10 +14,9 @@
 #define BUTTON_Q_SIZE 10
 #define BUTTON_Q_TYPE int
 
-#define BUTTON_HANDLER_PRIORITY (tskIDLE_PRIORITY + 1)
+#define BUTTON_HANDLER_PRIORITY (tskIDLE_PRIORITY + 2)
 
 QueueHandle_t Button_Q;
-
 System_Status_T SystemStatus;
 
 static void Button_handlerTask(void *pvParameters);
@@ -25,10 +24,6 @@ static void Button_initDataStructs();
 
 void Button_ISR(void *ctx, alt_u32 id)
 {
-    // int temp = IORD_ALTERA_AVALON_PIO_EDGE_CAP(PUSH_BUTTON_BASE);
-    // xQueueSendToBackFromISR(Button_Q, &temp, pdFALSE);
-    // IOWR_ALTERA_AVALON_PIO_EDGE_CAP(PUSH_BUTTON_BASE, 0x0);
-
     // return;
     int temp = IORD_ALTERA_AVALON_PIO_EDGE_CAP(PUSH_BUTTON_BASE);
     xQueueSendToBackFromISR(Button_Q, &temp, pdFALSE);
@@ -51,26 +46,30 @@ int Button_init()
 static void Button_handlerTask(void *pvParameters)
 {
     int buttonVal;
+    int previousButtonVal;
     while (1)
     {
-        xQueueReceive(Button_Q, &buttonVal, portMAX_DELAY);
-
-        if (buttonVal != 0)
-        {
-            if (xSemaphoreTake(SystemStatusMutex, (TickType_t)10) == pdTRUE)
+        // If there is data in the queue, update the system status if the button
+        // pressed is not the same as the previous button pressed.
+        if (xQueueReceive(Button_Q, &buttonVal, portMAX_DELAY) == pdTRUE)
+		{
+            if (buttonVal != previousButtonVal)
             {
-                if (buttonVal == 4)
+                if (xSemaphoreTake(SystemStatusMutex, (TickType_t)10) == pdTRUE)
                 {
-                    SystemStatus = SYSTEM_MAINTENANCE;
-                } 
-                else if (buttonVal == 2)
-                {
-                    SystemStatus = SYSTEM_MANAGING;
-                } 
+                    if (buttonVal == 4)
+                    {
+                        SystemStatus = SYSTEM_MAINTENANCE;
+                    } 
+                    else if (buttonVal == 2)
+                    {
+                        SystemStatus = SYSTEM_MANAGING;
+                    } 
 
-                buttonVal = 0;
+                    previousButtonVal = buttonVal;
 
-                xSemaphoreGive(SystemStatusMutex); 
+                    xSemaphoreGive(SystemStatusMutex); 
+                }
             }
         }
     }
@@ -86,8 +85,8 @@ int Button_initIRQ(int *receiver)
     printf("Creating Button ISR\n");
     void *ctx = (void *)receiver;
     IOWR_ALTERA_AVALON_PIO_EDGE_CAP(PUSH_BUTTON_BASE, 0);
-    // enable interrupts for last 3 buttons {0111}
-    IOWR_ALTERA_AVALON_PIO_IRQ_MASK(PUSH_BUTTON_BASE, 0x7);
+    // enable interrupts for KEY3 and KEY2 {0110}
+    IOWR_ALTERA_AVALON_PIO_IRQ_MASK(PUSH_BUTTON_BASE, 0x6);
     // Register ISR into LUT
     if (alt_irq_register(PUSH_BUTTON_IRQ, ctx, Button_ISR) != 0)
     {

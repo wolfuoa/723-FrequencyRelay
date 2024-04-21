@@ -13,7 +13,7 @@
 #define LOAD_CONTROL_Q_SIZE 10
 #define LOAD_CONTROL_Q_TYPE int
 
-#define LOAD_CONTROL_HANDLER_PRIORITY (tskIDLE_PRIORITY + 1)
+#define LOAD_CONTROL_HANDLER_PRIORITY (tskIDLE_PRIORITY + 2)
 
 QueueHandle_t Load_Control_Q;
 
@@ -47,44 +47,43 @@ static void Load_Control_handlerTask(void *pvParameters)
 	static System_Frequency_State_T previousState;
 	uint8_t localSwitchStatus;
 	uint8_t tempSwitchStatus;
+	int end_timestamp;
 
 	int action;
 	while (1)
 	{
-		// xQueueReceive(Switch_Polling_Q, localSwitchStatus, (TickType_t)10);
 		// Read from Peak_Detector_Q
 		if (xQueueReceive(Load_Control_Q, &action, portMAX_DELAY) == pdTRUE)
 		{
+			// Take the system status mutex as we may be changing it.
 			if (xSemaphoreTake(SystemStatusMutex, (TickType_t)10) == pdTRUE)
 			{
+				// Read the switches at the IO address for them.
 				tempSwitchStatus = IORD_ALTERA_AVALON_PIO_DATA(SLIDE_SWITCH_BASE);
-				// printf("Loads: %d\r\n", Load_Control_loads);
-				// IOWR_ALTERA_AVALON_PIO_DATA(GREEN_LEDS_BASE, ~Load_Control_loads);
-				//				printf("Action: %d\n", action);
+				// If the signal is unstable and the system status is not in maintenence
 				if (!action && SystemStatus != SYSTEM_MAINTENANCE)
 				{
-
+					// If the load being shed is the first load, set a flag to take the performance measurement
 					if (Load_Control_loads == 0xFF){
 						spammingTimestampFlag = 1;
 					}
-
-					// Shed the load
+					// Shed the load if there are loads to be shed
 					SystemStatus = SYSTEM_MANAGING;
 					if (Load_Control_loads != 0)
 					{
 						shed_load();
-						//						printf("SHEDDING LOADS\r\n");
 					}
 				}
-				// TEMP: MUST change to see if all load has been unsheded when stable
+				// If the system status is managing (and the signal is stable),
 				else if (SystemStatus == SYSTEM_MANAGING)
 				{
-					// SystemStatus = SYSTEM_OK;
+					// Unshed the load if there are loads to be unshed
 					if (Load_Control_loads != 0xFF)
 					{
 						unshed_load();
-						//						printf("UNSHEDDING LOADS\r\n");
 					}
+					// If all the loads have been unshed, reset the initial load shed flag, so that the peak detector
+					// knows that the next load to be shed will be an first-load (instant response).
 					else if (Load_Control_loads == 0xFF)
 					{
 						if (xSemaphoreTake(Peak_Detector_debounceMutex_X, (TickType_t)10) == pdTRUE)
@@ -92,38 +91,47 @@ static void Load_Control_handlerTask(void *pvParameters)
 							g_peakDetectorDebounceFlag = 0;
 							xSemaphoreGive(Peak_Detector_debounceMutex_X);
 						}
+						// Set the system status to OK
 						SystemStatus = SYSTEM_OK;
-						// spammingTimestampFlag = 1;
 					}
 				}
 
+				// Logic for RED switches
+				// If the system status is OK or MAINTENANCE, set the loads to all ON, and set the localSwitchStatus to
+				// the value of the read switches.
 				if ((SystemStatus == SYSTEM_OK) || (SystemStatus == SYSTEM_MAINTENANCE))
 				{
 					Load_Control_loads = 0xFF;
 					localSwitchStatus = tempSwitchStatus;
 				}
+				// Else if the system status is MANAGING, set the localSwitchStatus to the current loads ANDED with the
+				// value of the read switches (i.e. loads can only be turned off)
 				else if (SystemStatus == SYSTEM_MANAGING)
 				{
 					localSwitchStatus = Load_Control_loads & tempSwitchStatus;
 				}
 
-				// printf("LD_SW_ST: %d, LD_CTRL_LDS: %d, ANDED: %d\r\n", localSwitchStatus, Load_Control_loads, (localSwitchStatus & Load_Control_loads));
-
+				// Write green LEDs to the inverse of the loads, write the red LEDs to localSwitchStatus.
 				IOWR_ALTERA_AVALON_PIO_DATA(GREEN_LEDS_BASE, ~(Load_Control_loads));
-
 				IOWR_ALTERA_AVALON_PIO_DATA(RED_LEDS_BASE, localSwitchStatus);
+
+				// Grab a end timestamp for the performance measurement
+				end_timestamp = alt_timestamp();
+				// If the flag for taking a timestamp has been set, caculate the time taken and send to VGATask through
+				// peformance timestamp queue and reset the timer.
 				if(spammingTimestampFlag)
 				{
 					if(xSemaphoreTake(Peak_Detector_performanceTimerMutex_X, (TickType_t)10) == pdTRUE)
                         {
                             if (g_peakDetectorPerformanceTimestamp != 0){
-								int entry = (alt_timestamp() - g_peakDetectorPerformanceTimestamp) / 1000;
-								printf("Time taken: %dms\n", entry);
+								int entry = (end_timestamp - g_peakDetectorPerformanceTimestamp) / 1000;
+								// printf("Time taken: %dms\n", entry);
 								xQueueSendToBack(Q_PerformanceMeasure, &entry, pdFALSE);
 								g_peakDetectorPerformanceTimestamp = 0;
 							}
                             xSemaphoreGive(Peak_Detector_performanceTimerMutex_X);
 							spammingTimestampFlag = 0;
+							alt_timestamp_start();
                         }
 				}
 				xSemaphoreGive(SystemStatusMutex);
@@ -136,13 +144,11 @@ static void Load_Control_handlerTask(void *pvParameters)
 static void shed_load()
 {
 	// Shed the load of lowest priority.
-
 	for (uint8_t i = 0x01; i != 0; i <<= 1)
 	{
 		if (Load_Control_loads & i)
 		{
 			Load_Control_loads &= (i ^ 0xFF);
-			// printf("SHEDDING OP: %d/r/n", (Load_Control_loads & (i ^ 0xFF)));
 			return;
 		}
 	}

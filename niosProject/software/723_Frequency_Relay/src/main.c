@@ -14,7 +14,6 @@
 #include "inc/load_control.h"
 
 #include "inc/button.h"
-#include "inc/switch_polling.h"
 #include "inc/vga.h"
 #include "inc/keyboard.h"
 
@@ -25,6 +24,7 @@
  */
 int main(void)
 {
+	// ISR intialisation
 	// Context is not required, but this is an example of how to do it int freqCtx;
 	int freqCtx;
 	if (Frequency_Analyser_initIRQ(&freqCtx))
@@ -38,6 +38,7 @@ int main(void)
 		printf("Could not register Button ISR\n");
 	}
 
+	// Task initialisation
 	if (Peak_Detector_init())
 	{
 		printf("Could not start Peak Detector Task\n");
@@ -47,11 +48,6 @@ int main(void)
 	{
 		printf("Could not start Load Control Task");
 	}
-
-	// if (switch_polling_init())
-	// {
-	// 	printf("Could not start Load Control Task\n");
-	// }
 
 	if (Button_init())
 	{

@@ -10,6 +10,8 @@
 // This variable will be recognised by other files that include it, if it is defined ONCE (see frequency_analyser.c)
 extern SemaphoreHandle_t freq_semaphore;
 
+extern int g_freqAnalyserExampleGlobalTimestamp;
+
 int Frequency_Analyser_initIRQ(int *receiver);
 
 #endif // FREQUENCY_ANALYSER_H
