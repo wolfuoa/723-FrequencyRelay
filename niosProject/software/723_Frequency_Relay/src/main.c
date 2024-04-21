@@ -24,6 +24,7 @@
  */
 int main(void)
 {
+	// ISR intialisation
 	// Context is not required, but this is an example of how to do it int freqCtx;
 	int freqCtx;
 	if (Frequency_Analyser_initIRQ(&freqCtx))
@@ -37,6 +38,7 @@ int main(void)
 		printf("Could not register Button ISR\n");
 	}
 
+	// Task initialisation
 	if (Peak_Detector_init())
 	{
 		printf("Could not start Peak Detector Task\n");

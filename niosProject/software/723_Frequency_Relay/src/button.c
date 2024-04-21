@@ -17,7 +17,6 @@
 #define BUTTON_HANDLER_PRIORITY (tskIDLE_PRIORITY + 2)
 
 QueueHandle_t Button_Q;
-
 System_Status_T SystemStatus;
 
 static void Button_handlerTask(void *pvParameters);
@@ -50,6 +49,8 @@ static void Button_handlerTask(void *pvParameters)
     int previousButtonVal;
     while (1)
     {
+        // If there is data in the queue, update the system status if the button
+        // pressed is not the same as the previous button pressed.
         if (xQueueReceive(Button_Q, &buttonVal, portMAX_DELAY) == pdTRUE)
 		{
             if (buttonVal != previousButtonVal)
