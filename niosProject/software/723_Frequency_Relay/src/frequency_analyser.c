@@ -31,6 +31,7 @@ void Frequency_Analyser_ISR(void *ctx, alt_u32 id)
 // Most of the following code doesn't do anything, but it is just to be safe and explicit with what were doing
 int Frequency_Analyser_initIRQ(int *receiver)
 {
+    alt_timestamp_start();
     printf("Creating ISR\n");
     void *ctx = (void *)receiver;
     //Enable Interupts for the frequency analyser

@@ -195,8 +195,6 @@ static void Peak_Detector_handlerTask(void *pvParameters)
 
 static void Peak_Detector_initDataStructs()
 {
-    alt_timestamp_start();
-
     repeatActionMutex_X = xSemaphoreCreateMutex();
     Peak_Detector_thresholdMutex_X = xSemaphoreCreateMutex();
     Peak_Detector_performanceTimerMutex_X = xSemaphoreCreateMutex();

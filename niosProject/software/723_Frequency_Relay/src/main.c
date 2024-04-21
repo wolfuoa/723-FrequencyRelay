@@ -14,7 +14,6 @@
 #include "inc/load_control.h"
 
 #include "inc/button.h"
-#include "inc/switch_polling.h"
 #include "inc/vga.h"
 #include "inc/keyboard.h"
 
@@ -47,11 +46,6 @@ int main(void)
 	{
 		printf("Could not start Load Control Task");
 	}
-
-	// if (switch_polling_init())
-	// {
-	// 	printf("Could not start Load Control Task\n");
-	// }
 
 	if (Button_init())
 	{
